@@ -1,0 +1,25 @@
+{
+  "site": {
+    "title": "varmiguemunoz",
+    "base_url": "",
+    "base_path": "/",
+    "favicon": "/favicon.png",
+    "logo": "/favicon.png",
+    "lang": "en",
+    "description": "Welcome to my personal blog",
+    "pageSize": 6
+  },
+  "features": {
+    "youtube": true,
+    "dark_mode": true
+  },
+  "metadata": {
+    "meta_author": "Miguel Angel Munoz @varmiguemunoz",
+    "meta_description": "Just a Software Engineering student 🎓."
+  },
+  "author": {
+    "name": "Miguel Angel Munoz",
+    "avatar": "/Icon.png",
+    "bio": "I am a Software Engineering student 🎓. Passionate about technology, enterprise and the constant search for knowledge."
+  }
+}

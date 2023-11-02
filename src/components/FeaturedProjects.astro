@@ -1,0 +1,37 @@
+---
+import projects from '@config/projects.json';
+---
+
+<section class="mx-auto max-w-screen-lg px-4 pb-12 sm:px-6 lg:px-8">
+  <h3
+    class="mb-4 mt-3 text-lg font-semibold leading-6 text-zinc-900 group-hover:text-zinc-600 dark:text-white md:text-2xl"
+  >
+    Latest projects ⚡️
+  </h3>
+  <ul class="mx-auto grid grid-cols-1 gap-x-4 gap-y-4 text-white md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    {
+      projects?.slice(0, 3).map((item) => (
+        <li>
+          <a href={item.url} target="_blank" class="relative top-0 block overflow-hidden rounded-2xl">
+            <figure>
+              <img
+                alt={item.title}
+                src={item.image}
+                class="h-44 w-full object-cover"
+                width={309}
+                height={176}
+                decoding="async"
+                loading="lazy"
+              />
+            </figure>
+            <div class="bg-zinc-900 p-4">
+              <span class="text-sm">{item.publishedAt}</span>
+              <p class="mt-1 h-8 text-sm text-zinc-200">{item.title}</p>
+              <p class="text-xs text-zinc-500">{item.description}</p>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
