@@ -1,23 +1,23 @@
 [
     {
-        "title": "Personal portfolio",
-        "description": "NASA's Origins, Spectral Interpretation, Resource Identification, Security-Regolith Explorer (OSIRIS-REx) is the first U.S. mission ...",
-        "image": "",
-        "url": "https://github.com/varmiguemunoz/Rick-website",
-        "publishedAt": "15/09/2023"
+        "title": "Pokedex Mobile App",
+        "description": "This project was developed for IOS and Android operating systems using technologies such as: React Native and Javascript as programming language. ",
+        "image": "/projects/pokedex.jpeg",
+        "url": "https://github.com/varmiguemunoz/pokedex",
+        "publishedAt": "10/11/2023"
       },
       {
-        "title": "Personal portfolio",
-        "description": "NASA's Origins, Spectral Interpretation, Resource Identification, Security-Regolith Explorer (OSIRIS-REx) is the first U.S. mission ...",
-        "image": "",
-        "url": "https://github.com/varmiguemunoz/Rick-website",
-        "publishedAt": "15/09/2023"
+        "title": "Pomodoro Mobile app",
+        "description": "Like the previous one, this project is developed with react native and javascript as a programming language, this is a pomodoro app that allows time management.",
+        "image": "/projects/pomodoro.jpeg",
+        "url": "https://github.com/varmiguemunoz/pomodoro",
+        "publishedAt": "10/11/2023"
       },
       {
-        "title": "Personal portfolio",
-        "description": "NASA's Origins, Spectral Interpretation, Resource Identification, Security-Regolith Explorer (OSIRIS-REx) is the first U.S. mission ...",
-        "image": "",
-        "url": "https://github.com/varmiguemunoz/Rick-website",
-        "publishedAt": "15/09/2023"
+        "title": "Blog Backend API",
+        "description": "This backend project was developed with Node, express and mysql database. It allows most of the functionality of a blog application with emphasis on the authentication module.",
+        "image": "/projects/API.png",
+        "url": "https://github.com/varmiguemunoz/blog-backend",
+        "publishedAt": "10/11/2023"
       }
 ]

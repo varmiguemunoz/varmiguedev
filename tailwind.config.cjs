@@ -5,7 +5,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
             a: {
