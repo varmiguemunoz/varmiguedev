@@ -40,7 +40,7 @@ import Works from '@config/works.json';
           Works.map((item) => (
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-[12px]">
-                <img src={item.image} alt="icon" class="h-[60px] w-[60px] rounded-lg" />
+                <img src={item.image} alt="icon" class="h-[60px] w-[60px] rounded-lg object-contain" />
                 <div class="h-full">
                   <p class="grow text-[16px] font-medium">
                     {item.charge}
