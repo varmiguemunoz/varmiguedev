@@ -1,0 +1,26 @@
+[
+    {
+        "image": "/works/diey-logo.svg",
+        "company": "Diey.io",
+        "charge": "Full stack developer",
+        "since": "November 2023 - Now"
+    },
+    {
+        "image": "/works/linnk.png",
+        "company": "Linnk Tech Solutions",
+        "charge": "Full stack developer",
+        "since": "July 2023 - Now"
+    },
+    {
+        "image": "/works/parrolabs.svg",
+        "company": "Parrolabs",
+        "charge": "Full stack developer",
+        "since": "February - Now"
+    },
+    {
+        "image": "/works/parrolabs.svg",
+        "company": "Parrolabs",
+        "charge": "IT Assistant",
+        "since": "September 2022 - Febrero 2023"
+    }
+]

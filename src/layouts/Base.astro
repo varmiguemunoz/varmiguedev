@@ -9,6 +9,7 @@ import { createOgImage } from '@utils/createOgImage';
 import '@styles/global.css';
 
 import { ViewTransitions } from 'astro:transitions';
+import GoogleAnalytics from '@components/GoogleAnalytics.astro';
 
 export interface Props {
   title?: string;
@@ -31,6 +32,7 @@ const ogImage = createOgImage({
 <!doctype html>
 <html lang={config.site.lang}>
   <head>
+    <GoogleAnalytics />
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
     <!-- theme meta -->
@@ -67,6 +69,7 @@ const ogImage = createOgImage({
     <meta name="twitter:card" content="summary_large_image" />
 
     <script is:inline src="/registerSW.js"></script>
+
     <link rel="manifest" href="/manifest.webmanifest" />
     <ViewTransitions />
   </head>

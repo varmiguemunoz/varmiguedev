@@ -1,19 +1,59 @@
 ---
 import Base from '@layouts/Base.astro';
 import Page from '@layouts/Page.astro';
+import Works from '@config/works.json';
 ---
 
-<Base meta_title="About me">
+<Base meta_title="Miguel Munoz - About me">
   <Page title="About me">
-    <p>
-      I am a Software Engineering student 🎓. Passionate about technology, the business world and the constant search
-      for knowledge. With more than 2 years of experience in the technology market, I have developed several
-      applications for companies, covering both frontend and backend technologies 🧠.
-    </p>
-    <p>
-      I am constantly exploring how technology can drive innovations and solutions in the job market 🚀. I strongly
-      believe that technology is the driving force behind change and improvement in our society, and I am committed to
-      be part of that transformation 🏆.
-    </p>
+    <section class="flex flex-col gap-[50px]">
+      <div>
+        <p>
+          I am a Software Engineering student 🎓. Passionate about technology, the business world and the constant
+          search for knowledge. With more than 2 years of experience in the technology market, I have developed several
+          applications for companies, covering both frontend and backend technologies 🧠.
+        </p>
+        <p>
+          I am constantly exploring how technology can drive innovations and solutions in the job market 🚀. I strongly
+          believe that technology is the driving force behind change and improvement in our society, and I am committed
+          to be part of that transformation 🏆.
+        </p>
+      </div>
+
+      <div class="flex items-center justify-center gap-[20px]">
+        <div class="h-[300px] w-[350px]">
+          <img src="/about-me/avestruz.jpg" alt="image-icon" class="h-full w-full rounded-xl object-cover" />
+        </div>
+
+        <div class="h-[350px]">
+          <img src="/about-me/river.jpeg" alt="image-icon" class="h-full rounded-lg object-cover" />
+        </div>
+
+        <div class="h-[300px] w-[350px]">
+          <img src="/about-me/beer.jpeg" alt="image-icon" class="h-full w-full rounded-xl object-cover" />
+        </div>
+      </div>
+
+      <div class="mt-[50px] flex w-full flex-col">
+        <h1 class="text-[20px] font-bold">Work</h1>
+        {
+          Works.map((item) => (
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-[12px]">
+                <img src={item.image} alt="icon" class="h-[60px] w-[60px] rounded-lg" />
+                <div class="h-full">
+                  <p class="grow text-[16px] font-medium">
+                    {item.charge}
+                    <br />
+                    <span class="text-normal font-light">{item.company}</span>
+                  </p>
+                </div>
+              </div>
+              <p>{item.since}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
   </Page>
 </Base>
