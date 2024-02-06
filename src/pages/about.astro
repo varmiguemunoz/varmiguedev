@@ -38,18 +38,18 @@ import Works from '@config/works.json';
         <h2 class="text-lg font-bold">Work</h2>
         {
           Works.map((item) => (
-            <div class="flex items-center justify-between">
+            <div class="items-start flex md:justify-between">
               <div class="flex items-center gap-[12px]">
                 <img src={item.image} alt="icon" class="h-[60px] w-[60px] rounded-lg object-contain" />
-                <div class="h-full">
-                  <p class="grow text-[16px] font-medium">
+                <div class="h-full w-full md:w-full">
+                  <p class="w-full grow text-[16px] font-medium md:text-[16px]">
                     {item.charge}
                     <br />
-                    <span class="text-normal font-light">{item.company}</span>
+                    <span class="text-normal w-full font-light">{item.company}</span>
                   </p>
                 </div>
               </div>
-              <p>{item.since}</p>
+              <p class="invisible md:visible">{item.since} </p>
             </div>
           ))
         }
