@@ -4,7 +4,7 @@ import Page from '@layouts/Page.astro';
 import Works from '@config/works.json';
 ---
 
-<Base meta_title="Miguel Munoz - About me">
+<Base meta_title="Miguel Munoz - About me" blogpost={true}>
   <Page title="About me">
     <section class="flex flex-col gap-[50px]">
       <div>
@@ -35,7 +35,7 @@ import Works from '@config/works.json';
       </div>
 
       <div class="mt-[50px] flex w-full flex-col">
-        <h1 class="text-[20px] font-bold">Work</h1>
+        <h2 class="text-lg font-bold">Work</h2>
         {
           Works.map((item) => (
             <div class="flex items-center justify-between">
