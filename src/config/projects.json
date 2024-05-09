@@ -1,20 +1,20 @@
 [
     {
-        "title": "Pokedex",
-        "description": "Mobile pokedex aplication. 🧠 Add your favorite pokemons",
-        "url": "https://github.com/varmiguemunoz/pokedex",
+        "title": "La ucorporativa",
+        "description": "An innovative Colombian startup specializing in corporate E-learning in Latin America.",
+        "url": "https://www.laucorporativalearning.com/login",
         "languague": "JavaScript"
       },
       {
-        "title": "Pomodoro",
-        "description": "Mobile pomodoro app. 🚀 Keep on track your time",
-        "url": "https://github.com/varmiguemunoz/pomodoro",
+        "title": "Diey.io",
+        "description": "Colombian startup provides engineering, design, and computer science services for digital projects.",
+        "url": "https://www.diey.io",
         "languague": "JavaScript"
       },
       {
-        "title": "Blog backend",
-        "description": "API backend for a blog web system. 👑 Manage your blogs",
-        "url": "https://github.com/varmiguemunoz/blog-backend",
+        "title": "Dw Drums",
+        "description": "It dominates the musical e-commerce sector with a vast array of drums on dedicated websites.",
+        "url": "https://www.dwdrums.com/",
         "languague": "JavaScript"
       }
 ]

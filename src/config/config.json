@@ -4,7 +4,7 @@
     "base_url": "",
     "base_path": "/",
     "favicon": "/favicon.png",
-    "logo": "/favicon.png",
+    "logo": "/miguel-icon.png",
     "lang": "en",
     "description": "Welcome to my personal blog",
     "pageSize": 3
@@ -19,7 +19,7 @@
   },
   "author": {
     "name": "Miguel Angel Munoz",
-    "avatar": "/Icon.png",
+    "avatar": "/professional-miguel.png",
     "bio": "I am a Software Engineering student 🎓. Passionate about technology, enterprise and the constant search for knowledge."
   }
 }

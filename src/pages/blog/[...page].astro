@@ -5,6 +5,15 @@ import Posts from '@layouts/Posts.astro';
 import Pagination from '@components/Pagination.astro';
 import config from '@config/config.json';
 
+export interface Props {
+  page: {
+    data: any;
+    lastPage: any;
+    url: any;
+    currentPage: any;
+  };
+}
+
 export async function getStaticPaths({ paginate }: any) {
   const allPosts = await getCollection('blog');
   const formattedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -12,10 +21,11 @@ export async function getStaticPaths({ paginate }: any) {
     pageSize: config.site.pageSize,
   });
 }
+
 const { page } = Astro.props;
 ---
 
-<Base meta_title="Blog">
+<Base meta_title="Blog" blogpost={true}>
   <div class="mb-10 flex flex-col items-start justify-start gap-[8px]">
     <h1 class="text-lg font-semibold leading-6">Blog 📔</h1>
     <p class="text-md opacity-70">Explore these posts and dive into this exciting world.</p>

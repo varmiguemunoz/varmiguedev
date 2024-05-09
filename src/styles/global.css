@@ -74,3 +74,8 @@ input#nav-toggle:checked ~ #nav-menu {
 .dark #themeToggle:hover .moon {
   @apply stroke-zinc-200;
 }
+
+#banner-image {
+  mask-image: linear-gradient(black 80%, transparent)
+}
+
