@@ -1,4 +1,4 @@
-# 🚀 Astro Website - varmiguemunoz
+# 🚀 Personal Website - varmiguemunoz
 
-Personal website varmiguemunoz 🤖
+**Know more** about me with this website 🤖
 
