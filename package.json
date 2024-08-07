@@ -1,5 +1,5 @@
 {
-  "name": "astro-blog",
+  "name": "varmiguemunoz",
   "version": "1.1.3",
   "description": "Personal 🧠: varmiguemunoz website",
   "license": "MIT",
@@ -7,7 +7,7 @@
   "author": {
     "name": "varmiguemunoz"
   },
-  "homepage": "",
+  "homepage": "https://github.com/varmiguemunoz/website-astro",
   "keywords": [
     "JavaScript",
     "Astro",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/varmiguemunoz/astro-blog"
+    "url": "https://github.com/varmiguemunoz/website-astro"
   },
   "scripts": {
     "dev": "astro dev",

@@ -3,13 +3,14 @@ import Header from '@components/Header.astro';
 import Hero from '@components/Hero.astro';
 import Projects from '@components/FeaturedProjects.astro';
 import Footer from '@components/Footer.astro';
-import config from '@config/config.json';
-import { createOgImage } from '@utils/createOgImage';
+import GoogleAnalytics from '@components/GoogleAnalytics.astro';
 
-import '@styles/global.css';
+import { createOgImage } from '@utils/createOgImage';
+import config from '@config/config.json';
 
 import { ViewTransitions } from 'astro:transitions';
-import GoogleAnalytics from '@components/GoogleAnalytics.astro';
+
+import '@styles/global.css';
 
 export interface Props {
   title?: string;
@@ -19,10 +20,9 @@ export interface Props {
   noindex?: boolean;
   canonical?: string;
   blogpost?: boolean;
-  header?: boolean;
 }
 
-const { title, meta_title, description, noindex, blogpost, header } = Astro.props;
+const { title, meta_title, description, noindex, blogpost } = Astro.props;
 
 const ogImage = createOgImage({
   title: meta_title ? meta_title : title ? title : config.site.title,

@@ -13,20 +13,20 @@ export const manifest: Partial<ManifestOptions> = {
   lang: 'ES',
   icons: [
     {
-      src: '/favicons/favicon-192x192.png',
+      src: '/favicons/favicon-192.png',
       sizes: '192x192',
       type: 'image/png',
     },
     {
-      src: '/favicons/favicon-256x256.png',
+      src: '/favicons/favicon-256.png',
       sizes: '256x256',
       type: 'image/png',
     },
     {
-      src: '/favicons/favicon-256x256.png',
+      src: '/favicons/favicon-256.png',
       sizes: '256x256',
       type: 'image/png',
-      purpose: 'any maskable',
+      purpose: 'Icon',
     },
   ],
   categories: ['blog'],

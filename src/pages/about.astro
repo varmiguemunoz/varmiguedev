@@ -1,51 +1,60 @@
 ---
+import { Image } from 'astro:assets';
+
 import Base from '@layouts/Base.astro';
 import Page from '@layouts/Page.astro';
 import Works from '@config/works.json';
+import Aboutme from '@config/about.json';
 ---
 
 <Base meta_title="Miguel Munoz - About me" blogpost={true}>
   <Page title="About me">
     <section class="flex flex-col gap-[50px]">
       <div>
-        <p>
+        <p class="mt-1.5 text-sm text-zinc-500 dark:text-zinc-400 md:text-lg">
           I am a Software Engineering student 🎓. Passionate about technology, the business world and the constant
           search for knowledge. With more than 2 years of experience in the technology market, I have developed several
           applications for companies, covering both frontend and backend technologies 🧠.
         </p>
-        <p>
+        <p class="mt-1.5 text-sm text-zinc-500 dark:text-zinc-400 md:text-lg">
           I am constantly exploring how technology can drive innovations and solutions in the job market 🚀. I strongly
           believe that technology is the driving force behind change and improvement in our society, and I am committed
           to be part of that transformation 🏆.
         </p>
       </div>
 
-      <div class="flex items-center justify-center gap-[20px]">
-        <div class="h-[300px] w-[350px]">
-          <img src="/about-me/avestruz.jpg" alt="image-icon" class="h-full w-full rounded-xl object-cover" />
-        </div>
-
-        <div class="h-[350px]">
-          <img src="/about-me/river.jpeg" alt="image-icon" class="h-full rounded-lg object-cover" />
-        </div>
-
-        <div class="h-[300px] w-[350px]">
-          <img src="/about-me/beer.jpeg" alt="image-icon" class="h-full w-full rounded-xl object-cover" />
-        </div>
+      <div class="grid grid-cols-3 place-items-center gap-[20px]">
+        {
+          Aboutme?.map((item) => (
+            <Image
+              src={item.image_url}
+              alt="image-icon"
+              class="h-full w-full rounded-xl object-cover"
+              loading={'lazy'}
+              width="350"
+              height="200"
+              quality="max"
+            />
+          ))
+        }
       </div>
 
-      <div class="mt-[50px] flex w-full flex-col">
-        <h2 class="text-lg font-bold">Work</h2>
+      <div class="mt-[30px] flex w-full flex-col">
+        <h2 class="mb-0 text-lg font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-2xl">
+          Professional Experience 🗂️
+        </h2>
         {
           Works.map((item) => (
-            <div class="items-start flex md:justify-between">
+            <div class="flex items-start md:justify-between">
               <div class="flex items-center gap-[12px]">
                 <img src={item.image} alt="icon" class="h-[60px] w-[60px] rounded-lg object-contain" />
                 <div class="h-full w-full md:w-full">
-                  <p class="w-full grow text-[16px] font-medium md:text-[16px]">
+                  <p class="font-bold text-zinc-500 dark:text-zinc-400 md:text-lg">
                     {item.charge}
                     <br />
-                    <span class="text-normal w-full font-light">{item.company}</span>
+                    <span class="text-normal md:text-l w-full font-light text-zinc-500 dark:text-zinc-400">
+                      {item.company}
+                    </span>
                   </p>
                 </div>
               </div>
