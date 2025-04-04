@@ -25,8 +25,8 @@ export interface Props {
 const { title, meta_title, description, noindex, blogpost } = Astro.props;
 
 const ogImage = createOgImage({
-  title: meta_title ? meta_title : title ? title : config.site.title,
-  meta: [config.site.title, config.site.base_url].join(' · '),
+  title: "varmiguemunoz",
+  meta: "Mid fullstack developer",
 });
 ---
 
@@ -71,7 +71,6 @@ const ogImage = createOgImage({
 
     <script is:inline src="/registerSW.js"></script>
 
-    <link rel="manifest" href="/manifest.webmanifest" />
     <ViewTransitions />
   </head>
   <body class="bg-white dark:bg-zinc-900/95">
@@ -83,9 +82,5 @@ const ogImage = createOgImage({
     {Astro.url.pathname === '/' && <Projects />}
 
     <Footer />
-    <script>
-      // This is a hack to get vite-plugin-pwa to generate a sw.js file.
-      // Do not remove this script tag.
-    </script>
   </body>
 </html>

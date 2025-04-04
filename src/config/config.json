@@ -1,12 +1,12 @@
 {
   "site": {
-    "title": "varmiguemunoz",
+    "title": "varmiguemunoz | Mid Full stack engineer & Creating seamless omnichannel experiences",
     "base_url": "https://www.varmiguemunoz.dev/",
     "base_path": "/",
     "favicon": "/favicon.png",
     "logo": "/profile-2024.jpeg",
     "lang": "en",
-    "description": "Welcome to my personal blog",
+    "description": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market.",
     "pageSize": 3
   },
   "features": {
@@ -14,12 +14,12 @@
     "dark_mode": true
   },
   "metadata": {
-    "meta_author": "Miguel Angel Munoz",
-    "meta_description": "Mid. Full stack Engineer | Java, Javascript, Devops"
+    "meta_author": "varmiguemunoz | Mid Full stack engineer & Creating seamless omnichannel experiences",
+    "meta_description": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market."
   },
   "author": {
-    "name": "Miguel Angel Munoz",
+    "name": "Miguel Angel Jaramillo Muñoz",
     "avatar": "/profile-business-nobackground.png",
-    "bio": "I am a Software Engineering student 🎓. Passionate about technology, enterprise and the constant search for knowledge."
+    "bio": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market."
   }
 }
