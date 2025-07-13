@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  brands: {
+    image: string;
+    alt: string;
+  }[];
+}
+
+const { brands } = Astro.props;
+---
+
+<section class="mx-auto w-full max-w-[1114px] border-b border-gray-400 bg-transparent pb-5">
+  <div class="w-full">
+    <p class="text-md text-center font-normal text-gray-500">Companies around the world trust us</p>
+
+    <div class="mt-8 overflow-hidden">
+      <div class="animate-slide w-[calc(100% * 2)] flex gap-4">
+        {
+          brands?.map((items: { image: string; alt: string }) => (
+            <Image
+              src={items.image}
+              alt={items.alt}
+              class="mx-auto h-9 w-auto object-contain"
+              width="80"
+              height="35"
+              loading="lazy"
+            />
+          ))
+        }
+        {
+          brands?.map((items: { image: string; alt: string }) => (
+            <Image
+              src={items.image}
+              alt={items.alt}
+              class="mx-auto h-9 w-auto object-contain"
+              width="80"
+              height="35"
+              loading="lazy"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

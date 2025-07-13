@@ -1,0 +1,20 @@
+---
+import Base from '@layouts/Base.astro';
+import Sales from '@components/global/sales/sales.astro';
+import HeroCampaing from '@components/global/campaings/hero-campaing.astro';
+import Video from '@components/global/video/video.astro';
+import FAQ from '@components/global/faq';
+import CTA from '@components/global/campaings/cta.astro';
+import Testimonial from '@components/global/campaings/testimonial.astro';
+import Featured from '@components/global/campaings/featured.astro';
+---
+
+<Base title="Bloomilite LLC | AI Agents & Automation">
+  <HeroCampaing />
+  <Video />
+  <Featured />
+  <Sales />
+  <Testimonial url="/sales#form" />
+  <FAQ client:load />
+  <CTA />
+</Base>
