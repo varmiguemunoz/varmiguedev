@@ -1,0 +1,150 @@
+---
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Check } from 'lucide-react';
+
+const plans = [
+  {
+    name: 'Starter',
+    description: 'Perfect for small agencies getting started',
+    price: 1500,
+    popular: false,
+    features: [
+      '5 hours web development',
+      '5 hours mobile development',
+      '5 hours automation/scripting',
+      '5 hours infrastructure support',
+      'Slack communication',
+      'Weekly progress updates',
+      'Emergency support (4hr response)',
+    ],
+  },
+  {
+    name: 'Growth',
+    description: 'For growing agencies with consistent dev needs',
+    price: 2500,
+    popular: true,
+    features: [
+      '10 hours web development',
+      '10 hours mobile development',
+      '10 hours automation/scripting',
+      '10 hours infrastructure support',
+      'Priority Slack communication',
+      'Bi-weekly strategy calls',
+      'Emergency support (2hr response)',
+      'Code reviews & architecture guidance',
+    ],
+  },
+  {
+    name: 'Partner',
+    description: 'Full technical partnership for agencies',
+    price: 4000,
+    popular: false,
+    features: [
+      '20 hours web development',
+      '15 hours mobile development',
+      '15 hours automation/scripting',
+      '15 hours infrastructure support',
+      'Direct phone line access',
+      'Weekly strategy & planning calls',
+      'Emergency support (1hr response)',
+      'Technical leadership & mentoring',
+      'Custom integrations & tooling',
+    ],
+  },
+];
+---
+
+<section class="px-4 py-24">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="text-primary border-primary mb-4">Pricing & Plans</Badge>
+      <h2 class="text-foreground mb-6 text-4xl font-bold md:text-5xl">Predictable Monthly Development</h2>
+      <p class="text-muted-foreground mx-auto max-w-3xl text-xl">
+        Choose your plan based on development hours needed. Scale up or down as your agency grows.
+      </p>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-border border-b">
+            <th class="text-muted-foreground px-4 py-6 text-left font-medium">Plan Features</th>
+            {
+              plans.map((plan) => (
+                <th class="min-w-[280px] px-4 py-6 text-center">
+                  <div class="relative">
+                    {plan.popular && (
+                      <Badge className="bg-primary absolute -top-2 left-1/2 -translate-x-1/2 transform text-white">
+                        Most Popular
+                      </Badge>
+                    )}
+                    <div class="bg-gradient-card border-border hover:shadow-glow hover:border-primary/20 rounded-lg border p-6 transition-all duration-300">
+                      <h3 class="text-foreground mb-2 text-2xl font-bold">{plan.name}</h3>
+                      <p class="text-muted-foreground mb-4 text-sm">{plan.description}</p>
+                      <div class="mb-6">
+                        <span class="text-primary text-4xl font-bold">${plan.price.toLocaleString()}</span>
+                        <span class="text-muted-foreground">/month</span>
+                      </div>
+                      <Button
+                        className={`w-full ${
+                          plan.popular
+                            ? 'bg-gradient-primary hover:shadow-glow'
+                            : 'border-border hover:bg-secondary border'
+                        }`}
+                        variant={plan.popular ? 'default' : 'outline'}
+                      >
+                        Get Started
+                      </Button>
+                    </div>
+                  </div>
+                </th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {/* Get max features length for consistent rows */}
+          {
+            Array.from({ length: Math.max(...plans.map((p) => p.features.length)) }, (_, i) => (
+              <tr class="border-border/50 border-b">
+                <td class="text-muted-foreground px-4 py-4">
+                  {plans[0].features[i] && (
+                    <div class="flex items-center space-x-2">
+                      <span>
+                        {plans[0].features[i]
+                          ?.replace(/^\d+\s+hours?\s+/, '')
+                          .replace(/^[A-Z]/, (c) => c.toLowerCase())}
+                      </span>
+                    </div>
+                  )}
+                </td>
+                {plans.map((plan) => (
+                  <td class="px-4 py-4 text-center">
+                    {plan.features[i] ? (
+                      <div class="flex items-center justify-center space-x-2">
+                        <Check className="text-accent h-5 w-5" />
+                        <span class="text-foreground text-sm">
+                          {plan.features[i].match(/^\d+\s+hours?/) ? plan.features[i].match(/^\d+\s+hours?/)?.[0] : '✓'}
+                        </span>
+                      </div>
+                    ) : (
+                      <span class="text-muted-foreground">—</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-muted-foreground">
+        Need custom hours or enterprise support?
+        <span class="text-primary ml-1 cursor-pointer hover:underline">Let's talk →</span>
+      </p>
+    </div>
+  </div>
+</section>
