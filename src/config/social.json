@@ -1,0 +1,19 @@
+{
+    "social_links": [
+      {
+        "name": "Github",
+        "url": "https://github.com",
+        "icon": "Github"
+      },
+      {
+        "name": "Linkedin",
+        "url": "https://linkedin.com",
+        "icon": "Linkedin"
+      },
+      {
+        "name": "Mail",
+        "url": "mailto:hello@miguel.dev",
+        "icon": "Mail"
+      }
+    ]
+  }

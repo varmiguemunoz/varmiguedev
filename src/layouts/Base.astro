@@ -1,6 +1,7 @@
 ---
 import Footer from '@components/global/footer/Footer.astro';
 import GoogleAnalytics from '@components/global/google-analytics/GoogleAnalytics.astro';
+import Whatsapp from '@/components/global/whatsapp/Whatsapp.astro';
 
 import { createOgImage } from '@utils/createOgImage';
 import { ViewTransitions } from 'astro:transitions';
@@ -71,10 +72,11 @@ const ogImage = createOgImage({
     <ViewTransitions />
   </head>
 
-  <body class="bg-gradient-background">
-    <main class="mx-auto max-w-[1400px] bg-transparent px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+  <body>
+    <main class="mx-auto w-full">
       <slot />
     </main>
+    <Whatsapp url="" />
     <Footer />
   </body>
 </html>
