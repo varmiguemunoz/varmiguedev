@@ -1,20 +1,14 @@
 ---
-import Table from '@components/global/campaings/table.astro';
-import Testimonial from '@components/global/campaings/testimonial.astro';
-import Faq from '@components/global/faq';
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
+import Navbar from '@/components/global/navbar';
+import Pricing from '@/components/global/pricing/pricing.astro';
+import FAQ from '@components/global/faq';
 import Base from '@layouts/Base.astro';
-import CTA from '@components/global/campaings/cta.astro';
 ---
 
 <Base title="Bloomilite LLC | Pricing">
-  <Table />
-  <div class="pb-16 text-center">
-    <p class="mx-w-[200px] mx-auto mb-8 w-full text-xl font-medium leading-tight">Need more information?</p>
-    <a href="/sales#form" class="rounded-xl bg-blue-600/60 px-6 py-4 text-lg font-medium text-white hover:underline"
-      >Contact Sales</a
-    >
-  </div>
-  <Testimonial url="/sales#form" />
-  <Faq client:load />
-  <CTA url="/sales#form" />
+  <Navbar />
+  <Pricing />
+  <FAQ client:load />
+  <DiscoveryCall />
 </Base>

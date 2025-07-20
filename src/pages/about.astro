@@ -1,68 +1,18 @@
 ---
-import { Image } from 'astro:assets';
-
 import Base from '@layouts/Base.astro';
-import Page from '@layouts/Page.astro';
-import Works from '@config/works.json';
-import Aboutme from '@config/about.json';
+import AboutMe from '@components/global/about-us/about.astro';
+import Testimonials from '@/components/global/testimonials/testimonials.astro';
+import Workflow from '@/components/global/workflow/workflow.astro';
+import FAQ from '@/components/global/faq';
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
+import Navbar from '@/components/global/navbar';
 ---
 
 <Base meta_title="Miguel Munoz - About me" blogpost={true}>
-  <Page title="About me">
-    <section class="flex flex-col gap-[50px]">
-      <div>
-        <p class="mt-1.5 text-sm text-zinc-500 dark:text-zinc-400 md:text-lg">
-          Welcome, I'm a Full Stack Software Engineer with more than 4 years of experience, specialized in building
-          solid, scalable, and user-centric web applications. 🧑🏼‍💻 I have collaborated with startups and consolidated
-          companies, providing solutions that really generate value, optimize processes, and scale with the business. 👨🏻‍💼
-        </p>
-
-        <p class="mt-1.5 text-sm text-zinc-500 dark:text-zinc-400 md:text-lg">
-          💡 If you're looking for a developer who not only codes but understands your vision and takes it to the next
-          level, you're in the right place.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-3 place-items-center gap-[20px]">
-        {
-          Aboutme?.map((item) => (
-            <Image
-              src={item.image_url}
-              alt="image-icon"
-              class="h-full w-full rounded-xl object-cover"
-              loading={'lazy'}
-              width="350"
-              height="200"
-              quality="max"
-            />
-          ))
-        }
-      </div>
-
-      <div class="mt-[30px] flex w-full flex-col">
-        <h2 class="mb-0 text-lg font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-2xl">
-          Professional Experience 🗂️
-        </h2>
-        {
-          Works.map((item) => (
-            <div class="flex w-full items-start md:justify-between">
-              <div class="flex items-center gap-[12px]">
-                <img src={item.image} alt="icon" class="h-[60px] w-[60px] rounded-lg object-contain" />
-                <div class="h-full md:w-full">
-                  <p class="font-bold text-zinc-500 dark:text-zinc-400 md:text-lg">
-                    {item.charge}
-                    <br />
-                    <span class="text-normal md:text-l font-light text-zinc-500 dark:text-zinc-400">
-                      {item.company}
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <p class="text-md hidden font-normal text-zinc-500 dark:text-zinc-400 md:inline-block">{item.since} </p>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-  </Page>
+  <Navbar />
+  <AboutMe />
+  <Workflow />
+  <Testimonials />
+  <FAQ client:load />
+  <DiscoveryCall />
 </Base>

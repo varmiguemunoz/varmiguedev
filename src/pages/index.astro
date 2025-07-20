@@ -9,9 +9,11 @@ import Workflow from '@/components/global/workflow/workflow.astro';
 import FAQ from '@/components/global/faq';
 import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
 import Pricing from '@/components/global/pricing/pricing.astro';
+import Navbar from '@/components/global/navbar';
 ---
 
 <Base meta_title="varmiguemunoz Software Engineer| Home" blogpost={true}>
+  <Navbar />
   <HeroSection />
   <Brands brands={brands} />
   <About />

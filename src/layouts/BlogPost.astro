@@ -1,7 +1,7 @@
 ---
 import Base from '@layouts/Base.astro';
 import type { CollectionEntry } from 'astro:content';
-import FormattedDate from '@components/FormattedDate.astro';
+import FormattedDate from '@components/global/formatted-date/FormattedDate.astro';
 import CalendarIcon from '@icons/CalendarIcon.astro';
 import CategoryIcon from '@icons/CategoryIcon.astro';
 import { Image } from 'astro:assets';
@@ -57,7 +57,7 @@ const { title, description, pubDate, heroImage, categories, tags } = Astro.props
           <CategoryIcon />
           {
             categories?.slice(0, 1).map((category) => (
-              <a href={`/categories/${slugify(category)}`} class="hover:text-primary mr-2 font-medium capitalize">
+              <a href={`/categories/${slugify(category)}`} class="mr-2 font-medium capitalize hover:text-primary">
                 {category}
               </a>
             ))

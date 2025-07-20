@@ -7,7 +7,7 @@ export default function Avatar() {
         width={500}
         height={500}
         loading="lazy"
-        className="h-[550px] w-full object-cover object-top"
+        className="h-[500px] w-full object-cover object-top"
         id="banner-image"
       />
     </div>

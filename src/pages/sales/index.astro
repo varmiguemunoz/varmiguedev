@@ -1,13 +1,16 @@
 ---
 import Base from '@layouts/Base.astro';
 import Sales from '@components/global/sales/sales.astro';
-
-import ContactSection from '@components/global/campaings/contact-section.astro';
-import Testimonial from '@components/global/campaings/testimonial.astro';
+import Testimonial from '@components/global/testimonials/testimonials.astro';
+import FAQ from '@/components/global/faq';
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
+import Navbar from '@/components/global/navbar';
 ---
 
 <Base title="Bloomilite LLC | AI Agents & Automation">
+  <Navbar />
   <Sales />
   <Testimonial />
-  <ContactSection />
+  <FAQ client:load />
+  <DiscoveryCall />
 </Base>

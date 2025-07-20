@@ -24,7 +24,7 @@ import { ExternalLink, Linkedin } from 'lucide-react';
         <div>
           <Badge variant="outline" className="mb-4 border-primary text-primary">About Miguel</Badge>
           <h2 class="mb-6 text-3xl font-bold text-foreground md:text-4xl">
-            4+ Years Building Digital Products That Scale
+            5+ Years Building Digital Products That Scale
           </h2>
         </div>
 
@@ -47,32 +47,20 @@ import { ExternalLink, Linkedin } from 'lucide-react';
           </p>
         </div>
 
-        {/* Stats */}
-        <div class="grid grid-cols-3 gap-6 border-t border-border/50 py-8">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-primary">70+</div>
-            <div class="text-sm text-muted-foreground">Projects</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-accent">4+</div>
-            <div class="text-sm text-muted-foreground">Years</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-primary">24h</div>
-            <div class="text-sm text-muted-foreground">Response</div>
-          </div>
-        </div>
-
         {/* CTAs */}
         <div class="flex flex-col gap-4 sm:flex-row">
-          <Button variant="outline" className="group">
-            <ExternalLink className="mr-2 h-4 w-4" />
-             Read Full Bio
-          </Button>
-          <Button variant="outline" className="group">
-            <Linkedin className="mr-2 h-4 w-4" />
-             Connect on LinkedIn
-          </Button>
+          <a href="#pricing">
+            <Button variant="outline" className="group hover:bg-white hover:text-black">
+              <ExternalLink className="mr-2 h-4 w-4 " />
+               View Services
+            </Button>
+          </a>
+          <a href="https://www.linkedin.com/in/varmiguemunoz/">
+            <Button variant="outline" className="group hover:bg-white hover:text-black">
+              <Linkedin className="mr-2 h-4 w-4 " />
+               Connect on LinkedIn
+            </Button>
+          </a>
         </div>
       </div>
     </div>
