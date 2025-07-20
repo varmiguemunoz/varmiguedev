@@ -1,28 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '@layouts/Base.astro';
-import Posts from '@components/global/posts/Posts.astro';
 import HeroSection from '@/components/global/hero-gsap';
-
-const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+import Brands from '@/components/global/brands/brands.astro';
+import brands from '@/config/brands.json';
+import About from '@components/global/about-us/about.astro';
+import Testimonials from '@/components/global/testimonials/testimonials.astro';
+import Workflow from '@/components/global/workflow/workflow.astro';
+import FAQ from '@/components/global/faq';
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
+import Pricing from '@/components/global/pricing/pricing.astro';
 ---
 
 <Base meta_title="varmiguemunoz Software Engineer| Home" blogpost={true}>
   <HeroSection />
-  <div class="mx-auto max-w-screen-lg px-4 py-3 sm:px-4 sm:py-3 lg:px-8">
-    <div class="mb-10 flex items-end justify-between">
-      <div class="flex flex-col items-start justify-start gap-[8px]">
-        <h1 class="text-lg font-semibold leading-6 text-zinc-900 group-hover:text-zinc-600 dark:text-white md:text-xl">
-          Blog 📔
-        </h1>
-        <p class="text-md opacity-70">Here you can check my latest post.</p>
-      </div>
-
-      <a href="/blog">
-        <p class="text-md opacity-70 hover:opacity-100 dark:hover:text-white">View all post</p>
-      </a>
-    </div>
-
-    <Posts posts={posts} />
-  </div>
+  <Brands brands={brands} />
+  <About />
+  <Pricing />
+  <Workflow />
+  <Testimonials />
+  <FAQ client:load />
+  <DiscoveryCall />
 </Base>

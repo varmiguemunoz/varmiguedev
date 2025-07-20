@@ -1,0 +1,86 @@
+---
+import { Badge } from '@/components/ui/badge';
+import { Search, Code2, Rocket, HeadphonesIcon } from 'lucide-react';
+
+const steps = [
+  {
+    icon: Search,
+    title: 'Discovery',
+    description: 'We dive deep into your requirements, technical needs, and business goals',
+    duration: '1-2 days',
+  },
+  {
+    icon: Code2 ,
+    title: 'Dev Sprint',
+    description: 'I build your solution using modern tech stack with daily progress updates',
+    duration: '1-4 weeks',
+  },
+  {
+    icon: Rocket ,
+    title: 'Launch',
+    description: 'Deployment, testing, and handover with full documentation',
+    duration: '2-3 days',
+  },
+  {
+    icon: HeadphonesIcon ,
+    title: 'Support',
+    description: 'Ongoing maintenance, updates, and technical partnership',
+    duration: 'Ongoing',
+  },
+];
+---
+
+<section class="px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-6 border-primary text-primary">How It Works</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Simple, Proven Process</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+        From idea to launch, I handle every step of development with clear timelines and constant communication
+      </p>
+    </div>
+
+    {/* Timeline */}
+    <div class="relative">
+      {/* Horizontal line */}
+      <div
+        class="absolute left-0 right-0 top-20 hidden h-0.5 bg-gradient-to-r from-primary via-accent to-primary md:block"
+      >
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-4">
+        {
+          steps.map((step, index) => (
+            <div class="relative">
+              {/* Step number circle */}
+              <div class="absolute -top-6 left-1/2 mb-6 flex -translate-x-1/2 transform justify-center md:relative md:left-0 md:top-0 md:transform-none">
+                <div class="z-10 flex h-16 w-16 items-center justify-center rounded-full border-4 border-background bg-gradient-to-br from-primary to-accent text-lg font-bold text-white">
+                  {index + 1}
+                </div>
+              </div>
+
+              <div class="pt-8 text-center md:pt-0">
+                {/* Icon */}
+                <div class="mb-4 flex justify-center">
+                  <div class="rounded-lg bg-primary/10 p-3 text-primary">{step.icon}</div>
+                </div>
+
+                {/* Content */}
+                <h3 class="mb-2 text-xl font-bold text-foreground">{step.title}</h3>
+                <p class="mb-4 leading-relaxed text-muted-foreground">{step.description}</p>
+                <div class="inline-block rounded-full bg-accent/10 px-3 py-1 text-sm text-accent">{step.duration}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-muted-foreground">
+        Ready to get started?
+        <span class="ml-1 cursor-pointer text-primary hover:underline">Book a discovery call →</span>
+      </p>
+    </div>
+  </div>
+</section>

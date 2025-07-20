@@ -1,0 +1,80 @@
+---
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { ExternalLink, Linkedin } from 'lucide-react';
+---
+
+<section class="px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid items-center gap-16 lg:grid-cols-2">
+      {/* Photo */}
+      <div class="relative">
+        <div class="aspect-square relative">
+          <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl"></div>
+          <div class="relative h-full overflow-hidden rounded-3xl border border-primary/20 bg-gradient-card">
+            <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
+              <div class="text-8xl">👨‍💻</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bio Content */}
+      <div class="space-y-8">
+        <div>
+          <Badge variant="outline" className="mb-4 border-primary text-primary">About Miguel</Badge>
+          <h2 class="mb-6 text-3xl font-bold text-foreground md:text-4xl">
+            4+ Years Building Digital Products That Scale
+          </h2>
+        </div>
+
+        <div class="space-y-6 text-lg leading-relaxed text-muted-foreground">
+          <p>
+            Over <span class="font-semibold text-primary">70+ client projects</span> and counting, I've helped agencies
+            deliver everything from startup MVPs to enterprise applications that serve thousands of users.
+          </p>
+
+          <p>
+            I specialize in <span class="font-semibold text-accent">Astro, React, and AI automation</span> — building
+            fast, modern web experiences that convert visitors into customers and streamline business operations.
+          </p>
+
+          <p>
+            My approach? <span class="font-semibold text-primary"
+              >Clean code, clear communication, and consistent delivery.</span
+            > I integrate seamlessly with your team, whether you need a technical co-founder for a few hours a week or a
+            dedicated partner for your biggest projects.
+          </p>
+        </div>
+
+        {/* Stats */}
+        <div class="grid grid-cols-3 gap-6 border-t border-border/50 py-8">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary">70+</div>
+            <div class="text-sm text-muted-foreground">Projects</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-accent">4+</div>
+            <div class="text-sm text-muted-foreground">Years</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary">24h</div>
+            <div class="text-sm text-muted-foreground">Response</div>
+          </div>
+        </div>
+
+        {/* CTAs */}
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <Button variant="outline" className="group">
+            <ExternalLink className="mr-2 h-4 w-4" />
+             Read Full Bio
+          </Button>
+          <Button variant="outline" className="group">
+            <Linkedin className="mr-2 h-4 w-4" />
+             Connect on LinkedIn
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

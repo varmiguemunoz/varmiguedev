@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
 interface Props {
   brands: {
     image: string;
@@ -8,40 +6,39 @@ interface Props {
   }[];
 }
 
-const { brands } = Astro.props;
+const technologies = [
+  { name: 'React', logo: '⚛️' },
+  { name: 'Astro', logo: '🚀' },
+  { name: 'Stripe', logo: '💳' },
+  { name: 'Firebase', logo: '🔥' },
+  { name: 'Supabase', logo: '⚡' },
+  { name: 'Vercel', logo: '△' },
+  { name: 'Next.js', logo: '▲' },
+  { name: 'TypeScript', logo: '📘' },
+  { name: 'Tailwind', logo: '🎨' },
+  { name: 'Node.js', logo: '🟢' },
+  { name: 'PostgreSQL', logo: '🐘' },
+  { name: 'OpenAI', logo: '🤖' },
+];
 ---
 
-<section class="mx-auto w-full max-w-[1114px] border-b border-gray-400 bg-transparent pb-5">
-  <div class="w-full">
-    <p class="text-md text-center font-normal text-gray-500">Companies around the world trust us</p>
+<section class="border-b border-border/50 py-16">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-12 text-center">
+      <p class="mb-6 text-sm font-medium text-muted-foreground">Trusted technologies and tools I work with</p>
+    </div>
 
-    <div class="mt-8 overflow-hidden">
-      <div class="animate-slide w-[calc(100% * 2)] flex gap-4">
-        {
-          brands?.map((items: { image: string; alt: string }) => (
-            <Image
-              src={items.image}
-              alt={items.alt}
-              class="mx-auto h-9 w-auto object-contain"
-              width="80"
-              height="35"
-              loading="lazy"
-            />
-          ))
-        }
-        {
-          brands?.map((items: { image: string; alt: string }) => (
-            <Image
-              src={items.image}
-              alt={items.alt}
-              class="mx-auto h-9 w-auto object-contain"
-              width="80"
-              height="35"
-              loading="lazy"
-            />
-          ))
-        }
-      </div>
+    <div class="grid grid-cols-3 items-center gap-8 md:grid-cols-6 lg:grid-cols-12">
+      {
+        technologies.map((tech) => (
+          <div class="group flex cursor-pointer flex-col items-center space-y-2">
+            <div class="transform text-2xl opacity-50 transition-transform duration-300 group-hover:scale-110 group-hover:opacity-100 md:text-3xl">
+              {tech.logo}
+            </div>
+            <span class="text-xs text-muted-foreground transition-colors group-hover:text-foreground">{tech.name}</span>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

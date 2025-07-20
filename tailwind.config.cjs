@@ -88,6 +88,10 @@ module.exports = {
             height: 'var(--radix-accordion-content-height)',
           },
         },
+        slide: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
         'accordion-up': {
           from: {
             height: 'var(--radix-accordion-content-height)',
@@ -100,6 +104,7 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        slide: "slide 15s linear infinite",
       },
     },
   },
