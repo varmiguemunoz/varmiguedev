@@ -76,13 +76,18 @@ export default function HeroSection() {
             <HeroContent />
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Button variant="hero" size="xl" className="group">
-                View Services
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button variant="outline" size="xl" className="hover:bg-white hover:text-black">
-                Talk to sales
-              </Button>
+              <a href="#pricing" key={'hero-view-services'}>
+                <Button variant="hero" size="xl" className="group">
+                  View Services
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
+
+              <a href="/sales" key={'sales'}>
+                <Button variant="outline" size="xl" className="hover:bg-white hover:text-black">
+                  Talk to sales
+                </Button>
+              </a>
             </div>
 
             <Social />
