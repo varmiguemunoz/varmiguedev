@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Mobile from './mobile/index';
 import Social from '../hero-gsap/social';
@@ -23,7 +23,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a
-              href="#"
+              href="/"
               className="bg-gradient-to-r from-primary to-accent bg-clip-text text-xl font-bold text-transparent"
             >
               Varmiguemunoz
@@ -49,9 +49,11 @@ export default function Navbar() {
           {/* Desktop CTA & Social */}
           <div className="hidden items-center space-x-4 md:flex">
             <Social title={false} />
-            <Button variant="hero" size="sm">
-              Let's Talk
-            </Button>
+            <a href="/sales">
+              <Button variant="hero" size="sm">
+                Let's Talk
+              </Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}

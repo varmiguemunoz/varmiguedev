@@ -53,35 +53,37 @@ export default function SalesContactForm() {
 
             <div className="space-y-6">
               <h2 className="text-4xl font-bold leading-tight lg:text-5xl">
-                <span className="text-foreground">Save time and money</span>
+                <span className="text-foreground">Build faster, deliver better</span>
                 <br />
-                <span className="text-foreground">with </span>
+                <span className="text-foreground">and scale</span>
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                  AI Agents.
+                  {' '}
+                  without the overhead
                 </span>
               </h2>
 
               <p className="text-xl leading-relaxed text-muted-foreground">
-                Discover how AI Agents solutions can help your business grow. To learn more, fill out this form.
+                Discover how flexible monthly dev hours can help your agency deliver faster, scale smarter, and keep
+                clients happy without hiring or delays.
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <CheckCircle className="h-5 w-5 flex-shrink-0 text-primary" />
-                <span className="text-muted-foreground">Automate your operations</span>
+                <span className="text-muted-foreground">Expand your team’s technical capacity</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="h-5 w-5 flex-shrink-0 text-primary" />
-                <span className="text-muted-foreground">Save time and money</span>
+                <span className="text-muted-foreground">Deliver client work faster and with less stress</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="h-5 w-5 flex-shrink-0 text-accent" />
-                <span className="text-muted-foreground">24/7 service without hiring additional staff</span>
+                <span className="text-muted-foreground">Get expert support across web, mobile & automations</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="h-5 w-5 flex-shrink-0 text-accent" />
-                <span className="text-muted-foreground">Increase conversions with instant responses</span>
+                <span className="text-muted-foreground">Stay flexible — no long-term contracts or overhead</span>
               </div>
             </div>
           </div>

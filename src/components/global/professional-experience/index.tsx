@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Calendar, MapPin, Building } from 'lucide-react';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -17,11 +15,7 @@ const experiences = [
     period: 'December 2023 - February 2025',
     isCurrentRole: true,
     responsibilities: [
-      'Front-end development concentrates on crafting an intuitive and visually appealing graphical interface to improve the user experience.',
-      'Backend development for multiple endpoints to ensure robust and efficient application functionality.',
-      'Seamless integration of new features and components enhances system capability and versatility.',
-      'Implement optimizations, refactorings, and enhancements to boost application speed and efficiency.',
-      'Close collaboration with design and development teams is crucial to guarantee the consistency and quality of the end product.',
+      'Led front-end development with a strong focus on intuitive UI and seamless user experience, while building robust backend endpoints to ensure reliable application functionality. I integrated new features and components to enhance system capability, implemented performance optimizations and refactors to boost speed and scalability, and collaborated closely with design and dev teams to maintain quality and consistency throughout the development process.',
     ],
   },
   {
@@ -30,10 +24,7 @@ const experiences = [
     company: 'Kamay Catalizadora',
     period: 'June 2024 - January 2025',
     responsibilities: [
-      'Leadership and management of projects focused on the digitization of processes, improving operational efficiency and customer experience.',
-      'Development of digital transformation strategies',
-      'Implementation of tools and development of technological platforms and software.',
-      'Development Full Stack Applications',
+      'Led strategic digital transformation initiatives for operational efficiency and improved customer experience. I developed tailored transformation strategies, implemented modern tools and platforms, and contributed full-stack development expertise to build reliable custom software solutions aligned with business goals.',
     ],
   },
   {
@@ -42,10 +33,43 @@ const experiences = [
     company: 'Parrolabs',
     period: 'March 2023 - November 2024',
     responsibilities: [
-      'Front-end development of several websites, with a focus on enhancing user experience and maintaining visual coherence.',
-      'Comprehensive server management involves configuring, monitoring, and executing DevOps tasks to maintain system stability and security.',
-      'Close collaboration with multidisciplinary teams is crucial for proactively identifying and addressing business needs and customer requirements.',
-      'Implementing development and maintenance best practices enhances operational efficiency and final product quality.',
+      'Executed front-end development across multiple websites to enhance user engagement and maintain visual consistency. I managed server infrastructure with DevOps tools, collaborated with multidisciplinary teams to identify and address client needs, and followed best practices in development and maintenance to ensure long-term stability and product quality.',
+    ],
+  },
+  {
+    id: 4,
+    title: 'Full Stack Developer',
+    company: 'Linnk Tech Solutions',
+    period: 'April 2023 - February 2024',
+    responsibilities: [
+      'Directed full-stack development for multiple commercial projects while managing server infrastructure and aligning deliverables with client strategies. I ensured technical reliability through consistent maintenance, integrated client-specific features, and supported smooth collaboration with cross-functional teams throughout the software lifecycle.',
+    ],
+  },
+  {
+    id: 5,
+    title: 'Full Stack Developer',
+    company: 'The U-Corporate',
+    period: 'July 2023 - March 2024',
+    responsibilities: [
+      'Designed and developed the front-end interface to ensure usability and visual clarity, while implementing backend integrations for seamless communication. I maintained and optimized the application through ongoing improvements, bug fixes, and performance tuning, tailored to client specifications.',
+    ],
+  },
+  {
+    id: 6,
+    title: 'IT Assistant Support',
+    company: 'Parrolabs',
+    period: 'October 2022 - February 2023',
+    responsibilities: [
+      'Maintained internal tech infrastructure, supported onboarding processes, and assisted executives in daily operations. I managed core systems such as Google Admin, Apple Business Manager, and ClickUp, while handling physical IT infrastructure including firewalls, switches, routers, and cabling with high attention to operational reliability.',
+    ],
+  },
+  {
+    id: 7,
+    title: 'Software Developer',
+    company: 'Freelance Projects',
+    period: '2020 - 2022',
+    responsibilities: [
+      'Developed websites for clients using Webflow, WordPress, Shopify, and Drupal, applying custom HTML, CSS, and JavaScript for advanced functionality. I implemented animations, SEO best practices, analytics integrations, and automated scheduling tools, providing clients with well-rounded, high-performing web experiences backed by ongoing support.',
     ],
   },
 ];
@@ -53,15 +77,15 @@ const experiences = [
 const education = [
   {
     id: 1,
-    degree: 'Licenciatura en Comunicación Audiovisual',
-    institution: 'Universidad Viñas',
-    period: '2019-2023',
+    degree: 'Academic Bachelor Degree',
+    institution: 'Merceditas Gomez Martinez',
+    period: '2009-2020',
   },
   {
     id: 2,
-    degree: 'Diplomatura en Producción Creativa',
-    institution: 'Universidad Viñas',
-    period: '2024',
+    degree: 'Undergraduate in Software Engineering',
+    institution: '(Universidad internacional de la rioja) - UNIR',
+    period: '2025',
   },
 ];
 
@@ -142,7 +166,7 @@ export default function ProfessionalExperience() {
           <div ref={titleRef} className="mb-16 space-y-8">
             <div className="flex items-center gap-4">
               <div className="h-3 w-3 flex-shrink-0 rounded-full bg-accent" />
-              <h2 className="text-3xl font-bold text-foreground">EXPERIENCIA</h2>
+              <h2 className="text-3xl font-bold text-foreground">Profesional Experience 🔥</h2>
             </div>
           </div>
 
@@ -173,7 +197,7 @@ export default function ProfessionalExperience() {
           <div className="mt-20 space-y-8">
             <div className="flex items-center gap-4">
               <div className="h-3 w-3 flex-shrink-0 rounded-full bg-accent" />
-              <h2 className="text-3xl font-bold text-foreground">EDUCACIÓN</h2>
+              <h2 className="text-3xl font-bold text-foreground">Education 📚</h2>
             </div>
 
             <div className="space-y-8">
