@@ -2,7 +2,7 @@ export default function Avatar() {
   return (
     <div className="relative h-full overflow-hidden rounded-3xl border border-primary/20 bg-card/50 backdrop-blur-sm">
       <img
-        src="/avatar-v2.png"
+        src="/profilev2.png"
         alt="Logo"
         width={500}
         height={500}
