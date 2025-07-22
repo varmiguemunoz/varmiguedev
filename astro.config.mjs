@@ -5,31 +5,29 @@ import Compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.varmiguemunoz.dev/',
   image: {
-    remotePatterns: [{ protocol: 'https' }],
+    remotePatterns: [{
+      protocol: 'https'
+    }]
   },
   markdown: {
     drafts: true,
     shikiConfig: {
       theme: 'material-theme-palenight',
-      wrap: true,
-    },
+      wrap: true
+    }
   },
-  integrations: [
-    mdx({
-      syntaxHighlight: 'shiki',
-      shikiConfig: {
-        theme: 'material-theme-palenight',
-        wrap: true,
-      },
-      drafts: true,
-    }),
-    Compress(),
-    sitemap(),
-    tailwind(),
-    robotsTxt(),
-  ],
+  integrations: [mdx({
+    syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme: 'material-theme-palenight',
+      wrap: true
+    },
+    drafts: true
+  }), Compress(), sitemap(), tailwind(), robotsTxt(), react()]
 });

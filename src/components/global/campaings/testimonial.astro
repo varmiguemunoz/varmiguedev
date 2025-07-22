@@ -1,0 +1,36 @@
+---
+type Props = {
+  url?: string;
+};
+
+const { url = "#form" } = Astro.props;
+---
+
+<div class="w-full bg-blue-600/60 py-28">
+  <div class="flex flex-col items-center justify-center gap-5">
+    <img
+      src="/ceo-didactical.png"
+      alt="Avatar"
+      class="w-40 h-40 rounded-full mx-auto bg-white"
+      width="200"
+      height="200"
+      loading="lazy"
+    />
+    <p
+      class="text-white md:text-xl text-lg font-medium leading-tight max-w-[700px] mx-auto text-center md:px-0 px-10"
+    >
+      "Thanks to this agency's artificial intelligence services, we were able to
+      automate more than 80% of the queries we received via WhatsApp. Not only
+      did we increase our sales by 35% in three months, but we also freed up our
+      support team for more strategic tasks. It was a complete transformation
+      for our business."
+    </p>
+
+    <a
+      href={url}
+      class="bg-blue-800/60 hover:bg-blue-800/80 transition ease-in-out duration-300 mt-3 font-bold px-5 py-4 text-white text-xl rounded-xl"
+    >
+      Get in touch
+    </a>
+  </div>
+</div>

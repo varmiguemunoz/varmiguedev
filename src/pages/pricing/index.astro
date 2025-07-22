@@ -1,0 +1,14 @@
+---
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
+import Navbar from '@/components/global/navbar';
+import Pricing from '@/components/global/pricing/pricing.astro';
+import FAQ from '@components/global/faq';
+import Base from '@layouts/Base.astro';
+---
+
+<Base title="Bloomilite LLC | Pricing">
+  <Navbar />
+  <Pricing />
+  <FAQ client:load />
+  <DiscoveryCall />
+</Base>

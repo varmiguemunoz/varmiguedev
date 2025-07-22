@@ -1,16 +1,20 @@
 {
   "main": [
     {
-      "name": "About me",
-      "url": "/about"
+      "name": "Agencies",
+      "url": "/agents"
+    },
+    {
+      "name": "Pricing",
+      "url": "/pricing"
+    },
+    {
+      "name": "Sales",
+      "url": "/sales"
     },
     {
       "name": "Blog",
       "url": "/blog"
-    },
-    {
-      "name": "CV",
-      "url": "/varmiguemunoz.pdf"
     }
   ]
 }
