@@ -1,6 +1,5 @@
 ---
 import Footer from '@components/global/footer/Footer.astro';
-import GoogleAnalytics from '@components/global/google-analytics/GoogleAnalytics.astro';
 import Whatsapp from '@/components/global/whatsapp/Whatsapp.astro';
 
 import { createOgImage } from '@utils/createOgImage';
@@ -20,7 +19,7 @@ export interface Props {
   blogpost?: boolean;
 }
 
-const { title, meta_title, description, noindex, blogpost } = Astro.props;
+const { title, meta_title, description, noindex } = Astro.props;
 
 const ogImage = createOgImage({
   title: 'varmiguemunoz',
@@ -31,7 +30,26 @@ const ogImage = createOgImage({
 <!doctype html>
 <html lang={config.site.lang}>
   <head>
-    <GoogleAnalytics />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        // @ts-ignore
+        w[l] = w[l] || [];
+        // @ts-ignore
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        // @ts-ignore
+        j.async = true;
+        // @ts-ignore
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        // @ts-ignore
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-TNGVXGWQ');
+    </script>
+
+    <!-- End Google Tag Manager -->
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
     <!-- theme meta -->
@@ -78,5 +96,14 @@ const ogImage = createOgImage({
     </main>
     <Whatsapp url="" />
     <Footer />
+
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TNGVXGWQ"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
