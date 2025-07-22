@@ -1,20 +1,20 @@
 {
   "main": [
     {
-      "name": "Home",
-      "url": "/"
+      "name": "Agencies",
+      "url": "/agents"
     },
     {
-      "name": "About me",
-      "url": "/about"
+      "name": "Pricing",
+      "url": "/pricing"
     },
     {
-      "name": "CV",
-      "url": "/cv-miguel-angel-munoz.pdf"
+      "name": "Sales",
+      "url": "/sales"
     },
     {
-      "name": "Categories",
-      "url": "/categories"
+      "name": "Blog",
+      "url": "/blog"
     }
   ]
 }

@@ -1,0 +1,102 @@
+<div class="rounded-2xl bg-white p-8 shadow-xl">
+  <form class="space-y-4" id="form">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium">Name</label>
+        <input type="text" name="name" class="w-full rounded-xl border border-gray-300 p-3" required />
+      </div>
+      <div>
+        <label class="block text-sm font-medium">Last Name</label>
+        <input type="text" name="last_name" class="w-full rounded-xl border border-gray-300 p-3" required />
+      </div>
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Email</label>
+      <input type="email" name="email" class="w-full rounded-xl border border-gray-300 p-3" required />
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Company Name</label>
+      <input type="text" name="company" class="w-full rounded-xl border border-gray-300 p-3" required />
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Phone Number</label>
+      <input type="tel" name="phone" class="w-full rounded-xl border border-gray-300 p-3" required />
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Volume of sales</label>
+      <select class="w-full rounded-xl border border-gray-300 p-3" name="volume">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">High</option>
+      </select>
+    </div>
+    <div>
+      <label class="block text-sm font-medium">Additional comments</label>
+      <textarea rows="3" class="w-full rounded-xl border border-gray-300 p-3" name="comments"></textarea>
+    </div>
+    <div class="flex items-center space-x-2">
+      <input type="checkbox" id="captcha" />
+      <label for="captcha" class="text-sm">I am not a robot</label>
+    </div>
+    <div class="text-center">
+      <button
+        type="submit"
+        class="w-full rounded-2xl bg-gradient-to-r from-blue-400 to-blue-500 px-6 py-3 font-semibold text-white transition hover:from-blue-500 hover:to-blue-600"
+      >
+        Send form
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const form = document.querySelector('#form');
+
+  if (form) {
+    form.addEventListener('submit', async (e: any) => {
+      try {
+        e.preventDefault();
+
+        if (!e.currentTarget) return;
+
+        const data = Object.fromEntries(new FormData(e.currentTarget));
+
+        const body = {
+          fields: [
+            { name: 'firstname', value: data.name },
+            { name: 'lastname', value: data.last_name },
+            { name: 'email', value: data.email },
+            { name: 'company_name', value: data.company },
+            { name: 'phone_number', value: data.phone },
+            { name: 'volume_of_sales', value: data.volume },
+            { name: 'additional_comments', value: data.comments },
+          ],
+          context: {
+            pageUri: 'https://www.bloomilite.com',
+            pageName: 'Sales Lead Form',
+          },
+        };
+
+        const portalId = '49745009';
+        const formId = '2bc965bf-39ed-44fb-a935-a0548711cfc8';
+
+        const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        });
+
+        alert('Form send with success!');
+
+        return response;
+      } catch (error) {
+        console.log(error);
+        alert('Error sending form');
+      }
+    });
+  }
+</script>

@@ -1,0 +1,19 @@
+{
+    "social_links": [
+      {
+        "name": "Github",
+        "url": "https://github.com/varmiguemunoz",
+        "icon": "Github"
+      },
+      {
+        "name": "Linkedin",
+        "url": "https://www.linkedin.com/in/varmiguemunoz/",
+        "icon": "Linkedin"
+      },
+      {
+        "name": "Mail",
+        "url": "mailto:miguelmunoz@bloomify.tech",
+        "icon": "Mail"
+      }
+    ]
+  }

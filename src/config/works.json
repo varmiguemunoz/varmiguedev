@@ -1,0 +1,32 @@
+[
+    {
+        "image": "/works/parrolabs.svg",
+        "company": "Parrolabs",
+        "charge": "Full Stack Developer",
+        "since": "March 2023 -  November 2024"
+    },
+    {
+        "image": "/works/parrolabs.svg",
+        "company": "Parrolabs",
+        "charge": "IT Assistant",
+        "since": "October 2022 - Febrero 2023"
+    },
+    {
+        "image": "/works/ucorporativa-icon.jpeg",
+        "company": "La Ucorporativa",
+        "charge": "Full Stack Developer",
+        "since": "July 2023 - March 2024"
+    },
+    {
+        "image": "/works/diey-logo.svg",
+        "company": "Diey.io",
+        "charge": "Full Stack Developer",
+        "since": "December 2023 - August 2024"
+    },
+    {
+        "image": "/works/linnk.png",
+        "company": "Linnk Tech Solutions",
+        "charge": "Full Stack Developer",
+        "since": "April 2023 - Febrero 2024"
+    }
+]

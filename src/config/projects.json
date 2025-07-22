@@ -1,23 +1,20 @@
 [
     {
-        "title": "Pokedex Mobile App",
-        "description": "This project was developed for IOS and Android operating systems using technologies such as: React Native and Javascript as programming language. ",
-        "image": "/projects/pokedex.jpeg",
-        "url": "https://github.com/varmiguemunoz/pokedex",
-        "publishedAt": "10/11/2023"
+        "title": "La ucorporativa",
+        "description": "An innovative Colombian startup specializing in corporate E-learning in Latin America.",
+        "url": "https://www.laucorporativalearning.com/login",
+        "languague": "JavaScript"
       },
       {
-        "title": "Pomodoro Mobile app",
-        "description": "Like the previous one, this project is developed with react native and javascript as a programming language, this is a pomodoro app that allows time management.",
-        "image": "/projects/pomodoro.jpeg",
-        "url": "https://github.com/varmiguemunoz/pomodoro",
-        "publishedAt": "10/11/2023"
+        "title": "Diey.io",
+        "description": "Colombian startup provides engineering, design, and computer science services for digital projects.",
+        "url": "https://www.diey.io",
+        "languague": "JavaScript"
       },
       {
-        "title": "Blog Backend API",
-        "description": "This backend project was developed with Node, express and mysql database. It allows most of the functionality of a blog application with emphasis on the authentication module.",
-        "image": "/projects/API.png",
-        "url": "https://github.com/varmiguemunoz/blog-backend",
-        "publishedAt": "10/11/2023"
+        "title": "Dw Drums",
+        "description": "It dominates the musical e-commerce sector with a vast array of drums on dedicated websites.",
+        "url": "https://www.dwdrums.com/",
+        "languague": "JavaScript"
       }
 ]

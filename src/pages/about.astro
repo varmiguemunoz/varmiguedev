@@ -1,19 +1,20 @@
 ---
 import Base from '@layouts/Base.astro';
-import Page from '@layouts/Page.astro';
+import AboutMe from '@components/global/about-us/about.astro';
+import Testimonials from '@/components/global/testimonials/testimonials.astro';
+import Workflow from '@/components/global/workflow/workflow.astro';
+import FAQ from '@/components/global/faq';
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
+import Navbar from '@/components/global/navbar';
+import ProfessionalExperience from '@/components/global/professional-experience';
 ---
 
-<Base meta_title="About me">
-  <Page title="About me">
-    <p>
-      I am a Software Engineering student 🎓. Passionate about technology, the business world and the constant search
-      for knowledge. With more than 2 years of experience in the technology market, I have developed several
-      applications for companies, covering both frontend and backend technologies 🧠.
-    </p>
-    <p>
-      I am constantly exploring how technology can drive innovations and solutions in the job market 🚀. I strongly
-      believe that technology is the driving force behind change and improvement in our society, and I am committed to
-      be part of that transformation 🏆.
-    </p>
-  </Page>
+<Base meta_title="Miguel Munoz - About me" blogpost={true}>
+  <Navbar />
+  <AboutMe />
+  <ProfessionalExperience />
+  <Workflow />
+  <Testimonials />
+  <FAQ client:load />
+  <DiscoveryCall />
 </Base>

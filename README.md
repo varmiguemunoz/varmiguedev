@@ -1,4 +1,4 @@
-# 🚀 Astro blog - varmiguemunoz
+# 🚀 Personal Website - varmiguemunoz
 
-Astro blog template by varmiguemunoz
+**Know more** about me with this website 🤖
 
