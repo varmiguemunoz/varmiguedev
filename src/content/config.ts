@@ -6,10 +6,11 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    categories: z.array(z.string()).default(['others']),
+    image: z.string().optional(),
+    category: z.string().default('others'),
     tags: z.array(z.string()).default(['others']),
     authors: z.array(z.string()).default(['varmiguemunoz']),
+    draft: z.boolean().optional(),
   }),
 });
 
