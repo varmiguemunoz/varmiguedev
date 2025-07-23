@@ -1634,6 +1634,18 @@
     picocolors "^1.0.0"
     tslib "^2.6.0"
 
+"@portabletext/toolkit@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-2.0.17.tgz#a09bb1985dc27949f34a2a5c6817b55dadbcaa9f"
+  integrity sha512-5wj+oUaCmHm9Ay1cytPmT1Yc0SrR1twwUIc0qNQ3MtaXaNMPw99Gjt1NcA34yfyKmEf/TAB2NiiT72jFxdddIQ==
+  dependencies:
+    "@portabletext/types" "^2.0.13"
+
+"@portabletext/types@^2.0.13":
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-2.0.13.tgz#7a4bf6dac30713fbe1b4bc01dc572af0af72955d"
+  integrity sha512-5xk5MSyQU9CrDho3Rsguj38jhijhD36Mk8S6mZo3huv6PM+t4M/5kJN2KFIxgvt4ONpvOEs1pVIZAV0cL0Vi+Q==
+
 "@radix-ui/number@1.1.1":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@radix-ui/number/-/number-1.1.1.tgz"
@@ -3105,6 +3117,14 @@ astro-md-generator@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/astro-md-generator/-/astro-md-generator-1.0.0.tgz"
   integrity sha512-fmg6VGY8KZnhYzaRNi6o3fn/0+Eu4kd0dLENSw6U/hHpukeopGk9ch5AfeM51J2DgyYZc6r8GQAxxWFlCQgaaw==
+
+astro-portabletext@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/astro-portabletext/-/astro-portabletext-0.11.1.tgz#b649a3b882b9854a0b11ef1dd1d0b6d292126289"
+  integrity sha512-z0XqyPtba+U/B7oYsuU/wCYpDVyWdEyNzXvjc8xMTTQxNr8gIEuOg9HgG4xrmpqOraHjLc27Zy9Rvap/46SX+A==
+  dependencies:
+    "@portabletext/toolkit" "^2.0.17"
+    "@portabletext/types" "^2.0.13"
 
 astro-robots-txt@1.0.0:
   version "1.0.0"

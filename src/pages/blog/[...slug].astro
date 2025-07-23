@@ -1,22 +1,82 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Navbar from '@/components/global/navbar';
+import NavigationBlog from '@/components/global/blog/navigation-blog';
+import HeroPostBlog from '@/components/global/blog/hero-post-blog/index.astro';
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
 
-import BlogPost from "@layouts/BlogPost.astro";
-import Code from "@components/mdx/Code.astro";
+import Code from '@components/mdx/Code.astro';
+import Base from '@/layouts/Base.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
-}
-type Props = CollectionEntry<"blog">;
+  const posts = await getCollection('blog');
 
-const post = Astro.props;
+  const sorted = posts
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  return sorted.map((post, index) => {
+    const previousPost = sorted[index + 1] || null;
+    const nextPost = sorted[index - 1] || null;
+
+    return {
+      params: { slug: post.slug },
+      props: {
+        ...post,
+        previousPost,
+        nextPost,
+      },
+    };
+  });
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props as any;
 const { Content } = await post.render();
+
+const formatDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 ---
 
-<BlogPost {...post.data}>
-  <Content components={{ pre: Code }} />
-</BlogPost>
+<Base meta_title="varmiguemunoz Software Engineer| Home">
+  <div class="min-h-screen bg-gradient-background">
+    <Navbar />
+
+    <HeroPostBlog blogPost={post as any} formatDate={formatDate} />
+
+    {/* Cover Image */}
+    <section class="mb-12 px-4">
+      <div class="mx-auto max-w-5xl">
+        <div class="group relative overflow-hidden rounded-2xl">
+          <img
+            src={post.data.image}
+            alt={post.data.title}
+            class="h-[400px] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-[500px]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent"></div>
+          <div
+            class="bg-gradient-primary/10 absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-4xl px-4">
+      <article
+        class="prose prose-lg prose-invert mb-16 max-w-none rounded-2xl border border-border bg-gradient-card p-8 md:p-12"
+      >
+        <Content components={{ pre: Code }} />
+      </article>
+      <NavigationBlog previousPost={post.previousPost} nextPost={post.nextPost} />
+    </div>
+  </div>
+
+  <DiscoveryCall />
+</Base>
