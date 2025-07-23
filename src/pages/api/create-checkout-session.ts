@@ -1,0 +1,33 @@
+import type { APIRoute } from 'astro';
+import Stripe from 'stripe';
+
+const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY);
+
+export const POST: APIRoute = async ({ request }) => {
+  try {
+    const { priceId, planName, hours } = await request.json();
+    const origin = request.headers.get('origin') || import.meta.env.SITE_URL;
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      line_items: [{ price: priceId, quantity: 1 }],
+      success_url: `${origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/payment/canceled`,
+      metadata: {
+        planName,
+        hours: hours.toString(),
+      },
+    });
+
+    return new Response(JSON.stringify({ url: session.url }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (err) {
+    console.error(err);
+    return new Response(JSON.stringify({ error: 'Failed to create session' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+};

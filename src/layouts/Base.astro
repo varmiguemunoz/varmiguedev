@@ -4,7 +4,7 @@ import Whatsapp from '@/components/global/whatsapp/Whatsapp.astro';
 
 import { createOgImage } from '@utils/createOgImage';
 import { ViewTransitions } from 'astro:transitions';
-import Analytics from '@vercel/analytics/astro'
+import Analytics from '@vercel/analytics/astro';
 
 import config from '@config/config.json';
 
@@ -26,6 +26,8 @@ const ogImage = createOgImage({
   title: 'varmiguemunoz',
   meta: 'Mid Full Stack Engineer',
 });
+
+const isPayment = Astro.url.pathname.startsWith('/payment');
 ---
 
 <!doctype html>
@@ -97,7 +99,8 @@ const ogImage = createOgImage({
       <slot />
     </main>
     <Whatsapp url="" />
-    <Footer />
+
+    {!isPayment && <Footer />}
 
     <noscript
       ><iframe

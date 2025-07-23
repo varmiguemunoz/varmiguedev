@@ -1,55 +1,58 @@
 ---
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
+import GetStartedButton from './get-started-button';
 
 const plans = [
   {
-    name: 'Starter',
+    name: 'Launch',
     description: 'Perfect for small agencies getting started',
-    price: 1500,
+    price: 2500,
+    stripePriceId: 'sdfdssdaasda',
+    hours: '40',
     popular: false,
     features: [
-      '5 hours web development',
-      '5 hours mobile development',
-      '5 hours automation/scripting',
-      '5 hours infrastructure support',
-      'Slack communication',
+      '40 hours flexible hours development (web, mobile, scripting, infrastructure, automations)',
+      'Slack communication channel',
       'Weekly progress updates',
       'Emergency support (4hr response)',
-    ],
-  },
-  {
-    name: 'Growth',
-    description: 'For growing agencies with consistent dev needs',
-    price: 2500,
-    popular: true,
-    features: [
-      '10 hours web development',
-      '10 hours mobile development',
-      '10 hours automation/scripting',
-      '10 hours infrastructure support',
-      'Priority Slack communication',
-      'Bi-weekly strategy calls',
-      'Emergency support (2hr response)',
       'Code reviews & architecture guidance',
     ],
   },
   {
-    name: 'Partner',
-    description: 'Full technical partnership for agencies',
+    name: 'Scale',
+    description: 'For growing agencies with consistent dev needs',
     price: 4000,
+    stripePriceId: 'sdfdssdaasda',
+    hours: '80',
+    popular: true,
+    features: [
+      '80 hours of flexible development (web, mobile, scripting, infrastructure, automations)',
+      'Slack communication channel',
+      'Weekly progress updates',
+      'Emergency support (2hr response)',
+      'Code reviews & architecture guidance',
+      'Monthly strategy & planning call',
+      'Discount on extra hours',
+    ],
+  },
+  {
+    name: 'Partner+',
+    description: 'Full technical partnership for agencies',
+    price: 5500,
+    stripePriceId: 'sdfdssdaasda',
+    hours: '120',
     popular: false,
     features: [
-      '20 hours web development',
-      '15 hours mobile development',
-      '15 hours automation/scripting',
-      '15 hours infrastructure support',
-      'Direct phone line access',
-      'Weekly strategy & planning calls',
+      '120 hours flexible development (web, mobile, scripting, infrastructure, automations)',
+      'Slack communication channel',
+      'Weekly progress updates',
       'Emergency support (1hr response)',
-      'Technical leadership & mentoring',
+      'Code reviews & architecture guidance',
+      'Weekly strategy & planning calls',
+      'Dedicated Project Manager',
       'Custom integrations & tooling',
+      'Discount on extra hours ($20/h)',
     ],
   },
 ];
@@ -59,7 +62,7 @@ const plans = [
   <div class="mx-auto max-w-7xl">
     <div class="mb-16 text-center">
       <Badge variant="outline" className="mb-4 border-primary text-primary">Pricing & Plans</Badge>
-      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Predictable Monthly Development</h2>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Predictable Dev Power for Digital Agencies</h2>
       <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
         Choose your plan based on development hours needed. Scale up or down as your agency grows.
       </p>
@@ -86,16 +89,7 @@ const plans = [
                         <span class="text-4xl font-bold text-primary">${plan.price.toLocaleString()}</span>
                         <span class="text-muted-foreground">/month</span>
                       </div>
-                      <Button
-                        className={`w-full ${
-                          plan.popular
-                            ? 'bg-gradient-primary hover:shadow-glow'
-                            : 'border border-border hover:bg-secondary'
-                        }`}
-                        variant={plan.popular ? 'default' : 'outline'}
-                      >
-                        Get Started
-                      </Button>
+                      <GetStartedButton plan={plan} />
                     </div>
                   </div>
                 </th>
@@ -109,10 +103,10 @@ const plans = [
             Array.from({ length: Math.max(...plans.map((p) => p.features.length)) }, (_, i) => (
               <tr class="border-b border-border/50">
                 <td class="px-4 py-4 text-muted-foreground">
-                  {plans[0].features[i] && (
+                  {plans[2].features[i] && (
                     <div class="flex items-center space-x-2">
                       <span>
-                        {plans[0].features[i]
+                        {plans[2].features[i]
                           ?.replace(/^\d+\s+hours?\s+/, '')
                           .replace(/^[A-Z]/, (c) => c.toLowerCase())}
                       </span>

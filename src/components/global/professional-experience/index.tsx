@@ -77,15 +77,15 @@ const experiences = [
 const education = [
   {
     id: 1,
-    degree: 'Academic Bachelor Degree',
-    institution: 'Merceditas Gomez Martinez',
-    period: '2009-2020',
-  },
-  {
-    id: 2,
     degree: 'Undergraduate in Software Engineering',
     institution: '(Universidad internacional de la rioja) - UNIR',
     period: '2025',
+  },
+  {
+    id: 2,
+    degree: 'Academic Bachelor Degree',
+    institution: 'Merceditas Gomez Martinez',
+    period: '2009-2020',
   },
 ];
 
