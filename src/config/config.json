@@ -1,25 +1,21 @@
 {
   "site": {
-    "title": "varmiguemunoz | Mid Full stack engineer & Creating seamless omnichannel experiences",
-    "base_url": "https://www.varmiguemunoz.dev/",
+    "title": "varmiguemunoz Software Engineer | Agency Dev Partner",
+    "base_url": "https://www.varmiguemunoz.com/",
     "base_path": "/",
-    "favicon": "/favicon.png",
-    "logo": "/profile-2024.jpeg",
+    "favicon": "/avatar.png",
+    "logo": "/avatar.png",
     "lang": "en",
-    "description": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market.",
+    "description": "I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations.",
     "pageSize": 6
   },
-  "features": {
-    "youtube": true,
-    "dark_mode": true
-  },
   "metadata": {
-    "meta_author": "varmiguemunoz | Mid Full stack engineer & Creating seamless omnichannel experiences",
-    "meta_description": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market."
+    "meta_author": "varmiguemunoz Software Engineer | Agency Dev Partner",
+    "meta_description": "I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations."
   },
   "author": {
-    "name": "Miguel Angel Jaramillo Muñoz",
-    "avatar": "/profile-business-nobackground.png",
-    "bio": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market."
+    "name": "varmiguemunoz | Miguel Angel Munoz",
+    "avatar": "/avatar.png",
+    "bio": "I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations."
   }
 }
