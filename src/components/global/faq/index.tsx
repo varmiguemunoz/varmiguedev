@@ -4,12 +4,17 @@ const faqs = [
   {
     question: 'How does the monthly subscription work?',
     answer:
-      'You get a fixed number of dev hours each month across web, mobile, automation, and infrastructure. No project-based billing - just predictable monthly costs with expert development support.',
+      'You choose a plan with a set number of hours which you can allocate to whatever your agency needs, web development, mobile development, automation, infrastructure, etc... Billing is not project based, only predictable monthly hourly costs with our time tracking and reporting software, at the end of the monthly billing cycle you will receive a document with the total number of hours worked and descriptive reporting tables where you can see in detail what the time was used for.',
+  },
+  {
+    question: 'What happens if I do not use 100% of the hours of my current plan?',
+    answer:
+      'If you don’t use all your hours in a given month, up to 30% of the unused value is converted into service credit, valid for 30 days. That credit can be used for strategy sessions, audits, or additional dev work — no hours are rolled over directly, but you always get full value for what you pay.',
   },
   {
     question: 'What technologies do you work with?',
     answer:
-      'Web: React, Next.js, Astro, Node.js. Mobile: iOS native development. Infrastructure: AWS, Docker, CI/CD. Automation: Python scripting, AI agents, API integrations.',
+      'Web: React, Next.js, Astro, Node.js, Tailwind CSS, Shadcn UI, CSS, HTML, Webflow, Wordpress, Shopify. Mobile: React Native, Expo. Infrastructure: AWS, Docker, CI/CD. Automation: Python and Javascript scripting, AI agents, MCP, API integrations.',
   },
   {
     question: 'Can I change or pause my plan?',
@@ -19,7 +24,7 @@ const faqs = [
   {
     question: 'What if I need more hours in a month?',
     answer:
-      "Additional hours are available at $150/hour. I'll always communicate before exceeding your monthly allocation and get approval first.",
+      "Additional hours are available at $20/hour. I'll always communicate before exceeding your monthly allocation and get approval first.",
   },
   {
     question: 'How do we communicate and track progress?',
