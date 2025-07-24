@@ -4,7 +4,7 @@ description: 'JavaScript, as a versatile and powerful language, provides advance
 pubDate: '11/10/2023'
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753248698/javascript_gl1ash.png'
 readtime: '5 min read'
-categories: 'tech-stack'
+category: 'tech-stack'
 tags: ['javascript', 'react', 'node', 'full stack']
 author: '["varmiguemunoz"]'
 draft: false

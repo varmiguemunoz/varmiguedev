@@ -4,7 +4,7 @@ description: 'Prisma has risen to prominence as a powerful Object-Relational Map
 pubDate: '11/10/2023'
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346476/k17k1ildz12yvcacx0e8_uh7wmi.webp'
 readtime: '5 min read'
-categories: 'tech-stack'
+category: 'tech-stack'
 authors: ['varmiguemunoz']
 tags: ['Javascript', 'Orm', 'Node js', 'Backend']
 draft: false

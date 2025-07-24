@@ -4,12 +4,10 @@ import { getCollection } from 'astro:content';
 import Base from '@layouts/Base.astro';
 
 import Navbar from '@/components/global/navbar';
-import GridBlog from '@/components/global/blog/grid-blog/index.astro';
-import FeaturedBlog from '@/components/global/blog/featured-blog/index.astro';
-import HeroBlog from '@/components/global/blog/hero-blog/index.astro';
 import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
 
 import config from '@config/config.json';
+import Provider from '@/components/global/blog/provider';
 
 export async function getStaticPaths({ paginate }: any) {
   const allPosts = await getCollection('blog');
@@ -23,16 +21,9 @@ export async function getStaticPaths({ paginate }: any) {
   });
 }
 
-const { page, url } = Astro.props as any;
+const { page } = Astro.props as any;
 
 const allPosts = page.data;
-
-const sortedPosts = allPosts
-  .filter((post: any) => post.data?.draft !== true)
-  .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const featuredPost = sortedPosts[0];
-const blogPosts = sortedPosts.slice(1);
 
 const categories = [
   { id: 'all', label: 'All Posts', color: 'default' },
@@ -42,52 +33,13 @@ const categories = [
   { id: 'agency-workflow', label: 'Agency Workflow', color: 'primary' },
   { id: 'tech-stack', label: 'Tech Stack', color: 'accent' },
 ];
-
-const selectedCategory = Astro.url?.searchParams?.get('category') || 'all';
-
-const filteredPosts =
-  selectedCategory === 'all'
-    ? blogPosts
-    : blogPosts.filter((post: any) =>
-        Array.isArray(post.data?.categories)
-          ? post.data.categories.includes(selectedCategory)
-          : post.data?.category === selectedCategory
-      );
-
-const formatDate = (dateString: string) =>
-  new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
-const getCategoryLabel = (categoryId: string) => categories.find((cat) => cat.id === categoryId)?.label || categoryId;
 ---
 
 <Base meta_title="varmiguemunoz Software Engineer | Blog" blogpost={true}>
   <div class="bg-gradient-backgrounded-full min-h-screen w-full">
     <Navbar />
-    {/* Hero Section */}
-    <HeroBlog showFilters={true} selectedCategory={selectedCategory} categories={categories} />
 
-    <div class="mx-auto w-full max-w-6xl px-4 pb-24">
-      {/* Featured Article Section */}
-      <FeaturedBlog
-        selectedCategory={selectedCategory}
-        formatDate={formatDate}
-        featuredPost={featuredPost as any}
-        getCategoryLabel={getCategoryLabel}
-      />
-
-      {/* Blog Grid Section */}
-      <GridBlog
-        getCategoryLabel={getCategoryLabel}
-        selectedCategory={selectedCategory}
-        formatDate={formatDate}
-        filteredPosts={filteredPosts as any}
-      />
-    </div>
-
+    <Provider allPosts={allPosts} categories={categories} client:load />
     <DiscoveryCall />
   </div>
 </Base>

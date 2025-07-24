@@ -4,7 +4,7 @@ description: 'Next.js has emerged as an exceptionally powerful and versatile Rea
 pubDate: '11/10/2023'
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346481/fozwisstu33btc3psvbg_vx0ff9.webp'
 readtime: '5 min read'
-categories: 'tech-stack'
+category: 'tech-stack'
 tags: ['Javascript', 'Frontend', 'React js', 'Next js']
 author: '["varmiguemunoz"]'
 draft: false

@@ -4,7 +4,7 @@ description: 'React Native, a cross-platform framework developed by Facebook, ha
 pubDate: '11/10/2023'
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346476/gilexyatgaaoedepldtj_rxy9gy.webp'
 readtime: '5 min read'
-categories: 'tech-stack'
+category: 'tech-stack'
 tags: ['Javascript', 'React', 'React Native', 'frontend']
 author: '["varmiguemunoz"]'
 draft: false

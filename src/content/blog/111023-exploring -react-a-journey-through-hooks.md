@@ -4,7 +4,7 @@ description: 'React, has become a fundamental tool in the world of web developme
 pubDate: '11/10/2023'
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346508/wrlibrvlpchkaejrssar_fwmbj4.webp'
 readtime: '5 min read'
-categories: 'tech-stack'
+category: 'tech-stack'
 tags: ['react js', 'javascript', 'frontend']
 author: '["varmiguemunoz"]'
 draft: false

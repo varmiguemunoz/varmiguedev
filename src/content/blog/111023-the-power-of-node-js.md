@@ -4,7 +4,7 @@ description: 'Node.js has emerged as a powerhouse in the realm of backend develo
 pubDate: '11/10/2023'
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346476/becs06b6vgw2hnpio6rv_tboj6y.webp'
 readtime: '5 min read'
-categories: 'tech-stack'
+category: 'tech-stack'
 authors: ['varmiguemunoz']
 tags: ['javascript', 'Node js', 'Backend', 'Fullstack']
 draft: false
