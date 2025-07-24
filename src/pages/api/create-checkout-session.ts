@@ -1,12 +1,15 @@
 import type { APIRoute } from 'astro';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY);
+const stripeSecretKey = import.meta.env.STRIPE_SECRET_KEY;
+const siteUrl = import.meta.env.SITE_URL;
+
+const stripe = new Stripe(stripeSecretKey);
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     const { priceId, planName, hours } = await request.json();
-    const origin = request.headers.get('origin') || import.meta.env.SITE_URL;
+    const origin = request.headers.get('origin') || siteUrl;
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',

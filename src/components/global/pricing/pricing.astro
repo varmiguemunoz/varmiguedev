@@ -8,7 +8,7 @@ const plans = [
     name: 'Launch',
     description: 'Perfect for small agencies getting started',
     price: 2500,
-    stripePriceId: 'sdfdssdaasda',
+    stripePriceId: 'price_1RoIIJDOnhjqrRNXiH0M9l3S',
     hours: '40',
     popular: false,
     features: [
@@ -23,7 +23,7 @@ const plans = [
     name: 'Scale',
     description: 'For growing agencies with consistent dev needs',
     price: 4000,
-    stripePriceId: 'sdfdssdaasda',
+    stripePriceId: 'price_1RoIJDDOnhjqrRNXSygb3J7T',
     hours: '80',
     popular: true,
     features: [
@@ -40,7 +40,7 @@ const plans = [
     name: 'Partner+',
     description: 'Full technical partnership for agencies',
     price: 5500,
-    stripePriceId: 'sdfdssdaasda',
+    stripePriceId: 'price_1RoIK3DOnhjqrRNXstinWLdK',
     hours: '120',
     popular: false,
     features: [
@@ -89,7 +89,7 @@ const plans = [
                         <span class="text-4xl font-bold text-primary">${plan.price.toLocaleString()}</span>
                         <span class="text-muted-foreground">/month</span>
                       </div>
-                      <GetStartedButton plan={plan} />
+                      <GetStartedButton plan={plan} client:load />
                     </div>
                   </div>
                 </th>

@@ -17,7 +17,7 @@ export default function GetStartedButton({ plan }: GetStartedButtonProps) {
   const handleClick = async () => {
     try {
       setLoading(true);
-
+  
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -41,6 +41,7 @@ export default function GetStartedButton({ plan }: GetStartedButtonProps) {
       setLoading(false);
     }
   };
+  
   return (
     <Button
       onClick={handleClick}

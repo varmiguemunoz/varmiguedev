@@ -7,6 +7,8 @@ import { ViewTransitions } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro';
 
 import config from '@config/config.json';
+import { Toaster } from '@/components/ui/toaster';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 import '@styles/global.css';
 
@@ -95,10 +97,12 @@ const isPayment = Astro.url.pathname.startsWith('/payment');
 
   <body>
     <Analytics />
+    <SpeedInsights />
     <main class="mx-auto w-full">
       <slot />
     </main>
     <Whatsapp url="" />
+    <Toaster client:load />
 
     {!isPayment && <Footer />}
 
