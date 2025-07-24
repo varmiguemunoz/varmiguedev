@@ -35,9 +35,9 @@ const categories = [
 ];
 ---
 
-<Base meta_title="varmiguemunoz Software Engineer | Blog" blogpost={true}>
+<Base meta_title="varmiguemunoz Software Engineer | Blog">
   <div class="bg-gradient-backgrounded-full min-h-screen w-full">
-    <Navbar />
+    <Navbar client:load />
 
     <Provider allPosts={allPosts} categories={categories} client:load />
     <DiscoveryCall />

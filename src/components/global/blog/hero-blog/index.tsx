@@ -11,13 +11,12 @@ type Props = {
 };
 
 export default function HeroBlog({ showFilters, selectedCategory, categories }: Props) {
-
   return (
     <section className="px-4 pb-16 pt-24">
       <div className="mx-auto w-full max-w-6xl text-center">
         <div className="relative">
           {/* Background glow effect */}
-          <div className="absolute inset-0 scale-150 rounded-full bg-gradient-primary opacity-10 blur-3xl"></div>
+          <div className="absolute inset-0 w-full rounded-full bg-gradient-primary opacity-10 blur-3xl md:scale-150"></div>
 
           <div className="relative">
             <h1 className="mb-6 text-4xl font-bold leading-tight text-foreground md:text-6xl lg:text-7xl">

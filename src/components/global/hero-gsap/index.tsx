@@ -61,7 +61,10 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative flex min-h-screen items-center overflow-hidden bg-gradient-background">
+    <section
+      ref={heroRef}
+      className="relative flex min-h-screen items-center overflow-hidden bg-gradient-background pt-8 md:pt-0"
+    >
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />

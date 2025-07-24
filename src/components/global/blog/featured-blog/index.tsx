@@ -22,8 +22,6 @@ type Props = {
 };
 
 export default function FeaturedBlog({ getCategoryLabel, featuredPost }: Props) {
-  console.log('featuredPost', featuredPost);
-
   return (
     <section className="mb-16 w-full">
       <a href={`/blog/${featuredPost?.slug}`}>
@@ -60,7 +58,7 @@ export default function FeaturedBlog({ getCategoryLabel, featuredPost }: Props) 
                 <p className="mb-6 text-lg leading-relaxed text-muted-foreground">{featuredPost?.data?.description}</p>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
                 <div className="flex items-center text-sm text-muted-foreground">
                   <Calendar className="mr-2 h-4 w-4" />
                   <span>{featuredPost?.data?.pubDate.toLocaleDateString()}</span>

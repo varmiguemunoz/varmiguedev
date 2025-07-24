@@ -28,7 +28,7 @@ export default function SalesContactForm() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-background px-4 py-24">
+    <section className="relative overflow-hidden bg-gradient-background py-24 md:px-4">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />

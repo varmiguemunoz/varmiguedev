@@ -36,7 +36,7 @@ export default function Provider({ allPosts, categories }: any) {
       {/* Hero Section */}
       <HeroBlog showFilters={false} selectedCategory={selectedCategory} categories={categories} />
 
-      <div className="mx-auto w-full max-w-6xl px-4 pb-24">
+      <div className="w-full max-w-6xl px-4 pb-24 md:mx-auto">
         {/* Featured Article Section */}
         <FeaturedBlog
           selectedCategory={selectedCategory}

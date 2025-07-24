@@ -16,9 +16,11 @@ export default function Social() {
             <Mail className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-accent" />
           </a>
         </div>
-        <Button variant="hero" size="sm">
-          Let's Talk
-        </Button>
+        <a href="/sales">
+          <Button variant="hero" size="sm">
+            Let's Talk
+          </Button>
+        </a>
       </div>
     </div>
   );

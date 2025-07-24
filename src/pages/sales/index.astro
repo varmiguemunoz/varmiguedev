@@ -1,6 +1,5 @@
 ---
 import Base from '@layouts/Base.astro';
-import Sales from '@components/global/sales/sales.astro';
 import Testimonial from '@components/global/testimonials/testimonials.astro';
 import FAQ from '@/components/global/faq';
 import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
@@ -9,7 +8,7 @@ import SalesContactForm from '@/components/global/sales-form';
 ---
 
 <Base title="varmiguemunoz Software Engineer | Sales">
-  <Navbar />
+  <Navbar client:load />
   <SalesContactForm />
   <Testimonial />
   <FAQ client:load />

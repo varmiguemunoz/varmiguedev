@@ -21,8 +21,6 @@ type Props = {
 };
 
 export default function GridBlog({ getCategoryLabel, selectedCategory, filteredPosts }: Props) {
-  console.log('filteredPosts', filteredPosts);
-
   return (
     <section className="w-full overflow-hidden">
       <div className="mb-8 flex items-center justify-between">
