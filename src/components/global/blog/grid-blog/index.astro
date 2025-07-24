@@ -9,6 +9,7 @@ type Props = {
   formatDate: (parameter: any) => void;
   selectedCategory: string;
   filteredPosts: {
+    slug: string;
     data: {
       image: string;
       title: string;
@@ -37,54 +38,56 @@ const { getCategoryLabel, selectedCategory, filteredPosts, formatDate } = Astro.
   <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
     {
       filteredPosts.map((post) => (
-        <Card
-          key={post.data.id}
-          className="group cursor-pointer overflow-hidden border-border bg-gradient-card transition-all duration-300 hover:border-accent/30 hover:shadow-accent-glow"
-        >
-          {/* Image */}
-          <div class="relative overflow-hidden">
-            <img
-              src={post.data.image}
-              alt={post.data.title}
-              class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          </div>
+        <a href={`/blog/${post.slug}`}>
+          <Card
+            key={post.data.id}
+            className="group cursor-pointer overflow-hidden border-border bg-gradient-card transition-all duration-300 hover:border-accent/30 hover:shadow-accent-glow"
+          >
+            {/* Image */}
+            <div class="relative overflow-hidden">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
 
-          <CardHeader className="pb-3">
-            <div class="mb-2 flex items-center justify-between">
-              <Badge variant="outline" className="border-accent/30 text-xs text-accent-glow">
-                {getCategoryLabel(post.data.category)}
-              </Badge>
-              <div class="flex items-center text-xs text-muted-foreground">
-                <Calendar className="mr-1 h-3 w-3" />
-                <span>{formatDate(post.data.date)}</span>
+            <CardHeader className="pb-3">
+              <div class="mb-2 flex items-center justify-between">
+                <Badge variant="outline" className="border-accent/30 text-xs text-accent-glow">
+                  {getCategoryLabel(post.data.category)}
+                </Badge>
+                <div class="flex items-center text-xs text-muted-foreground">
+                  <Calendar className="mr-1 h-3 w-3" />
+                  <span>{formatDate(post.data.date)}</span>
+                </div>
               </div>
-            </div>
 
-            <CardTitle className="text-lg leading-tight transition-colors duration-300 group-hover:text-primary-glow">
-              {post.data.title}
-            </CardTitle>
-          </CardHeader>
+              <CardTitle className="text-lg leading-tight transition-colors duration-300 group-hover:text-primary-glow">
+                {post.data.title}
+              </CardTitle>
+            </CardHeader>
 
-          <CardContent className="pt-0">
-            <CardDescription className="mb-4 leading-relaxed text-muted-foreground">
-              {post.data.description}
-            </CardDescription>
+            <CardContent className="pt-0">
+              <CardDescription className="mb-4 leading-relaxed text-muted-foreground">
+                {post.data.description}
+              </CardDescription>
 
-            <div class="flex items-center justify-between">
-              <span class="text-xs text-muted-foreground">{post.data.readTime}</span>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="p-0 transition-colors duration-300 group-hover:text-primary-glow"
-              >
-                Read More
-                <ArrowRight className="ml-1 h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-muted-foreground">{post.data.readTime}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="p-0 transition-colors duration-300 group-hover:text-primary-glow"
+                >
+                  Read More
+                  <ArrowRight className="ml-1 h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </a>
       ))
     }
   </div>

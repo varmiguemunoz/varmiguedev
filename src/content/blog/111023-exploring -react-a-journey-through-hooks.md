@@ -2,10 +2,12 @@
 title: 'Exploring React: A Journey Through Hooks, Performance, and Advantages'
 description: 'React, has become a fundamental tool in the world of web development.'
 pubDate: '11/10/2023'
-heroImage: '/blog/react.jpeg'
-categories: ['react', 'frontend', 'javascript']
+image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346508/wrlibrvlpchkaejrssar_fwmbj4.webp'
+readtime: '5 min read'
+categories: 'tech-stack'
 tags: ['react js', 'javascript', 'frontend']
 author: '["varmiguemunoz"]'
+draft: false
 ---
 
 ## Introduction

@@ -2,10 +2,12 @@
 title: 'The Power of React Native: Exploring its Key Features'
 description: 'React Native, a cross-platform framework developed by Facebook, has become a game-changer in the world of mobile app development.'
 pubDate: '11/10/2023'
-heroImage: '/blog/react-native.jpeg'
-categories: ['React Native', 'Frontend', 'Fullstack']
+image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346476/gilexyatgaaoedepldtj_rxy9gy.webp'
+readtime: '5 min read'
+categories: 'tech-stack'
 tags: ['Javascript', 'React', 'React Native', 'frontend']
 author: '["varmiguemunoz"]'
+draft: false
 ---
 
 **Unleashing the Power of React Native: Exploring its Key Features**
