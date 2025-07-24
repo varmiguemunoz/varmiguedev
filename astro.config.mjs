@@ -11,7 +11,7 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.varmiguemunoz.dev/',
-  output: 'server',
+  output: 'static',
   adapter: vercel(),
   image: {
     remotePatterns: [

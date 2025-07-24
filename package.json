@@ -90,6 +90,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vercel/analytics": "^1.5.0",
+    "@vercel/node": "^5.3.6",
     "@vercel/speed-insights": "^1.2.0",
     "astro-portabletext": "^0.11.1",
     "class-variance-authority": "^0.7.1",
