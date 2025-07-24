@@ -4,6 +4,9 @@ import Stripe from 'stripe';
 const stripeSecretKey = import.meta.env.STRIPE_SECRET_KEY;
 const siteUrl = import.meta.env.SITE_URL;
 
+if (!stripeSecretKey) throw new Error('Missing STRIPE_SECRET_KEY');
+if (!siteUrl) throw new Error('Missing SITE_URL');
+
 const stripe = new Stripe(stripeSecretKey);
 
 export const POST: APIRoute = async ({ request }) => {
