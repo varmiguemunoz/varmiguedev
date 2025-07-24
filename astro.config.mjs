@@ -6,11 +6,13 @@ import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 
 import react from '@astrojs/react';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.varmiguemunoz.dev/',
   output: 'server',
+  adapter: vercel(),
   image: {
     remotePatterns: [
       {
