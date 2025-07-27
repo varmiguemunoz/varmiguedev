@@ -21,13 +21,13 @@ type Props = {
 const { blogPost, formatDate } = Astro.props;
 ---
 
-<section class="px-4 pb-12 pt-24">
-  <div class="mx-auto max-w-4xl">
-    <div class="relative">
+<section class="w-full overflow-x-hidden px-4 pb-12 pt-24">
+  <div class="mx-auto w-full max-w-4xl">
+    <div class="relative w-full">
       {/* Background glow effect */}
-      <div class="absolute inset-0 scale-150 rounded-full bg-gradient-primary opacity-5 blur-3xl"></div>
+      <div class="absolute inset-0 w-full rounded-full bg-gradient-primary opacity-5 blur-3xl md:scale-150"></div>
 
-      <div class="relative text-center">
+      <div class="relative w-full text-center">
         {/* Category and Featured Badge */}
         <div class="mb-6 flex items-center justify-center gap-3">
           <Badge variant="outline" className="border-primary/30 text-primary-glow">

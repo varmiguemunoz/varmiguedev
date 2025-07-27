@@ -1,17 +1,32 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import HeroBlog from '../hero-blog';
 import FeaturedBlog from '../featured-blog';
 import GridBlog from '../grid-blog';
+import { Loader } from 'lucide-react';
 
 export default function Provider({ allPosts, categories }: any) {
   const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
   const selectedCategory = searchParams?.get('category') || 'all';
+  const [isReady, setIsReady] = useState(false);
+
+  // Progressive loading - show content after a short delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsReady(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const getCategoryLabel = (categoryId: string) =>
     categories.find((cat: any) => cat.id === categoryId)?.label || categoryId;
 
   const { featuredPost, filteredPosts } = useMemo(() => {
+    // Only process if allPosts exists and has length
+    if (!allPosts || allPosts.length === 0) {
+      return { featuredPost: null, filteredPosts: [] };
+    }
+
     const sortedPosts = allPosts
       .filter((post: any) => post.data?.draft !== true)
       .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -29,7 +44,16 @@ export default function Provider({ allPosts, categories }: any) {
           );
 
     return { featuredPost, filteredPosts };
-  }, [allPosts, selectedCategory]);
+  }, [allPosts?.length, selectedCategory]);
+
+  if (!isReady) {
+    return (
+      <div className="flex min-h-[400px] flex-col items-center justify-center">
+        <Loader className="h-8 w-8 animate-spin text-primary" />
+        <p className="mt-4 text-primary">Loading blog content...</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -44,7 +68,6 @@ export default function Provider({ allPosts, categories }: any) {
           getCategoryLabel={getCategoryLabel}
         />
 
-        {/* Blog Grid Section */}
         <GridBlog
           getCategoryLabel={getCategoryLabel}
           selectedCategory={selectedCategory}
