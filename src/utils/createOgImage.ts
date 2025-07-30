@@ -1,23 +1,20 @@
 export const createOgImage = ({ title, meta }: { title: string; meta: string }) =>
   [
-    // ACCOUNT PREFIX
-    // Add your own Cloudinary account ID.
+    // Base
     `https://res.cloudinary.com/dy7kvvzgj/image/upload`,
-    // Composed Image Transformations
+    // Tamaño general del output
     `w_1600,h_836,q_100`,
-    // TITLE
-    // Karla google font in light rose
+
+    // Imagen logo en esquina superior derecha, por ejemplo
+    `l_logo_cgeuzo/fl_layer_apply,g_north_east,x_100,y_100`,
+
+    // Título (ejemplo: “Mi App”)
     `l_text:Ubuntu_92_bold:${e(title)},co_rgb:ffe4e6,c_fit,w_1200,h_400`,
-    // Positioning
     `fl_layer_apply,g_south_west,x_100,y_340`,
-    // META
-    // Karla, but smaller
+
+    // Subtítulo / meta info (ejemplo: “Bienvenido a la mejor app”)
     `l_text:Ubuntu_52_bold:${e(meta)},co_rgb:ffe4e680,c_fit,w_1400`,
-    // Positioning
     `fl_layer_apply,g_south_west,x_100,y_100`,
-    // IMAGE
-    `Avatar_Blank_Miguel_Munoz_g26caj`,
   ].join('/');
 
-// double escape for commas and slashes
 const e = (str: string) => encodeURIComponent(encodeURIComponent(str));

@@ -87,10 +87,8 @@ const isPayment = Astro.url.pathname.startsWith('/payment');
     <!-- og-image -->
     <meta property="og:image" content={ogImage} />
     <!-- twitter-image -->
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={config.author.avatar} />
     <meta name="twitter:card" content="summary_large_image" />
-
-    <script is:inline src="/registerSW.js"></script>
 
     <ViewTransitions />
   </head>
