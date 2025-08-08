@@ -154,3 +154,27 @@ html {
   padding: 2em;
 }
 
+/* Scrollbar estilo moderno */
+::-webkit-scrollbar {
+  width: 8px; /* ancho del scroll */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* sin fondo */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15); /* color gris claro translúcido */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25); /* más visible al pasar el mouse */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+

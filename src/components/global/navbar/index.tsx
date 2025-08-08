@@ -18,31 +18,31 @@ export default function Navbar() {
 
   return (
     <nav className={cn('left-0 right-0 top-0 z-50 block bg-transparent transition-all duration-300')}>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 py-2">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex items-center gap-12">
             <a
               href="/"
               className="bg-gradient-to-r from-primary to-accent bg-clip-text text-xl font-bold text-transparent"
             >
               <img src="/logo.png" alt="logo" className="h-14 w-14" loading="lazy" width={40} height={40} />
             </a>
-          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="group relative text-muted-foreground transition-colors duration-200 hover:text-primary"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-                </a>
-              ))}
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="flex items-center space-x-8">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="group relative text-muted-foreground transition-colors duration-200 hover:text-primary"
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 

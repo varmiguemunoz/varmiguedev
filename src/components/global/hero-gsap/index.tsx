@@ -9,13 +9,30 @@ import Social from './social';
 import Stats from './stats';
 import HeroContent from './hero-content';
 import Scroll from './scroll';
-import Avatar from './avatar';
+// import Avatar from './avatar';
+import ThreeScene from './three-model';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function HeroSection() {
+type HeroSectionProps = {
+  cta?: {
+    secondary: {
+      url: string;
+      title: string;
+    };
+  };
+};
+
+export default function HeroSection({
+  cta = {
+    secondary: {
+      url: '/sales',
+      title: 'Talk to sales',
+    },
+  },
+}: HeroSectionProps) {
   const heroRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<HTMLDivElement>(null);
@@ -41,23 +58,6 @@ export default function HeroSection() {
         ease: 'power3.out',
       }
     );
-
-    tl.fromTo(
-      modelRef.current,
-      {
-        opacity: 0,
-        x: 100,
-        rotationY: 45,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        rotationY: 0,
-        duration: 1.2,
-        ease: 'power3.out',
-      },
-      '-=0.5'
-    );
   }, []);
 
   return (
@@ -72,23 +72,23 @@ export default function HeroSection() {
       {/* Noise Texture */}
       <div className="absolute inset-0 opacity-20 mix-blend-soft-light" />
 
-      <div className="container relative z-10 mx-auto w-full max-w-[1400px] px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+      <div className="container relative z-10 mx-auto w-full max-w-[1400px] pt-10 md:px-10">
+        <div className="grid items-start justify-center gap-12 lg:grid-cols-2">
           {/* Left Content */}
           <div ref={textRef} className="space-y-8">
             <HeroContent />
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <a href="#pricing" key={'hero-view-services'}>
+              <a href="https://calendly.com/miguelmunoz-bloomify/30min" key={'hero-view-services'}>
                 <Button variant="hero" size="xl" className="group">
-                  View Services
+                  Book a free audit
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
 
-              <a href="/sales" key={'sales'}>
+              <a href={cta?.secondary.url} key={'sales'}>
                 <Button variant="outline" size="xl" className="hover:bg-white hover:text-black">
-                  Talk to sales
+                  {cta?.secondary.title}
                 </Button>
               </a>
             </div>
@@ -98,9 +98,10 @@ export default function HeroSection() {
           </div>
 
           {/* Right 3D Model */}
-          <div ref={modelRef} className="relative">
+          <div ref={modelRef} className="relative flex h-[350px] items-start justify-start md:h-[750px]">
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl" />
-            <Avatar />
+            {/* <Avatar /> */}
+            <ThreeScene />
           </div>
 
           {/* End content*/}

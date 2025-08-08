@@ -8,10 +8,10 @@ export default function HeroContent() {
 
       <h1 className="text-5xl font-bold leading-tight lg:text-7xl">
         <span className="bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent">
-          Miguel Angel
+          Launch your product 3× faster
         </span>
         <br />
-        <span className="text-muted-foreground">Software Engineer</span>
+        <span className="text-muted-foreground">without internal team</span>
       </h1>
 
       <p className="max-w-2xl text-xl leading-relaxed text-muted-foreground">
