@@ -17,14 +17,14 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className={cn('left-0 right-0 top-0 z-50 block bg-transparent transition-all duration-300')}>
-      <div className="container mx-auto px-6 py-2">
+    <nav className={cn('block flex w-full bg-gradient-to-br from-primary/20 transition-all duration-300')}>
+      <div className="container mx-auto px-6 py-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-12">
             <a
               href="/"
-              className="bg-gradient-to-r from-primary to-accent bg-clip-text text-xl font-bold text-transparent"
+              className="rounded-full bg-gradient-to-br from-primary/20 to-accent/10 px-2 py-2 text-xl font-bold text-transparent transition-all duration-300"
             >
               <img src="/logo.png" alt="logo" className="h-14 w-14" loading="lazy" width={40} height={40} />
             </a>
