@@ -17,7 +17,13 @@ import FormMarketing from '@/components/global/sales-form/form-marketing';
     <HeroSection client:load cta={{ secondary: { url: '#mini-case-studies', title: 'View Real Cases' } }} />
     <MiniCaseStudies />
     <ValueProposition />
-    <Testimonials />
+    <Testimonials
+      cta={{
+        title: 'Want to share your results?',
+        cta: 'Schedule a call ->',
+        link: 'https://calendly.com/miguelmunoz-bloomify/30min',
+      }}
+    />
     <Video />
     <Pricing />
     <Workflow />
