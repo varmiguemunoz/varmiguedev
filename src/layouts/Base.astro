@@ -99,7 +99,7 @@ const isPayment = Astro.url.pathname.startsWith('/payment');
     <main class="mx-auto w-full">
       <slot />
     </main>
-    <Whatsapp url="" />
+    <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Dev Packs 🚀" />
     <Toaster client:load />
 
     {!isPayment && <Footer />}

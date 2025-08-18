@@ -17,7 +17,7 @@ export default function SalesContactForm() {
       />
 
       <div className="container relative z-10 mx-auto">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-2">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="flex items-center gap-2 text-primary">

@@ -56,6 +56,14 @@ const plans = [
     ],
   },
 ];
+
+type Props = {
+  note_title?: string;
+  url?: string;
+  note_cta?: string;
+};
+
+const { note_title = 'Need custom hours or enterprise support?', note_cta, url } = Astro.props;
 ---
 
 <section class="px-4 py-24" id="pricing">
@@ -135,10 +143,10 @@ const plans = [
     </div>
 
     <div class="mt-12 text-center">
-      <a href="/sales">
+      <a href="/predictable-dev-power-for-digital-agencies.pdf">
         <p class="text-muted-foreground">
-          Need custom hours or enterprise support?
-          <span class="ml-1 cursor-pointer text-primary hover:underline">Let's talk →</span>
+          Looking for a tailored solution or want to explore our full range of services?
+          <span class="ml-1 cursor-pointer text-primary hover:underline">View full service catalog →</span>
         </p>
       </a>
     </div>
