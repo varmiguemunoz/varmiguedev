@@ -28,13 +28,13 @@ export default function FormSalesCRM() {
     console.log('Form submitted:', formData);
   };
   return (
-    <div className="relative">
+    <div className="relative mx-auto max-w-2xl">
       <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl" />
-      <div className="relative rounded-3xl border border-primary/20 bg-card/90 p-8 shadow-glow backdrop-blur-sm">
+      <div className="relative rounded-3xl border border-primary/20 bg-card/90 px-6 py-8 shadow-glow backdrop-blur-sm md:px-8 md:py-10">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="firstName" className="text-foreground">
+            <div className="flex flex-col items-start gap-2 space-y-2">
+              <Label htmlFor="firstName" className="px-2 text-foreground">
                 First Name
               </Label>
               <Input
@@ -46,8 +46,8 @@ export default function FormSalesCRM() {
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="lastName" className="text-foreground">
+            <div className="flex flex-col items-start gap-2 space-y-2">
+              <Label htmlFor="lastName" className="px-2 text-foreground">
                 Last Name
               </Label>
               <Input
@@ -62,8 +62,8 @@ export default function FormSalesCRM() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-foreground">
+            <div className="flex flex-col items-start gap-2 space-y-2">
+              <Label htmlFor="email" className="px-2 text-foreground">
                 Email
               </Label>
               <Input
@@ -76,8 +76,8 @@ export default function FormSalesCRM() {
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-foreground">
+            <div className="flex flex-col items-start gap-2 space-y-2">
+              <Label htmlFor="phone" className="px-2 text-foreground">
                 Phone
               </Label>
               <Input
@@ -91,8 +91,8 @@ export default function FormSalesCRM() {
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="company" className="text-foreground">
+          <div className="flex flex-col items-start gap-2 space-y-2">
+            <Label htmlFor="company" className="px-2 text-foreground">
               Company
             </Label>
             <Input
@@ -104,8 +104,8 @@ export default function FormSalesCRM() {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="message" className="text-foreground">
+          <div className="flex flex-col items-start gap-2 space-y-2">
+            <Label htmlFor="message" className="px-2 text-foreground">
               How can we help you?
             </Label>
             <Textarea
