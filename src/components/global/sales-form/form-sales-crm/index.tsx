@@ -11,24 +11,50 @@ export default function FormSalesCRM() {
     try {
       const form = e.currentTarget;
       const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
 
-      const response = await fetch('/api/send-whatsapp', {
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
+
+      // Validate required fields
+      const requiredFields = ['firstName', 'lastName', 'email', 'consent'];
+      const missingFields = requiredFields.filter((field) => !formData.get(field));
+
+      if (missingFields.length > 0) {
+        alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
+        return;
+      }
+
+      const payload = Object.fromEntries(formData.entries()) as Record<string, any>;
+
+      if (payload.consent === 'on') {
+        payload.consent = true;
+      } else if (payload.consent === undefined) {
+        payload.consent = false;
+      }
+
+      const requestBody = JSON.stringify(payload);
+
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: requestBody,
       });
 
-      if (!response.ok) alert('Failed to send WhatsApp message');
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(`Error: ${result.error || 'Failed to subscribe'}`);
+        return;
+      }
 
       form.reset();
-      alert('Message sent successfully 🛸');
+      alert(result.message || 'Form submitted successfully! 🎉');
     } catch (error) {
-      console.log(error);
-      alert('Failed to send WhatsApp message error 500');
-      throw error;
+      console.log('Form submission error:', error);
+      alert('Failed to submit form. Please try again.');
     }
   };
 
@@ -113,7 +139,7 @@ export default function FormSalesCRM() {
           </div>
 
           <div className="flex items-center space-x-2">
-            <input type="checkbox" id="consent" className="rounded border-border/50" required />
+            <input type="checkbox" id="consent" name="consent" className="rounded border-border/50" required />
             <Label htmlFor="consent" className="text-sm text-muted-foreground">
               I agree to receive communications from your team
             </Label>
