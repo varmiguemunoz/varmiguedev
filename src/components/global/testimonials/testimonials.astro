@@ -2,87 +2,106 @@
 import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
 
-const testimonials = [
-  {
-    quote:
-      'Miguel delivered our MVP in half the time we expected. His code quality is exceptional and he communicates every step of the process clearly.',
-    author: 'Cristian Baron',
-    company: 'Didactical SAS',
-    avatar: '👨🏻‍💼',
-    rating: 5,
-  },
-  {
-    quote:
-      "We've worked with many developers, but Miguel's speed and reliability are unmatched. He's become our go-to technical partner for all major projects.",
-    author: 'Marcus Rodriguez',
-    company: 'Digital Boost Co',
-    avatar: '👨‍💻',
-    rating: 5,
-  },
-  {
-    quote:
-      'The AI automation Miguel built for us saved our team 15 hours per week. ROI was immediate and the solution scales perfectly with our growth.',
-    author: 'Emily Johnson',
-    company: 'Growth Labs',
-    avatar: '👩‍🚀',
-    rating: 5,
-  },
-];
+// Tipos
+interface Testimonial {
+  quote: string;
+  author: string;
+  company: string;
+  avatar: string;
+  rating: number;
+}
 
-type Props = {
-  cta?: {
-    title: string;
-    link: string;
-    cta: string;
-  };
-};
+interface CTA {
+  title: string;
+  cta: string;
+  link: string;
+}
 
+interface TestimonialsSectionProps {
+  heading?: string;
+  subheading?: string;
+  description?: string;
+  testimonials?: Testimonial[];
+  cta?: CTA;
+}
+
+// Defaults
 const {
+  heading = "Trusted by Growing Agencies",
+  subheading = "Client Results",
+  description = "See what agency owners say about working with me",
+  testimonials = [
+    {
+      quote:
+        'Miguel delivered our MVP in half the time we expected. His code quality is exceptional and he communicates every step of the process clearly.',
+      author: 'Cristian Baron',
+      company: 'Didactical SAS',
+      avatar: '👨🏻‍💼',
+      rating: 5,
+    },
+    {
+      quote:
+        "We've worked with many developers, but Miguel's speed and reliability are unmatched. He's become our go-to technical partner for all major projects.",
+      author: 'Marcus Rodriguez',
+      company: 'Digital Boost Co',
+      avatar: '👨‍💻',
+      rating: 5,
+    },
+    {
+      quote:
+        'The AI automation Miguel built for us saved our team 15 hours per week. ROI was immediate and the solution scales perfectly with our growth.',
+      author: 'Emily Johnson',
+      company: 'Growth Labs',
+      avatar: '👩‍🚀',
+      rating: 5,
+    },
+  ],
   cta = {
-    title: 'Want to share your results?',
-    cta: 'Work with me →',
-    link: '/pricing',
+    title: "Want to share your results?",
+    cta: "Work with me →",
+    link: "/pricing",
   },
-} = Astro.props;
+} = Astro.props as TestimonialsSectionProps;
 ---
 
 <section class="bg-gradient-to-br from-muted/20 to-transparent px-6 py-24">
   <div class="mx-auto max-w-7xl">
+    <!-- Header -->
     <div class="mb-16 text-center">
-      <Badge variant="outline" className="mb-6 border-primary text-primary">Client Results</Badge>
-      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Trusted by Growing Agencies</h2>
-      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">See what agency owners say about working with me</p>
+      <Badge variant="outline" className="mb-6 border-primary text-primary">{subheading}</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">{heading}</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">{description}</p>
     </div>
 
+    <!-- Testimonials -->
     <div class="grid gap-8 lg:grid-cols-3">
-      {
-        testimonials.map((testimonial, index) => (
-          <div class="rounded-xl border border-border bg-gradient-card p-8 transition-all duration-300 hover:border-primary/20 hover:shadow-glow">
-            {/* Rating */}
-            <div class="mb-6 flex items-center space-x-1">
-              {[...Array(testimonial.rating)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-              ))}
+      {testimonials.map((testimonial) => (
+        <div class="rounded-xl border border-border bg-gradient-card p-8 transition-all duration-300 hover:border-primary/20 hover:shadow-glow">
+          <!-- Rating -->
+          <div class="mb-6 flex items-center space-x-1">
+            {[...Array(testimonial.rating)].map((_, i) => (
+              <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="mb-8 leading-relaxed text-muted-foreground">"{testimonial.quote}"</blockquote>
+
+          <!-- Author -->
+          <div class="flex items-center space-x-4">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-accent/20 text-2xl">
+              {testimonial.avatar}
             </div>
-
-            {/* Quote */}
-            <blockquote class="mb-8 leading-relaxed text-muted-foreground">"{testimonial.quote}"</blockquote>
-
-            {/* Author */}
-            <div class="flex items-center space-x-4">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-accent/20 text-2xl">
-                {testimonial.avatar}
-              </div>
-              <div>
-                <div class="font-semibold text-foreground">{testimonial.author}</div>
-                <div class="text-sm text-muted-foreground">{testimonial.company}</div>
-              </div>
+            <div>
+              <div class="font-semibold text-foreground">{testimonial.author}</div>
+              <div class="text-sm text-muted-foreground">{testimonial.company}</div>
             </div>
           </div>
-        ))
-      }
+        </div>
+      ))}
     </div>
 
+    <!-- CTA -->
     <div class="mt-12 text-center">
       <p class="text-muted-foreground">
         {cta.title}

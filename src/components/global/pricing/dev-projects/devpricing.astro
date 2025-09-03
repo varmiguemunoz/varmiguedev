@@ -1,0 +1,184 @@
+---
+import { Badge } from '@/components/ui/badge';
+import GetStartedButton from '../get-started-button';
+
+type Service = {
+  category: string;
+  items: {
+    name: string;
+    description?: string;
+    price?: string;
+    note?: string;
+  }[];
+};
+
+const services: Service[] = [
+  {
+    category: 'Websites (Does not include hosting or domain)',
+    items: [
+      {
+        name: 'Landing Page',
+        description: 'Responsive design, WhatsApp link, social media integration, contact form.',
+        price: '$450 – $650',
+      },
+      {
+        name: 'Basic – 3 Links (0–20 employees)',
+        price: '$450',
+      },
+      {
+        name: 'Standard – 5 Links (21–50 employees)',
+        price: '$550',
+      },
+      {
+        name: 'Ultra – 6+ Links (51–200 employees)',
+        price: '$700',
+      },
+      {
+        name: 'Custom Website',
+        description: 'Tailored dev fees apply based on scope.',
+        price: 'Project scope ($600–$1200)',
+      },
+      {
+        name: 'Website Redesign',
+        price: 'Project scope ($600–$1200)',
+      },
+      {
+        name: 'Monthly Maintenance – Basic (12h)',
+        price: '$600',
+      },
+      {
+        name: 'Monthly Maintenance – Standard (18h)',
+        price: '$900',
+      },
+      {
+        name: 'Monthly Maintenance – Ultra (25h)',
+        price: '$1300',
+      },
+    ],
+  },
+  {
+    category: 'E-commerce',
+    items: [
+      { name: 'Basic Store (600 products)', price: '$1,200' },
+      { name: 'Standard Store (900 products)', price: '$1,300' },
+      { name: 'Pro Store (1600 products)', price: '$2,700' },
+      { name: 'Corporate Store (3200 products)', price: '$4,600' },
+      { name: 'Custom Store', price: 'Get a quote' },
+    ],
+  },
+  {
+    category: 'UX / UI & Graphic Design',
+    items: [
+      { name: 'UX/UI Consulting', price: '$15 / h' },
+      { name: 'Wireframing & Prototyping', price: '$15 / h' },
+      { name: 'Interface Design (UI)', price: '$25 / h' },
+      { name: 'Brand Manual', price: 'Design system hourly cost' },
+      { name: 'Post Social Media Design', price: '$15 / CU' },
+    ],
+  },
+  {
+    category: 'IT & Infrastructure Consultations',
+    items: [
+      { name: 'Audit – Medium sized (2 days)', price: '$300' },
+      { name: 'Audit – Company (3 days)', price: '$450' },
+      { name: 'Audit – Corporate (4 days)', price: '$600' },
+      { name: 'Implementation Diagnosis', price: 'Get a quote' },
+      { name: 'Specialized Tech Support', price: '$60 / h' },
+    ],
+  },
+  {
+    category: 'Development Hours Plans (Monthly Subscription)',
+    items: [
+      {
+        name: 'Launch',
+        description: '40h flexible development hours. Slack channel + weekly updates.',
+        price: '$2,500 / mo',
+        note: 'Best for testing new ideas fast',
+      },
+      {
+        name: 'Scale',
+        description: '80h flexible development. Faster support & strategy calls.',
+        price: '$5,000 / mo',
+        note: 'Growing agencies’ favorite',
+      },
+      {
+        name: 'Partner+',
+        description: '120h flexible dev power. Dedicated PM & weekly strategy.',
+        price: '$5,500 / mo',
+        note: 'Higher profits, higher leverage',
+      },
+    ],
+  },
+];
+---
+
+<section class="px-4 py-24" id="services">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-4 border-primary text-primary">Service Catalog 2025</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Complete Solutions for Agencies</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+        From landing pages to full e-commerce, UX/UI design, infrastructure, and flexible dev hour packs. Scale your
+        agency without the overhead of a full-time team.
+      </p>
+    </div>
+
+    <div class="overflow-x-auto rounded-lg border border-primary/20 shadow-lg">
+      <table class="w-full border-collapse min-w-[800px]">
+        <thead>
+          <tr class="bg-gradient-to-r from-primary to-accent">
+            <th class="border border-primary/20 px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Services
+            </th>
+            <th class="border border-primary/20 px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Service Consideration
+            </th>
+            <th class="border border-primary/20 px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Cost
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            services.map((service) => (
+              <>
+                <!-- Category Header Row -->
+                <tr class="bg-primary">
+                  <td colspan="3" class="border border-primary/20 px-4 py-3 text-center text-base font-bold text-white sm:px-6 sm:py-4 sm:text-lg">
+                    {service.category}
+                  </td>
+                </tr>
+                <!-- Service Items -->
+                {service.items.map((item, index) => (
+                  <tr class={`transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 ${index % 2 === 0 ? 'bg-gradient-to-r from-accent/10 to-primary/5' : 'bg-gradient-to-r from-primary/5 to-accent/10'}`}>
+                    <td class="border border-primary/20 px-4 py-3 text-xs font-medium text-foreground sm:px-6 sm:py-4 sm:text-sm">
+                      <div>
+                        <div class="font-semibold">{item.name}</div>
+                        {item.note && <div class="text-xs text-accent mt-1">{item.note}</div>}
+                      </div>
+                    </td>
+                    <td class="border border-primary/20 px-4 py-3 text-xs text-muted-foreground sm:px-6 sm:py-4 sm:text-sm">
+                      {item.description || '-'}
+                    </td>
+                    <td class="border border-primary/20 px-4 py-3 text-xs font-bold text-primary sm:px-6 sm:py-4 sm:text-sm">
+                      {item.price || 'Get a quote'}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-16 text-center">
+      <a href="/full-service-catalog.pdf">
+        <p class="text-muted-foreground">
+          Want to explore everything in detail?
+          <span class="ml-1 cursor-pointer text-primary hover:underline">Download full catalog →</span>
+        </p>
+      </a>
+    </div>
+  </div>
+</section>
