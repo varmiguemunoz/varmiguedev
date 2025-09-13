@@ -23,14 +23,17 @@ const services: Service[] = [
       },
       {
         name: 'Basic – 3 Links (0–20 employees)',
+        description: 'Basic – 3 Links (Menu)',
         price: '$450',
       },
       {
         name: 'Standard – 5 Links (21–50 employees)',
+        description: 'Standard – 5 Links (Menu)',
         price: '$550',
       },
       {
         name: 'Ultra – 6+ Links (51–200 employees)',
+        description: 'Ultra – 6 or more Links (Menu)',
         price: '$700',
       },
       {
@@ -40,50 +43,52 @@ const services: Service[] = [
       },
       {
         name: 'Website Redesign',
+        description: ' To be quoted based on project scope (reference: $600–$1,200',
         price: 'Project scope ($600–$1200)',
       },
       {
-        name: 'Monthly Maintenance – Basic (12h)',
-        price: '$600',
-      },
-      {
-        name: 'Monthly Maintenance – Standard (18h)',
-        price: '$900',
-      },
-      {
-        name: 'Monthly Maintenance – Ultra (25h)',
-        price: '$1300',
-      },
+        name: 'Hosting & Domain',
+        description: 'We can provide hosting and domain services for a small additional charge',
+        price: 'Get a quote',
+      }
+    ],
+  },
+  {
+    category: 'Monthly Maintenance',
+    items: [
+      { name: 'Basic (12h)', description: 'Support through the service desk: miguelmunoz@bloomify.tech', price: '$600' },
+      { name: 'Standard (18h)',  price: '$900' },
+      { name: 'Ultra (25h)',   price: '$1300' },
     ],
   },
   {
     category: 'E-commerce',
     items: [
-      { name: 'Basic Store (600 products)', price: '$1,200' },
-      { name: 'Standard Store (900 products)', price: '$1,300' },
-      { name: 'Pro Store (1600 products)', price: '$2,700' },
-      { name: 'Corporate Store (3200 products)', price: '$4,600' },
-      { name: 'Custom Store', price: 'Get a quote' },
+      { name: 'Basic Store (600 products)', description: '400 Products', price: '$1,200' },
+      { name: 'Standard Store (900 products)', description: '800 Products', price: '$1,300' },
+      { name: 'Pro Store (1600 products)',description: '1600 Products',  price: '$2,700' },
+      { name: 'Corporate Store (3200 products)', description: '3200 Products',  price: '$4,600' },
+      { name: 'Custom Store', description: 'To be quoted based on project scope', price: 'Get a quote' },
     ],
   },
   {
     category: 'UX / UI & Graphic Design',
     items: [
-      { name: 'UX/UI Consulting', price: '$15 / h' },
-      { name: 'Wireframing & Prototyping', price: '$15 / h' },
-      { name: 'Interface Design (UI)', price: '$25 / h' },
-      { name: 'Brand Manual', price: 'Design system hourly cost' },
-      { name: 'Post Social Media Design', price: '$15 / CU' },
+      { name: 'UX/UI Consulting', description: "Hourly cost", price: '$15 / h' },
+      { name: 'Wireframing & Prototyping', description: "Hourly cost", price: '$15 / h' },
+      { name: 'Interface Design (UI)', description: "Hourly cost", price: '$25 / h' },
+      { name: 'Brand Manual', description: "Total cost", price: '$180' },
+      { name: 'Post Social Media Design', description: "Hourly cost", price: 'C/U' },
     ],
   },
   {
     category: 'IT & Infrastructure Consultations',
     items: [
-      { name: 'Audit – Medium sized (2 days)', price: '$300' },
-      { name: 'Audit – Company (3 days)', price: '$450' },
-      { name: 'Audit – Corporate (4 days)', price: '$600' },
-      { name: 'Implementation Diagnosis', price: 'Get a quote' },
-      { name: 'Specialized Tech Support', price: '$60 / h' },
+      { name: 'Audit – Medium sized (2 days)', description: "1 - 2 days", price: '$300' },
+      { name: 'Audit – Company (3 days)', description: "3 days", price: '$600' },
+      { name: 'Audit – Corporate (4 days)', description: "4 days", price: '$1000' },
+      { name: 'Implementation Diagnosis', description: "To be quoted based on project scope", price: 'Get a quote' },
+      { name: 'Specialized Tech Support', description: "Hourly cost", price: '$60 / h' },
     ],
   },
   {
@@ -93,7 +98,7 @@ const services: Service[] = [
         name: 'Launch',
         description: '40h flexible development hours. Slack channel + weekly updates.',
         price: '$2,500 / mo',
-        note: 'Best for testing new ideas fast',
+        note: 'get your project live in days and start testing without heavy investment',
       },
       {
         name: 'Scale',
@@ -125,25 +130,28 @@ const services: Service[] = [
 
     <div class="overflow-x-auto rounded-lg border border-primary/20 shadow-lg">
       <table class="w-full border-collapse min-w-[800px]">
-        <thead>
-          <tr class="bg-gradient-to-r from-primary to-accent">
-            <th class="border border-primary/20 px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+        <thead class="">
+          <div class="w-[80rem]">
+            <tr class="bg-black w-full from-primary to-accent">
+            <th class="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
               Services
             </th>
-            <th class="border border-primary/20 px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+            <th class="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
               Service Consideration
             </th>
-            <th class="border border-primary/20 px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+            <th class="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
               Cost
             </th>
           </tr>
+          </div>
+          
         </thead>
         <tbody>
           {
             services.map((service) => (
               <>
                 <!-- Category Header Row -->
-                <tr class="bg-primary">
+                <tr class="bg-gradient-to-r from-black to-gray-800">
                   <td colspan="3" class="border border-primary/20 px-4 py-3 text-center text-base font-bold text-white sm:px-6 sm:py-4 sm:text-lg">
                     {service.category}
                   </td>
@@ -173,7 +181,7 @@ const services: Service[] = [
     </div>
 
     <div class="mt-16 text-center">
-      <a href="/full-service-catalog.pdf">
+      <a href="/predictable-dev-power-for-digital-agencies.pdf">
         <p class="text-muted-foreground">
           Want to explore everything in detail?
           <span class="ml-1 cursor-pointer text-primary hover:underline">Download full catalog →</span>

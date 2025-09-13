@@ -177,7 +177,27 @@ import { Search, Code2, Rocket, HeadphonesIcon, Route, BadgeDollarSign, MessageS
         },
       ]}
     />
-    <FormMarketing client:load />
+    <FormMarketing
+      client:load
+      title={[
+        { text: 'Launch Your ', gradient: false },
+        { text: 'Digital Project ', gradient: true },
+        { text: 'with Ease and Tailored to Your Needs', gradient: false },
+      ]}
+      description={[
+        {
+          text: 'From landing pages to full redesigns, we deliver one-time projects with clear pricing and fast turnaround.',
+        },
+        { text: ' Get a professional digital presence in days, ', highlight: true },
+        { text: 'not months, without ' },
+        {
+          text: 'hidden costs ',
+          highlight: true,
+        },
+        { text: 'or ' },
+        { text: 'the burden of hiring an internal team.', highlight: true },
+      ]}
+    />
     <FAQ
       client:load
       subheading="Clear answers to help you start your project with confidence from timelines and pricing to what’s included in every delivery."
