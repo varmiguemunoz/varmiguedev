@@ -9,6 +9,7 @@ type Service = {
     price?: string;
     note?: string;
     priceId?: string;
+    book?: boolean;
   }[];
 };
 
@@ -19,7 +20,8 @@ const services: Service[] = [
       {
         name: 'Landing Page',
         description: 'Responsive design, WhatsApp link, social media integration, contact form.',
-        price: '$450 – $650',
+        price: '$350',
+        priceId: 'price_1S78MhDOnhjqrRNX5S3tC6ty',
       },
       {
         name: 'Basic – 3 Links (0–20 employees)',
@@ -31,65 +33,70 @@ const services: Service[] = [
         name: 'Standard – 5 Links (21–50 employees)',
         description: 'Standard – 5 Links (Menu)',
         price: '$550',
+        priceId: 'price_1S78NhDOnhjqrRNXQOqtKhdV',
       },
       {
         name: 'Ultra – 6+ Links (51–200 employees)',
         description: 'Ultra – 6 or more Links (Menu)',
         price: '$700',
+        priceId: 'price_1S78PRDOnhjqrRNXwIO0uQQ8',
       },
       {
         name: 'Custom Website',
         description: 'Tailored dev fees apply based on scope.',
         price: 'Project scope ($600–$1200)',
+        book: true,
       },
       {
         name: 'Website Redesign',
         description: ' To be quoted based on project scope (reference: $600–$1,200',
         price: 'Project scope ($600–$1200)',
+        book: true,
       },
       {
         name: 'Hosting & Domain',
         description: 'We can provide hosting and domain services for a small additional charge',
         price: 'Get a quote',
+        book: true,
       }
     ],
   },
   {
     category: 'Monthly Maintenance',
     items: [
-      { name: 'Basic (12h)', description: 'Support through the service desk: miguelmunoz@bloomify.tech', price: '$600' },
-      { name: 'Standard (18h)',  price: '$900' },
-      { name: 'Ultra (25h)',   price: '$1300' },
+      { name: 'Basic (12h)', description: 'Support through the service desk: miguelmunoz@bloomify.tech', price: '$600', priceId: 'price_1S78RBDOnhjqrRNXuoGZuiEE' },
+      { name: 'Standard (18h)',  price: '$900', priceId: 'price_1S78RmDOnhjqrRNX60hAwunK' },
+      { name: 'Ultra (25h)',   price: '$1300', priceId: 'price_1S78SmDOnhjqrRNX2T09EtBB' },
     ],
   },
   {
     category: 'E-commerce',
     items: [
-      { name: 'Basic Store (600 products)', description: '400 Products', price: '$1,200' },
-      { name: 'Standard Store (900 products)', description: '800 Products', price: '$1,300' },
-      { name: 'Pro Store (1600 products)',description: '1600 Products',  price: '$2,700' },
-      { name: 'Corporate Store (3200 products)', description: '3200 Products',  price: '$4,600' },
-      { name: 'Custom Store', description: 'To be quoted based on project scope', price: 'Get a quote' },
+      { name: 'Basic Store (600 products)', description: '400 Products', price: '$700', priceId: 'price_1S78TnDOnhjqrRNXv0dDGhgQ' },
+      { name: 'Standard Store (900 products)', description: '800 Products', price: '$1,300', priceId: 'price_1S78WMDOnhjqrRNX5rDJaO7o' },
+      { name: 'Pro Store (1600 products)',description: '1600 Products',  price: '$2,700', priceId: 'price_1S78Y3DOnhjqrRNXYZs08anD' },
+      { name: 'Corporate Store (3200 products)', description: '3200 Products',  price: '$4,600', priceId: 'price_1S78YsDOnhjqrRNXp73TxHx0' },
+      { name: 'Custom Store', description: 'To be quoted based on project scope', price: 'Get a quote',  book: true },
     ],
   },
   {
     category: 'UX / UI & Graphic Design',
     items: [
-      { name: 'UX/UI Consulting', description: "Hourly cost", price: '$15 / h' },
-      { name: 'Wireframing & Prototyping', description: "Hourly cost", price: '$15 / h' },
-      { name: 'Interface Design (UI)', description: "Hourly cost", price: '$25 / h' },
-      { name: 'Brand Manual', description: "Total cost", price: '$180' },
-      { name: 'Post Social Media Design', description: "Hourly cost", price: 'C/U' },
+      { name: 'UX/UI Consulting', description: "Hourly cost", price: '$15 / h', book: true },
+      { name: 'Wireframing & Prototyping', description: "Hourly cost", price: '$15 / h', book: true },
+      { name: 'Interface Design (UI)', description: "Hourly cost", price: '$25 / h', book: true },
+      { name: 'Brand Manual', description: "Total cost", price: '$180', priceId: 'price_1S78e6DOnhjqrRNXAr8TqNg6' },
+      { name: 'Post Social Media Design', description: "Hourly cost", price: 'C/U', book: true },
     ],
   },
   {
     category: 'IT & Infrastructure Consultations',
     items: [
-      { name: 'Audit – Medium sized (2 days)', description: "1 - 2 days", price: '$300' },
-      { name: 'Audit – Company (3 days)', description: "3 days", price: '$600' },
-      { name: 'Audit – Corporate (4 days)', description: "4 days", price: '$1000' },
-      { name: 'Implementation Diagnosis', description: "To be quoted based on project scope", price: 'Get a quote' },
-      { name: 'Specialized Tech Support', description: "Hourly cost", price: '$60 / h' },
+      { name: 'Audit – Medium sized (2 days)', description: "1 - 2 days", price: '$300', priceId: 'price_1S78a4DOnhjqrRNXHkdT9XbV' },
+      { name: 'Audit – Company (3 days)', description: "3 days", price: '$600', priceId: 'price_1S78asDOnhjqrRNX0mwquE0G' },
+      { name: 'Audit – Corporate (4 days)', description: "4 days", price: '$1000', priceId: 'price_1S78bdDOnhjqrRNXOLwwqPhV' },
+      { name: 'Implementation Diagnosis', description: "To be quoted based on project scope", price: 'Get a quote', book: true },
+      { name: 'Specialized Tech Support', description: "Hourly cost", price: '$60 / h', book: true },
     ],
   },
 ];
@@ -102,11 +109,11 @@ const services: Service[] = [
       <Badge variant="outline" className="mb-4 border-primary text-primary">Service Catalog 2025</Badge>
       <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Complete Solutions for Agencies</h2>
       <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
-        From landing pages to full e-commerce, UX/UI design, infrastructure, and flexible dev hour packs. Scale your
-        agency without the overhead of a full-time team.
+        From conversion-focused landing pages to revenue-driven e-commerce and business-ready infrastructure. Get one-time projects with transparent pricing and fast delivery. Grow your brand and sales without hidden costs or long processes
       </p>
     </div>
 
+    <p class="text-muted-foreground text-sm text-center w-full mb-3">Click any service in the table to purchase instantly. 👉🏻</p>
     <div class="overflow-x-auto rounded-lg border border-primary/20 shadow-lg">
       <table class="w-full border-collapse min-w-[800px]">
         <thead class="">
@@ -141,6 +148,7 @@ const services: Service[] = [
                     data-price-id={item.priceId || ''}
                     data-plan-name={item.name || ''}
                     data-price={item.price?.replace('$', '') || ''}
+                    data-book={item.book || false}
                     class={`transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 ${index % 2 === 0 ? 'bg-gradient-to-r from-accent/10 to-primary/5' : 'bg-gradient-to-r from-primary/5 to-accent/10'}`}>
                     <td class="border border-primary/20 px-4 py-3 text-xs font-medium text-foreground sm:px-6 sm:py-4 sm:text-sm">
                       <div>
@@ -205,10 +213,14 @@ const handleClick = async (priceId: string, planName: string) => {
     
     serviceRows.forEach((row) => {
       const priceId = row.getAttribute('data-price-id');
-
-      console.log('priceId: ' + priceId);
-      
+      const book = row.getAttribute('data-book') === 'true';
       const planName = row.getAttribute('data-plan-name');
+
+      if (book) {
+        row.addEventListener('click', async() => {
+          window.location.href = 'https://calendly.com/miguelmunoz-bloomify/30min';
+        });
+      }
       
       // Only add click listener if all required data is present
       if (priceId && planName) {
