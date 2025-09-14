@@ -3,23 +3,144 @@ import Base from '@layouts/Base.astro';
 import HeroSection from '@/components/global/hero-gsap';
 import Brands from '@/components/global/brands/brands.astro';
 import brands from '@/config/brands.json';
-import About from '@components/global/about-us/about.astro';
 import Testimonials from '@/components/global/testimonials/testimonials.astro';
-import Workflow from '@/components/global/workflow/workflow.astro';
 import FAQ from '@/components/global/faq';
 import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
-import Pricing from '@/components/global/pricing/pricing.astro';
 import Navbar from '@/components/global/navbar';
+import Service from '@/components/global/services/service.astro';
+import Workflow from '@/components/global/workflow/workflow.astro';
+import { Route, BadgeDollarSign, MessageSquare } from 'lucide-react';
 ---
 
 <Base meta_title="Agile Development for Agencies | Home" blogpost={true}>
   <Navbar client:load />
-  <HeroSection client:load />
+  <HeroSection
+    client:load
+    heroContent={{
+      title: [{ text: 'Ship faster. Spend smarter. Scale on demand.', gradient: true }],
+      description: [
+        {
+          text: 'One partner for paid software consulting, conversion-ready one-time projects, and monthly Dev Packs. Get a clear roadmap, launch in days, and extend your team without hiring-backed by transparent pricing, reliable timelines, and clean, production-ready code.',
+        },
+      ],
+    }}
+  />
   <Brands brands={brands} />
-  <About />
-  <Pricing />
+  <Service />
   <Workflow />
   <Testimonials />
-  <FAQ client:load />
-  <DiscoveryCall />
+  <FAQ
+    client:load
+    faqs={[
+      {
+        question: 'How fast can my website be ready?',
+        answer: 'Most projects are delivered in 5–10 days.',
+      },
+      {
+        question: 'What if I need extra pages?',
+        answer: 'Add-ons are available at transparent rates.',
+      },
+      {
+        question: 'Do you include hosting and domain?',
+        answer: 'Yes, we can also include it for a small additional charge.',
+      },
+      {
+        question: 'Do you handle hosting & domain setup?',
+        answer:
+          'Yes, we provide all the settings your website needs to function perfectly on the Internet, including hosting and domain.',
+      },
+      {
+        question: 'Can I request revisions?',
+        answer: 'Yes, revisions are included to ensure satisfaction.',
+      },
+      {
+        question: 'How does the monthly subscription work?',
+        answer:
+          'You choose a plan with a set number of hours which you can allocate to whatever your agency needs, web development, mobile development, automation, infrastructure, etc... Billing is not project based, only predictable monthly hourly costs with our time tracking and reporting software, at the end of the monthly billing cycle you will receive a document with the total number of hours worked and descriptive reporting tables where you can see in detail what the time was used for.',
+      },
+      {
+        question: 'What happens if I do not use 100% of the hours of my current plan?',
+        answer:
+          'If you don’t use all your hours in a given month, up to 30% of the unused value is converted into service credit, valid for 30 days. That credit can be used for strategy sessions, audits, or additional dev work — no hours are rolled over directly, but you always get full value for what you pay.',
+      },
+      {
+        question: 'What technologies do you work with?',
+        answer:
+          'Web: React, Next.js, Astro, Node.js, Tailwind CSS, Shadcn UI, CSS, HTML, Webflow, Wordpress, Shopify. Mobile: React Native, Expo. Infrastructure: AWS, Docker, CI/CD. Automation: Python and Javascript scripting, AI agents, MCP, API integrations.',
+      },
+      {
+        question: 'Can I change or pause my plan?',
+        answer:
+          'Yes, you can upgrade, downgrade, or pause your subscription with 30 days notice. I work with growing agencies and understand your needs change.',
+      },
+      {
+        question: 'What if I need more hours in a month?',
+        answer:
+          "Additional hours are available at $20/hour. I'll always communicate before exceeding your monthly allocation and get approval first.",
+      },
+      {
+        question: 'How do we communicate and track progress?',
+        answer:
+          'I use Slack for daily communication and provide weekly progress updates. All work is tracked in shared project boards with clear deliverables and timelines.',
+      },
+      {
+        question: 'Do you handle emergency fixes?',
+        answer:
+          'Yes, all plans include emergency support within 4 hours during business hours. Critical production issues get immediate attention.',
+      },
+      {
+        question: 'What’s included in the consulting session?',
+        answer: 'A live 60-minute strategy call + PDF roadmap with timelines, costs, and priorities.',
+      },
+      {
+        question: 'Is this refundable?',
+        answer: 'No, but if you upgrade to a Dev Pack, the consulting fee can be credited.',
+      },
+      {
+        question: 'How soon will I get my roadmap?',
+        answer: 'You’ll receive your tailored roadmap within 48 hours after the session.',
+      },
+      {
+        question: 'Can I book multiple sessions?',
+        answer: 'Yes, you can purchase the Strategy Package for ongoing support.',
+      },
+      {
+        question: 'What can I expect from a consultation with you?',
+        answer:
+          'You’ll receive clear, actionable guidance tailored to your business goals. We’ll focus on identifying the best strategies, tools, and next steps for your specific case.',
+      },
+      {
+        question: 'Do I need technical knowledge to benefit from this consultation?',
+        answer:
+          'Not at all. We’ll explain everything in plain language so you can make informed decisions without needing a technical background.',
+      },
+      {
+        question: 'Can you help me choose the right technology stack or platform?',
+        answer: 'Yes. We’ll recommend the best tools and platforms based on your goals, budget, and growth stage.',
+      },
+      {
+        question: 'Will you provide a detailed plan or just advice?',
+        answer: 'You’ll get both: actionable advice during the call and a written PDF roadmap with clear next steps.',
+      },
+      {
+        question: 'Do you offer hands-on implementation after the consultation?',
+        answer:
+          'Yes. If you’d like us to implement the roadmap, you can move forward with a Dev Pack or project engagement.',
+      },
+    ]}
+  />
+  <DiscoveryCall
+    heading="Let’s Choose the Best Path for Your Product"
+    description="A 15–30 min discovery call to align goals and pick the right starting point, consulting for clarity, a conversion-ready one-time project, or ongoing Dev Packs. Leave with next steps, timelines, and transparent pricing."
+    features={[
+      { icon: Route, text: 'Choose your path: Consulting, Project, or Dev Pack' },
+      { icon: BadgeDollarSign, text: 'Transparent pricing & realistic timelines' },
+      { icon: MessageSquare, text: 'Direct, actionable answers—no fluff' },
+    ]}
+    button={{
+      label: 'Schedule Discovery Call',
+      link: 'https://calendly.com/miguelmunoz-bloomify/30min', // cambia a tu ruta/URL de agenda si usas otra
+      note: 'Fast confirmation • 24h response',
+    }}
+  />
 </Base>

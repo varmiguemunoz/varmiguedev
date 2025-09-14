@@ -14,7 +14,13 @@ import FormMarketing from '@/components/global/sales-form/form-marketing';
 
 <Base title="Agile Development for Agencies | Launch 3× Faster Without an In-House Team">
   <div class="min-h-screen w-full">
-    <HeroSection client:load cta={{ secondary: { url: '#mini-case-studies', title: 'View Real Cases' } }} />
+    <HeroSection
+      client:load
+      cta={{
+        primary: { url: 'https://calendly.com/miguelmunoz-bloomify/30min', title: 'Book a Free Session' },
+        secondary: { url: '#mini-case-studies', title: 'View Real Cases' },
+      }}
+    />
     <MiniCaseStudies />
     <ValueProposition />
     <Testimonials
