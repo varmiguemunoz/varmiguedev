@@ -7,9 +7,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import Social from './social';
 import Stats from './stats';
-import HeroContent from './hero-content';
+import HeroContent, { type HeroContentProps } from './hero-content';
 import Scroll from './scroll';
-// import Avatar from './avatar';
+
 import ThreeScene from './three-model';
 
 if (typeof window !== 'undefined') {
@@ -23,6 +23,7 @@ type HeroSectionProps = {
       title: string;
     };
   };
+  heroContent?: HeroContentProps;
 };
 
 export default function HeroSection({
@@ -31,6 +32,25 @@ export default function HeroSection({
       url: '/sales',
       title: 'Talk to sales',
     },
+  },
+  heroContent = {
+    badge: 'Dev Partner for Agencies',
+    title: [
+      { text: 'Launch your product 3× faster', gradient: true },
+      { text: '\n' },
+      { text: 'without internal team' },
+    ],
+    description: [
+      { text: 'Need to ' },
+      { text: 'launch fast', highlight: true },
+      { text: ', deliver ' },
+      { text: 'clean code', highlight: true },
+      { text: ', and ' },
+      { text: 'scale without hiring', highlight: true },
+      {
+        text: '? I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations.',
+      },
+    ],
   },
 }: HeroSectionProps) {
   const heroRef = useRef<HTMLElement>(null);
@@ -76,7 +96,7 @@ export default function HeroSection({
         <div className="grid items-start justify-center gap-12 lg:grid-cols-2">
           {/* Left Content */}
           <div ref={textRef} className="space-y-8">
-            <HeroContent />
+            <HeroContent {...heroContent} />
 
             <div className="flex flex-col gap-4 sm:flex-row">
               <a href="https://calendly.com/miguelmunoz-bloomify/30min" key={'hero-view-services'}>

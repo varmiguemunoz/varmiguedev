@@ -1,0 +1,238 @@
+---
+import DevPricing from '@/components/global/pricing/dev-projects/devpricing.astro';
+import Base from '@layouts/Base.astro';
+import FAQ from '@/components/global/faq';
+import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
+import Video from '@/components/global/video/video.astro';
+import HeroSection from '@/components/global/hero-gsap';
+import Testimonials from '@/components/global/testimonials/testimonials.astro';
+import Workflow from '@/components/global/workflow/workflow.astro';
+import MiniCaseStudies from '@/components/global/mini-case-studies/index.astro';
+import ValueProposition from '@/components/global/value-proposition/index.astro';
+import FormMarketing from '@/components/global/sales-form/form-marketing';
+import { Search, Code2, Rocket, HeadphonesIcon, Route, BadgeDollarSign, MessageSquare } from 'lucide-react';
+---
+
+<Base title="Agile Development for Agencies | Launch 3× Faster Without an In-House Team">
+  <div class="min-h-screen w-full">
+    <HeroSection
+      client:load
+      heroContent={{
+        badge: 'Trusted by 50+ Businesses',
+        title: [
+          { text: 'Launch Your Website or Online', gradient: true },
+          { text: '\n' },
+          { text: 'Store in Days, Not Months' },
+        ],
+        description: [
+          { text: 'Forget about ' },
+          {
+            text: 'endless delays',
+            highlight: true,
+          },
+          { text: ' and ' },
+          {
+            text: 'high agency costs.',
+            highlight: true,
+          },
+          { text: ' Get a modern, high-performance website, delivered quickly at a fixed price with no surprises.' },
+          { text: '\n' },
+          { text: 'No Hidden Fees or Unexpected Expenses' },
+          { text: '\n' },
+          { text: 'Full Transparency, 100% Satisfaction Guarantee' },
+        ],
+      }}
+      cta={{ secondary: { url: '#mini-case-studies', title: 'View Real Cases' } }}
+    />
+    <MiniCaseStudies
+      heading="Real Businesses. Real Results."
+      descriptionDesktop="From startups to small businesses, we’ve helped companies launch professional websites and online stores in days, not months. Each project is delivered with speed, transparency, and a focus on growth, so you can start generating leads and sales right away."
+      caseStudies={[
+        {
+          tag: 'Sales',
+          title: 'Launched a Sales Landing in Just 5 Days',
+          description:
+            'A small coaching business needed a conversion-focused landing page to launch their new program. We designed and delivered a high-converting page in under a week, helping them capture leads immediately.',
+          stats: [
+            { value: '7', label: 'days to store live' },
+            { value: '💳', label: 'First sales within 48 hours' },
+          ],
+        },
+        {
+          tag: 'Sales',
+          title: 'Launched a Sales Landing in Just 5 Days',
+          description:
+            'A small coaching business needed a conversion-focused landing page to launch their new program. We designed and delivered a high-converting page in under a week, helping them capture leads immediately.',
+          stats: [
+            { value: '7', label: 'days to store live' },
+            { value: '💳', label: 'First sales within 48 hours' },
+          ],
+        },
+        {
+          tag: 'Sales',
+          title: 'Launched a Sales Landing in Just 5 Days',
+          description:
+            'A small coaching business needed a conversion-focused landing page to launch their new program. We designed and delivered a high-converting page in under a week, helping them capture leads immediately.',
+          stats: [
+            { value: '7', label: 'days to store live' },
+            { value: '💳', label: 'First sales within 48 hours' },
+          ],
+        },
+      ]}
+    />
+    <ValueProposition
+      items={[
+        {
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-5 w-5"><path d="M5 12h14"/></svg>`,
+          bgColor: 'bg-secondary/15',
+          textColor: 'text-secondary',
+          title: 'Delivered in Days',
+          description: 'Websites and online stores launched fast — ready to perform in 5–10 days, not months.',
+        },
+        {
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-5 w-5"><path d="M12 3v18M3 12h18"/></svg>`,
+          bgColor: 'bg-green-500/15',
+          textColor: 'text-green-500',
+          title: 'Transparent Pricing',
+          description:
+            'Fixed packages with no hidden fees — know exactly what you’re paying for and when it’s delivered.',
+        },
+        {
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="h-5 w-5"><path d="M5 12l5 5L20 7"/></svg>`,
+          bgColor: 'bg-purple-500/15',
+          textColor: 'text-purple-500',
+          title: 'Built to Grow',
+          description:
+            'Every project is optimized for leads, sales, and credibility — designed to move your business forward.',
+        },
+      ]}
+    />
+    <Testimonials
+      heading="Trusted by Business Owners"
+      subheading="Client Results"
+      description="See what business owners say about working with me"
+      testimonials={[
+        {
+          quote:
+            'Our e-commerce store was live in under 7 days and started generating sales immediately. The process was fast, clear, and without hidden costs.',
+          author: 'Jessica Miller',
+          company: 'UrbanGlow Cosmetics',
+          avatar: '🛍️',
+          rating: 5,
+        },
+        {
+          quote:
+            'We needed a professional website to showcase our services. In less than 10 days we had a clean, modern site that actually brought us new leads.',
+          author: 'Daniel Roberts',
+          company: 'BrightPath Consulting',
+          avatar: '💼',
+          rating: 5,
+        },
+        {
+          quote:
+            'The landing page Miguel built for our campaign doubled our conversion rate. Simple, transparent, and exactly what we needed to grow.',
+          author: 'Sophia Taylor',
+          company: 'NextGen Marketing',
+          avatar: '📈',
+          rating: 5,
+        },
+      ]}
+      cta={{
+        title: 'Want to share your results?',
+        cta: 'Schedule a call ->',
+        link: 'https://calendly.com/miguelmunoz-bloomify/30min',
+      }}
+    />
+    <Video />
+    <DevPricing />
+    <Workflow
+      heading="How It Works"
+      subheading="Start With the Right Project"
+      description="Whether you need a landing page, a redesign, or a full online store, pick the solution that matches your growth goals."
+      advice={false}
+      steps={[
+        {
+          icon: Search,
+          title: 'Pick & Start',
+          description: 'Select a project based on your goals, go live in days.',
+          duration: '1 day',
+        },
+        {
+          icon: Code2,
+          title: 'Kick-off Call',
+          description: 'Share your content, goals, and style.',
+          duration: '2 days',
+        },
+        {
+          icon: Rocket,
+          title: 'Build & Review',
+          description: 'Fast delivery, hands-off management, full transparency.',
+          duration: '10 days',
+        },
+        {
+          icon: HeadphonesIcon,
+          title: 'Launch & Grow',
+          description: 'Your site goes live, ready to perform.',
+          duration: 'Ongoing',
+        },
+      ]}
+    />
+    <FormMarketing
+      client:load
+      title={[
+        { text: 'Launch Your ', gradient: false },
+        { text: 'Digital Project ', gradient: true },
+        { text: 'with Ease and Tailored to Your Needs', gradient: false },
+      ]}
+      description={[
+        {
+          text: 'From landing pages to full redesigns, we deliver one-time projects with clear pricing and fast turnaround.',
+        },
+        { text: ' Get a professional digital presence in days, ', highlight: true },
+        { text: 'not months, without ' },
+        {
+          text: 'hidden costs ',
+          highlight: true,
+        },
+        { text: 'or ' },
+        { text: 'the burden of hiring an internal team.', highlight: true },
+      ]}
+    />
+    <FAQ
+      client:load
+      subheading="Clear answers to help you start your project with confidence from timelines and pricing to what’s included in every delivery."
+      faqs={[
+        {
+          question: 'How fast can my website be ready?',
+          answer: 'Most projects are delivered in 5–10 days.',
+        },
+        {
+          question: 'What if I need extra pages?',
+          answer: 'Add-ons are available at transparent rates.',
+        },
+        {
+          question: 'Do you include hosting and domain?',
+          answer: 'Yes, we can also include it for a small additional charge.',
+        },
+        {
+          question: 'Do you handle hosting & domain setup?',
+          answer:
+            'Yes, we provide all the settings your website needs to function perfectly on the Internet, including hosting and domain.',
+        },
+        {
+          question: 'Can I request revisions?',
+          answer: 'Yes, revisions are included to ensure satisfaction.',
+        },
+      ]}
+    />
+    <DiscoveryCall
+      heading="Let’s Plan Your Website Together"
+      description="Book a quick call to align on your goals, review project options, and get a clear roadmap with pricing upfront, no surprises, just results."
+      features={[
+        { icon: Route, text: 'Clear project roadmap tailored to your business' },
+        { icon: BadgeDollarSign, text: 'Transparent pricing before you start' },
+        { icon: MessageSquare, text: 'Fast answers to all your questions' },
+      ]}
+    />
+  </div>
+</Base>

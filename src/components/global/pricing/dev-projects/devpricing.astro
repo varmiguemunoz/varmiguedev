@@ -1,0 +1,221 @@
+---
+import { Badge } from '@/components/ui/badge';
+
+type Service = {
+  category: string;
+  items: {
+    name: string;
+    description?: string;
+    price?: string;
+    note?: string;
+    priceId?: string;
+  }[];
+};
+
+const services: Service[] = [
+  {
+    category: 'Websites (Does not include hosting or domain)',
+    items: [
+      {
+        name: 'Landing Page',
+        description: 'Responsive design, WhatsApp link, social media integration, contact form.',
+        price: '$450 – $650',
+      },
+      {
+        name: 'Basic – 3 Links (0–20 employees)',
+        description: 'Basic – 3 Links (Menu)',
+        price: '$450',
+        priceId: 'price_1S73JlDOnhjqrRNXDcjE8Hls',
+      },
+      {
+        name: 'Standard – 5 Links (21–50 employees)',
+        description: 'Standard – 5 Links (Menu)',
+        price: '$550',
+      },
+      {
+        name: 'Ultra – 6+ Links (51–200 employees)',
+        description: 'Ultra – 6 or more Links (Menu)',
+        price: '$700',
+      },
+      {
+        name: 'Custom Website',
+        description: 'Tailored dev fees apply based on scope.',
+        price: 'Project scope ($600–$1200)',
+      },
+      {
+        name: 'Website Redesign',
+        description: ' To be quoted based on project scope (reference: $600–$1,200',
+        price: 'Project scope ($600–$1200)',
+      },
+      {
+        name: 'Hosting & Domain',
+        description: 'We can provide hosting and domain services for a small additional charge',
+        price: 'Get a quote',
+      }
+    ],
+  },
+  {
+    category: 'Monthly Maintenance',
+    items: [
+      { name: 'Basic (12h)', description: 'Support through the service desk: miguelmunoz@bloomify.tech', price: '$600' },
+      { name: 'Standard (18h)',  price: '$900' },
+      { name: 'Ultra (25h)',   price: '$1300' },
+    ],
+  },
+  {
+    category: 'E-commerce',
+    items: [
+      { name: 'Basic Store (600 products)', description: '400 Products', price: '$1,200' },
+      { name: 'Standard Store (900 products)', description: '800 Products', price: '$1,300' },
+      { name: 'Pro Store (1600 products)',description: '1600 Products',  price: '$2,700' },
+      { name: 'Corporate Store (3200 products)', description: '3200 Products',  price: '$4,600' },
+      { name: 'Custom Store', description: 'To be quoted based on project scope', price: 'Get a quote' },
+    ],
+  },
+  {
+    category: 'UX / UI & Graphic Design',
+    items: [
+      { name: 'UX/UI Consulting', description: "Hourly cost", price: '$15 / h' },
+      { name: 'Wireframing & Prototyping', description: "Hourly cost", price: '$15 / h' },
+      { name: 'Interface Design (UI)', description: "Hourly cost", price: '$25 / h' },
+      { name: 'Brand Manual', description: "Total cost", price: '$180' },
+      { name: 'Post Social Media Design', description: "Hourly cost", price: 'C/U' },
+    ],
+  },
+  {
+    category: 'IT & Infrastructure Consultations',
+    items: [
+      { name: 'Audit – Medium sized (2 days)', description: "1 - 2 days", price: '$300' },
+      { name: 'Audit – Company (3 days)', description: "3 days", price: '$600' },
+      { name: 'Audit – Corporate (4 days)', description: "4 days", price: '$1000' },
+      { name: 'Implementation Diagnosis', description: "To be quoted based on project scope", price: 'Get a quote' },
+      { name: 'Specialized Tech Support', description: "Hourly cost", price: '$60 / h' },
+    ],
+  },
+];
+
+---
+
+<section class="px-4 py-24" id="services">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-4 border-primary text-primary">Service Catalog 2025</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Complete Solutions for Agencies</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+        From landing pages to full e-commerce, UX/UI design, infrastructure, and flexible dev hour packs. Scale your
+        agency without the overhead of a full-time team.
+      </p>
+    </div>
+
+    <div class="overflow-x-auto rounded-lg border border-primary/20 shadow-lg">
+      <table class="w-full border-collapse min-w-[800px]">
+        <thead class="">
+          <div class="w-[80rem]">
+            <tr class="bg-black w-full from-primary to-accent">
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Services
+            </th>
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Service Consideration
+            </th>
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Cost
+            </th>
+          </tr>
+          </div>
+          
+        </thead>
+        <tbody>
+          {
+            services.map((service) => (
+              <>
+                <!-- Category Header Row -->
+                <tr class="bg-gradient-to-r from-black to-gray-800">
+                  <td colspan="3" class="border border-primary/20 px-4 py-3 text-center text-base font-bold text-white sm:px-6 sm:py-4 sm:text-lg">
+                    {service.category}
+                  </td>
+                </tr>
+                <!-- Service Items -->
+                {service.items.map((item, index) => (
+                  <tr id={`service-${item.name.replace(/\s+/g, '-').toLowerCase()}`} 
+                    data-price-id={item.priceId || ''}
+                    data-plan-name={item.name || ''}
+                    data-price={item.price?.replace('$', '') || ''}
+                    class={`transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 ${index % 2 === 0 ? 'bg-gradient-to-r from-accent/10 to-primary/5' : 'bg-gradient-to-r from-primary/5 to-accent/10'}`}>
+                    <td class="border border-primary/20 px-4 py-3 text-xs font-medium text-foreground sm:px-6 sm:py-4 sm:text-sm">
+                      <div>
+                        <div class="font-semibold">{item.name}</div>
+                        {item.note && <div class="text-xs text-accent mt-1">{item.note}</div>}
+                      </div>
+                    </td>
+                    <td class="border border-primary/20 px-4 py-3 text-xs text-muted-foreground sm:px-6 sm:py-4 sm:text-sm">
+                      {item.description || '-'}
+                    </td>
+                    <td class="border border-primary/20 px-4 py-3 text-xs font-bold text-primary sm:px-6 sm:py-4 sm:text-sm">
+                      {item.price || 'Get a quote'}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-16 text-center">
+      <a href="/predictable-dev-power-for-digital-agencies.pdf">
+        <p class="text-muted-foreground">
+          Want to explore everything in detail?
+          <span class="ml-1 cursor-pointer text-primary hover:underline">Download full catalog →</span>
+        </p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+const handleClick = async (priceId: string, planName: string) => {
+    try {
+
+      const res = await fetch('/api/create-checkout-projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          priceId: priceId,
+          planName: planName
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to create Stripe Checkout Session.');
+
+      const { url } = await res.json();
+      if (!url) throw new Error('Missing Checkout URL from server.');
+
+      window.location.href = url;
+    } catch (err) {
+      console.error(err);
+      alert('The payment process could not be initiated. Please try again');
+    } 
+  };
+
+  // Add click event listeners to all service rows
+  document.addEventListener('DOMContentLoaded', () => {
+    const serviceRows = document.querySelectorAll('tr[data-price-id]');
+    
+    serviceRows.forEach((row) => {
+      const priceId = row.getAttribute('data-price-id');
+
+      console.log('priceId: ' + priceId);
+      
+      const planName = row.getAttribute('data-plan-name');
+      
+      // Only add click listener if all required data is present
+      if (priceId && planName) {
+        row.addEventListener('click', async() => {
+         await handleClick(priceId, planName);
+        });
+      }
+    });
+  });
+</script>
