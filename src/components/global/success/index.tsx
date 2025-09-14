@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import Confetti from 'react-confetti';
 
 const Success = () => {
@@ -64,7 +63,7 @@ const Success = () => {
             </h1>
 
             <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
-              Thank you for subscribing to our monthly development pack. We'll contact you soon to get started.
+              Thank you for your purchase! We’ll contact you shortly to kick off your project.
             </p>
           </div>
 
@@ -76,38 +75,27 @@ const Success = () => {
               <div className="flex items-start gap-4">
                 <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
                 <p className="text-lg text-muted-foreground">
-                  You'll receive a confirmation email with your subscription details.
+                  You’ll receive a confirmation email with your purchase details.
                 </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                <p className="text-lg text-muted-foreground">I will set up your development hours and Slack channel.</p>
               </div>
 
               <div className="flex items-start gap-4">
                 <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
                 <p className="text-lg text-muted-foreground">
-                  We'll reach out within 24 hours to discuss your project requirements.
+                  {' '}
+                  Please schedule your kickoff call — this meeting is essential to understand your business, align on
+                  timelines, deliverables, and ensure a smooth process.
+                </p>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                <p className="text-lg text-muted-foreground">
+                  Before the call, you’ll receive an email requesting key details "brand assets, goals, references".
+                  Sharing this info in advance helps us prepare targeted questions and move faster.
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <a href="/">
-              <Button variant="hero" size="lg" className="group">
-                Return Home
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </a>
-
-            <a href="/sales">
-              <Button variant="outline" size="lg">
-                Contact Support
-              </Button>
-            </a>
           </div>
         </div>
       </div>
