@@ -12,13 +12,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { priceId, planName, hours } = req.body;
+    const { priceId, planName, hours, redirectUrl } = req.body;
     const origin = req.headers.origin || process.env.SITE_URL;
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}${redirectUrl ? redirectUrl : '/payment/success'}?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/payment/canceled`,
       metadata: {
         planName,

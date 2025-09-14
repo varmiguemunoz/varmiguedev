@@ -16,6 +16,7 @@ interface ProcessProps {
   subheading?: string;
   description?: string;
   advice?: boolean;
+  ctalink?: string;
 }
 
 // Defaults
@@ -50,6 +51,7 @@ const {
   subheading = 'Simple, Proven Process',
   description = 'From idea to launch, I handle every step of development with clear timelines and constant communication',
   advice = true,
+  ctalink = 'https://calendly.com/miguelmunoz-bloomify/30min',
 } = Astro.props as ProcessProps;
 ---
 
@@ -102,10 +104,7 @@ const {
     <div class="mt-16 flex flex-col gap-4 text-center">
       <p class="text-muted-foreground">
         Ready to get started?
-        <a
-          href="https://calendly.com/miguelmunoz-bloomify/30min"
-          class="ml-1 cursor-pointer text-primary hover:underline">Book a discovery call →</a
-        >
+        <a href={ctalink} class="ml-1 cursor-pointer text-primary hover:underline">Book a discovery call →</a>
       </p>
       {
         advice && (

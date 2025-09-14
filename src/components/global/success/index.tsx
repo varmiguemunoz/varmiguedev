@@ -2,7 +2,27 @@ import { useEffect, useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 import Confetti from 'react-confetti';
 
-const Success = () => {
+type SuccessProps = {
+  steps?: {
+    description: string;
+  }[];
+};
+
+const Success = ({
+  steps = [
+    {
+      description: 'You’ll receive a confirmation email with your purchase details.',
+    },
+    {
+      description:
+        'Please schedule your kickoff call — this meeting is essential to understand your business, align on timelines, deliverables, and ensure a smooth process.',
+    },
+    {
+      description:
+        'Before the call, you’ll receive an email requesting key details "brand assets, goals, references". Sharing this info in advance helps us prepare targeted questions and move faster.',
+    },
+  ],
+}: SuccessProps) => {
   const [showConfetti, setShowConfetti] = useState(true);
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
@@ -72,29 +92,12 @@ const Success = () => {
             <h2 className="mb-8 text-2xl font-semibold text-foreground md:text-3xl">What's next?</h2>
 
             <div className="space-y-4 text-left">
-              <div className="flex items-start gap-4">
-                <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                <p className="text-lg text-muted-foreground">
-                  You’ll receive a confirmation email with your purchase details.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                <p className="text-lg text-muted-foreground">
-                  {' '}
-                  Please schedule your kickoff call — this meeting is essential to understand your business, align on
-                  timelines, deliverables, and ensure a smooth process.
-                </p>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                <p className="text-lg text-muted-foreground">
-                  Before the call, you’ll receive an email requesting key details "brand assets, goals, references".
-                  Sharing this info in advance helps us prepare targeted questions and move faster.
-                </p>
-              </div>
+              {steps.map((step, index) => (
+                <div className="flex items-start gap-4">
+                  <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                  <p className="text-lg text-muted-foreground">{step.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

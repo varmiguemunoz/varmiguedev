@@ -3,7 +3,19 @@ import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
 import GetStartedButton from './get-started-button';
 
-const plans = [
+type Plan = {
+  name: string;
+  description: string;
+  price: number;
+  stripePriceId: string;
+  redirectUrl?: string;
+  hours: string;
+  popular: boolean;
+  number_plans?: number;
+  features: string[];
+};
+
+const FEATURES_PLANS: Plan[] = [
   {
     name: 'Launch',
     description: 'Perfect for small agencies getting started',
@@ -58,21 +70,25 @@ const plans = [
 ];
 
 type Props = {
-  note_title?: string;
-  url?: string;
-  note_cta?: string;
+  title?: string;
+  description?: string;
+  plan?: Plan[];
 };
 
-const { note_title = 'Need custom hours or enterprise support?', note_cta, url } = Astro.props;
+const {
+  title = 'Predictable Dev Power for Digital Agencies',
+  description = 'Choose your plan based on development hours needed. Scale up or down as your agency grows.',
+  plan = FEATURES_PLANS,
+} = Astro.props;
 ---
 
 <section class="px-4 py-24" id="pricing">
   <div class="mx-auto max-w-7xl">
     <div class="mb-16 text-center">
       <Badge variant="outline" className="mb-4 border-primary text-primary">Pricing & Plans</Badge>
-      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Predictable Dev Power for Digital Agencies</h2>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">{title}</h2>
       <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
-        Choose your plan based on development hours needed. Scale up or down as your agency grows.
+        {description}
       </p>
     </div>
 
@@ -82,7 +98,7 @@ const { note_title = 'Need custom hours or enterprise support?', note_cta, url }
           <tr class="border-b border-border">
             <th class="px-4 py-6 text-left font-medium text-muted-foreground">Plan Features</th>
             {
-              plans.map((plan) => (
+              plan.map((plan) => (
                 <th class="min-w-[280px] px-4 py-6 text-center">
                   <div class="relative">
                     {plan.popular && (
@@ -108,20 +124,20 @@ const { note_title = 'Need custom hours or enterprise support?', note_cta, url }
         <tbody>
           {/* Get max features length for consistent rows */}
           {
-            Array.from({ length: Math.max(...plans.map((p) => p.features.length)) }, (_, i) => (
+            Array.from({ length: Math.max(...plan.map((p) => p.features.length)) }, (_, i) => (
               <tr class="border-b border-border/50">
                 <td class="px-4 py-4 text-muted-foreground">
-                  {plans[2].features[i] && (
+                  {plan[plan.length - 1].features[i] && (
                     <div class="flex items-center space-x-2">
                       <span>
-                        {plans[2].features[i]
+                        {plan[plan.length - 1].features[i]
                           ?.replace(/^\d+\s+hours?\s+/, '')
                           .replace(/^[A-Z]/, (c) => c.toLowerCase())}
                       </span>
                     </div>
                   )}
                 </td>
-                {plans.map((plan) => (
+                {plan.map((plan) => (
                   <td class="px-4 py-4 text-center">
                     {plan.features[i] ? (
                       <div class="flex items-center justify-center space-x-2">

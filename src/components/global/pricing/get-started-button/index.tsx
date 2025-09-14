@@ -8,6 +8,7 @@ type GetStartedButtonProps = {
     stripePriceId: string;
     name: string;
     hours: string;
+    redirectUrl?: string;
   };
 };
 
@@ -25,6 +26,7 @@ export default function GetStartedButton({ plan }: GetStartedButtonProps) {
           priceId: plan.stripePriceId,
           planName: plan.name,
           hours: plan.hours,
+          redirectUrl: plan.redirectUrl,
         }),
       });
 

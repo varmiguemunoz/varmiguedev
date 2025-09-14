@@ -18,7 +18,11 @@ if (typeof window !== 'undefined') {
 
 type HeroSectionProps = {
   cta?: {
-    secondary: {
+    primary?: {
+      url: string;
+      title: string;
+    };
+    secondary?: {
       url: string;
       title: string;
     };
@@ -26,33 +30,39 @@ type HeroSectionProps = {
   heroContent?: HeroContentProps;
 };
 
-export default function HeroSection({
-  cta = {
-    secondary: {
-      url: '/sales',
-      title: 'Talk to sales',
-    },
-  },
-  heroContent = {
-    badge: 'Dev Partner for Agencies',
-    title: [
-      { text: 'Launch your product 3× faster', gradient: true },
-      { text: '\n' },
-      { text: 'without internal team' },
-    ],
-    description: [
-      { text: 'Need to ' },
-      { text: 'launch fast', highlight: true },
-      { text: ', deliver ' },
-      { text: 'clean code', highlight: true },
-      { text: ', and ' },
-      { text: 'scale without hiring', highlight: true },
-      {
-        text: '? I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations.',
+export default function HeroSection(props: HeroSectionProps) {
+  const {
+    cta = {
+      primary: {
+        url: 'https://calendly.com/miguelmunoz-bloomify/30min',
+        title: 'Book a free audit',
       },
-    ],
-  },
-}: HeroSectionProps) {
+      secondary: {
+        url: '/sales',
+        title: 'Talk to sales',
+      },
+    },
+    heroContent = {
+      badge: 'Dev Partner for Agencies',
+      title: [
+        { text: 'Launch your product 3× faster', gradient: true },
+        { text: '\n' },
+        { text: 'without internal team' },
+      ],
+      description: [
+        { text: 'Need to ' },
+        { text: 'launch fast', highlight: true },
+        { text: ', deliver ' },
+        { text: 'clean code', highlight: true },
+        { text: ', and ' },
+        { text: 'scale without hiring', highlight: true },
+        {
+          text: '? I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations.',
+        },
+      ],
+    },
+  } = props;
+
   const heroRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<HTMLDivElement>(null);
@@ -99,18 +109,21 @@ export default function HeroSection({
             <HeroContent {...heroContent} />
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <a href="https://calendly.com/miguelmunoz-bloomify/30min" key={'hero-view-services'}>
-                <Button variant="hero" size="xl" className="group">
-                  Book a free audit
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </a>
-
-              <a href={cta?.secondary.url} key={'sales'}>
-                <Button variant="outline" size="xl" className="hover:bg-white hover:text-black">
-                  {cta?.secondary.title}
-                </Button>
-              </a>
+              {cta.primary && (
+                <a href={cta?.primary.url} key={'hero-view-services'}>
+                  <Button variant="hero" size="xl" className="group">
+                    {cta.primary.title}
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </a>
+              )}
+              {cta?.secondary && (
+                <a href={cta?.secondary.url} key={'sales'}>
+                  <Button variant="outline" size="xl" className="hover:bg-white hover:text-black">
+                    {cta?.secondary.title}
+                  </Button>
+                </a>
+              )}
             </div>
 
             <Social />

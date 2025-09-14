@@ -1,0 +1,30 @@
+---
+import Base from '@layouts/Base.astro';
+import Success from '@/components/global/success';
+---
+
+<Base title="Schedule">
+  <Success
+    client:only
+    steps={[
+      {
+        description: 'You’ll receive a confirmation email with your purchase details.',
+      },
+      {
+        description: 'Please schedule your consulting call',
+      },
+      {
+        description:
+          'Before the call, you’ll receive an email requesting key details. Sharing this info in advance helps us prepare targeted questions and offer the best solution and value.',
+      },
+    ]}
+  />
+
+  <div
+    class="calendly-inline-widget"
+    data-url="https://calendly.com/bloomilite/from-confusion-to-clarity?hide_gdpr_banner=1"
+    style="min-width:320px;height:700px;"
+  >
+  </div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</Base>
