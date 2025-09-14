@@ -184,4 +184,50 @@ export const POST: APIRoute = async ({ request }) => {
   }
 };
 
+
+// DEV PRICING TABLE ASTRO
+
+import type { APIRoute } from 'astro';
+
+import Stripe from 'stripe';
+
+const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY as string);
+
+export const POST: APIRoute = async ({ request }) => {
+  try {
+    const { priceId, planName } = await request.json();
+    if (!priceId) {
+      return new Response(JSON.stringify({ error: 'Missing priceId' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const origin = request.headers.get('origin') || import.meta.env.SITE_URL;
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment', // o 'subscription' si aplica
+      line_items: [{ price: priceId, quantity: 1 }],
+      success_url: `${origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/payment/canceled`,
+      metadata: { planName },
+    });
+
+    return new Response(JSON.stringify({ url: session.url }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (err) {
+    console.error(err);
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+};
+
+// Si alguna vez vuelves a prerender estático, esto evita que intente prerender este endpoint:
+export const prerender = false;
+
+
 ```

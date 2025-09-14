@@ -1,6 +1,5 @@
 ---
 import { Badge } from '@/components/ui/badge';
-import GetStartedButton from '../get-started-button';
 
 type Service = {
   category: string;
@@ -9,6 +8,7 @@ type Service = {
     description?: string;
     price?: string;
     note?: string;
+    priceId?: string;
   }[];
 };
 
@@ -25,6 +25,7 @@ const services: Service[] = [
         name: 'Basic – 3 Links (0–20 employees)',
         description: 'Basic – 3 Links (Menu)',
         price: '$450',
+        priceId: 'price_1S73JlDOnhjqrRNXDcjE8Hls',
       },
       {
         name: 'Standard – 5 Links (21–50 employees)',
@@ -91,30 +92,8 @@ const services: Service[] = [
       { name: 'Specialized Tech Support', description: "Hourly cost", price: '$60 / h' },
     ],
   },
-  {
-    category: 'Development Hours Plans (Monthly Subscription)',
-    items: [
-      {
-        name: 'Launch',
-        description: '40h flexible development hours. Slack channel + weekly updates.',
-        price: '$2,500 / mo',
-        note: 'get your project live in days and start testing without heavy investment',
-      },
-      {
-        name: 'Scale',
-        description: '80h flexible development. Faster support & strategy calls.',
-        price: '$5,000 / mo',
-        note: 'Growing agencies’ favorite',
-      },
-      {
-        name: 'Partner+',
-        description: '120h flexible dev power. Dedicated PM & weekly strategy.',
-        price: '$5,500 / mo',
-        note: 'Higher profits, higher leverage',
-      },
-    ],
-  },
 ];
+
 ---
 
 <section class="px-4 py-24" id="services">
@@ -133,13 +112,13 @@ const services: Service[] = [
         <thead class="">
           <div class="w-[80rem]">
             <tr class="bg-black w-full from-primary to-accent">
-            <th class="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
               Services
             </th>
-            <th class="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
               Service Consideration
             </th>
-            <th class="px-4 py-3 text-center text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
               Cost
             </th>
           </tr>
@@ -158,7 +137,11 @@ const services: Service[] = [
                 </tr>
                 <!-- Service Items -->
                 {service.items.map((item, index) => (
-                  <tr class={`transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 ${index % 2 === 0 ? 'bg-gradient-to-r from-accent/10 to-primary/5' : 'bg-gradient-to-r from-primary/5 to-accent/10'}`}>
+                  <tr id={`service-${item.name.replace(/\s+/g, '-').toLowerCase()}`} 
+                    data-price-id={item.priceId || ''}
+                    data-plan-name={item.name || ''}
+                    data-price={item.price?.replace('$', '') || ''}
+                    class={`transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 ${index % 2 === 0 ? 'bg-gradient-to-r from-accent/10 to-primary/5' : 'bg-gradient-to-r from-primary/5 to-accent/10'}`}>
                     <td class="border border-primary/20 px-4 py-3 text-xs font-medium text-foreground sm:px-6 sm:py-4 sm:text-sm">
                       <div>
                         <div class="font-semibold">{item.name}</div>
@@ -190,3 +173,49 @@ const services: Service[] = [
     </div>
   </div>
 </section>
+
+<script>
+const handleClick = async (priceId: string, planName: string) => {
+    try {
+
+      const res = await fetch('/api/create-checkout-projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          priceId: priceId,
+          planName: planName
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to create Stripe Checkout Session.');
+
+      const { url } = await res.json();
+      if (!url) throw new Error('Missing Checkout URL from server.');
+
+      window.location.href = url;
+    } catch (err) {
+      console.error(err);
+      alert('The payment process could not be initiated. Please try again');
+    } 
+  };
+
+  // Add click event listeners to all service rows
+  document.addEventListener('DOMContentLoaded', () => {
+    const serviceRows = document.querySelectorAll('tr[data-price-id]');
+    
+    serviceRows.forEach((row) => {
+      const priceId = row.getAttribute('data-price-id');
+
+      console.log('priceId: ' + priceId);
+      
+      const planName = row.getAttribute('data-plan-name');
+      
+      // Only add click listener if all required data is present
+      if (priceId && planName) {
+        row.addEventListener('click', async() => {
+         await handleClick(priceId, planName);
+        });
+      }
+    });
+  });
+</script>
