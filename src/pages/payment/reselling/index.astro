@@ -1,0 +1,34 @@
+---
+import Base from '@layouts/Base.astro';
+import Success from '@/components/global/success';
+import Video from '@/components/global/video/video.astro';
+import { Button } from '@/components/ui/button';
+---
+
+<Base title="Schedule">
+  <Success
+    client:only
+    title="Welcome to Your New Agency 🚀"
+    description="You’ve just unlocked your reseller license. Follow these steps to set up your agency and join the premium community."
+    steps={[
+      {
+        description:
+          '🎥 Step 1: Watch the short introductory video to understand how the program works and what you’ll receive.',
+      },
+      {
+        description:
+          '📝 Step 2: Click the button below to fill out your personalization form with your agency name, niche, and style.',
+      },
+      {
+        description:
+          '💬 Step 3: Once you submit the form, you’ll be redirected to our premium Telegram group where you can connect with other agents and access exclusive resources.',
+      },
+    ]}
+  />
+
+  <Video />
+
+  <a href="https://tally.so/r/wM0qPA" class="block flex w-full flex-col items-center pb-10">
+    <Button variant="hero" size="lg" className="group">Start your agency journey</Button>
+  </a>
+</Base>

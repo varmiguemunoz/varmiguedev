@@ -3,12 +3,16 @@ import { CheckCircle } from 'lucide-react';
 import Confetti from 'react-confetti';
 
 type SuccessProps = {
+  title?: string;
+  description?: string;
   steps?: {
     description: string;
   }[];
 };
 
 const Success = ({
+  title = 'Payment Successful!',
+  description = 'Thank you for your purchase! We’ll contact you shortly to kick off your project.',
   steps = [
     {
       description: 'You’ll receive a confirmation email with your purchase details.',
@@ -79,12 +83,10 @@ const Success = ({
             </div>
 
             <h1 className="bg-gradient-text mb-6 bg-clip-text text-6xl font-bold leading-tight text-transparent text-white md:text-7xl">
-              Payment Successful!
+              {title}
             </h1>
 
-            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
-              Thank you for your purchase! We’ll contact you shortly to kick off your project.
-            </p>
+            <p className="mx-auto max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">{description}</p>
           </div>
 
           {/* Next Steps Section */}
