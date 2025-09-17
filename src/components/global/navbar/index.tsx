@@ -6,8 +6,9 @@ import Mobile from './mobile/index';
 import Social from '../hero-gsap/social';
 
 const navigation = [
-  { name: 'Services', href: '#pricing' },
-  { name: 'Pricing', href: '/pricing' },
+  { name: 'Projects', href: '/launch-your-website' },
+  { name: 'Consulting', href: '/digital-strategy-session' },
+  { name: 'Agencies', href: '/scale-your-product' },
   { name: 'Sales', href: '/sales' },
   { name: 'Blog', href: '/blog' },
 ];
