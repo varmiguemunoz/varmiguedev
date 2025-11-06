@@ -6,18 +6,16 @@ import Mobile from './mobile/index';
 import Social from '../hero-gsap/social';
 
 const navigation = [
-  { name: 'Projects', href: '/launch-your-website' },
-  { name: 'Consulting', href: '/digital-strategy-session' },
-  { name: 'Agencies', href: '/scale-your-product' },
-  { name: 'Sales', href: '/sales' },
+  { name: 'Book your free call', href: '/book-your-call' },
   { name: 'Blog', href: '/blog' },
+  { name: 'Growthlyfast', href: 'https://www.growthlyfast.com/' },
 ];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className={cn('block flex w-full bg-gradient-to-br from-primary/20 transition-all duration-300')}>
+    <nav className={cn(' flex w-full bg-gradient-to-br from-primary/20 transition-all duration-300')}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -49,7 +47,7 @@ export default function Navbar() {
           {/* Desktop CTA & Social */}
           <div className="hidden items-center space-x-4 md:flex">
             <Social title={false} />
-            <a href="/sales">
+            <a href="/book-your-call">
               <Button variant="hero" size="sm">
                 Let's Talk
               </Button>
