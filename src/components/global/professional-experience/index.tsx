@@ -10,16 +10,31 @@ if (typeof window !== 'undefined') {
 const experiences = [
   {
     id: 1,
+    title: 'Mid. Full Stack Developer',
+    company: 'Alpha Agent',
+    period: 'March 2025 - Present',
+    isCurrentRole: true,
+    responsibilities: [
+      'Lead innovation initiatives focused on the development of new digital products and internal tools.',
+      'Maintain and optimize multiple production websites across the Alpha Agent ecosystem.',
+      'Implement integrations with AI Agents to enhance automation and customer engagement.',
+      'Design and deploy workflow automations to improve operational efficiency for clients.',
+      'Collaborate with design and backend teams to ensure scalability, speed, and reliability across all platforms.',
+      'Support and maintain relationships with existing clients, providing ongoing technical assistance and improvements.',
+    ],
+  },
+  {
+    id: 2,
     title: 'Full Stack Developer',
     company: 'Diey.io',
     period: 'December 2023 - February 2025',
-    isCurrentRole: true,
+    isCurrentRole: false,
     responsibilities: [
       'Led front-end development with a strong focus on intuitive UI and seamless user experience, while building robust backend endpoints to ensure reliable application functionality. I integrated new features and components to enhance system capability, implemented performance optimizations and refactors to boost speed and scalability, and collaborated closely with design and dev teams to maintain quality and consistency throughout the development process.',
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'IT Consultant',
     company: 'Kamay Catalizadora',
     period: 'June 2024 - January 2025',
@@ -28,7 +43,7 @@ const experiences = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: 'Full Stack Developer',
     company: 'Parrolabs',
     period: 'March 2023 - November 2024',
@@ -37,7 +52,7 @@ const experiences = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Full Stack Developer',
     company: 'Linnk Tech Solutions',
     period: 'April 2023 - February 2024',
@@ -46,7 +61,7 @@ const experiences = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: 'Full Stack Developer',
     company: 'The U-Corporate',
     period: 'July 2023 - March 2024',
@@ -55,7 +70,7 @@ const experiences = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: 'IT Assistant Support',
     company: 'Parrolabs',
     period: 'October 2022 - February 2023',
@@ -64,7 +79,7 @@ const experiences = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     title: 'Software Developer',
     company: 'Freelance Projects',
     period: '2020 - 2022',
@@ -77,7 +92,7 @@ const experiences = [
 const education = [
   {
     id: 1,
-    degree: 'Undergraduate in Software Engineering',
+    degree: 'Graduate in Software Engineering',
     institution: '(Universidad internacional de la rioja) - UNIR',
     period: '2025',
   },
