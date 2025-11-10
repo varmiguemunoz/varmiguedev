@@ -12,6 +12,7 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   site: 'https://www.varmiguemunoz.com/',
   output: 'static',
+  prefetch: true,
   adapter: vercel(),
   image: {
     remotePatterns: [
