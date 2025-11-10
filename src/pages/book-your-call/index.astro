@@ -1,9 +1,11 @@
 ---
 import Base from '@layouts/Base.astro';
 import { CheckCircle } from 'lucide-react';
+import Navbar from '@/components/global/navbar';
 ---
 
 <Base title="Book Your Call with the GrowthlyFast Team 🚀">
+  <Navbar client:load />
   <div class="mx-auto mb-16 flex max-w-5xl flex-col items-center justify-center pt-20">
     <div class="mb-8 flex justify-center">
       <div class="rounded-full bg-gradient-primary p-4 shadow-glow">
@@ -14,23 +16,22 @@ import { CheckCircle } from 'lucide-react';
     <h1
       class="bg-gradient-text mb-6 bg-clip-text text-center text-3xl font-bold leading-tight text-transparent text-white md:text-7xl"
     >
-      Book Your Call with the GrowthlyFast Team
+      Book Your Free Call with me
     </h1>
 
-    <p class="mx-auto text-center max-w-3xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
-      Book a call with the GrowthlyFast team to discuss your ideas 🚀
+    <p class="mx-auto max-w-3xl text-center text-xl leading-relaxed text-muted-foreground md:text-2xl">
+      Let’s talk about your project, idea, or open roleand see how I can help you build, optimize, or scale your
+      product. 🚀
     </p>
   </div>
 
   <div class="mx-auto w-full max-w-4xl pb-20">
     <iframe
-      src="https://crm.growthlyfast.com/widget/booking/6Y0SoUUPB12t3FtOAU1d"
-      style="width: 100%;border:none;overflow: hidden;"
+      src="https://crm.growthlyfast.com/widget/booking/z7407OtvyALTsMlvnjsM"
+      style="width:100%;border:none;overflow:hidden;"
       scrolling="no"
-      id="6Y0SoUUPB12t3FtOAU1d_1762293240378"
-      title="Discovery GrowthlyFast 🚀"
-    >
-    </iframe>
+      id="z7407OtvyALTsMlvnjsM_1762796447267"
+      title="Booking Widget"></iframe><br />
     <script src="https://crm.growthlyfast.com/js/form_embed.js" type="text/javascript"></script>
   </div>
 </Base>

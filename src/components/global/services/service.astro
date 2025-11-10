@@ -15,47 +15,61 @@ interface ServiceData {
 
 // Default data - can be overridden by props
 const defaultData: ServiceData = {
-  generalTitle: "Your go-to for fast, predictable digital execution",
-  generalDescription: "Ship websites, stores, and features in days, not months. Start with a paid strategy session for clarity, launch a conversion-ready project at a fixed price, or scale ongoing work with monthly Dev Packs—all with transparent timelines, clean code, and responsive support.",
+  generalTitle: "Selected Work & Case Studies",
+  generalDescription:
+    "A curated selection of projects across e-commerce, SaaS, AI, and education technology. Each project reflects a focus on clean architecture, performance, and scalable digital experiences built for global audiences.",
   services: [
     {
-      title: "Software Consulting",
-      description: "Make the right tech decisions",
-      cta: "Book a strategy session",
-      ctaLink: "/digital-strategy-session",
+      title: "DW Drums",
+      description: "Global percussion e-commerce ecosystem",
+      cta: "Visit project",
+      ctaLink: "https://www.dwdrums.com/",
       features: [
-        "A focused, paid strategy session with tangible deliverables",
-        "Walk away with a prioritized roadmap, realistic cost & time estimates",
-        "Flow diagrams, and implementation notes—so you invest in what actually moves the needle"
+        "Multi-brand e-commerce architecture for DW Drums, Pacific Drums, and LP Music",
+        "Optimized for speed, SEO, and user experience across multiple domains",
+        "Empowering musicians worldwide to explore, customize, and purchase percussion instruments online"
       ],
-      iconName: "check-circle"
+      iconName: "music"
     },
     {
-      title: "One-Time Projects",
-      description: "Launch in days, not months",
-      cta: "See projects & pricing",
-      ctaLink: "/launch-your-website",
+      title: "Shipday",
+      description: "AI-powered delivery & customer engagement platform",
+      cta: "Explore platform",
+      ctaLink: "https://www.shipday.com/",
       features: [
-        "Conversion-ready websites and stores with transparent pricing",
-        "Go live fast with performant code, essential SEO, and seamless integrations",
-        "Payments, analytics, email that start generating results immediately"
+        "End-to-end delivery management with route optimization and real-time tracking",
+        "AI system for automating communication and customer retention",
+        "Improved operational efficiency and user satisfaction for logistics companies"
       ],
-      iconName: "zap"
+      iconName: "truck"
     },
     {
-      title: "Dev Packs (Monthly)",
-      description: "On-demand development power",
-      cta: "Compare Dev Pack plans",
-      ctaLink: "/scale-your-product",
+      title: "U-Corporative",
+      description: "Corporate e-learning for Latin America",
+      cta: "View platform",
+      ctaLink: "https://laucorporativa.com/",
       features: [
-        "Monthly hour packs that scale with your workload",
-        "We plug into your tools (Slack, Trello, Asana), provide a live dashboard",
-        "Deliver consistent velocity—at lower hourly rates as you grow"
+        "Full-featured LMS for employee performance tracking and development",
+        "Advanced analytics for organizational learning and HR evaluation",
+        "Enabling businesses to manage talent growth and productivity effectively"
       ],
-      iconName: "users"
+      iconName: "book-open"
+    },
+    {
+      title: "Alpha Agent",
+      description: "Lead generation Agency & conversion",
+      cta: "Visit platform",
+      ctaLink: "https://www.alphaagent.io/",
+      features: [
+        "Web platform for agents and brokers in the US to generate and convert qualified leads",
+        "Integrated CRM, AI assistants, and automated dialers for sales automation",
+        "Modern web experience highlighting brand authority and conversion-driven UX"
+      ],
+      iconName: "activity"
     }
   ]
 };
+
 
 // Accept props with default values
 const { data = defaultData } = Astro.props;
@@ -108,7 +122,7 @@ function getIcon(iconName: string): string {
 
             <!-- Features List -->
             <div class="space-y-4">
-              {service.features.map((feature: string, featureIndex: number) => (
+              {service.features.map((feature: string) => (
                 <div class="flex items-start space-x-3">
                   <div class="flex-shrink-0 w-2 h-2 rounded-full bg-accent mt-3"></div>
                   <p class="text-lg text-muted-foreground leading-relaxed">
