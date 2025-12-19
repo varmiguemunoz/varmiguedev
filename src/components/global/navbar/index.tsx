@@ -8,7 +8,6 @@ import Social from '../hero-gsap/social';
 const navigation = [
   { name: 'Book your free call', href: '/book-your-call' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Growthlyfast', href: 'https://www.growthlyfast.com/' },
 ];
 
 export default function Navbar() {
