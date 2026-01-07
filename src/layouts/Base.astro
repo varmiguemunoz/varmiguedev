@@ -7,7 +7,6 @@ import { ViewTransitions } from 'astro:transitions';
 import Analytics from '@vercel/analytics/astro';
 
 import config from '@config/config.json';
-import { Toaster } from '@/components/ui/toaster';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
 import '@styles/global.css';
@@ -20,75 +19,98 @@ export interface Props {
   noindex?: boolean;
   canonical?: string;
   blogpost?: boolean;
+  keywords?: string;
+  schema?: object | object[];
+  ogImageTitle?: string;
+  ogImageMeta?: string;
+  hreflang?: Array<{ lang: string; url: string }>;
 }
 
-const { title, meta_title, description, noindex } = Astro.props;
+const { title, meta_title, description, noindex, keywords, schema, ogImageTitle, ogImageMeta, hreflang } = Astro.props;
 
+// OG Image dinámico por página
 const ogImage = createOgImage({
-  title: 'varmiguemunoz Software Engineer | Agency Dev Partner',
-  meta: 'I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations.',
+  title: ogImageTitle || meta_title || title || 'GrowthlyFast - Monthly Dev Packs & Agency Development',
+  meta: ogImageMeta || description || 'Professional development services for agencies, startups, and contractors.',
 });
 
+// Canonical URL fix
+const canonicalURL = `${config.site.base_url}${Astro.url.pathname.replace(/\/$/, '')}`;
+
 const isPayment = Astro.url.pathname.startsWith('/payment');
+
+// Auto-noindex para payment y funnel pages
+const shouldNoindex = noindex || isPayment;
 ---
 
 <!doctype html>
 <html lang={config.site.lang}>
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        // @ts-ignore
-        w[l] = w[l] || [];
-        // @ts-ignore
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        // @ts-ignore
-        j.async = true;
-        // @ts-ignore
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        // @ts-ignore
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-TNGVXGWQ');
-    </script>
+    <!-- Charset FIRST for security (OWASP best practice) -->
+    <meta charset="utf-8" />
 
-    <!-- End Google Tag Manager -->
+    <!-- Resource hints - Optimized for critical resources -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://crm.growthlyfast.com" />
+
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
+
     <!-- theme meta -->
-    <meta name="theme-name" content="bookworm-light-astro" />
+    <meta name="theme-name" content="growthlyfast" />
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
     <meta name="generator" content={Astro.generator} />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
 
     <title>{meta_title ? meta_title : title ? title : config.site.title}</title>
     <meta name="title" content={meta_title ? meta_title : title ? title : config.site.title} />
-    <link rel="canonical" href={`${config.site.base_url}/${Astro.url.pathname.replace('/', '')}`} item-prop="url" />
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Canonical fix -->
+    <link rel="canonical" href={canonicalURL} itemprop="url" />
+
+    <!-- Hreflang for multilingual support -->
+    {hreflang && hreflang.map((link) => <link rel="alternate" hreflang={link.lang} href={link.url} />)}
+
+    {shouldNoindex && <meta name="robots" content="noindex,nofollow" />}
+
     <meta name="description" content={description ? description : config.metadata.meta_description} />
+
+    <!-- Keywords (opcional pero útil para contexto) -->
+    {keywords && <meta name="keywords" content={keywords} />}
+
     <!-- author from config.json -->
     <meta name="author" content={config.metadata.meta_author} />
-    <!-- og-title -->
+
+    <!-- Open Graph -->
     <meta property="og:title" content={meta_title ? meta_title : title ? title : config.site.title} />
-    <!-- og-description -->
     <meta property="og:description" content={description ? description : config.metadata.meta_description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`${config.site.base_url}/${Astro.url.pathname.replace('/', '')}`} />
-
-    <!-- twitter-title -->
-    <meta name="twitter:title" content={meta_title ? meta_title : title ? title : config.site.title} />
-    <!-- twitter-description -->
-    <meta name="twitter:description" content={description ? description : config.metadata.meta_description} />
-    <!-- og-image -->
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
-    <!-- twitter-image -->
-    <meta name="twitter:image" content={config.author.avatar} />
+    <meta property="og:site_name" content="GrowthlyFast" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta_title ? meta_title : title ? title : config.site.title} />
+    <meta name="twitter:description" content={description ? description : config.metadata.meta_description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Schema.org JSON-LD -->
+    {
+      schema &&
+        (Array.isArray(schema) ? (
+          schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)
+        ) : (
+          <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        ))
+    }
 
     <ViewTransitions />
   </head>
@@ -96,21 +118,14 @@ const isPayment = Astro.url.pathname.startsWith('/payment');
   <body>
     <Analytics />
     <SpeedInsights />
+
     <main class="mx-auto w-full">
       <slot />
     </main>
-    <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Dev Packs 🚀" />
-    <Toaster client:load />
+
+    <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
 
     {!isPayment && <Footer />}
 
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-TNGVXGWQ"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe></noscript
-    >
-    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>

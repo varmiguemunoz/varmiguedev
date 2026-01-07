@@ -1,5 +1,7 @@
 ---
 import { Badge } from '@/components/ui/badge';
+import UpsellCard from '../../upsell-card/UpsellCard.astro';
+import BookCallButton from '@/components/global/book-call-button/index.astro';
 
 type Service = {
   category: string;
@@ -101,6 +103,49 @@ const services: Service[] = [
   },
 ];
 
+const upsellCard =[
+ {
+      title: 'Growthly AI Sales Agent',
+      description:
+        'A premium, done-for-you AI system that turns WhatsApp into a fully autonomous sales channel. It replies to leads, qualifies intent, books meetings, sends reminders, and creates payment links using your business data secure.',
+      price: '$97/month',
+      items: [
+     'Custom-trained AI agent aligned with your services, pricing, and sales rules.',
+'Human-like WhatsApp conversations personalized to each lead.',
+'Automatic lead qualification based on intent and buying signals.',
+'AI-driven meeting booking with Google Calendar and Meet links.',
+'Smart rescheduling, cancellations, and reminder management.',
+'Automated follow-ups to recover inactive or unresponsive leads.',
+'Instant human handoff alerts when a lead is ready to close.',
+'Automatic payment link generation for high-intent prospects.',
+'CRM sync to store conversations, lead status, and notes.',
+'Clear dashboard to track leads, activity, and booked meetings.',
+'Continuous AI optimization to increase accuracy and conversions.',
+'Full onboarding and ongoing support to ensure smooth operation.',
+      ],
+    },
+    {
+    title: 'GrowthKit Website Ultra',
+    description:
+      'A complete, one-time technical setup designed to turn your online presence into a lead-generating and sales-ready system. We build your website, CRM, and automation workflows so your business is ready to scale from day one.',
+    price: '$350 one-time',
+    items: [
+      'Professional 6-section B2B website optimized for speed, mobile, and conversions.',
+      'Conversion-focused UI with clear CTAs and lead capture points.',
+      'Custom domain setup and secure hosting with daily backups.',
+      'WhatsApp, email, and social media integrations for instant contact.',
+      'Google Maps setup for local visibility and trust.',
+      'CRM integration to centralize all leads and conversations.',
+      'Analytics dashboard to track traffic, conversions, and campaigns.',
+      'Smart lead pipelines, forms, and social integrations.',
+      'Automated follow-ups and response detection.',
+      'Multi-channel nurturing sequences for leads.',
+      'Instant notifications and alerts for sales actions.',
+      'Guided onboarding plus 7 days of post-launch support.',
+    ],
+  },
+]
+
 ---
 
 <section class="px-4 py-24" id="services">
@@ -113,7 +158,7 @@ const services: Service[] = [
       </p>
     </div>
 
-    <p class="text-muted-foreground text-sm text-center w-full mb-3">Click any service in the table to purchase instantly. 👉🏻</p>
+    <p class="text-muted-foreground text-sm text-center w-full mb-3">Click any service in the table to purchase instantly. 👇🏻</p>
     <div class="overflow-x-auto rounded-lg border border-primary/20 shadow-lg">
       <table class="w-full border-collapse min-w-[800px]">
         <thead class="">
@@ -142,7 +187,7 @@ const services: Service[] = [
                     {service.category}
                   </td>
                 </tr>
-                <!-- Service Items -->
+               
                 {service.items.map((item, index) => (
                   <tr id={`service-${item.name.replace(/\s+/g, '-').toLowerCase()}`} 
                     data-price-id={item.priceId || ''}
@@ -178,6 +223,53 @@ const services: Service[] = [
           <span class="ml-1 cursor-pointer text-primary hover:underline">Download full catalog →</span>
         </p>
       </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10 justify-center w-full mt-16">
+
+      <div class="mb-5 md:mb-16 text-center">
+        <Badge variant="outline" className="mb-4 border-primary text-primary">
+          Most Requested Packages
+        </Badge>
+      
+        <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+        Two Systems Business Buy the Most
+        </h2>
+      
+        <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+          These are the two solutions businesses consistently choose to generate leads, automate sales, and scale without friction. Proven systems with clear scope, transparent pricing, and fast execution. Built to deliver ROI, not complexity.
+        </p>
+      </div>
+
+      { upsellCard.map(({title, description, price, items}) =>  (
+        <UpsellCard 
+          title={title}
+          description = {description}
+          price ={price}
+          items={items}
+        />
+      ))}
+
+      <div class="block md:hidden mt-5">
+        <BookCallButton label="Book your free discovery call 🚀" link="/book-your-call" />
+      </div>
+
+<div class="mb-16 text-center hidden md:block">
+  <Badge variant="outline" className="mb-4 border-primary text-primary">
+    Proven Revenue Systems
+  </Badge>
+
+  <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+    See the Two Systems Businesses Use to Close More Deals
+  </h2>
+
+  <p class="mx-auto max-w-3xl text-xl text-muted-foreground mb-10">
+    Book a free demo call to see how these systems generate qualified leads, automate follow-ups, and turn conversations into booked meetings and revenue for service businesses.
+  </p>
+
+  <BookCallButton label="Book your free discovery call 🚀" link="/book-your-call" />
+</div>
+
     </div>
   </div>
 </section>

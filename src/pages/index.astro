@@ -6,7 +6,6 @@ import Workflow from '@/components/global/workflow/workflow.astro';
 import FAQ from '@/components/global/faq';
 import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
 import Navbar from '@/components/global/navbar';
-import ProfessionalExperience from '@/components/global/professional-experience';
 import DevPricing from '@/components/global/pricing/dev-projects/devpricing.astro';
 import { Search, Code2, Rocket, HeadphonesIcon, Route, BadgeDollarSign, MessageSquare } from 'lucide-react';
 import Services from '@/components/global/services/service.astro';
@@ -16,7 +15,6 @@ import BookCallButton from '@/components/global/book-call-button/index.astro';
 <Base meta_title="varmiguemunoz Software Engineer| About me" blogpost={true}>
   <Navbar client:load />
   <AboutMe />
-  <ProfessionalExperience />
   <Services />
   <BookCallButton label="Let’s Talk About Your Next Launch 🚀" link="/book-your-call" />
   <DevPricing />
@@ -91,7 +89,7 @@ import BookCallButton from '@/components/global/book-call-button/index.astro';
   />
   <FAQ
     client:load
-    subheading="Clear answers to help you start your project with confidence from timelines and pricing to what’s included in every delivery."
+    subheading="Clear answers to help book-your-callu start your project with confidence from timelines and pricing to what’s included in every delivery."
     faqs={[
       {
         question: 'How fast can my website be ready?',

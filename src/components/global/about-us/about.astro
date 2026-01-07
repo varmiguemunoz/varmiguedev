@@ -2,49 +2,225 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Linkedin } from 'lucide-react';
+import OptimizedVideo from '../optimized-video/OptimizedVideo';
+import Avatar from '@/components/global/avatar/Avatar.astro';
+import LinkedAccounts from './linked-accounts/LinkedAccounts.astro';
+import { FaCircleCheck } from 'react-icons/fa6';
+
+const stats = [
+{
+    title: 'Revenue Systems Built',
+    value: '$100k+',
+  },
+  {
+    title: 'Leads & Users Managed',
+    value: '123K+',
+  },
+  {
+    title: 'Avg Conversion Lift',
+    value: '+25%',
+  },
+];
+
+const myAccounts = [
+  {
+    platform: 'GitHub',
+    username: 'Miguel Angel Muñoz',
+    since: '2021',
+    profileUrl: 'https://github.com/varmiguemunoz',
+    avatarUrl: '/headshot.png',
+    followers: '7 followers',
+  },
+  {
+    platform: 'LinkedIn',
+    username: 'Miguel Angel Muñoz',
+    since: '2020',
+    profileUrl: 'https://www.linkedin.com/in/varmiguemunoz/',
+    avatarUrl: '/headshot.png',
+    followers: '500+ connections',
+  },
+  {
+    platform: 'Upwork',
+    username: 'Miguel Angel M.',
+    since: '2022',
+    profileUrl: 'https://www.upwork.com/freelancers/~01c50c885bdb2a6b44?mp_source=share',
+    avatarUrl: '/headshot.png',
+    followers: '100% Job Success',
+  },
+];
+
+const education = [
+  {
+    title: 'Engineer degree, Software Engineer',
+    date: '2020-2024',
+    institution: 'UNIR International University',
+  },
+];
+
+const verifications = [
+  {
+    verificationName: 'Software Engineer Degree',
+  },
+];
 ---
 
 <section class="px-6 py-24">
   <div class="mx-auto max-w-6xl">
-    <div class="grid items-center gap-16 lg:grid-cols-2">
-      {/* Photo */}
-      <div class="relative">
-        <div class="aspect-square relative">
-          <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl"></div>
-          <div class="relative h-full overflow-hidden rounded-3xl border border-primary/20 bg-gradient-card">
-            <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
-              <img src="/avatar.png" alt="icon" loading="lazy" width="auto" height="auto" />
+    <div class="grid items-start gap-5 lg:grid-cols-2">
+      <!-- Content -->
+      <div class="h-auto w-full hidden md:block">
+        <div class="h-full w-full space-y-8 rounded-2xl bg-transparent p-6 text-white">
+          <Avatar avatar='/headshot.png'/>
+          <div class="flex justify-between border-b border-white/10 pb-6">
+            {
+              stats.map(({ title, value }) => (
+                <div>
+                  <div class="text-xl font-bold">{value}</div>
+                  <div class="text-xs text-gray-400">{title}</div>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="space-y-6">
+            <h2 class="text-xl font-semibold">Meet Miguel Angel J. 👇🏻</h2>
+            <div class="bg-card border border-border rounded-xl group hover-lift cursor-pointer">
+            <OptimizedVideo videoId="KiLp9kVhS1k" client:only="react" />
             </div>
+
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium">Hours available per week</h3>
+              <p class="text-gray-300">More than 30 hrs/week</p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Open to freelance</span>
+                <span class="rounded-full bg-white px-2 py-0.5 text-xs font-bold text-black">only</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium">Languages</h3>
+              <div class="space-y-1 text-sm">
+                <p><span class="font-medium text-white">English:</span> <span class="text-gray-400">Fluent</span></p>
+                <p>
+                  <span class="font-medium text-white">Spanish:</span>
+                  <span class="text-gray-400">Native or Bilingual</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium">Verifications</h3>
+              <div class="space-y-1 text-sm">
+                {
+                  verifications.map(({ verificationName }) => (
+                    <div class="flex items-center gap-2">
+                      <span class="text-white">{verificationName}</span>
+                      <FaCircleCheck color="#3b82f6" size={15} />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium">Education</h3>
+              {
+                education.map(({ title, institution, date }) => (
+                  <div>
+                    <p class="font-medium text-white">{institution}</p>
+                    <p class="text-sm text-gray-400">{title}</p>
+                    <p class="text-sm text-gray-500">{date}</p>
+                  </div>
+                ))
+              }
+            </div>
+
+            <LinkedAccounts accounts={myAccounts} />
           </div>
         </div>
       </div>
 
       {/* Bio Content */}
-      <div class="space-y-8">
+      <div class="w-full space-y-8">
         <div>
-          <Badge variant="outline" className="mb-4 border-primary text-primary">About Miguel</Badge>
+          <Badge variant="outline" className="mb-4 border-primary text-primary">Scaling B2B Agencies & Startups</Badge>
+
           <h2 class="mb-6 text-3xl font-bold text-foreground md:text-4xl">
-            5+ Years Building Digital Products That Scale
+            🚀 AI Sales Engineer & Growth Systems Architect
           </h2>
         </div>
 
         <div class="space-y-6 text-lg leading-relaxed text-muted-foreground">
           <p>
-            <span class="font-semibold text-primary">I help digital agencies, startups and entrepreneurs</span> deliver
-            faster, scale smarter, and impress their clients — without burning out their dev team.
+            Stop wasting your marketing budget on static websites that don't convert. I architect automated sales
+            ecosystems that turn cold traffic into qualified revenue, combining high-end full-stack development with
+            AI-powered automation. 🤖
           </p>
 
           <p>
-            With over <span class="font-semibold text-accent">100 successful launches</span> I’ve become the
-            behind-the-scenes dev partner agencies trust to build everything from marketing sites and internal tools to
-            complex automations and custom apps.
+            If you are a B2B Agency, Consultant, or High-Ticket Service Provider, I provide the technical infrastructure
+            you need to stop doing manual grunt work and start scaling with precision. 💻
+          </p>
+
+          <p class="font-semibold text-foreground">📊 Proven Results:</p>
+
+          <p>
+            ✅ +123K Active Users Managed<br />
+             ✅ +766K Tracked Events Optimized<br />
+             ✅ +25% Average Increase in New Visitor Conversion
+          </p>
+
+          <p class="font-semibold text-foreground">🎯 The GrowthKit™: Your All-in-One Sales Infrastructure</p>
+
+          <p>
+            I don't just "build websites", I deliver a 100% personalized technical solution designed to organize,
+            optimize, and scale your commercial process.
           </p>
 
           <p>
-            My role is simple: <span class="font-semibold text-primary"
-              >I plug into your team, speak your language, and get things shipped.</span
-            > Clean code, proactive communication, and consistent delivery, that’s how I help agencies, startups and
-            entrepreneurs stay ahead, project after project.
+            🌐 High-Performance Conversion Engines: Next-level web presence optimized for lead capture and integrated
+            with your full marketing stack.<br /><br />
+
+             🧩 Bespoke CRM Architecture: Centralized lead management, intelligent segmentation, and automated reporting
+            so you never lose a deal in the cracks.<br /><br />
+
+             ⚙️ Multi-Channel Sales Automation: Intelligent nurturing and follow-up sequences that trigger based on lead
+            behavior (Email, SMS, WhatsApp).<br /><br />
+
+             🤖 24/7 AI Sales Assistants: Custom LLM agents that qualify leads, answer complex questions, and book meetings
+            directly into your calendar.
+          </p>
+
+          <p class="font-semibold text-foreground">🛠️ Strategic Tech Stack</p>
+
+          <p>
+            ▸ Frontend & Performance: Next.js, React, Astro, Tailwind CSS, TypeScript.<br />
+             ▸ Automation & CRM: GoHighLevel (GHL), N8N, Zapier, WhatsApp Business API.<br />
+             ▸ AI Intelligence: OpenAI SDK, Vercel AI, Custom LLM Agents, Intelligent Workflows.<br />
+             ▸ Tracking & ROI: Google Analytics 4, GTM, Meta Pixel, Conversion API (CAPI).
+          </p>
+
+          <p class="font-semibold text-foreground">🤝 How to Work With Me</p>
+
+          <p class="font-semibold text-primary">📦 Option 1: Ready-to-Deploy Solutions (Project Catalog)</p>
+
+          <p>
+            Do you need a specific result fast? I have pre-packaged, fixed-price projects ready for immediate kickoff.
+            👉 Message me to explore the details and purchase a specific service such as CRM setup, AI agent
+            integration, or web optimization.
+          </p>
+
+          <p class="font-semibold text-primary">🤝 Option 2: Strategic Partnership</p>
+
+          <p>
+            Looking for a long-term freelance partner to act as your Fractional Growth Engineer? 👷🏻‍♂️ I am available for
+            ongoing collaborations to build and maintain your scaling systems. 🚀
+          </p>
+
+          <p class="font-semibold text-foreground">
+            Ready to turn your digital presence into a revenue-generating machine? 🚨 Message me and let’s discuss your
+            ROI goals. 👇🏻
           </p>
         </div>
 
@@ -54,6 +230,12 @@ import { ExternalLink, Linkedin } from 'lucide-react';
             <Button variant="outline" className="group hover:bg-white hover:text-black">
               <ExternalLink className="mr-2 h-4 w-4 " />
                Book a free call
+            </Button>
+          </a>
+          <a href="https://www.upwork.com/freelancers/~01c50c885bdb2a6b44?mp_source=share">
+            <Button variant="outline" className="group hover:bg-white hover:text-black">
+              <Linkedin className="mr-2 h-4 w-4 " />
+               Connect on Upwork
             </Button>
           </a>
           <a href="https://www.linkedin.com/in/varmiguemunoz/">

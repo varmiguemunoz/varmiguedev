@@ -15,12 +15,7 @@ const experiences = [
     period: 'March 2025 - Present',
     isCurrentRole: true,
     responsibilities: [
-      'Lead innovation initiatives focused on the development of new digital products and internal tools.',
-      'Maintain and optimize multiple production websites across the Alpha Agent ecosystem.',
-      'Implement integrations with AI Agents to enhance automation and customer engagement.',
-      'Design and deploy workflow automations to improve operational efficiency for clients.',
-      'Collaborate with design and backend teams to ensure scalability, speed, and reliability across all platforms.',
-      'Support and maintain relationships with existing clients, providing ongoing technical assistance and improvements.',
+   'Digital Innovation Lead at Alpha Agent. I Drove innovation initiatives focused on the development of new digital products and internal tools. Maintained and optimized production websites across the Alpha Agent ecosystem. Integrated AI agents to boost automation and user engagement, while deploying workflow automations to streamline operations. Ensured high performance and scalability through close collaboration with cross-functional teams.'
     ],
   },
   {
@@ -180,8 +175,7 @@ export default function ProfessionalExperience() {
           {/* Section Header */}
           <div ref={titleRef} className="mb-16 space-y-8">
             <div className="flex items-center gap-4">
-              <div className="h-3 w-3 flex-shrink-0 rounded-full bg-accent" />
-              <h2 className="text-3xl font-bold text-foreground">Profesional Experience 🔥</h2>
+              <h2 className="text-3xl font-bold text-foreground">Profesional Experience 👇🏻</h2>
             </div>
           </div>
 
@@ -211,7 +205,6 @@ export default function ProfessionalExperience() {
           {/* Education Section */}
           <div className="mt-20 space-y-8">
             <div className="flex items-center gap-4">
-              <div className="h-3 w-3 flex-shrink-0 rounded-full bg-accent" />
               <h2 className="text-3xl font-bold text-foreground">Education 📚</h2>
             </div>
 

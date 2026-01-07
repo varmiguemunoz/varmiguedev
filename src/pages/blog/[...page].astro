@@ -9,6 +9,7 @@ import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
 import config from '@config/config.json';
 import Provider from '@/components/global/blog/provider';
 
+
 export async function getStaticPaths({ paginate }: any) {
   const allPosts = await getCollection('blog');
 
@@ -23,7 +24,7 @@ export async function getStaticPaths({ paginate }: any) {
 
 const { page } = Astro.props as any;
 
-const allPosts = page.data;
+const allPosts = page?.data;
 
 const categories = [
   { id: 'all', label: 'All Posts', color: 'default' },

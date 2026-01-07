@@ -8,6 +8,7 @@ import Social from '../hero-gsap/social';
 const navigation = [
   { name: 'Book your free call', href: '/book-your-call' },
   { name: 'Blog', href: '/blog' },
+  {name: 'Professional Resume', href: '/varmiguemunoz.pdf'}
 ];
 
 export default function Navbar() {
@@ -18,10 +19,10 @@ export default function Navbar() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-12">
+          <div className="flex items-center gap-8">
             <a
               href="/"
-              className="rounded-full bg-gradient-to-br from-primary/20 to-accent/10 px-2 py-2 text-xl font-bold text-transparent transition-all duration-300"
+              className="text-xl font-bold text-transparent transition-all duration-300"
             >
               <img src="/logo.png" alt="logo" className="h-14 w-14" loading="lazy" width={40} height={40} />
             </a>

@@ -1,233 +1,67 @@
-# 🚀 Personal Website - varmiguemunoz
-
-**Know more** about me with this website 🤖
-
-
-### DOCS
-
-**SEND TO WHATSAPP**
-
-```
- // const handleSubmit = async (e: any) => {
-  //   e.preventDefault();
-  //   try {
-  //     const form = e.currentTarget;
-  //     const formData = new FormData(form);
-  //     const payload = Object.fromEntries(formData.entries());
-
-  //     const response = await fetch('/api/send-whatsapp', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(payload),
-  //     });
-
-  //     if (!response.ok) alert('Failed to send WhatsApp message');
-
-  //     form.reset();
-  //     alert('Message sent successfully 🛸');
-  //   } catch (error) {
-  //     console.log(error);
-  //     alert('Failed to send WhatsApp message error 500');
-  //     throw error;
-  //   }
-  // };
-
-```
-
-**SEND TO MAILCHIMP**
-
-```
-import type { APIRoute } from 'astro';
-
-export const POST: APIRoute = async ({ request }) => {
-  try {
-    // Debug: Log request details
-    console.log('Request method:', request.method);
-    console.log('Request headers:', Object.fromEntries(request.headers.entries()));
-
-    // Check if request has a body
-    const contentType = request.headers.get('content-type');
-    console.log('Content-Type:', contentType);
-
-    if (!contentType || !contentType.includes('application/json')) {
-      return new Response(JSON.stringify({ error: 'Content-Type must be application/json' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    // Try to get the body using different methods
-    let body;
-    let bodyText = '';
-
-    try {
-      // Method 1: Try request.json() first
-      body = await request.json();
-      console.log('Successfully parsed with request.json()');
-    } catch (jsonError) {
-      console.log('request.json() failed, trying alternative method');
-
-      try {
-        // Method 2: Clone and read as text, then parse
-        const clonedRequest = request.clone();
-        bodyText = await clonedRequest.text();
-        console.log('Raw request body:', bodyText);
-
-        if (!bodyText || bodyText.trim() === '') {
-          return new Response(JSON.stringify({ error: 'Request body is empty' }), {
-            status: 400,
-            headers: { 'Content-Type': 'application/json' },
-          });
-        }
-
-        body = JSON.parse(bodyText);
-        console.log('Successfully parsed with JSON.parse()');
-      } catch (parseError) {
-        console.error('JSON parse error:', parseError);
-        return new Response(
-          JSON.stringify({
-            error: 'Invalid JSON in request body',
-            details: parseError instanceof Error ? parseError.message : 'Unknown error',
-            receivedBody: bodyText,
-          }),
-          {
-            status: 400,
-            headers: { 'Content-Type': 'application/json' },
-          }
-        );
-      }
-    }
-
-    console.log('Parsed body:', body);
-
-    const { firstName, lastName, email, phone, company, message, consent } = body;
-
-    if (!email) {
-      return new Response(JSON.stringify({ error: 'Email requerido' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    if (!consent) {
-      return new Response(JSON.stringify({ error: 'Consentimiento requerido' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    const MAILCHIMP_API_KEY = '3515a800906df95344ccb517113c807c-us5';
-    const AUDIENCE_ID = '1334ce84c1';
-
-    if (!MAILCHIMP_API_KEY || !AUDIENCE_ID) {
-      return new Response(JSON.stringify({ error: 'Configuración de Mailchimp no encontrada' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    const DATACENTER = MAILCHIMP_API_KEY.split('-')[1];
-
-    if (!DATACENTER) {
-      return new Response(JSON.stringify({ error: 'API Key de Mailchimp inválida' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    // Prepare merge fields for Mailchimp
-    const mergeFields: Record<string, string> = {};
-
-    if (firstName) mergeFields.FNAME = firstName;
-    if (lastName) mergeFields.LNAME = lastName;
-    if (phone) mergeFields.PHONE = phone;
-    if (company) mergeFields.COMPANY = company;
-    if (message) mergeFields.MESSAGE = message;
-
-    console.log('Sending to Mailchimp:', { email, mergeFields });
-
-    const response = await fetch(`https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`, {
-      method: 'POST',
-      headers: {
-        Authorization: `apikey ${MAILCHIMP_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email_address: email,
-        status: 'subscribed',
-        merge_fields: mergeFields,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (response.status >= 400) {
-      return new Response(JSON.stringify({ error: data.detail || 'Error al suscribirse' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    return new Response(JSON.stringify({ message: 'Suscrito con éxito 🎉' }), {
-      status: 201,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  } catch (error) {
-    console.error('API error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Error interno del servidor';
-    return new Response(JSON.stringify({ error: errorMessage }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-};
+<div align="center">
+  <img 
+    src="https://res.cloudinary.com/dy7kvvzgj/image/upload/v1767573832/banner_varmiguemunoz_rur61k.png"
+    alt="Miguel Angel Jaramillo Muñoz – AI Sales Engineer & Growth Systems Architect"
+    style="max-height:400px; width:100%; object-fit:cover; border-radius:20px;"
+  />
+</div>
 
 
-// DEV PRICING TABLE ASTRO
+# 🚀 AI Sales Engineer & Growth Systems Architect | Scaling B2B Agencies & Startups
 
-import type { APIRoute } from 'astro';
+Stop wasting your marketing budget on static websites that don't convert. I architect automated sales ecosystems that turn cold traffic into qualified revenue, combining high-end full-stack development with AI-powered automation. 🤖
 
-import Stripe from 'stripe';
+If you are a B2B Agency, Consultant, or High-Ticket Service Provider, I build the technical infrastructure you need to eliminate manual grunt work and scale your sales process with precision. 💻
 
-const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY as string);
+---
 
-export const POST: APIRoute = async ({ request }) => {
-  try {
-    const { priceId, planName } = await request.json();
-    if (!priceId) {
-      return new Response(JSON.stringify({ error: 'Missing priceId' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
+## 📊 Proven Results
 
-    const origin = request.headers.get('origin') || import.meta.env.SITE_URL;
+✅ +123K Active Users Managed
+✅ +766K Tracked Events Optimized
+✅ +25% Average Increase in New Visitor Conversion
 
-    const session = await stripe.checkout.sessions.create({
-      mode: 'payment', // o 'subscription' si aplica
-      line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/payment/canceled`,
-      metadata: { planName },
-    });
+---
 
-    return new Response(JSON.stringify({ url: session.url }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  } catch (err) {
-    console.error(err);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-};
+## 🎯 The GrowthKit™: Your All-in-One Sales Infrastructure
 
-// Si alguna vez vuelves a prerender estático, esto evita que intente prerender este endpoint:
-export const prerender = false;
+I don’t just “build websites”. I deliver a 100% personalized technical solution designed to organize, optimize, and scale your entire commercial process.
 
+🌐 High-Performance Conversion Engines
+Next-level web experiences optimized for speed, SEO, and lead capture, fully integrated with your marketing stack.
 
-```
+🧩 Bespoke CRM Architecture
+Centralized lead management, intelligent segmentation, and automated reporting so no opportunity slips through the cracks.
+
+⚙️ Multi-Channel Sales Automation
+Behavior-based nurturing and follow-up sequences across Email, SMS, and WhatsApp.
+
+🤖 24/7 AI Sales Assistants
+Custom LLM agents that qualify leads, handle complex questions, and book meetings directly into your calendar.
+
+---
+
+## 🛠️ Strategic Tech Stack
+
+▸ Frontend & Performance: Next.js, React, Astro, Tailwind CSS, TypeScript
+▸ Automation & CRM: GoHighLevel (GHL), n8n, Zapier, WhatsApp Business API
+▸ AI Intelligence: OpenAI SDK, Vercel AI, Custom LLM Agents, Intelligent Workflows
+▸ Tracking & ROI: Google Analytics 4, GTM, Meta Pixel, Conversion API (CAPI)
+
+---
+
+## 🤝 How to Work With Me
+📦 **Option 1: Ready-to-Deploy Solutions (Project Catalog)**
+Need a specific outcome fast? I offer pre-packaged, fixed-price solutions ready for immediate kickoff, including CRM setup, AI agent integration, automation systems, and conversion optimization.
+
+🤝 **Option 2: Strategic Partnership**
+Looking for a long-term partner to act as your Fractional Growth Engineer? 👷🏻‍♂️ I collaborate with agencies and founders to build, maintain, and scale their revenue systems over time. 🚀
+
+Ready to turn your digital presence into a revenue-generating machine? 🚨
+Click **Invite to Job** or **Message**, and let’s talk about your ROI goals. 👇🏻
+
+---
+
+🌐 Website: [https://www.varmiguemunoz.com](https://www.varmiguemunoz.com)
+💬 Growthlyfast: [https://www.growthlyfast.com](https://www.growthlyfast.com)
+💼 Upwork: [https://www.upwork.com/freelancers/~01c50c885bdb2a6b44?mp_source=share](https://www.upwork.com/freelancers/~01c50c885bdb2a6b44?mp_source=share)
