@@ -34,7 +34,7 @@ export default function HeroSection(props: HeroSectionProps) {
   const {
     cta = {
       primary: {
-        url: 'https://calendly.com/miguelmunoz-bloomify/30min',
+        url: 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs',
         title: 'Book a free audit',
       },
       secondary: {

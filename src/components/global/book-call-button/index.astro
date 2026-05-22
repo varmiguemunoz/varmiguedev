@@ -4,7 +4,10 @@ interface Props {
   link: string;
 }
 
-const { label = 'Book a free call', link = '/book-your-call' } = Astro.props;
+const {
+  label = 'Book a free call',
+  link = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs',
+} = Astro.props;
 ---
 
 <div class="mx-auto mb-10 mt-0 flex w-full justify-center px-4">

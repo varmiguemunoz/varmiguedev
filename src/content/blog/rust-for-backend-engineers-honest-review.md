@@ -184,4 +184,4 @@ Would I use Rust for a client project? Depends on the requirements:
 
 The language is genuinely excellent. The learning curve is genuinely steep. Both things are true simultaneously.
 
-If you're curious about where Rust fits in your architecture, [let's talk](https://varmiguemunoz.com/book-your-call).
+If you're curious about where Rust fits in your architecture, [let's talk](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs).

@@ -142,4 +142,4 @@ Since deploying this architecture at TuVendedor24:
 
 The one thing I'd change: **use a proper agent framework** (like LangGraph or a custom state machine) earlier instead of building the routing logic from scratch. We refactored it at month 3 and saved 40% on complexity.
 
-If you're building a WhatsApp agent and want to talk architecture, [book a call](https://varmiguemunoz.com/book-your-call).
+If you're building a WhatsApp agent and want to talk architecture, [book a call](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs).
