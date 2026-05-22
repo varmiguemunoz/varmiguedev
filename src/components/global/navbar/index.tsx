@@ -22,7 +22,7 @@ export default function Navbar() {
           {/* Desktop CTA & Social */}
           <div className="hidden items-center space-x-4 md:flex">
             <Social title={false} />
-            <a href="/book-your-call">
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs">
               <Button variant="hero" size="sm">
                 Book a Call →
               </Button>

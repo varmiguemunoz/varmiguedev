@@ -15,23 +15,23 @@ const links = [
     <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
       <!-- Left -->
       <div class="text-center md:text-left">
-        <p class="font-medium text-foreground">
-          varmiguemunoz · Medellín, Colombia 🇨🇴
-        </p>
+        <p class="font-medium text-foreground">varmiguemunoz · Medellín, Colombia 🇨🇴</p>
       </div>
 
       <!-- Links -->
       <div class="flex flex-wrap items-center justify-center gap-6">
-        {links.map((link) => (
-          <a
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
-          >
-            {link.name}
-          </a>
-        ))}
+        {
+          links.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
+            >
+              {link.name}
+            </a>
+          ))
+        }
       </div>
     </div>
 
