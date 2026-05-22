@@ -1,12 +1,12 @@
 ---
 title: 'Features of Next.js: Powering Reactive Developments'
 description: 'Next.js has emerged as an exceptionally powerful and versatile React framework, providing a host of features that streamline web development and significantly enhance application performance.'
-pubDate: '11/10/2023'
+pubDate: 2023-11-10
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346481/fozwisstu33btc3psvbg_vx0ff9.webp'
 readtime: '5 min read'
 category: 'tech-stack'
 tags: ['Javascript', 'Frontend', 'React js', 'Next js']
-author: '["varmiguemunoz"]'
+authors: ['varmiguemunoz']
 draft: false
 ---
 

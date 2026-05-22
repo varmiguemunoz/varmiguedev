@@ -1,0 +1,83 @@
+---
+import { Badge } from '@/components/ui/badge';
+
+const services = [
+  {
+    title: 'Custom AI & Automation',
+    items: [
+      'AI agents for WhatsApp, voice, and customer support',
+      'RAG systems for knowledge bases and document processing',
+      'Multi-agent orchestration using OpenAI and Anthropic Claude',
+      'Production LLM integration built for real traffic',
+    ],
+    timeline: '2–6 weeks',
+  },
+  {
+    title: 'Business Transformation',
+    items: [
+      'Full automation of sales, finance, and internal ops',
+      'Custom dashboards replacing manual reporting',
+      'Integrations across CRMs, ERPs, and communication platforms',
+      'Architecture built so no single person bottlenecks the business',
+    ],
+    timeline: '4–10 weeks',
+  },
+  {
+    title: 'High-Performance Backend',
+    items: [
+      'Go (Golang) microservices for 10K+ req/min workloads',
+      'API optimization and database performance tuning',
+      'Real-time data processing under 100ms',
+      'Scalable architecture designed for 100X growth',
+    ],
+    timeline: '1–4 weeks',
+  },
+  {
+    title: 'Startup MVPs & Full-Stack Products',
+    items: [
+      'SaaS platforms and AI-first products',
+      'Next.js 15 frontend with Server Components',
+      'React Native when mobile is part of the scope',
+      'Built to scale from day one — not rewritten at 10K users',
+    ],
+    timeline: '4–12 weeks',
+  },
+];
+---
+
+<section class="px-6 py-24" id="services">
+  <div class="mx-auto max-w-6xl">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-6 border-primary text-primary">Services</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Services</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+        Fixed-scope or ongoing. Hourly or project-based. You pick the model.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid gap-8 md:grid-cols-2">
+      {services.map((service) => (
+        <div class="rounded-2xl border border-border/30 bg-gradient-card p-8 transition-all duration-300 hover:border-primary/20 hover:shadow-glow">
+          <h3 class="mb-6 text-xl font-bold text-foreground">{service.title}</h3>
+
+          <div class="mb-6 space-y-3">
+            {service.items.map((item) => (
+              <div class="flex items-start gap-3">
+                <span class="mt-1.5 text-primary font-medium">→</span>
+                <p class="text-muted-foreground leading-relaxed">{item}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-auto">
+            <span class="inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
+              {service.timeline}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

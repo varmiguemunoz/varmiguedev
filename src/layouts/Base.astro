@@ -1,6 +1,7 @@
 ---
 import Footer from '@components/global/footer/Footer.astro';
 import Whatsapp from '@/components/global/whatsapp/Whatsapp.astro';
+import GoogleCalendarButton from '@/components/global/google-calendar-button/google-calendar-button.astro';
 
 import { createOgImage } from '@utils/createOgImage';
 import { ViewTransitions } from 'astro:transitions';
@@ -124,6 +125,7 @@ const shouldNoindex = noindex || isPayment;
     </main>
 
     <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
+    <GoogleCalendarButton />
 
     {!isPayment && <Footer />}
 

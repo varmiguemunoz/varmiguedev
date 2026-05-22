@@ -1,29 +1,45 @@
 ---
-import social from '@config/social';
-
-const socialItems = social.networks;
-
 const year = new Date().getFullYear();
+
+const links = [
+  { name: 'GitHub', url: 'https://github.com/varmiguemunoz' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/varmiguemunoz/' },
+  { name: 'Upwork', url: 'https://www.upwork.com/freelancers/~01c50c885bdb2a6b44' },
+  { name: 'TuVendedor24', url: 'https://tuvendedor24.com' },
+  { name: 'Blog', url: '/blog' },
+];
 ---
 
-<footer class="mx-auto max-w-screen-lg border-t border-zinc-100 dark:border-zinc-900">
-  <div class="flex w-full items-center justify-between px-4 py-6 sm:px-6 lg:px-8">
-    <div>
-      <p class="text-center text-xs/relaxed text-zinc-500 dark:text-zinc-400">
-        &copy; {year} - All rights reserved | varmiguemunoz
-      </p>
+<footer class="border-t border-border/30">
+  <div class="mx-auto max-w-6xl px-6 py-10">
+    <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+      <!-- Left -->
+      <div class="text-center md:text-left">
+        <p class="font-medium text-foreground">
+          varmiguemunoz · Medellín, Colombia 🇨🇴
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        {links.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
     </div>
 
-    <div class="hidden space-x-4 md:flex">
-      {
-        socialItems?.map((item) => (
-          <a href={item.url} target="_blank" rel="noopener noreferrer">
-            <figure>
-              <Fragment set:html={item.svg} />
-            </figure>
-          </a>
-        ))
-      }
+    <!-- Bottom -->
+    <div class="mt-8 border-t border-border/20 pt-6 text-center">
+      <p class="text-xs text-muted-foreground/60">
+        &copy; {year} · Built by Miguel Angel Munoz · Senior Full-Stack Engineer
+      </p>
     </div>
   </div>
 </footer>

@@ -1,7 +1,7 @@
 ---
 title: 'Exploring Prisma: A Comprehensive ORM for Backend Development'
 description: 'Prisma has risen to prominence as a powerful Object-Relational Mapping (ORM) tool, streamlining database access and manipulation in the backend development landscape.'
-pubDate: '11/10/2023'
+pubDate: 2023-11-10
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346476/k17k1ildz12yvcacx0e8_uh7wmi.webp'
 readtime: '5 min read'
 category: 'tech-stack'

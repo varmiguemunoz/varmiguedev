@@ -53,7 +53,7 @@ export default function FAQ({
   subheading = 'Common questions about working with a dedicated development partner',
 }: FAQProps) {
   return (
-    <section className="px-4 py-24">
+    <section className="px-4 py-24" id="faq">
       <div className="mx-auto max-w-4xl">
         <div className="mb-16 text-center">
           <h2 className="mb-6 text-4xl font-bold text-foreground md:text-5xl">{heading}</h2>

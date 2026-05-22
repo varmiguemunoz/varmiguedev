@@ -1,12 +1,12 @@
 ---
 title: 'Advanced Array Manipulation in JavaScript Without Loops: A Comprehensive Guide'
 description: 'JavaScript, as a versatile and powerful language, provides advanced methods for array manipulation without relying on traditional loops. '
-pubDate: '11/10/2023'
+pubDate: 2023-11-10
 image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753248698/javascript_gl1ash.png'
 readtime: '5 min read'
 category: 'tech-stack'
 tags: ['javascript', 'react', 'node', 'full stack']
-author: '["varmiguemunoz"]'
+authors: ['varmiguemunoz']
 draft: false
 ---
 ### Introduction:

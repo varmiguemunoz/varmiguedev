@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import { getCollection } from 'astro:content';
 
 import Base from '@layouts/Base.astro';
@@ -15,7 +17,7 @@ export async function getStaticPaths({ paginate }: any) {
 
   const sortedPosts = allPosts
     .filter((post) => post.data?.draft !== true)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
   return paginate(sortedPosts, {
     pageSize: config.site.pageSize || 6,
@@ -24,7 +26,15 @@ export async function getStaticPaths({ paginate }: any) {
 
 const { page } = Astro.props as any;
 
-const allPosts = page?.data;
+const posts = (page?.data ?? []).map((p: any) => ({
+  slug: p.slug,
+  title: p.data.title,
+  description: p.data.description,
+  pubDate: new Date(p.data.pubDate).toISOString(),
+  image: p.data.image ?? '',
+  category: p.data.category ?? 'others',
+  readtime: p.data.readtime ?? '',
+}));
 
 const categories = [
   { id: 'all', label: 'All Posts', color: 'default' },
@@ -40,7 +50,7 @@ const categories = [
   <div class="bg-gradient-backgrounded-full min-h-screen w-full">
     <Navbar client:load />
 
-    <Provider allPosts={allPosts} categories={categories} client:load />
+    <Provider posts={posts} categories={categories} client:load />
     <DiscoveryCall />
   </div>
 </Base>

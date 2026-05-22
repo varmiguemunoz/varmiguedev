@@ -1,0 +1,126 @@
+---
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Download, Briefcase, GraduationCap } from 'lucide-react';
+
+const experiences = [
+  {
+    period: '2026 – Present',
+    role: 'Senior Full-Stack Developer',
+    company: 'Scyllatech',
+    type: 'Full Time',
+  },
+  {
+    period: '2025 – 2026',
+    role: 'Senior Full-Stack Developer',
+    company: 'Alpha Agent',
+    type: 'Full Time',
+  },
+  {
+    period: '2025',
+    role: 'IT Consultant',
+    company: 'Kamay Catalizadora',
+    type: 'Freelance',
+  },
+  {
+    period: '2025',
+    role: 'Mid Full-Stack Developer',
+    company: 'Diey.io / The U-Corporate / Linnk Tech Solutions',
+    type: 'Freelance',
+  },
+  {
+    period: '2023 – 2024',
+    role: 'Full-Stack Developer',
+    company: 'Parrolabs',
+    type: 'Full Time',
+  },
+  {
+    period: '2021 – Present',
+    role: 'Senior Full-Stack Engineer',
+    company: 'varmiguemunoz',
+    type: 'Personal Brand — Freelance',
+  },
+];
+---
+
+<section class="px-6 py-24" id="about">
+  <div class="mx-auto max-w-6xl">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-6 border-primary text-primary">About</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">About</h2>
+    </div>
+
+    <div class="grid items-start gap-16 lg:grid-cols-2">
+      <!-- Bio -->
+      <div class="space-y-6">
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          I'm Miguel — Senior Full-Stack Engineer based in Medellín, Colombia.
+        </p>
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          I started building production systems in 2021 under my personal brand varmiguemunoz.
+          Since then I've shipped 15+ AI systems, scaled platforms to thousands of users, and helped
+          companies replace manual processes with engineered infrastructure that runs without intervention.
+        </p>
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          I work across the full stack — Go and Node.js on the backend, Next.js 15 on the frontend,
+          and custom AI agents when the problem demands real engineering, not a template.
+        </p>
+
+        <!-- Education -->
+        <div class="mt-8 rounded-xl border border-border/30 bg-card/30 p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="rounded-lg bg-accent/10 p-2">
+              <GraduationCap className="h-5 w-5 text-accent" />
+            </div>
+            <h3 class="text-lg font-semibold text-foreground">Education</h3>
+          </div>
+          <p class="text-foreground font-medium">B.Sc. Software Engineering</p>
+          <p class="text-sm text-muted-foreground">Universidad Internacional de La Rioja (UNIR) · 2025</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="pt-4">
+          <a href="/varmiguemunoz.pdf" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="lg" className="group hover:bg-white hover:text-black">
+              <Download className="mr-2 h-4 w-4" />
+              Download CV
+              <span class="ml-1 transition-transform group-hover:translate-x-1">→</span>
+            </Button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Experience Timeline -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="rounded-lg bg-primary/10 p-2">
+            <Briefcase className="h-5 w-5 text-primary" />
+          </div>
+          <h3 class="text-xl font-bold text-foreground">Experience</h3>
+        </div>
+
+        <div class="relative space-y-0">
+          <!-- Timeline Line -->
+          <div class="absolute left-[7px] top-2 bottom-2 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/20"></div>
+
+          {experiences.map((exp) => (
+            <div class="relative pl-8 pb-8 last:pb-0">
+              <!-- Timeline Dot -->
+              <div class="absolute left-0 top-2 h-[15px] w-[15px] rounded-full border-2 border-primary bg-background"></div>
+
+              <div class="rounded-xl border border-border/20 bg-card/20 p-4 transition-all duration-300 hover:border-primary/20 hover:bg-card/40">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <span class="text-sm font-medium text-primary">{exp.period}</span>
+                  <span class="rounded-full bg-accent/10 px-2 py-0.5 text-xs text-accent">{exp.type}</span>
+                </div>
+                <h4 class="font-semibold text-foreground">{exp.role}</h4>
+                <p class="text-sm text-muted-foreground">{exp.company}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

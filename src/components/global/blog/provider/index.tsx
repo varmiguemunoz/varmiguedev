@@ -3,75 +3,119 @@ import { useMemo, useState, useEffect } from 'react';
 import HeroBlog from '../hero-blog';
 import FeaturedBlog from '../featured-blog';
 import GridBlog from '../grid-blog';
-import { Loader } from 'lucide-react';
 
-export default function Provider({ allPosts, categories }: any) {
-  const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
-  const selectedCategory = searchParams?.get('category') || 'all';
-  const [isReady, setIsReady] = useState(false);
+type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  image: string;
+  category: string;
+  readtime: string;
+};
 
-  // Progressive loading - show content after a short delay
+type Category = {
+  id: string;
+  label: string;
+  color: string;
+};
+
+type Props = {
+  posts: Post[];
+  categories: Category[];
+};
+
+function getInitialCategory(): string {
+  if (typeof window === 'undefined') return 'all';
+  return new URLSearchParams(window.location.search).get('category') || 'all';
+}
+
+export default function Provider({ posts, categories }: Props) {
+  const [selectedCategory, setSelectedCategory] = useState<string>(getInitialCategory);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 100);
-    return () => clearTimeout(timer);
+    const syncCategory = () => {
+      setSelectedCategory(new URLSearchParams(window.location.search).get('category') || 'all');
+    };
+
+    window.addEventListener('popstate', syncCategory);
+    document.addEventListener('astro:page-load', syncCategory);
+
+    return () => {
+      window.removeEventListener('popstate', syncCategory);
+      document.removeEventListener('astro:page-load', syncCategory);
+    };
   }, []);
 
   const getCategoryLabel = (categoryId: string) =>
-    categories.find((cat: any) => cat.id === categoryId)?.label || categoryId;
+    categories.find((cat) => cat.id === categoryId)?.label || categoryId;
 
   const { featuredPost, filteredPosts } = useMemo(() => {
-    // Only process if allPosts exists and has length
-    if (!allPosts || allPosts.length === 0) {
+    if (!posts || posts.length === 0) {
       return { featuredPost: null, filteredPosts: [] };
     }
 
-    const sortedPosts = allPosts
-      .filter((post: any) => post.data?.draft !== true)
-      .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-    const featuredPost = sortedPosts[0];
-    const blogPosts = sortedPosts.slice(1);
-
-    const filteredPosts =
-      selectedCategory === 'all'
-        ? blogPosts
-        : blogPosts.filter((post: any) =>
-            Array.isArray(post.data?.category)
-              ? post.data.category.includes(selectedCategory)
-              : post.data?.category === selectedCategory
-          );
-
-    return { featuredPost, filteredPosts };
-  }, [allPosts?.length, selectedCategory]);
-
-  if (!isReady) {
-    return (
-      <div className="flex min-h-[400px] flex-col items-center justify-center">
-        <Loader className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-4 text-primary">Loading blog content...</p>
-      </div>
+    const sorted = [...posts].sort(
+      (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
     );
-  }
+
+    const featured = sorted[0];
+    const rest = sorted.slice(1);
+
+    const filtered =
+      selectedCategory === 'all'
+        ? rest
+        : rest.filter((p) => p.category === selectedCategory);
+
+    return { featuredPost: featured, filteredPosts: filtered };
+  }, [posts, selectedCategory]);
+
+  const featuredForComponent = featuredPost
+    ? {
+        slug: featuredPost.slug,
+        data: {
+          image: featuredPost.image,
+          title: featuredPost.title,
+          id: featuredPost.slug,
+          category: featuredPost.category,
+          pubDate: new Date(featuredPost.pubDate),
+          description: featuredPost.description,
+          readtime: featuredPost.readtime,
+          slug: featuredPost.slug,
+        },
+      }
+    : null;
+
+  const gridPostsForComponent = filteredPosts.map((p) => ({
+    slug: p.slug,
+    data: {
+      image: p.image,
+      title: p.title,
+      id: p.slug,
+      category: p.category,
+      pubDate: new Date(p.pubDate),
+      description: p.description,
+      readTime: p.readtime,
+    },
+  }));
 
   return (
     <>
-      {/* Hero Section */}
       <HeroBlog showFilters={false} selectedCategory={selectedCategory} categories={categories} />
 
       <div className="w-full max-w-6xl px-4 pb-24 md:mx-auto">
-        {/* Featured Article Section */}
-        <FeaturedBlog
-          selectedCategory={selectedCategory}
-          featuredPost={featuredPost as any}
-          getCategoryLabel={getCategoryLabel}
-        />
+        {featuredForComponent && (
+          <FeaturedBlog
+            selectedCategory={selectedCategory}
+            featuredPost={featuredForComponent as any}
+            getCategoryLabel={getCategoryLabel}
+          />
+        )}
 
         <GridBlog
           getCategoryLabel={getCategoryLabel}
           selectedCategory={selectedCategory}
-          filteredPosts={filteredPosts as any}
+          filteredPosts={gridPostsForComponent as any}
         />
       </div>
     </>

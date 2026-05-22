@@ -1,5 +1,5 @@
 import Social from '@/config/social.json';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, BookOpen } from 'lucide-react';
 
 type SocialMediaProps = {
   title?: boolean;
@@ -8,7 +8,7 @@ type SocialMediaProps = {
 export default function SocialMedia({ title = true }: SocialMediaProps) {
   const { social_links } = Social;
 
-  const icons = { Github, Linkedin, Mail };
+  const icons = { Github, Linkedin, Mail, BookOpen };
 
   return (
     <div className="flex items-center gap-6 pt-4">

@@ -1,0 +1,77 @@
+---
+import { Badge } from '@/components/ui/badge';
+
+const clients = [
+  {
+    emoji: '🏢',
+    title: 'Business Owners',
+    subtitle: 'Automating Their Operations',
+    description:
+      "Your business runs on manual processes, spreadsheets, and people doing repetitive work. I replace that with systems that run themselves — sales pipelines, financial ops, internal workflows, and custom dashboards.",
+    note: "Not Zapier flows. Not n8n templates. Engineered infrastructure built to run without you.",
+    timeline: '4–10 weeks',
+  },
+  {
+    emoji: '🏗️',
+    title: 'Agencies',
+    subtitle: 'That Need Real Tech Infrastructure',
+    description:
+      "You sell results to clients. I build the systems that deliver them — automation workflows, GHL configurations, landing pages, ad funnel infrastructure, white-label products, and backend systems your team can deploy across accounts.",
+    note: "You focus on selling. I build what you're selling.",
+    timeline: '2–5 weeks',
+  },
+  {
+    emoji: '🚀',
+    title: 'Startups',
+    subtitle: 'Building Serious Products',
+    description:
+      "If you're building a real product, you need real architecture. Full-stack SaaS platforms, AI-first applications, Go backends engineered for 10X growth, and multi-agent systems built to survive real load from day one.",
+    note: 'One engineer. Full stack. No handoffs.',
+    timeline: '4–12 weeks',
+  },
+];
+---
+
+<section class="px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-6 border-primary text-primary">Clients</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Who I Work With</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+        I don't take every project. I work with three types of clients — and I build exactly what each one needs.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid gap-8 lg:grid-cols-3">
+      {clients.map((client) => (
+        <div class="group flex flex-col rounded-2xl border border-border/30 bg-gradient-card p-8 transition-all duration-300 hover:border-primary/20 hover:shadow-glow">
+          <!-- Emoji + Title -->
+          <div class="mb-6">
+            <span class="mb-4 block text-4xl">{client.emoji}</span>
+            <h3 class="text-xl font-bold text-foreground">{client.title}</h3>
+            <p class="mt-1 text-sm font-medium text-primary">{client.subtitle}</p>
+          </div>
+
+          <!-- Description -->
+          <p class="mb-4 flex-1 leading-relaxed text-muted-foreground">
+            {client.description}
+          </p>
+
+          <!-- Note -->
+          <p class="mb-6 text-sm font-medium italic text-foreground/80">
+            {client.note}
+          </p>
+
+          <!-- Timeline Badge -->
+          <div class="mt-auto">
+            <span class="inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent">
+              Timeline: {client.timeline}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

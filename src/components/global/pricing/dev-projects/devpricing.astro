@@ -293,8 +293,7 @@ const handleClick = async (priceId: string, planName: string) => {
       if (!url) throw new Error('Missing Checkout URL from server.');
 
       window.location.href = url;
-    } catch (err) {
-      console.error(err);
+    } catch (_er) {
       alert('The payment process could not be initiated. Please try again');
     } 
   };
