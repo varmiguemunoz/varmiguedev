@@ -1,5 +1,4 @@
 ---
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Download, Briefcase, GraduationCap } from 'lucide-react';
 
@@ -46,25 +45,26 @@ const experiences = [
 <section class="px-6 py-24" id="about">
   <div class="mx-auto max-w-6xl">
     <!-- Header -->
-    <div class="mb-16 text-center">
-      <Badge variant="outline" className="mb-6 border-primary text-primary">About</Badge>
-      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">About</h2>
+    <div class="mb-16 max-w-3xl">
+      <h2 class="text-4xl font-bold tracking-[-0.02em] text-foreground md:text-5xl">About</h2>
     </div>
 
     <div class="grid items-start gap-16 lg:grid-cols-2">
       <!-- Bio -->
       <div class="space-y-6">
         <p class="text-lg leading-relaxed text-muted-foreground">
-          I'm Miguel — Senior Full-Stack Engineer based in Medellín, Colombia.
+          I'm Miguel — an AI Integration Engineer based in Medellín, Colombia.
         </p>
         <p class="text-lg leading-relaxed text-muted-foreground">
           I started building production systems in 2021 under my personal brand varmiguemunoz.
-          Since then I've shipped 15+ AI systems, scaled platforms to thousands of users, and helped
-          companies replace manual processes with engineered infrastructure that runs without intervention.
+          Since then I've shipped 15+ AI systems handling 10,000+ operations a day — embedding LLM
+          agents, RAG and automation into the CRMs, chat channels and internal tools companies
+          already run on.
         </p>
         <p class="text-lg leading-relaxed text-muted-foreground">
-          I work across the full stack — Go and Node.js on the backend, Next.js 15 on the frontend,
-          and custom AI agents when the problem demands real engineering, not a template.
+          I own the full stack around the AI — Go and Node.js on the backend, Next.js and React on
+          the frontend, and custom agents when the problem demands real engineering, not a template.
+          Go microservices processing thousands of requests a minute at sub-100ms latency.
         </p>
 
         <!-- Education -->

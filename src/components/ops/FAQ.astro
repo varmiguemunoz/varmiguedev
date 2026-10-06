@@ -1,0 +1,35 @@
+---
+import { faqs } from './data';
+---
+
+<section id="faq" class="ops-section scroll-mt-20 border-t border-ops-line" aria-labelledby="faq-title">
+  <div class="ops-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+    <div class="lg:sticky lg:top-28 lg:self-start">
+      <h2 id="faq-title" class="ops-h2" data-split>Before you ask.</h2>
+      <p class="ops-lead mt-5">
+        Anything else? <a href="#contact" class="ops-link">Send me two lines</a> and I will answer within 24 hours.
+      </p>
+    </div>
+
+    <div class="border-t border-ops-ink/15">
+      {
+        faqs.map((item) => (
+          <details class="ops-faq group border-b border-ops-ink/15">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-lg font-semibold tracking-[-0.01em] text-ops-ink md:text-xl">
+              {item.q}
+              <span
+                class="ops-faq-icon grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-ops-ink/15 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-ops-ink"
+                aria-hidden="true"
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+              </span>
+            </summary>
+            <div class="ops-faq-body max-w-[62ch] pb-7 leading-relaxed text-ops-slate">{item.a}</div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

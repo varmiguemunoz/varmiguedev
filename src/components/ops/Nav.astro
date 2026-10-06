@@ -1,0 +1,126 @@
+---
+import { CAL_LINK } from './data';
+
+const links = [
+  { label: 'Work', href: '#work' },
+  { label: 'Process', href: '#process' },
+  { label: 'About', href: '#about' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Blog', href: '/blog' },
+];
+---
+
+<header
+  data-nav
+  class="sticky top-0 z-50 border-b border-transparent bg-ops-paper/95 transition-[border-color,box-shadow] duration-300 data-[scrolled=true]:border-ops-line data-[scrolled=true]:shadow-[0_10px_30px_-24px_rgb(14_26_43/0.5)]"
+>
+  <nav class="ops-container flex h-[72px] items-center justify-between" aria-label="Main">
+    <a href="/" class="flex items-center gap-2.5 font-display text-[17px] font-semibold tracking-[-0.01em] text-ops-ink">
+      <span class="grid h-7 w-7 place-items-center rounded-md bg-ops-ink" aria-hidden="true">
+        <span class="h-2 w-2 rounded-full bg-ops-amber"></span>
+      </span>
+      varmiguemunoz
+    </a>
+
+    <ul class="hidden items-center gap-8 md:flex">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-sm font-medium text-ops-slate transition-colors duration-200 hover:text-ops-ink"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-ink hidden sm:inline-flex">
+        Book a call
+        <span aria-hidden="true">→</span>
+      </a>
+      <button
+        type="button"
+        data-nav-toggle
+        aria-expanded="false"
+        aria-controls="ops-mobile-menu"
+        class="grid h-11 w-11 place-items-center rounded-lg text-ops-ink transition-colors hover:bg-ops-paper-2 md:hidden"
+      >
+        <span class="sr-only">Open menu</span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path data-nav-icon-open d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          <path data-nav-icon-close class="hidden" d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="ops-mobile-menu" data-nav-menu hidden class="border-t border-ops-line bg-ops-paper md:hidden">
+    <ul class="ops-container flex flex-col py-4">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              data-nav-link
+              class="block py-3 font-display text-2xl font-medium tracking-[-0.02em] text-ops-ink"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-4">
+        <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-primary w-full">
+          Book a discovery call
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  function initNav() {
+    const nav = document.querySelector<HTMLElement>('[data-nav]');
+    if (!nav || nav.dataset.bound) return;
+    nav.dataset.bound = 'true';
+
+    const toggle = nav.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+    const menu = nav.querySelector<HTMLElement>('[data-nav-menu]');
+    const iconOpen = nav.querySelector('[data-nav-icon-open]');
+    const iconClose = nav.querySelector('[data-nav-icon-close]');
+    const label = toggle?.querySelector('.sr-only');
+
+    const setOpen = (open: boolean) => {
+      if (!toggle || !menu) return;
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.hidden = !open;
+      iconOpen?.classList.toggle('hidden', open);
+      iconClose?.classList.toggle('hidden', !open);
+      if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+    };
+
+    toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    menu?.querySelectorAll('[data-nav-link]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    nav.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle?.focus();
+      }
+    });
+
+    const onScroll = () => {
+      nav.dataset.scrolled = String(window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('astro:before-swap', () => window.removeEventListener('scroll', onScroll), {
+      once: true,
+    });
+  }
+
+  document.addEventListener('astro:page-load', initNav);
+</script>

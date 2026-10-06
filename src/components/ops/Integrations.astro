@@ -1,0 +1,35 @@
+---
+import { integrations } from './data';
+// Wordmarks for now. To use real logos, swap each <span> for a monochrome SVG in /public/brands/integrations.
+---
+
+<section class="border-y border-ops-line bg-ops-paper py-10" aria-labelledby="integrations-title">
+  <div class="ops-container mb-6 flex items-baseline justify-between gap-6">
+    <h2 id="integrations-title" class="text-sm font-medium text-ops-slate">
+      Plugs into the stack you already run
+    </h2>
+  </div>
+
+  <div class="ops-marquee overflow-hidden" style="--marquee-duration: 52s">
+    <div class="ops-marquee-track">
+      <ul class="flex shrink-0 items-center gap-12 pr-12">
+        {
+          integrations.map((name) => (
+            <li class="whitespace-nowrap font-display text-xl font-semibold tracking-[-0.02em] text-ops-ink/55 transition-colors duration-300 hover:text-ops-ink md:text-2xl">
+              {name}
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="flex shrink-0 items-center gap-12 pr-12 motion-reduce:hidden" aria-hidden="true">
+        {
+          integrations.map((name) => (
+            <li class="whitespace-nowrap font-display text-xl font-semibold tracking-[-0.02em] text-ops-ink/55 md:text-2xl">
+              {name}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

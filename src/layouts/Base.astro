@@ -25,9 +25,24 @@ export interface Props {
   ogImageTitle?: string;
   ogImageMeta?: string;
   hreflang?: Array<{ lang: string; url: string }>;
+  /** 'ops' = light "machine room" theme used by the homepage funnel */
+  theme?: 'default' | 'ops';
 }
 
-const { title, meta_title, description, noindex, keywords, schema, ogImageTitle, ogImageMeta, hreflang } = Astro.props;
+const {
+  title,
+  meta_title,
+  description,
+  noindex,
+  keywords,
+  schema,
+  ogImageTitle,
+  ogImageMeta,
+  hreflang,
+  theme = 'default',
+} = Astro.props;
+
+const isOps = theme === 'ops';
 
 // OG Image dinámico por página
 const ogImage = createOgImage({
@@ -45,10 +60,34 @@ const shouldNoindex = noindex || isPayment;
 ---
 
 <!doctype html>
-<html lang={config.site.lang}>
+<html lang={config.site.lang} class={isOps ? 'theme-ops' : undefined}>
   <head>
     <!-- Charset FIRST for security (OWASP best practice) -->
     <meta charset="utf-8" />
+
+    {
+      isOps && (
+        <>
+          {/* Motion flag before first paint, so the hero never flashes */}
+          <script is:inline>
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              document.documentElement.classList.add('js-motion');
+            }
+          </script>
+          <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            rel="stylesheet"
+            href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+          />
+        </>
+      )
+    }
 
     <!-- Resource hints - Optimized for critical resources -->
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
@@ -124,8 +163,14 @@ const shouldNoindex = noindex || isPayment;
       <slot />
     </main>
 
-    <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
-    <GoogleCalendarButton />
+    {
+      !isOps && (
+        <>
+          <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
+          <GoogleCalendarButton />
+        </>
+      )
+    }
 
     {!isPayment && <Footer />}
 

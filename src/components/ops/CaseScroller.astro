@@ -1,0 +1,124 @@
+---
+import CaseDiagram from './CaseDiagram.astro';
+import { flagshipCases } from './data';
+
+const slugs: Record<string, string> = {
+  finance: 'finance-assistant',
+  whatsapp: 'whatsapp-platform',
+  leads: 'lead-pipeline',
+};
+---
+
+<section id="work" class="ops-section scroll-mt-20" aria-labelledby="work-title" data-case-scroller>
+  <div class="ops-container">
+    <div class="mb-16 grid gap-6 md:mb-20 lg:grid-cols-[1fr_1fr] lg:items-end">
+      <h2 id="work-title" class="ops-h2" data-split>Systems in production, not slides.</h2>
+      <p class="ops-lead lg:justify-self-end">
+        Three builds running on real company data today. Each one started as a scoped first version and became
+        something a team depends on.
+      </p>
+    </div>
+
+    <div class="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+      <!-- Sticky visual (desktop) -->
+      <div class="hidden lg:block">
+        <div class="sticky top-28">
+          <div class="ops-panel">
+            <div class="flex items-center justify-between border-b border-ops-ink-3 px-5 py-3.5">
+              <span class="font-mono text-xs text-ops-mist" data-case-label>{slugs[flagshipCases[0].kind]}</span>
+              <div class="flex gap-1.5" aria-hidden="true">
+                {
+                  flagshipCases.map((_, i) => (
+                    <span class="h-1 w-10 overflow-hidden rounded-full bg-ops-ink-3">
+                      <span
+                        data-case-progress={i}
+                        class="block h-full origin-left rounded-full bg-ops-amber"
+                        style={i === 0 ? '' : 'transform: scaleX(0)'}
+                      />
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+            <div class="relative aspect-[480/340] p-6">
+              {
+                flagshipCases.map((c, i) => (
+                  <div data-case-visual={i} data-active={i === 0 ? '' : undefined} class="absolute inset-6">
+                    <CaseDiagram kind={c.kind} />
+                  </div>
+                ))
+              }
+            </div>
+            <div class="flex items-center gap-2 border-t border-ops-ink-3 px-5 py-3 font-mono text-xs text-ops-live">
+              <span class="h-1.5 w-1.5 rounded-full bg-ops-live" aria-hidden="true"></span>
+              status: running · production
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <ol class="flex flex-col">
+        {
+          flagshipCases.map((c, i) => (
+            <li
+              id={`case-${c.kind}`}
+              data-case-step={i}
+              data-case-slug={slugs[c.kind]}
+              class="scroll-mt-28 border-t border-ops-line py-12 first:border-t-0 first:pt-0 lg:flex lg:min-h-[78vh] lg:flex-col lg:justify-center lg:py-16 lg:first:pt-16"
+            >
+              <div class="mb-8 lg:hidden">
+                <div class="ops-panel p-5">
+                  <CaseDiagram kind={c.kind} />
+                </div>
+              </div>
+
+              <h3 class="font-display text-2xl font-semibold tracking-[-0.02em] text-ops-ink md:text-[1.75rem]">
+                {c.name}
+              </h3>
+
+              <p class="mt-6 flex items-baseline gap-4">
+                <span class="font-display text-[clamp(3rem,6vw,4.5rem)] font-semibold leading-none tracking-[-0.04em] text-ops-ink tabular-nums">
+                  {c.metric.value}
+                </span>
+                <span class="max-w-[14rem] text-sm leading-snug text-ops-slate">{c.metric.label}</span>
+              </p>
+
+              <dl class="mt-8 grid gap-5">
+                <div class="grid gap-1.5 sm:grid-cols-[5.5rem_1fr] sm:gap-4">
+                  <dt class="text-xs font-semibold uppercase tracking-[0.14em] text-ops-slate/80">Before</dt>
+                  <dd class="leading-relaxed text-ops-slate">{c.before}</dd>
+                </div>
+                <div class="grid gap-1.5 sm:grid-cols-[5.5rem_1fr] sm:gap-4">
+                  <dt class="text-xs font-semibold uppercase tracking-[0.14em] text-ops-ink">After</dt>
+                  <dd class="leading-relaxed text-ops-ink">{c.after}</dd>
+                </div>
+              </dl>
+
+              <p class="mt-6 flex items-center gap-2 text-sm font-medium text-ops-ink">
+                <span class="h-1.5 w-1.5 rounded-full bg-ops-live" aria-hidden="true" />
+                {c.secondary}
+              </p>
+
+              {c.media && (
+                <figure class="mt-8 overflow-hidden rounded-xl border border-ops-line bg-white">
+                  {c.media.type === 'video' ? (
+                    <video src={c.media.src} autoplay muted loop playsinline class="block w-full" aria-label={c.media.alt} />
+                  ) : (
+                    <img src={c.media.src} alt={c.media.alt} loading="lazy" class="block w-full" />
+                  )}
+                </figure>
+              )}
+
+              <ul class="mt-8 flex flex-wrap gap-2" aria-label="Built with">
+                {c.stack.map((s) => (
+                  <li class="ops-chip">{s}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+const steps = [
+  {
+    when: 'Day 1',
+    title: 'Discovery call',
+    body: 'Thirty minutes to map the process and the systems involved. You leave with a direct read on fit and approach.',
+  },
+  {
+    when: 'Weeks 1–6',
+    title: 'First version on your real data',
+    body: 'A scoped version running against your actual systems, then iteration on what the real workflow surfaces.',
+  },
+  {
+    when: 'Handoff',
+    title: 'Documented, and yours',
+    body: 'Documentation and a clean handoff, so your team keeps adjusting it without depending on me.',
+  },
+];
+---
+
+<section id="process" class="ops-section scroll-mt-20" aria-labelledby="process-title" data-process>
+  <div class="ops-container">
+    <div class="mb-16 grid gap-6 md:mb-20 lg:grid-cols-2 lg:items-end">
+      <h2 id="process-title" class="ops-h2" data-split>How a project runs.</h2>
+      <p class="ops-lead lg:justify-self-end">
+        Three steps, built so you are never locked in. Each one hands you something concrete before the next begins.
+      </p>
+    </div>
+
+    <div class="relative">
+      <!-- Desktop rail -->
+      <span class="absolute left-0 right-0 top-[11px] hidden h-[2px] bg-ops-line md:block" aria-hidden="true">
+        <span data-process-line class="block h-full w-full origin-left bg-ops-ink"></span>
+      </span>
+      <!-- Mobile rail -->
+      <span class="absolute bottom-2 left-[11px] top-2 w-[2px] bg-ops-line md:hidden" aria-hidden="true">
+        <span data-process-line-mobile class="block h-full w-full origin-top bg-ops-ink"></span>
+      </span>
+
+      <ol class="relative grid gap-12 md:grid-cols-3 md:gap-10">
+        {
+          steps.map((step) => (
+            <li data-process-step data-lit class="group relative pl-12 md:pl-0 md:pt-14">
+              <span
+                class="absolute left-0 top-0 grid h-6 w-6 place-items-center rounded-full border-2 border-ops-line bg-ops-paper transition-colors duration-500 group-data-[lit]:border-ops-ink"
+                aria-hidden="true"
+              >
+                <span class="h-2 w-2 rounded-full bg-ops-line transition-colors duration-500 group-data-[lit]:bg-ops-amber" />
+              </span>
+              <p class="font-display text-sm font-semibold text-ops-slate">{step.when}</p>
+              <h3 class="mt-2 font-display text-2xl font-semibold tracking-[-0.02em] text-ops-ink">{step.title}</h3>
+              <p class="mt-3 max-w-[34ch] leading-relaxed text-ops-slate">{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
