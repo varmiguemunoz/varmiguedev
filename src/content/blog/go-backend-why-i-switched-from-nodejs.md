@@ -88,6 +88,7 @@ This is how you migrate without a big bang rewrite.
 Go is opinionated in ways that surprise Node developers:
 
 **No exceptions** — Go uses multiple return values for errors:
+
 ```go
 result, err := doSomething()
 if err != nil {
@@ -107,13 +108,13 @@ You handle errors explicitly at every step. It's verbose but it makes error hand
 
 Same service, same load test, same hardware (4 vCPU, 8GB RAM):
 
-| Metric | Node.js (Express) | Go (net/http) |
-|--------|-------------------|--------------------|
-| Max concurrent | 8K connections | 85K connections |
-| P50 latency | 12ms | 3ms |
-| P99 latency | 1,200ms | 18ms |
-| Memory (idle) | 180MB | 22MB |
-| Memory (load) | 1.4GB | 310MB |
+| Metric         | Node.js (Express) | Go (net/http)   |
+| -------------- | ----------------- | --------------- |
+| Max concurrent | 8K connections    | 85K connections |
+| P50 latency    | 12ms              | 3ms             |
+| P99 latency    | 1,200ms           | 18ms            |
+| Memory (idle)  | 180MB             | 22MB            |
+| Memory (load)  | 1.4GB             | 310MB           |
 
 The memory difference alone justified the rewrite from an infrastructure cost perspective.
 
@@ -122,12 +123,14 @@ The memory difference alone justified the rewrite from an infrastructure cost pe
 ## When to Use Go vs Node
 
 **Use Go when:**
+
 - You need 10K+ concurrent connections
 - You're building event streaming, real-time systems, or high-throughput APIs
 - Memory efficiency matters (IoT, embedded, high-density VMs)
 - You want to distribute a single binary with no runtime dependencies
 
 **Stick with Node when:**
+
 - You're building CRUD APIs under moderate load
 - Your team knows JavaScript deeply and Go is a new tool
 - You need the npm ecosystem (e.g., specific third-party integrations)

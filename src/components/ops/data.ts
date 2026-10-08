@@ -1,7 +1,7 @@
 // Single source of truth for the homepage funnel copy.
 // Edit content here; components only handle layout and interaction.
 
-export const CAL_LINK ="https://calendar.app.google/xEg68kiB9HdDzMvv7"
+export const CAL_LINK = 'https://calendar.app.google/xEg68kiB9HdDzMvv7';
 
 export const CONTACT_EMAIL = 'varmiguemunoz@gmail.com';
 
@@ -15,7 +15,7 @@ export type FlagshipCase = {
   metric: { value: string; label: string };
   secondary: string;
   stack: string[];
-  /** Optional screenshot or loop (e.g. '/works/finance-dashboard.webm'). Renders only when set. */
+
   media?: { src: string; alt: string; type: 'image' | 'video' };
 };
 
@@ -23,7 +23,8 @@ export const flagshipCases: FlagshipCase[] = [
   {
     kind: 'finance',
     name: 'AI Finance Assistant on WhatsApp',
-    before: 'Every receipt and invoice was typed by hand into QuickBooks and Google Sheets. Slow, repetitive and easy to get wrong.',
+    before:
+      'Every receipt and invoice was typed by hand into QuickBooks and Google Sheets. Slow, repetitive and easy to get wrong.',
     after:
       'The team now sends a photo, a PDF or a quick message on WhatsApp. The agent extracts the data, classifies it, reconciles the books and sends the reports. The CEO asks finance questions in the same chat and gets answers from the live numbers.',
     metric: { value: '80%', label: 'less manual finance work' },
@@ -208,7 +209,8 @@ export const testimonials: Testimonial[] = [
     source: 'Full stack project on Upwork',
   },
   {
-    quote: 'Absolutely amazing service! Projects delivered on time and on budget. Will use over and over again. Thank you!!',
+    quote:
+      'Absolutely amazing service! Projects delivered on time and on budget. Will use over and over again. Thank you!!',
     author: 'Mathis Riiber',
     source: 'Google Review',
   },
@@ -225,7 +227,8 @@ export const testimonials: Testimonial[] = [
     source: 'Google Review',
   },
   {
-    quote: 'Miguel is a skilled, proactive, and responsible developer; I been had a very positive experience working with him over the past several years.',
+    quote:
+      'Miguel is a skilled, proactive, and responsible developer; I been had a very positive experience working with him over the past several years.',
     author: 'Diego Vanegas',
     source: 'Google Review',
   },
@@ -236,7 +239,8 @@ export const testimonials: Testimonial[] = [
     source: 'Google Review',
   },
   {
-    quote: 'Excellent and impeccable work; very reliable and responsible, with a deep understanding of the clients needs.',
+    quote:
+      'Excellent and impeccable work; very reliable and responsible, with a deep understanding of the clients needs.',
     author: 'cristian cbr',
     source: 'Google Review',
   },

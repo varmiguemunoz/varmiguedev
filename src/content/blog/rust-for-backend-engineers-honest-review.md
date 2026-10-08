@@ -32,6 +32,7 @@ Rust makes a third choice: **compile-time memory safety without a garbage collec
 3. References never outlive the data they point to
 
 This is not theoretical. It means Rust programs cannot have:
+
 - Null pointer dereferences
 - Buffer overflows
 - Use-after-free bugs
@@ -141,15 +142,15 @@ That's a working HTTP server in ~15 lines. The DX has improved dramatically sinc
 
 ## Rust vs Go: When Does It Matter?
 
-| Scenario | Go | Rust |
-|----------|----|----|
-| CRUD API | ✅ Simpler | Overkill |
-| High-concurrency server | ✅ Excellent | ✅ Excellent |
-| Zero GC pause requirement | Acceptable | ✅ Zero GC |
-| WASM compilation | Limited | ✅ First-class |
-| Systems/embedded | ❌ | ✅ |
-| Team ramp-up time | 2-4 weeks | 2-3 months |
-| Compile times | Fast | Slow (improving) |
+| Scenario                  | Go           | Rust             |
+| ------------------------- | ------------ | ---------------- |
+| CRUD API                  | ✅ Simpler   | Overkill         |
+| High-concurrency server   | ✅ Excellent | ✅ Excellent     |
+| Zero GC pause requirement | Acceptable   | ✅ Zero GC       |
+| WASM compilation          | Limited      | ✅ First-class   |
+| Systems/embedded          | ❌           | ✅               |
+| Team ramp-up time         | 2-4 weeks    | 2-3 months       |
+| Compile times             | Fast         | Slow (improving) |
 
 Go is faster to ship. Rust is faster at runtime. For 90% of backend services, Go's performance is sufficient. Rust is worth it when:
 
@@ -165,6 +166,7 @@ Go is faster to ship. Rust is faster at runtime. For 90% of backend services, Go
 Rust is notoriously slow to compile. A medium-sized service might take 45-90 seconds for a clean build. Incremental builds are faster (10-20 seconds), but compared to Go (5 seconds cold) or Node (immediate), it adds friction.
 
 Mitigations that actually help:
+
 - `cargo-watch` for development (recompiles on save)
 - `mold` linker drops link time by 40-60%
 - Shared build caches in CI (sccache)

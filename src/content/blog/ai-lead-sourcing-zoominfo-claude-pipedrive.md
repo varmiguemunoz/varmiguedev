@@ -61,14 +61,14 @@ Adding leads is the easy half. A pipeline that only adds will bury the team in d
 
 ## What changed
 
-| | Before | After |
-|---|---|---|
-| Finding leads | Manual searches in ZoomInfo | Continuous sourcing from ZoomInfo |
-| Research | Googling each company | Automatic web enrichment |
-| Decision makers | Found by hand | Identified by Claude |
-| CRM entry | Typed into Pipedrive | Written automatically, research attached |
-| First contact | Whenever someone remembered | Salesperson alerted instantly |
-| CRM hygiene | Duplicates and forgotten accounts | Deduplicated, forgotten accounts re-processed |
+|                 | Before                            | After                                         |
+| --------------- | --------------------------------- | --------------------------------------------- |
+| Finding leads   | Manual searches in ZoomInfo       | Continuous sourcing from ZoomInfo             |
+| Research        | Googling each company             | Automatic web enrichment                      |
+| Decision makers | Found by hand                     | Identified by Claude                          |
+| CRM entry       | Typed into Pipedrive              | Written automatically, research attached      |
+| First contact   | Whenever someone remembered       | Salesperson alerted instantly                 |
+| CRM hygiene     | Duplicates and forgotten accounts | Deduplicated, forgotten accounts re-processed |
 
 **40+ hours a week back for the sales team.** That is roughly a full-time person's worth of work, redirected from data entry to selling.
 

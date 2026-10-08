@@ -6,7 +6,6 @@
   />
 </div>
 
-
 # 🚀 AI Sales Engineer & Growth Systems Architect | Scaling B2B Agencies & Startups
 
 Stop wasting your marketing budget on static websites that don't convert. I architect automated sales ecosystems that turn cold traffic into qualified revenue, combining high-end full-stack development with AI-powered automation. 🤖
@@ -51,6 +50,7 @@ Custom LLM agents that qualify leads, handle complex questions, and book meeting
 ---
 
 ## 🤝 How to Work With Me
+
 📦 **Option 1: Ready-to-Deploy Solutions (Project Catalog)**
 Need a specific outcome fast? I offer pre-packaged, fixed-price solutions ready for immediate kickoff, including CRM setup, AI agent integration, automation systems, and conversion optimization.
 

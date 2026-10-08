@@ -108,7 +108,7 @@ export const POST: APIRoute = async ({ request }) => {
     sendEmail(
       apiKey,
       { from, to: [email], reply_to: owner, subject: welcome.subject, html: welcome.html, text: welcome.text },
-      'welcome',
+      'welcome'
     ),
     sendEmail(
       apiKey,
@@ -118,9 +118,15 @@ export const POST: APIRoute = async ({ request }) => {
         reply_to: email,
         subject: `New website lead: ${cleanName}`,
         text: `New project inquiry from the website\n\nName: ${name}\nEmail: ${email}\n\n${message}`,
-        html: `<div style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.6;color:#0E1A2B"><p style="margin:0 0 16px;color:#3B4A5E">New project inquiry from the website</p><p style="margin:0"><strong>${escapeHtml(name)}</strong>, <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p><div style="margin:16px 0 0;padding:12px 16px;border-top:2px solid #F2A93B;background:#EEF1F4;white-space:pre-wrap">${escapeHtml(message)}</div></div>`,
+        html: `<div style="font-family:system-ui,sans-serif;font-size:15px;line-height:1.6;color:#0E1A2B"><p style="margin:0 0 16px;color:#3B4A5E">New project inquiry from the website</p><p style="margin:0"><strong>${escapeHtml(
+          name
+        )}</strong>, <a href="mailto:${escapeHtml(email)}">${escapeHtml(
+          email
+        )}</a></p><div style="margin:16px 0 0;padding:12px 16px;border-top:2px solid #F2A93B;background:#EEF1F4;white-space:pre-wrap">${escapeHtml(
+          message
+        )}</div></div>`,
       },
-      'notification',
+      'notification'
     ),
   ]);
 

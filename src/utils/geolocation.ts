@@ -1,8 +1,3 @@
-/**
- * Utility for geolocation-based language detection
- * Supports Spanish and English languages only
- */
-
 export type Language = 'es' | 'en';
 
 interface GeolocationResponse {
@@ -34,10 +29,6 @@ const SPANISH_COUNTRIES = [
   'GQ', // Equatorial Guinea
 ];
 
-/**
- * Get user's language based on geolocation
- * Falls back to browser language if geolocation fails
- */
 export async function detectLanguage(): Promise<Language> {
   try {
     // Try multiple geolocation APIs for reliability
@@ -49,9 +40,6 @@ export async function detectLanguage(): Promise<Language> {
   }
 }
 
-/**
- * Get language from IP-based geolocation using ipapi.co (free tier)
- */
 async function getLanguageFromIP(): Promise<Language> {
   try {
     console.log('[Geolocation] Fetching location from ipapi.co...');
@@ -82,9 +70,6 @@ async function getLanguageFromIP(): Promise<Language> {
   }
 }
 
-/**
- * Get language from browser settings as fallback
- */
 function getLanguageFromBrowser(): Language {
   if (typeof navigator === 'undefined') {
     console.log('[Geolocation] Navigator undefined (SSR), defaulting to English');
@@ -100,18 +85,12 @@ function getLanguageFromBrowser(): Language {
   return detectedLang;
 }
 
-/**
- * Store selected language in localStorage
- */
 export function setLanguage(lang: Language): void {
   if (typeof localStorage !== 'undefined') {
     localStorage.setItem('preferred-language', lang);
   }
 }
 
-/**
- * Get stored language preference
- */
 export function getStoredLanguage(): Language | null {
   if (typeof localStorage === 'undefined') {
     return null;
@@ -121,11 +100,6 @@ export function getStoredLanguage(): Language | null {
   return stored === 'es' || stored === 'en' ? stored : null;
 }
 
-/**
- * Get language with priority:
- * 1. Stored preference
- * 2. Geolocation detection
- */
 export async function getLanguage(): Promise<Language> {
   console.log('[Geolocation] Getting language...');
 
@@ -143,9 +117,6 @@ export async function getLanguage(): Promise<Language> {
   return detected;
 }
 
-/**
- * Force a specific language (useful for testing)
- */
 export function forceLanguage(lang: Language): void {
   console.log('[Geolocation] Forcing language to:', lang);
   setLanguage(lang);

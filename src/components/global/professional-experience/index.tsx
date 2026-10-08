@@ -15,7 +15,7 @@ const experiences = [
     period: 'March 2025 - Present',
     isCurrentRole: true,
     responsibilities: [
-   'Digital Innovation Lead at Alpha Agent. I Drove innovation initiatives focused on the development of new digital products and internal tools. Maintained and optimized production websites across the Alpha Agent ecosystem. Integrated AI agents to boost automation and user engagement, while deploying workflow automations to streamline operations. Ensured high performance and scalability through close collaboration with cross-functional teams.'
+      'Digital Innovation Lead at Alpha Agent. I Drove innovation initiatives focused on the development of new digital products and internal tools. Maintained and optimized production websites across the Alpha Agent ecosystem. Integrated AI agents to boost automation and user engagement, while deploying workflow automations to streamline operations. Ensured high performance and scalability through close collaboration with cross-functional teams.',
     ],
   },
   {

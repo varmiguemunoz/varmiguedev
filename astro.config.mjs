@@ -15,26 +15,26 @@ export default defineConfig({
   output: 'server',
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport' // Prefetch cuando entra en viewport
+    defaultStrategy: 'viewport', // Prefetch cuando entra en viewport
   },
   adapter: vercel({
     webAnalytics: {
-      enabled: true
+      enabled: true,
     },
     speedInsights: {
-      enabled: true
-    }
+      enabled: true,
+    },
   }),
   image: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com'
-      }
+        hostname: 'res.cloudinary.com',
+      },
     ],
     service: {
-      entrypoint: 'astro/assets/services/sharp'
-    }
+      entrypoint: 'astro/assets/services/sharp',
+    },
   },
   markdown: {
     drafts: true,
@@ -56,21 +56,19 @@ export default defineConfig({
       CSS: true,
       HTML: {
         removeAttributeQuotes: false,
-        removeComments: true
+        removeComments: true,
       },
       Image: false, // Ya lo hacemos con sharp
       JavaScript: true,
-      SVG: true
+      SVG: true,
     }),
     sitemap({
       filter: (page) => {
         // Excluir funnels y payment de sitemap
-        return !page.includes('/funnel/') &&
-               !page.includes('/payment/') &&
-               !page.includes('/thank-you/');
+        return !page.includes('/funnel/') && !page.includes('/payment/') && !page.includes('/thank-you/');
       },
       changefreq: 'weekly',
-      priority: 0.7
+      priority: 0.7,
     }),
     tailwind({
       applyBaseStyles: false, // Ya tenemos global.css
@@ -80,16 +78,26 @@ export default defineConfig({
         {
           userAgent: '*',
           allow: '/',
+<<<<<<< Updated upstream
           disallow: ['/funnel/', '/payment/', '/thank-you/', '/api/', '/forms/']
+=======
+          disallow: ['/funnel/', '/payment/', '/thank-you/', '/api/'],
+>>>>>>> Stashed changes
         },
         {
           userAgent: 'Googlebot',
           allow: '/',
+<<<<<<< Updated upstream
           disallow: ['/funnel/', '/payment/', '/api/', '/forms/'],
           crawlDelay: 0
         }
+=======
+          disallow: ['/funnel/', '/payment/', '/api/'],
+          crawlDelay: 0,
+        },
+>>>>>>> Stashed changes
       ],
-      sitemap: 'https://www.varmiguemunoz.com/sitemap-index.xml'
+      sitemap: 'https://www.varmiguemunoz.com/sitemap-index.xml',
     }),
     react(),
   ],
@@ -110,28 +118,28 @@ export default defineConfig({
               '@radix-ui/react-dropdown-menu',
               '@radix-ui/react-popover',
               '@radix-ui/react-select',
-              '@radix-ui/react-tabs'
+              '@radix-ui/react-tabs',
             ],
             // Form libraries
-            'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod']
-          }
-        }
+            'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          },
+        },
       },
       // Minificación
       minify: 'terser',
       terserOptions: {
         compress: {
           drop_console: true, // Remove console.logs en producción
-          drop_debugger: true
-        }
+          drop_debugger: true,
+        },
       },
       // Chunk size warnings
-      chunkSizeWarningLimit: 500
+      chunkSizeWarningLimit: 500,
     },
     // Optimización de dependencias
     optimizeDeps: {
       include: ['react', 'react-dom'],
-      exclude: ['three', '@react-three/fiber', '@react-three/drei']
-    }
-  }
+      exclude: ['three', '@react-three/fiber', '@react-three/drei'],
+    },
+  },
 });

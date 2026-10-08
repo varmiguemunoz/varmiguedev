@@ -19,7 +19,7 @@ experiment from this skill.
    - `inferred` daily headroom;
    - `verified` ledger savings;
    - evidence cost.
-   Never add or relabel them.
+     Never add or relabel them.
 2. Do not fetch prompt, completion, tool, or artifact payloads unless the user
    explicitly asks for payload review. Metadata, spans, timing, models, token
    counts, status, and optimizer attribution are enough for the default review.
