@@ -12,7 +12,26 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['"General Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+      },
       colors: {
+        // "Machine room" palette — homepage (theme-ops)
+        ops: {
+          ink: '#0E1A2B',
+          'ink-2': '#16263C',
+          'ink-3': '#22344D',
+          paper: '#EEF1F4',
+          'paper-2': '#E2E7ED',
+          line: '#D5DBE3',
+          slate: '#3B4A5E',
+          mist: '#8FA1B8',
+          signal: '#2F6BFF',
+          amber: '#F2A93B',
+          'amber-deep': '#E0951F',
+          live: '#1FB57A',
+        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

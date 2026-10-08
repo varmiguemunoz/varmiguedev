@@ -25,18 +25,39 @@ export interface Props {
   ogImageTitle?: string;
   ogImageMeta?: string;
   hreflang?: Array<{ lang: string; url: string }>;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  /** 'ops' = light "machine room" theme used by the homepage funnel */
+  theme?: 'default' | 'ops';
 }
 
-const { title, meta_title, description, noindex, keywords, schema, ogImageTitle, ogImageMeta, hreflang } = Astro.props;
+const {
+  title,
+  meta_title,
+  description,
+  noindex,
+  keywords,
+  schema,
+  ogImageTitle,
+  ogImageMeta,
+  hreflang,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  theme = 'default',
+} = Astro.props;
+
+const isOps = theme === 'ops';
 
 // OG Image dinámico por página
 const ogImage = createOgImage({
-  title: ogImageTitle || meta_title || title || 'GrowthlyFast - Monthly Dev Packs & Agency Development',
-  meta: ogImageMeta || description || 'Professional development services for agencies, startups, and contractors.',
+  title: ogImageTitle || meta_title || title || config.site.title,
+  meta: ogImageMeta || description || config.metadata.meta_description,
 });
 
 // Canonical URL fix
-const canonicalURL = `${config.site.base_url}${Astro.url.pathname.replace(/\/$/, '')}`;
+const canonicalURL = `${config.site.base_url.replace(/\/$/, '')}${Astro.url.pathname.replace(/\/$/, '')}` || config.site.base_url;
 
 const isPayment = Astro.url.pathname.startsWith('/payment');
 
@@ -45,26 +66,48 @@ const shouldNoindex = noindex || isPayment;
 ---
 
 <!doctype html>
-<html lang={config.site.lang}>
+<html lang={config.site.lang} class={isOps ? 'theme-ops' : undefined}>
   <head>
     <!-- Charset FIRST for security (OWASP best practice) -->
     <meta charset="utf-8" />
 
+    {
+      isOps && (
+        <>
+          {/* Motion flag before first paint, so the hero never flashes */}
+          <script is:inline>
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              document.documentElement.classList.add('js-motion');
+            }
+          </script>
+          <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            rel="stylesheet"
+            href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+          />
+        </>
+      )
+    }
+
     <!-- Resource hints - Optimized for critical resources -->
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://crm.growthlyfast.com" />
 
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
 
     <!-- theme meta -->
-    <meta name="theme-name" content="growthlyfast" />
+    <meta name="theme-name" content="varmiguemunoz" />
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
     <meta name="generator" content={Astro.generator} />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -91,10 +134,13 @@ const shouldNoindex = noindex || isPayment;
     <!-- Open Graph -->
     <meta property="og:title" content={meta_title ? meta_title : title ? title : config.site.title} />
     <meta property="og:description" content={description ? description : config.metadata.meta_description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {ogType === 'article' && <meta property="article:author" content="Miguel Angel Muñoz" />}
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content="GrowthlyFast" />
+    <meta property="og:site_name" content="varmiguemunoz" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
@@ -102,6 +148,8 @@ const shouldNoindex = noindex || isPayment;
     <meta name="twitter:title" content={meta_title ? meta_title : title ? title : config.site.title} />
     <meta name="twitter:description" content={description ? description : config.metadata.meta_description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <link rel="alternate" type="application/rss+xml" title="Notes from production" href="/rss.xml" />
 
     <!-- Schema.org JSON-LD -->
     {
@@ -124,8 +172,14 @@ const shouldNoindex = noindex || isPayment;
       <slot />
     </main>
 
-    <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
-    <GoogleCalendarButton />
+    {
+      !isOps && (
+        <>
+          <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
+          <GoogleCalendarButton />
+        </>
+      )
+    }
 
     {!isPayment && <Footer />}
 

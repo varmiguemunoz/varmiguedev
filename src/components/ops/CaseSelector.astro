@@ -1,0 +1,136 @@
+---
+import { situations, CAL_LINK } from './data';
+---
+
+<section class="bg-ops-paper-2 py-24 md:py-32" aria-labelledby="situation-title" data-situations>
+  <div class="ops-container">
+    <div class="mb-12 max-w-2xl">
+      <h2 id="situation-title" class="ops-h2" data-split>Where are you starting from?</h2>
+      <p class="ops-lead mt-5">Pick the one closest to you. This is what the work usually looks like.</p>
+    </div>
+
+    <div role="tablist" aria-label="Your situation" class="mb-8 inline-flex flex-wrap gap-1 rounded-2xl bg-white p-1.5 shadow-[0_8px_24px_-18px_rgb(14_26_43/0.5)]">
+      {
+        situations.map((s, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${s.id}`}
+            aria-controls={`panel-${s.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            data-situation-tab
+            class="rounded-xl px-5 py-3 text-sm font-semibold text-ops-slate transition-colors duration-300 hover:text-ops-ink aria-selected:bg-ops-ink aria-selected:text-ops-paper md:px-6 md:text-base"
+          >
+            {s.label}
+          </button>
+        ))
+      }
+    </div>
+
+    {
+      situations.map((s, i) => (
+        <div
+          role="tabpanel"
+          id={`panel-${s.id}`}
+          aria-labelledby={`tab-${s.id}`}
+          hidden={i !== 0}
+          data-situation-panel
+          class="rounded-2xl bg-white p-8 shadow-[0_20px_48px_-32px_rgb(14_26_43/0.45)] md:p-12"
+        >
+          <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr_auto] lg:gap-14">
+            <div data-situation-item>
+              <p class="font-display text-2xl font-semibold leading-snug tracking-[-0.02em] text-ops-ink md:text-[1.75rem]">
+                {s.problem}
+              </p>
+              <a href={s.caseHref} class="ops-link mt-6 text-sm">
+                Closest case: {s.caseLabel}
+                <span aria-hidden="true">↑</span>
+              </a>
+            </div>
+
+            <div data-situation-item>
+              <h3 class="mb-4 text-sm font-semibold text-ops-ink">What I would build</h3>
+              <ul class="space-y-3">
+                {s.build.map((item) => (
+                  <li class="flex gap-3 leading-snug text-ops-slate">
+                    <svg class="mt-1 h-4 w-4 flex-shrink-0 text-ops-live" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div data-situation-item class="flex flex-col justify-between gap-6 border-t border-ops-line pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+              <div>
+                <p class="text-sm text-ops-slate">Typical timeline</p>
+                <p class="mt-1 whitespace-nowrap font-display text-4xl font-semibold tabular-nums tracking-[-0.03em] text-ops-ink">
+                  {s.timeline}
+                </p>
+              </div>
+              <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-ink">
+                Talk about this
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+
+  function initSituations() {
+    const root = document.querySelector<HTMLElement>('[data-situations]');
+    if (!root || root.dataset.bound) return;
+    root.dataset.bound = 'true';
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-situation-tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-situation-panel]'));
+
+    const select = (index: number, focus = false) => {
+      tabs.forEach((tab, i) => {
+        const active = i === index;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((panel, i) => {
+        const active = i === index;
+        if (active === !panel.hidden) return;
+        panel.hidden = !active;
+        if (active && !reduce) {
+          gsap.fromTo(
+            panel.querySelectorAll('[data-situation-item]'),
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out', stagger: 0.07 },
+          );
+        }
+      });
+      if (focus) tabs[index]?.focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(i));
+      tab.addEventListener('keydown', (e) => {
+        const last = tabs.length - 1;
+        let next: number | null = null;
+        if (e.key === 'ArrowRight') next = i === last ? 0 : i + 1;
+        if (e.key === 'ArrowLeft') next = i === 0 ? last : i - 1;
+        if (e.key === 'Home') next = 0;
+        if (e.key === 'End') next = last;
+        if (next !== null) {
+          e.preventDefault();
+          select(next, true);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initSituations);
+</script>

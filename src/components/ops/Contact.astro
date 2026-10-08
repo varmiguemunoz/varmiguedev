@@ -1,0 +1,236 @@
+---
+import { CAL_LINK, CONTACT_EMAIL } from './data';
+---
+
+<section id="contact" class="scroll-mt-20 bg-ops-ink py-24 text-ops-paper md:py-32" aria-labelledby="contact-title" data-contact>
+  <div class="ops-container grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
+    <div>
+      <h2
+        id="contact-title"
+        class="text-balance font-display text-[clamp(2.5rem,5.4vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.035em]"
+        data-split
+      >
+        Tell me what's stuck.
+      </h2>
+      <p class="mt-6 max-w-[46ch] text-lg leading-relaxed text-ops-mist">
+        Two lines on what you want to build or automate, and where it's stuck today. I reply within 24 hours with a
+        direct read on whether it's a fit.
+      </p>
+
+      <div class="mt-10 border-t border-ops-ink-3 pt-8">
+        <p class="text-sm text-ops-mist">Prefer to talk it through?</p>
+        <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-primary mt-4" data-magnetic>
+          Book a 30-minute call
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <ul class="mt-10 space-y-2 text-sm text-ops-mist">
+        <li class="flex items-center gap-2">
+          <span class="h-1.5 w-1.5 rounded-full bg-ops-live" aria-hidden="true"></span>
+          No pitch, no commitment
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="h-1.5 w-1.5 rounded-full bg-ops-live" aria-hidden="true"></span>
+          English or Spanish
+        </li>
+      </ul>
+    </div>
+
+    <div class="rounded-2xl bg-ops-ink-2 p-6 md:p-10">
+      <form data-contact-form novalidate class="space-y-6" aria-describedby="contact-status">
+        <div>
+          <label for="cf-name" class="mb-2 block text-sm font-medium">Name</label>
+          <input
+            id="cf-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+            maxlength="120"
+            aria-describedby="cf-name-error"
+            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper placeholder:text-ops-mist transition-colors focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            placeholder="Your name"
+          />
+          <p id="cf-name-error" data-error-for="name" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
+        </div>
+
+        <div>
+          <label for="cf-email" class="mb-2 block text-sm font-medium">Work email</label>
+          <input
+            id="cf-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            maxlength="200"
+            aria-describedby="cf-email-error"
+            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper placeholder:text-ops-mist transition-colors focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            placeholder="you@company.com"
+          />
+          <p id="cf-email-error" data-error-for="email" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
+        </div>
+
+        <div>
+          <div class="mb-2 flex items-baseline justify-between">
+            <label for="cf-message" class="block text-sm font-medium">Your two lines</label>
+            <span class="text-xs tabular-nums text-ops-mist" data-char-count aria-hidden="true">0 / 2000</span>
+          </div>
+          <textarea
+            id="cf-message"
+            name="message"
+            rows="5"
+            required
+            minlength="10"
+            maxlength="2000"
+            aria-describedby="cf-message-error"
+            class="block w-full resize-y rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 leading-relaxed text-ops-paper placeholder:text-ops-mist transition-colors focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            placeholder="We log every invoice by hand into QuickBooks. I want WhatsApp to do it and flag anything over budget."
+          ></textarea>
+          <p id="cf-message-error" data-error-for="message" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
+        </div>
+
+        <!-- Honeypot: hidden from people, filled by bots -->
+        <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+          <label for="cf-company-site">Company website</label>
+          <input id="cf-company-site" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button
+          type="submit"
+          data-submit
+          class="ops-btn-primary w-full disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          <span data-submit-label>Send</span>
+          <span aria-hidden="true" data-submit-arrow>→</span>
+        </button>
+
+        <p id="contact-status" data-status role="status" aria-live="polite" class="min-h-[1.5rem] text-sm"></p>
+      </form>
+
+      <div data-contact-success hidden tabindex="-1" class="py-10 text-center focus:outline-none">
+        <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-ops-live/15 text-ops-live" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <p class="mt-6 font-display text-2xl font-semibold">Got it. Talk soon.</p>
+        <p class="mx-auto mt-3 max-w-[34ch] text-ops-mist">
+          Your message is in my inbox. Expect a reply within 24 hours.
+        </p>
+      </div>
+
+      <p class="mt-6 text-center text-xs text-ops-mist">
+        Or email me directly at
+        <a href={`mailto:${CONTACT_EMAIL}`} class="text-ops-paper underline decoration-ops-paper/30 hover:decoration-ops-amber">{CONTACT_EMAIL}</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  type Field = 'name' | 'email' | 'message';
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function validate(data: Record<Field, string>): Partial<Record<Field, string>> {
+    const errors: Partial<Record<Field, string>> = {};
+    if (!data.name.trim()) errors.name = 'Add your name so I know who to reply to.';
+    if (!EMAIL_RE.test(data.email.trim())) errors.email = 'That email looks incomplete. Check it and try again.';
+    if (data.message.trim().length < 10) errors.message = 'Add a little more detail, at least one sentence.';
+    return errors;
+  }
+
+  function initContact() {
+    const root = document.querySelector<HTMLElement>('[data-contact]');
+    if (!root || root.dataset.bound) return;
+    root.dataset.bound = 'true';
+
+    const form = root.querySelector<HTMLFormElement>('[data-contact-form]');
+    const success = root.querySelector<HTMLElement>('[data-contact-success]');
+    const status = root.querySelector<HTMLElement>('[data-status]');
+    const submit = root.querySelector<HTMLButtonElement>('[data-submit]');
+    const submitLabel = root.querySelector<HTMLElement>('[data-submit-label]');
+    const counter = root.querySelector<HTMLElement>('[data-char-count]');
+    if (!form || !submit || !status) return;
+
+    const message = form.elements.namedItem('message') as HTMLTextAreaElement;
+    message.addEventListener('input', () => {
+      if (counter) counter.textContent = `${message.value.length} / 2000`;
+    });
+
+    const setError = (field: Field, text?: string) => {
+      const input = form.elements.namedItem(field) as HTMLInputElement | HTMLTextAreaElement;
+      const el = form.querySelector<HTMLElement>(`[data-error-for="${field}"]`);
+      input.setAttribute('aria-invalid', text ? 'true' : 'false');
+      if (el) {
+        el.textContent = text ?? '';
+        el.classList.toggle('hidden', !text);
+      }
+    };
+
+    // Clear a field's error as soon as it is edited
+    (['name', 'email', 'message'] as Field[]).forEach((f) => {
+      (form.elements.namedItem(f) as HTMLInputElement).addEventListener('input', () => setError(f));
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      status.className = 'min-h-[1.5rem] text-sm';
+
+      const fd = new FormData(form);
+      const data = {
+        name: String(fd.get('name') ?? ''),
+        email: String(fd.get('email') ?? ''),
+        message: String(fd.get('message') ?? ''),
+        company_website: String(fd.get('company_website') ?? ''),
+      };
+
+      const errors = validate(data);
+      (['name', 'email', 'message'] as Field[]).forEach((f) => setError(f, errors[f]));
+      const first = (Object.keys(errors) as Field[])[0];
+      if (first) {
+        (form.elements.namedItem(first) as HTMLElement).focus();
+        return;
+      }
+
+      submit.disabled = true;
+      if (submitLabel) submitLabel.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const body = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          if (body?.field && body?.error) {
+            setError(body.field as Field, body.error);
+            (form.elements.namedItem(body.field) as HTMLElement)?.focus();
+          } else {
+            throw new Error(body?.error ?? 'send_failed');
+          }
+          return;
+        }
+
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.focus();
+        }
+      } catch {
+        status.className = 'min-h-[1.5rem] text-sm text-[#FF8A7A]';
+        status.textContent =
+          "The message didn't go through. Try again in a moment, or email me directly using the address below.";
+      } finally {
+        submit.disabled = false;
+        if (submitLabel) submitLabel.textContent = 'Send';
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initContact);
+</script>

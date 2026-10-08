@@ -1,5 +1,4 @@
 ---
-import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
 
 // Tipos
@@ -68,8 +67,7 @@ const {
   <div class="mx-auto max-w-7xl">
     <!-- Header -->
     <div class="mb-16 text-center">
-      <Badge variant="outline" className="mb-6 border-primary text-primary">{subheading}</Badge>
-      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">{heading}</h2>
+      <h2 class="mb-6 text-4xl font-bold tracking-[-0.02em] text-foreground md:text-5xl">{heading}</h2>
       <p class="mx-auto max-w-3xl text-xl text-muted-foreground">{description}</p>
     </div>
 
@@ -89,8 +87,8 @@ const {
 
           <!-- Author -->
           <div class="flex items-center space-x-4">
-            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-accent/20 text-2xl">
-              {testimonial.avatar}
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-accent/20 text-sm font-semibold uppercase tracking-wide text-foreground">
+              {testimonial.author.split(' ').slice(0, 2).map((n) => n[0]).join('')}
             </div>
             <div>
               <div class="font-semibold text-foreground">{testimonial.author}</div>

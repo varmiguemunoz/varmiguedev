@@ -1,177 +1,72 @@
 ---
+export const prerender = true;
 import Base from '@layouts/Base.astro';
-import Navbar from '@/components/global/navbar';
-import Hero from '@/components/global/hero/hero.astro';
-import VideoSection from '@/components/global/video-section/video-section.astro';
-import AboutCV from '@/components/global/about-cv/about-cv.astro';
-import WhoIWorkWith from '@/components/global/who-i-work-with/who-i-work-with.astro';
-import Testimonials from '@/components/global/testimonials/testimonials.astro';
-import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
-import FAQ from '@/components/global/faq';
-import FinalCTA from '@/components/global/final-cta/final-cta.astro';
-import BlogPreview from '@/components/global/blog-preview/blog-preview.astro';
-import { Clock, Route, BadgeDollarSign, AlertCircle } from 'lucide-react';
+import Nav from '@/components/ops/Nav.astro';
+import Hero from '@/components/ops/Hero.astro';
+import Integrations from '@/components/ops/Integrations.astro';
+import Cases from '@/components/ops/Cases.astro';
+import MoreBuilds from '@/components/ops/MoreBuilds.astro';
+import CaseSelector from '@/components/ops/CaseSelector.astro';
+import Process from '@/components/ops/Process.astro';
+import MeetMiguel from '@/components/ops/MeetMiguel.astro';
+import Testimonials from '@/components/ops/Testimonials.astro';
+import FAQ from '@/components/ops/FAQ.astro';
+import Contact from '@/components/ops/Contact.astro';
+import MobileCTA from '@/components/ops/MobileCTA.astro';
+import { faqs } from '@/components/ops/data';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Miguel Angel Muñoz',
+    alternateName: 'varmiguemunoz',
+    jobTitle: 'AI Integration Engineer',
+    url: 'https://www.varmiguemunoz.com/',
+    address: { '@type': 'PostalAddress', addressLocality: 'Medellín', addressCountry: 'CO' },
+    knowsAbout: ['LLM agents', 'RAG', 'AI automation', 'WhatsApp Business API', 'CRM integrations', 'Node.js', 'Python', 'Go'],
+    sameAs: [
+      'https://www.linkedin.com/in/varmiguemunoz/',
+      'https://github.com/varmiguemunoz',
+      'https://www.upwork.com/freelancers/~01c50c885bdb2a6b44',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 
 <Base
-  meta_title="varmiguemunoz | Senior Full-Stack Engineer — AI Systems, Scalable Backends, Business Automation"
-  description="Senior Full-Stack Engineer specialized in AI systems, scalable backends, and business automation. 5+ years shipping production infrastructure for startups, agencies, and business owners."
+  theme="ops"
+  meta_title="Miguel Muñoz | AI Integration Engineer for LLM Agents"
+  description="I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production."
+  ogImageTitle="AI agents that work inside the systems you already run."
+  ogImageMeta="Miguel Muñoz, AI Integration Engineer"
+  schema={schema}
 >
-  <Navbar client:load />
-
-  <Hero />
-
-  <VideoSection />
-
-  <AboutCV />
-
-  <WhoIWorkWith />
-
-  <Testimonials
-    heading="What Clients Say"
-    subheading="Testimonials"
-    description="From Upwork, Google, and LinkedIn — unedited."
-    testimonials={[
-      {
-        quote:
-          'Su sólida base técnica le ha permitido construir soluciones escalables y seguras, mientras que su mentalidad emprendedora lo ha llevado a tomar decisiones estratégicas clave. Miguel no solo domina la parte técnica, también aporta creatividad, compromiso y visión — cualidades que lo convierten en un socio confiable y un líder en crecimiento dentro del ecosistema digital.',
-        author: 'Mauricio Mejía Medina',
-        company: 'CTO & Co-founder, Bloomify · LinkedIn',
-        avatar: '💼',
-        rating: 5,
-      },
-      {
-        quote:
-          'Miguel is an amazing developer and very nice person to work with. He helped us a lot with our web application development. Amazing work!',
-        author: 'Upwork Client',
-        company: 'Software Engineer · Upwork',
-        avatar: '⭐',
-        rating: 5,
-      },
-      {
-        quote:
-          "I had a great experience with Miguel. He is very knowledgeable and always went above and beyond to make sure everything was functional and working. He's very helpful and was open to feedback. I would recommend.",
-        author: 'Upwork Client',
-        company: 'Full Stack Dev · Upwork',
-        avatar: '🚀',
-        rating: 5,
-      },
-      {
-        quote:
-          'Miguel was great, really showed his level of expertise with any issues we ran into he was eager to solve it. Project came out great, really recommend Miguel to anyone looking for a developer to get their site up and running.',
-        author: 'Upwork Client',
-        company: 'Website Update · Upwork',
-        avatar: '🔧',
-        rating: 5,
-      },
-      {
-        quote:
-          'Absolutely amazing service! Projects delivered on time and on budget. Will use over and over again. Thank you!!',
-        author: 'Mathis Riiber',
-        company: 'Google Review',
-        avatar: '🌟',
-        rating: 5,
-      },
-      {
-        quote:
-          'Great experience working with Miguel and Growlyfast. They supported me step by step with the technical side and the design of our Website and tools. You can really feel they care about your projects.',
-        author: 'Yeison Romero',
-        company: 'Google Review',
-        avatar: '🤝',
-        rating: 5,
-      },
-      {
-        quote:
-          'Great experience working with Miguel. He delivered high quality web development and provided constant support throughout the project. Professional, reliable, and highly recommended.',
-        author: 'David',
-        company: 'Google Review',
-        avatar: '👨‍💻',
-        rating: 5,
-      },
-      {
-        quote:
-          'Buen desarrollador, proactivo y responsable, he tenido muy buena experiencia trabajando durante varios años con Miguel.',
-        author: 'Diego Vanegas',
-        company: 'Google Review',
-        avatar: '💪',
-        rating: 5,
-      },
-      {
-        quote:
-          'Excelente, trabajo impecable y muy confiable, responsable y con alto nivel en comprender las necesidades del cliente.',
-        author: 'cristian cbr',
-        company: 'Google Review',
-        avatar: '✨',
-        rating: 5,
-      },
-    ]}
-    cta={{
-      title: 'Want results like these?',
-      cta: 'Book a call →',
-      link: 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs',
-    }}
-  />
-
-  <BlogPreview />
-
-  <DiscoveryCall
-    heading="Book a Discovery Call"
-    description="30 minutes. No pitch, no pressure. Tell me what you're building or what's broken. I'll give you a direct technical assessment — whether we work together or not, you'll leave the call with clarity on how to solve it."
-    features={[
-      { icon: Route, text: "What you're building or trying to automate" },
-      { icon: AlertCircle, text: 'Where your current system is failing under load' },
-      { icon: BadgeDollarSign, text: "The architecture I'd recommend and why" },
-      { icon: Clock, text: 'Timeline and engagement model that fits your situation' },
-    ]}
-    button={{
-      label: 'Schedule 30 Minutes →',
-      link: 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs',
-      note: 'Responds within 24 hours · Available in English and Spanish',
-    }}
-  />
-
-  <FAQ
-    client:load
-    heading="Frequently Asked Questions"
-    subheading="Clear answers about working with me"
-    faqs={[
-      {
-        question: 'What types of projects do you take?',
-        answer:
-          "I work on AI systems, business automation, high-performance backends, and full-stack products. If it needs to run at scale in production — it's in scope.",
-      },
-      {
-        question: 'Do you work hourly or fixed-price?',
-        answer:
-          'Both. Hourly at $23/hr for ongoing work or undefined scope. Fixed-price for projects with clear deliverables. We decide on the discovery call.',
-      },
-      {
-        question: 'Can you work with my existing codebase?',
-        answer:
-          "Yes. I've joined projects mid-flight, refactored brittle scripts into Go infrastructure, and extended existing Node/Next.js applications. I'll assess it on the call.",
-      },
-      {
-        question: "What's your availability?",
-        answer:
-          "I take a limited number of freelance projects at a time to maintain quality. If I'm at capacity, I'll tell you directly and give you a realistic timeline.",
-      },
-      {
-        question: 'Do you work in English and Spanish?',
-        answer:
-          'Both. Fluent in technical English and native Spanish. Most of my international clients prefer English; LATAM clients work in Spanish.',
-      },
-      {
-        question: 'How long does a typical project take?',
-        answer:
-          "Depends on scope. Backend optimizations: 1–4 weeks. Automation packages: 2–6 weeks. Business transformation: 4–10 weeks. Startup MVPs: 4–12 weeks. I'll give you a realistic estimate on the call.",
-      },
-      {
-        question: 'What makes you different from other freelancers?',
-        answer:
-          'I own the full stack — backend, frontend, AI, and infra. No handoffs, no subcontractors, no "that\'s out of scope." One engineer who ships production systems, not demos.',
-      },
-    ]}
-  />
-
-  <FinalCTA />
+  <div data-ops-page class="bg-ops-paper text-ops-ink">
+    <Nav />
+    <Hero />
+    <Integrations />
+    <Cases />
+    <MoreBuilds />
+    <CaseSelector />
+    <Process />
+    <MeetMiguel />
+    <Testimonials />
+    <FAQ />
+    <Contact />
+    <MobileCTA />
+  </div>
 </Base>
+
+<script>
+  import '../scripts/ops-motion';
+</script>
