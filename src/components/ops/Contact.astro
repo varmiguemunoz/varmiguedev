@@ -105,6 +105,9 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
           <span aria-hidden="true" data-submit-arrow>→</span>
         </button>
 
+        <p class="text-xs leading-relaxed text-ops-mist">
+          By sending this, you agree to receive my reply and occasional follow-up emails. Unsubscribe anytime.
+        </p>
         <p id="contact-status" data-status role="status" aria-live="polite" class="min-h-[1.5rem] text-sm"></p>
       </form>
 
@@ -199,7 +202,7 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
       if (submitLabel) submitLabel.textContent = 'Sending…';
 
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch('/forms/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
