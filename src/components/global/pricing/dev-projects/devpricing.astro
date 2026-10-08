@@ -1,0 +1,324 @@
+---
+import { Badge } from '@/components/ui/badge';
+import UpsellCard from '../../upsell-card/UpsellCard.astro';
+import BookCallButton from '@/components/global/book-call-button/index.astro';
+
+type Service = {
+  category: string;
+  items: {
+    name: string;
+    description?: string;
+    price?: string;
+    note?: string;
+    priceId?: string;
+    book?: boolean;
+  }[];
+};
+
+const services: Service[] = [
+  {
+    category: 'Websites (Does not include hosting or domain)',
+    items: [
+      {
+        name: 'Landing Page',
+        description: 'Responsive design, WhatsApp link, social media integration, contact form.',
+        price: '$350',
+        priceId: 'price_1S78MhDOnhjqrRNX5S3tC6ty',
+      },
+      {
+        name: 'Basic – 3 Links (0–20 employees)',
+        description: 'Basic – 3 Links (Menu)',
+        price: '$450',
+        priceId: 'price_1S73JlDOnhjqrRNXDcjE8Hls',
+      },
+      {
+        name: 'Standard – 5 Links (21–50 employees)',
+        description: 'Standard – 5 Links (Menu)',
+        price: '$550',
+        priceId: 'price_1S78NhDOnhjqrRNXQOqtKhdV',
+      },
+      {
+        name: 'Ultra – 6+ Links (51–200 employees)',
+        description: 'Ultra – 6 or more Links (Menu)',
+        price: '$700',
+        priceId: 'price_1S78PRDOnhjqrRNXwIO0uQQ8',
+      },
+      {
+        name: 'Custom Website',
+        description: 'Tailored dev fees apply based on scope.',
+        price: 'Project scope ($600–$1200)',
+        book: true,
+      },
+      {
+        name: 'Website Redesign',
+        description: ' To be quoted based on project scope (reference: $600–$1,200',
+        price: 'Project scope ($600–$1200)',
+        book: true,
+      },
+      {
+        name: 'Hosting & Domain',
+        description: 'We can provide hosting and domain services for a small additional charge',
+        price: 'Get a quote',
+        book: true,
+      }
+    ],
+  },
+  {
+    category: 'Monthly Maintenance',
+    items: [
+      { name: 'Basic (12h)', description: 'Support through the service desk: miguelmunoz@bloomify.tech', price: '$600', priceId: 'price_1S78RBDOnhjqrRNXuoGZuiEE' },
+      { name: 'Standard (18h)',  price: '$900', priceId: 'price_1S78RmDOnhjqrRNX60hAwunK' },
+      { name: 'Ultra (25h)',   price: '$1300', priceId: 'price_1S78SmDOnhjqrRNX2T09EtBB' },
+    ],
+  },
+  {
+    category: 'E-commerce',
+    items: [
+      { name: 'Basic Store (600 products)', description: '400 Products', price: '$700', priceId: 'price_1S78TnDOnhjqrRNXv0dDGhgQ' },
+      { name: 'Standard Store (900 products)', description: '800 Products', price: '$1,300', priceId: 'price_1S78WMDOnhjqrRNX5rDJaO7o' },
+      { name: 'Pro Store (1600 products)',description: '1600 Products',  price: '$2,700', priceId: 'price_1S78Y3DOnhjqrRNXYZs08anD' },
+      { name: 'Corporate Store (3200 products)', description: '3200 Products',  price: '$4,600', priceId: 'price_1S78YsDOnhjqrRNXp73TxHx0' },
+      { name: 'Custom Store', description: 'To be quoted based on project scope', price: 'Get a quote',  book: true },
+    ],
+  },
+  {
+    category: 'UX / UI & Graphic Design',
+    items: [
+      { name: 'UX/UI Consulting', description: "Hourly cost", price: '$15 / h', book: true },
+      { name: 'Wireframing & Prototyping', description: "Hourly cost", price: '$15 / h', book: true },
+      { name: 'Interface Design (UI)', description: "Hourly cost", price: '$25 / h', book: true },
+      { name: 'Brand Manual', description: "Total cost", price: '$180', priceId: 'price_1S78e6DOnhjqrRNXAr8TqNg6' },
+      { name: 'Post Social Media Design', description: "Hourly cost", price: 'C/U', book: true },
+    ],
+  },
+  {
+    category: 'IT & Infrastructure Consultations',
+    items: [
+      { name: 'Audit – Medium sized (2 days)', description: "1 - 2 days", price: '$300', priceId: 'price_1S78a4DOnhjqrRNXHkdT9XbV' },
+      { name: 'Audit – Company (3 days)', description: "3 days", price: '$600', priceId: 'price_1S78asDOnhjqrRNX0mwquE0G' },
+      { name: 'Audit – Corporate (4 days)', description: "4 days", price: '$1000', priceId: 'price_1S78bdDOnhjqrRNXOLwwqPhV' },
+      { name: 'Implementation Diagnosis', description: "To be quoted based on project scope", price: 'Get a quote', book: true },
+      { name: 'Specialized Tech Support', description: "Hourly cost", price: '$60 / h', book: true },
+    ],
+  },
+];
+
+const upsellCard =[
+ {
+      title: 'Growthly AI Sales Agent',
+      description:
+        'A premium, done-for-you AI system that turns WhatsApp into a fully autonomous sales channel. It replies to leads, qualifies intent, books meetings, sends reminders, and creates payment links using your business data secure.',
+      price: '$97/month',
+      items: [
+     'Custom-trained AI agent aligned with your services, pricing, and sales rules.',
+'Human-like WhatsApp conversations personalized to each lead.',
+'Automatic lead qualification based on intent and buying signals.',
+'AI-driven meeting booking with Google Calendar and Meet links.',
+'Smart rescheduling, cancellations, and reminder management.',
+'Automated follow-ups to recover inactive or unresponsive leads.',
+'Instant human handoff alerts when a lead is ready to close.',
+'Automatic payment link generation for high-intent prospects.',
+'CRM sync to store conversations, lead status, and notes.',
+'Clear dashboard to track leads, activity, and booked meetings.',
+'Continuous AI optimization to increase accuracy and conversions.',
+'Full onboarding and ongoing support to ensure smooth operation.',
+      ],
+    },
+    {
+    title: 'GrowthKit Website Ultra',
+    description:
+      'A complete, one-time technical setup designed to turn your online presence into a lead-generating and sales-ready system. We build your website, CRM, and automation workflows so your business is ready to scale from day one.',
+    price: '$350 one-time',
+    items: [
+      'Professional 6-section B2B website optimized for speed, mobile, and conversions.',
+      'Conversion-focused UI with clear CTAs and lead capture points.',
+      'Custom domain setup and secure hosting with daily backups.',
+      'WhatsApp, email, and social media integrations for instant contact.',
+      'Google Maps setup for local visibility and trust.',
+      'CRM integration to centralize all leads and conversations.',
+      'Analytics dashboard to track traffic, conversions, and campaigns.',
+      'Smart lead pipelines, forms, and social integrations.',
+      'Automated follow-ups and response detection.',
+      'Multi-channel nurturing sequences for leads.',
+      'Instant notifications and alerts for sales actions.',
+      'Guided onboarding plus 7 days of post-launch support.',
+    ],
+  },
+]
+
+---
+
+<section class="px-4 py-24" id="services">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-4 border-primary text-primary">Service Catalog 2025</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Complete Solutions for Agencies</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+        From conversion-focused landing pages to revenue-driven e-commerce and business-ready infrastructure. Get one-time projects with transparent pricing and fast delivery. Grow your brand and sales without hidden costs or long processes
+      </p>
+    </div>
+
+    <p class="text-muted-foreground text-sm text-center w-full mb-3">Click any service in the table to purchase instantly. 👇🏻</p>
+    <div class="overflow-x-auto rounded-lg border border-primary/20 shadow-lg">
+      <table class="w-full border-collapse min-w-[800px]">
+        <thead class="">
+          <div class="w-[80rem]">
+            <tr class="bg-black w-full from-primary to-accent">
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Services
+            </th>
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Service Consideration
+            </th>
+            <th class="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider sm:px-6 sm:py-4 sm:text-sm">
+              Cost
+            </th>
+          </tr>
+          </div>
+
+        </thead>
+        <tbody>
+          {
+            services.map((service) => (
+              <>
+                <!-- Category Header Row -->
+                <tr class="bg-gradient-to-r from-black to-gray-800">
+                  <td colspan="3" class="border border-primary/20 px-4 py-3 text-center text-base font-bold text-white sm:px-6 sm:py-4 sm:text-lg">
+                    {service.category}
+                  </td>
+                </tr>
+
+                {service.items.map((item, index) => (
+                  <tr id={`service-${item.name.replace(/\s+/g, '-').toLowerCase()}`}
+                    data-price-id={item.priceId || ''}
+                    data-plan-name={item.name || ''}
+                    data-price={item.price?.replace('$', '') || ''}
+                    data-book={item.book || false}
+                    class={`transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 ${index % 2 === 0 ? 'bg-gradient-to-r from-accent/10 to-primary/5' : 'bg-gradient-to-r from-primary/5 to-accent/10'}`}>
+                    <td class="border border-primary/20 px-4 py-3 text-xs font-medium text-foreground sm:px-6 sm:py-4 sm:text-sm">
+                      <div>
+                        <div class="font-semibold">{item.name}</div>
+                        {item.note && <div class="text-xs text-accent mt-1">{item.note}</div>}
+                      </div>
+                    </td>
+                    <td class="border border-primary/20 px-4 py-3 text-xs text-muted-foreground sm:px-6 sm:py-4 sm:text-sm">
+                      {item.description || '-'}
+                    </td>
+                    <td class="border border-primary/20 px-4 py-3 text-xs font-bold text-primary sm:px-6 sm:py-4 sm:text-sm">
+                      {item.price || 'Get a quote'}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-16 text-center">
+      <a href="/predictable-dev-power-for-digital-agencies.pdf">
+        <p class="text-muted-foreground">
+          Want to explore everything in detail?
+          <span class="ml-1 cursor-pointer text-primary hover:underline">Download full catalog →</span>
+        </p>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10 justify-center w-full mt-16">
+
+      <div class="mb-5 md:mb-16 text-center">
+        <Badge variant="outline" className="mb-4 border-primary text-primary">
+          Most Requested Packages
+        </Badge>
+
+        <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+        Two Systems Business Buy the Most
+        </h2>
+
+        <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+          These are the two solutions businesses consistently choose to generate leads, automate sales, and scale without friction. Proven systems with clear scope, transparent pricing, and fast execution. Built to deliver ROI, not complexity.
+        </p>
+      </div>
+
+      { upsellCard.map(({title, description, price, items}) =>  (
+        <UpsellCard
+          title={title}
+          description = {description}
+          price ={price}
+          items={items}
+        />
+      ))}
+
+      <div class="block md:hidden mt-5">
+        <BookCallButton label="Book your free discovery call 🚀" link="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs" />
+      </div>
+
+<div class="mb-16 text-center hidden md:block">
+  <Badge variant="outline" className="mb-4 border-primary text-primary">
+    Proven Revenue Systems
+  </Badge>
+
+  <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">
+    See the Two Systems Businesses Use to Close More Deals
+  </h2>
+
+  <p class="mx-auto max-w-3xl text-xl text-muted-foreground mb-10">
+    Book a free demo call to see how these systems generate qualified leads, automate follow-ups, and turn conversations into booked meetings and revenue for service businesses.
+  </p>
+
+  <BookCallButton label="Book your free discovery call 🚀" link="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs" />
+</div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+const handleClick = async (priceId: string, planName: string) => {
+    try {
+
+      const res = await fetch('/api/create-checkout-projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          priceId: priceId,
+          planName: planName
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to create Stripe Checkout Session.');
+
+      const { url } = await res.json();
+      if (!url) throw new Error('Missing Checkout URL from server.');
+
+      window.location.href = url;
+    } catch (_er) {
+      alert('The payment process could not be initiated. Please try again');
+    }
+  };
+
+  // Add click event listeners to all service rows
+  document.addEventListener('DOMContentLoaded', () => {
+    const serviceRows = document.querySelectorAll('tr[data-price-id]');
+
+    serviceRows.forEach((row) => {
+      const priceId = row.getAttribute('data-price-id');
+      const book = row.getAttribute('data-book') === 'true';
+      const planName = row.getAttribute('data-plan-name');
+
+      if (book) {
+        row.addEventListener('click', async() => {
+          window.location.href = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs';
+        });
+      }
+
+      // Only add click listener if all required data is present
+      if (priceId && planName) {
+        row.addEventListener('click', async() => {
+         await handleClick(priceId, planName);
+        });
+      }
+    });
+  });
+</script>

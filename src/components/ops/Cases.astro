@@ -1,0 +1,84 @@
+---
+import { flagshipCases } from './data';
+
+const split = (value: string) => {
+  const match = value.match(/^([\d,]+)(.*)$/);
+  if (!match) return { num: null, rest: value };
+  return { num: Number(match[1].replace(/,/g, '')), rest: match[2] };
+};
+---
+
+<section id="work" class="ops-section scroll-mt-20" aria-labelledby="work-title" data-cases>
+  <div class="ops-container">
+    <div class="mb-14 grid gap-6 md:mb-20 lg:grid-cols-2 lg:items-end">
+      <h2 id="work-title" class="ops-h2" data-split>Three systems, running right now.</h2>
+      <p class="ops-lead lg:justify-self-end">
+        Each one works on real company data today. Each one started as a small first version and grew into something a
+        team relies on every day.
+      </p>
+    </div>
+
+    <ol class="border-t border-ops-ink/15">
+      {
+        flagshipCases.map((c) => {
+          const { num, rest } = split(c.metric.value);
+          return (
+            <li
+              id={`case-${c.kind}`}
+              data-case-row
+              class="grid scroll-mt-28 gap-8 border-b border-ops-ink/15 py-12 md:py-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.7fr)] lg:gap-20"
+            >
+              <div>
+                <p class="font-display text-[clamp(3.75rem,7.5vw,6rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-ops-ink tabular-nums">
+                  {num !== null ? (
+                    <><span data-case-count={num}>{num.toLocaleString('en-US')}</span>{rest}</>
+                  ) : (
+                    c.metric.value
+                  )}
+                </p>
+                <p class="mt-4 max-w-[15rem] text-lg leading-snug text-ops-slate">{c.metric.label}</p>
+                <p class="mt-6 flex items-center gap-2 text-sm font-medium text-ops-ink">
+                  <span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-ops-live" aria-hidden="true" />
+                  {c.secondary}
+                </p>
+              </div>
+
+              <div class="lg:pt-3">
+                <h3 class="font-display text-2xl font-semibold tracking-[-0.02em] text-ops-ink md:text-[2rem] md:leading-tight">
+                  {c.name}
+                </h3>
+
+                <dl class="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
+                  <div>
+                    <dt class="text-sm font-semibold text-ops-slate">Before</dt>
+                    <dd class="mt-2 leading-relaxed text-ops-slate">{c.before}</dd>
+                  </div>
+                  <div class="border-t-2 border-ops-amber pt-4 md:-mt-[18px]">
+                    <dt class="text-sm font-semibold text-ops-ink">After</dt>
+                    <dd class="mt-2 leading-relaxed text-ops-ink">{c.after}</dd>
+                  </div>
+                </dl>
+
+                {c.media && (
+                  <figure class="mt-10 overflow-hidden rounded-xl bg-white shadow-[0_20px_48px_-32px_rgb(14_26_43/0.45)]">
+                    {c.media.type === 'video' ? (
+                      <video src={c.media.src} autoplay muted loop playsinline class="block w-full" aria-label={c.media.alt} />
+                    ) : (
+                      <img src={c.media.src} alt={c.media.alt} loading="lazy" class="block w-full" />
+                    )}
+                  </figure>
+                )}
+
+                <ul class="mt-10 flex flex-wrap gap-2" aria-label="Built with">
+                  {c.stack.map((s) => (
+                    <li class="ops-chip">{s}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+</section>

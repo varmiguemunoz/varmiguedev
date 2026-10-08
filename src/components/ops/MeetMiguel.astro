@@ -1,0 +1,134 @@
+---
+const VIDEO_SRC = 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463002624947179520?compact=1';
+
+const facts = [
+  { k: 'Based in', v: 'Medellín, Colombia' },
+  { k: 'Works in', v: 'English and Spanish' },
+  { k: 'Languages', v: 'TypeScript, Python, Go' },
+  { k: 'Education', v: 'B.Sc. Software Engineering, UNIR' },
+];
+
+const teams = ['Scyllatech', 'Alpha Agent', 'Parrolabs', 'Kamay Catalizadora', 'Diey.io'];
+---
+
+<section id="about" class="ops-section scroll-mt-20" aria-labelledby="about-title" data-about>
+  <div class="ops-container grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+    <!-- Portrait: replace /avatar.webp with a professional photo (4:5, ≥1200px tall) -->
+    <div class="relative mx-auto w-full max-w-md lg:mx-0">
+      <div class="aspect-[4/5] overflow-hidden rounded-2xl bg-ops-paper-2" data-portrait>
+        <img
+          src="/avatar.webp"
+          alt="Miguel Angel Muñoz"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <button
+        type="button"
+        data-video-open
+        class="group absolute -bottom-6 left-6 right-6 flex items-center gap-4 rounded-xl bg-ops-ink px-5 py-4 text-left text-ops-paper shadow-[0_24px_48px_-24px_rgb(14_26_43/0.7)] transition-colors duration-300 hover:bg-ops-ink-2 sm:left-auto sm:right-[-1.5rem]"
+      >
+        <span class="grid h-11 w-11 flex-shrink-0 place-items-center rounded-full bg-ops-amber text-ops-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110">
+          <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor" aria-hidden="true"><path d="M13 8 1 15V1z" /></svg>
+        </span>
+        <span>
+          <span class="block text-sm font-semibold">Watch the 45-second intro</span>
+          <span class="block text-xs text-ops-mist">How I work and who I work with</span>
+        </span>
+      </button>
+    </div>
+
+    <div class="pt-6 lg:pt-0">
+      <h2 id="about-title" class="ops-h2" data-split>I'm Miguel.</h2>
+      <div class="mt-6 space-y-5 text-lg leading-relaxed text-ops-slate">
+        <p>
+          AI Integration Engineer. Since 2021 I have shipped 15+ AI systems that handle 10,000+ operations a day,
+          embedded in the CRMs, chat channels and internal tools companies already run on.
+        </p>
+        <p>
+          I own the whole stack around the AI: Go and Node.js backends, Next.js frontends and the agents themselves.
+          One engineer, no handoffs and no "that's out of scope."
+        </p>
+      </div>
+
+      <dl class="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-ops-line pt-8">
+        {
+          facts.map((f) => (
+            <div>
+              <dt class="text-sm text-ops-slate">{f.k}</dt>
+              <dd class="mt-1 font-medium text-ops-ink">{f.v}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <p class="mt-8 text-sm leading-relaxed text-ops-slate">
+        <span class="font-medium text-ops-ink">Recent teams:</span>
+        {teams.join(', ')}
+      </p>
+
+      <a href="/varmiguemunoz.pdf" target="_blank" rel="noopener noreferrer" class="ops-link mt-8">
+        Download CV (PDF)
+        <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </div>
+
+  <dialog
+    data-video-dialog
+    aria-label="Meet Miguel, intro video"
+    class="w-[min(92vw,420px)] overflow-visible rounded-2xl bg-transparent p-0 backdrop:bg-ops-ink/80"
+  >
+    <div class="relative overflow-hidden rounded-2xl bg-ops-ink">
+      <button
+        type="button"
+        data-video-close
+        class="absolute right-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-full bg-ops-paper text-ops-ink"
+      >
+        <span class="sr-only">Close video</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 2l10 10M12 2 2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+      <div data-video-slot data-src={VIDEO_SRC} class="h-[min(80vh,680px)] w-full"></div>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  function initAbout() {
+    const root = document.querySelector<HTMLElement>('[data-about]');
+    if (!root || root.dataset.bound) return;
+    root.dataset.bound = 'true';
+
+    const dialog = root.querySelector<HTMLDialogElement>('[data-video-dialog]');
+    const slot = root.querySelector<HTMLElement>('[data-video-slot]');
+    const openBtn = root.querySelector<HTMLButtonElement>('[data-video-open]');
+    const closeBtn = root.querySelector<HTMLButtonElement>('[data-video-close]');
+    if (!dialog || !slot || !openBtn) return;
+
+    // The iframe is only created on demand, so the heavy embed never loads unless asked for.
+    openBtn.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = slot.dataset.src ?? '';
+      iframe.title = 'Meet Miguel on LinkedIn';
+      iframe.allowFullscreen = true;
+      iframe.className = 'block h-full w-full';
+      slot.replaceChildren(iframe);
+      dialog.showModal();
+    });
+
+    const close = () => dialog.close();
+    closeBtn?.addEventListener('click', close);
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) close();
+    });
+    dialog.addEventListener('close', () => {
+      slot.replaceChildren();
+      openBtn.focus();
+    });
+  }
+
+  document.addEventListener('astro:page-load', initAbout);
+</script>

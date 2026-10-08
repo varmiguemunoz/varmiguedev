@@ -1,25 +1,72 @@
 ---
+export const prerender = true;
 import Base from '@layouts/Base.astro';
-import HeroSection from '@/components/global/hero-gsap';
-import Brands from '@/components/global/brands/brands.astro';
-import brands from '@/config/brands.json';
-import About from '@components/global/about-us/about.astro';
-import Testimonials from '@/components/global/testimonials/testimonials.astro';
-import Workflow from '@/components/global/workflow/workflow.astro';
-import FAQ from '@/components/global/faq';
-import DiscoveryCall from '@/components/global/discovery-call/discovery.astro';
-import Pricing from '@/components/global/pricing/pricing.astro';
-import Navbar from '@/components/global/navbar';
+import Nav from '@/components/ops/Nav.astro';
+import Hero from '@/components/ops/Hero.astro';
+import Integrations from '@/components/ops/Integrations.astro';
+import Cases from '@/components/ops/Cases.astro';
+import MoreBuilds from '@/components/ops/MoreBuilds.astro';
+import CaseSelector from '@/components/ops/CaseSelector.astro';
+import Process from '@/components/ops/Process.astro';
+import MeetMiguel from '@/components/ops/MeetMiguel.astro';
+import Testimonials from '@/components/ops/Testimonials.astro';
+import FAQ from '@/components/ops/FAQ.astro';
+import Contact from '@/components/ops/Contact.astro';
+import MobileCTA from '@/components/ops/MobileCTA.astro';
+import { faqs } from '@/components/ops/data';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Miguel Angel Muñoz',
+    alternateName: 'varmiguemunoz',
+    jobTitle: 'AI Integration Engineer',
+    url: 'https://www.varmiguemunoz.com/',
+    address: { '@type': 'PostalAddress', addressLocality: 'Medellín', addressCountry: 'CO' },
+    knowsAbout: ['LLM agents', 'RAG', 'AI automation', 'WhatsApp Business API', 'CRM integrations', 'Node.js', 'Python', 'Go'],
+    sameAs: [
+      'https://www.linkedin.com/in/varmiguemunoz/',
+      'https://github.com/varmiguemunoz',
+      'https://www.upwork.com/freelancers/~01c50c885bdb2a6b44',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 
-<Base meta_title="varmiguemunoz Software Engineer| Home" blogpost={true}>
-  <Navbar />
-  <HeroSection />
-  <Brands brands={brands} />
-  <About />
-  <Pricing />
-  <Workflow />
-  <Testimonials />
-  <FAQ client:load />
-  <DiscoveryCall />
+<Base
+  theme="ops"
+  meta_title="Miguel Muñoz | AI Integration Engineer for LLM Agents"
+  description="I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production."
+  ogImageTitle="AI agents that work inside the systems you already run."
+  ogImageMeta="Miguel Muñoz, AI Integration Engineer"
+  schema={schema}
+>
+  <div data-ops-page class="bg-ops-paper text-ops-ink">
+    <Nav />
+    <Hero />
+    <Integrations />
+    <Cases />
+    <MoreBuilds />
+    <CaseSelector />
+    <Process />
+    <MeetMiguel />
+    <Testimonials />
+    <FAQ />
+    <Contact />
+    <MobileCTA />
+  </div>
 </Base>
+
+<script>
+  import '../scripts/ops-motion';
+</script>

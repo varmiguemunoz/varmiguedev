@@ -1,0 +1,181 @@
+{
+    "en": {
+      "seo": {
+        "title": "Monthly Dev Packs & Agency Development | GrowthlyFast",
+        "description": "Get 40-140h monthly dev packs or one-time projects. Fast delivery, transparent pricing, production-ready code. Agencies, contractors & startups trust us.",
+        "keywords": "monthly dev packs, agency development partner, white label web development, on demand development team, scalable dev capacity, flexible developer hours",
+        "ogImageTitle": "Monthly Dev Packs for Agencies",
+        "ogImageMeta": "Transparent pricing, fast delivery, production-ready code"
+      },
+      "hero": {
+        "badge": "Dev Partner for Agencies",
+        "title": "Ship faster. Spend smarter. Scale on demand.",
+        "description": "One partner for paid software consulting, conversion-ready one-time projects, and monthly Dev Packs. Get a clear roadmap, launch in days, and extend your team without hiring—backed by transparent pricing, reliable timelines, and clean, production-ready code."
+      },
+      "cta": {
+        "primary": "Book Free Audit",
+        "secondary": "Talk to Sales",
+        "discoveryCall": "Schedule Discovery Call",
+        "ctaNote": "Fast confirmation • 24h response"
+      },
+      "discoveryCall": {
+        "heading": "Let's Choose the Best Path for Your Product",
+        "description": "A 15–30 min discovery call to align goals and pick the right starting point, consulting for clarity, a conversion-ready one-time project, or ongoing Dev Packs. Leave with next steps, timelines, and transparent pricing.",
+        "features": [
+          {
+            "text": "Choose your path: Consulting, Project, or Dev Pack"
+          },
+          {
+            "text": "Transparent pricing & realistic timelines"
+          },
+          {
+            "text": "Direct, actionable answers—no fluff"
+          }
+        ]
+      },
+      "faq": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "Everything You Need to Know",
+        "items": [
+          {
+            "question": "How fast can my website be ready?",
+            "answer": "Most projects are delivered in 5–10 days."
+          },
+          {
+            "question": "What if I need extra pages?",
+            "answer": "Add-ons are available at transparent rates."
+          },
+          {
+            "question": "Do you include hosting and domain?",
+            "answer": "Yes, we can also include it for a small additional charge."
+          },
+          {
+            "question": "Do you handle hosting & domain setup?",
+            "answer": "Yes, we provide all the settings your website needs to function perfectly on the Internet, including hosting and domain."
+          },
+          {
+            "question": "Can I request revisions?",
+            "answer": "Yes, revisions are included to ensure satisfaction."
+          },
+          {
+            "question": "How does the monthly subscription work?",
+            "answer": "You choose a plan with a set number of hours which you can allocate to whatever your agency needs, web development, mobile development, automation, infrastructure, etc... Billing is not project based, only predictable monthly hourly costs with our time tracking and reporting software, at the end of the monthly billing cycle you will receive a document with the total number of hours worked and descriptive reporting tables where you can see in detail what the time was used for."
+          },
+          {
+            "question": "What happens if I do not use 100% of the hours of my current plan?",
+            "answer": "If you don't use all your hours in a given month, up to 30% of the unused value is converted into service credit, valid for 30 days. That credit can be used for strategy sessions, audits, or additional dev work — no hours are rolled over directly, but you always get full value for what you pay."
+          },
+          {
+            "question": "What technologies do you work with?",
+            "answer": "Web: React, Next.js, Astro, Node.js, Tailwind CSS, Shadcn UI, CSS, HTML, Webflow, Wordpress, Shopify. Mobile: React Native, Expo. Infrastructure: AWS, Docker, CI/CD. Automation: Python and Javascript scripting, AI agents, MCP, API integrations."
+          },
+          {
+            "question": "Can I change or pause my plan?",
+            "answer": "Yes, you can upgrade, downgrade, or pause your subscription with 30 days notice. I work with growing agencies and understand your needs change."
+          },
+          {
+            "question": "What if I need more hours in a month?",
+            "answer": "Additional hours are available at $20/hour. I'll always communicate before exceeding your monthly allocation and get approval first."
+          },
+          {
+            "question": "How do we communicate and track progress?",
+            "answer": "I use Slack for daily communication and provide weekly progress updates. All work is tracked in shared project boards with clear deliverables and timelines."
+          },
+          {
+            "question": "Do you handle emergency fixes?",
+            "answer": "Yes, all plans include emergency support within 4 hours during business hours. Critical production issues get immediate attention."
+          }
+        ]
+      }
+    },
+    "es": {
+      "seo": {
+        "title": "Paquetes de Desarrollo Mensual y Desarrollo para Agencias | GrowthlyFast",
+        "description": "Obtén paquetes de desarrollo de 40-140h mensuales o proyectos únicos. Entrega rápida, precios transparentes, código listo para producción. Agencias, contratistas y startups confían en nosotros.",
+        "keywords": "paquetes desarrollo mensual, socio desarrollo agencias, desarrollo web marca blanca, equipo desarrollo bajo demanda, capacidad desarrollo escalable, horas desarrollador flexibles",
+        "ogImageTitle": "Paquetes Desarrollo Mensual para Agencias",
+        "ogImageMeta": "Precios transparentes, entrega rápida, código producción"
+      },
+      "hero": {
+        "badge": "Socio de Desarrollo para Agencias",
+        "title": "Lanza más rápido. Gasta más inteligente. Escala bajo demanda.",
+        "description": "Un solo socio para consultoría de software paga, proyectos únicos listos para conversión y Paquetes de Desarrollo mensuales. Obtén una hoja de ruta clara, lanza en días y amplía tu equipo sin contratar—respaldado por precios transparentes, plazos confiables y código limpio listo para producción."
+      },
+      "cta": {
+        "primary": "Reserva Auditoría Gratis",
+        "secondary": "Habla con Ventas",
+        "discoveryCall": "Agenda Llamada de Descubrimiento",
+        "ctaNote": "Confirmación rápida • Respuesta en 24h"
+      },
+      "discoveryCall": {
+        "heading": "Elijamos el Mejor Camino para Tu Producto",
+        "description": "Una llamada de descubrimiento de 15–30 min para alinear objetivos y elegir el punto de partida correcto, consultoría para claridad, un proyecto único listo para conversión o Paquetes de Desarrollo continuos. Sal con próximos pasos, plazos y precios transparentes.",
+        "features": [
+          {
+            "text": "Elige tu camino: Consultoría, Proyecto o Paquete de Desarrollo"
+          },
+          {
+            "text": "Precios transparentes y plazos realistas"
+          },
+          {
+            "text": "Respuestas directas y accionables—sin relleno"
+          }
+        ]
+      },
+      "faq": {
+        "heading": "Preguntas Frecuentes",
+        "subheading": "Todo lo que Necesitas Saber",
+        "items": [
+          {
+            "question": "¿Qué tan rápido puede estar listo mi sitio web?",
+            "answer": "La mayoría de proyectos se entregan en 5–10 días."
+          },
+          {
+            "question": "¿Qué pasa si necesito páginas adicionales?",
+            "answer": "Los complementos están disponibles a tarifas transparentes."
+          },
+          {
+            "question": "¿Incluyen hosting y dominio?",
+            "answer": "Sí, también podemos incluirlo por un pequeño cargo adicional."
+          },
+          {
+            "question": "¿Se encargan del hosting y configuración del dominio?",
+            "answer": "Sí, proporcionamos toda la configuración que tu sitio web necesita para funcionar perfectamente en Internet, incluyendo hosting y dominio."
+          },
+          {
+            "question": "¿Puedo solicitar revisiones?",
+            "answer": "Sí, las revisiones están incluidas para garantizar satisfacción."
+          },
+          {
+            "question": "¿Cómo funciona la suscripción mensual?",
+            "answer": "Eliges un plan con un número establecido de horas que puedes asignar a lo que tu agencia necesite, desarrollo web, desarrollo móvil, automatización, infraestructura, etc... La facturación no se basa en proyectos, solo costos mensuales predecibles por hora con nuestro software de seguimiento de tiempo y reportes, al final del ciclo de facturación mensual recibirás un documento con el número total de horas trabajadas y tablas descriptivas de reportes donde puedes ver en detalle para qué se usó el tiempo."
+          },
+          {
+            "question": "¿Qué pasa si no uso el 100% de las horas de mi plan actual?",
+            "answer": "Si no usas todas tus horas en un mes determinado, hasta el 30% del valor no utilizado se convierte en crédito de servicio, válido por 30 días. Ese crédito puede usarse para sesiones de estrategia, auditorías o trabajo de desarrollo adicional — no se transfieren horas directamente, pero siempre obtienes el valor completo de lo que pagas."
+          },
+          {
+            "question": "¿Con qué tecnologías trabajan?",
+            "answer": "Web: React, Next.js, Astro, Node.js, Tailwind CSS, Shadcn UI, CSS, HTML, Webflow, Wordpress, Shopify. Móvil: React Native, Expo. Infraestructura: AWS, Docker, CI/CD. Automatización: scripting Python y Javascript, agentes IA, MCP, integraciones API."
+          },
+          {
+            "question": "¿Puedo cambiar o pausar mi plan?",
+            "answer": "Sí, puedes mejorar, reducir o pausar tu suscripción con 30 días de aviso. Trabajo con agencias en crecimiento y entiendo que tus necesidades cambian."
+          },
+          {
+            "question": "¿Qué pasa si necesito más horas en un mes?",
+            "answer": "Las horas adicionales están disponibles a $20/hora. Siempre comunicaré antes de exceder tu asignación mensual y obtendré aprobación primero."
+          },
+          {
+            "question": "¿Cómo nos comunicamos y hacemos seguimiento del progreso?",
+            "answer": "Uso Slack para comunicación diaria y proporciono actualizaciones de progreso semanales. Todo el trabajo se rastrea en tableros de proyectos compartidos con entregables y plazos claros."
+          },
+          {
+            "question": "¿Manejan correcciones de emergencia?",
+            "answer": "Sí, todos los planes incluyen soporte de emergencia dentro de 4 horas durante horario laboral. Los problemas críticos de producción reciben atención inmediata."
+          }
+        ]
+      }
+    }
+  }
+  

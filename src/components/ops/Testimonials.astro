@@ -1,0 +1,63 @@
+---
+import { featuredTestimonial, testimonials } from './data';
+
+const initials = (name: string) =>
+  name
+    .split(' ')
+    .slice(0, 2)
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase();
+---
+
+<section class="ops-section overflow-hidden border-t border-ops-line" aria-labelledby="testimonials-title">
+  <div class="ops-container">
+    <h2 id="testimonials-title" class="sr-only">What clients say</h2>
+
+    <figure class="grid gap-10 lg:grid-cols-[auto_1fr] lg:gap-16">
+      <div class="flex items-start gap-3 lg:flex-col lg:gap-5">
+        <p class="font-display text-[5rem] font-semibold leading-[0.7] text-ops-amber" aria-hidden="true">“</p>
+        <p class="text-sm text-ops-slate lg:max-w-[10rem]">
+          Excerpts from client reviews on Upwork, Google and LinkedIn
+        </p>
+      </div>
+      <div>
+        <blockquote
+          class="max-w-[30ch] text-balance font-display text-[clamp(1.75rem,3.4vw,2.75rem)] font-medium leading-[1.15] tracking-[-0.025em] text-ops-ink"
+          data-split
+        >
+          {featuredTestimonial.quote}
+        </blockquote>
+        <figcaption class="mt-8 flex items-center gap-4">
+          <span class="grid h-12 w-12 place-items-center rounded-full bg-ops-ink text-sm font-semibold text-ops-paper" aria-hidden="true">
+            {initials(featuredTestimonial.author)}
+          </span>
+          <span>
+            <span class="block font-semibold text-ops-ink">{featuredTestimonial.author}</span>
+            <span class="block text-sm text-ops-slate">{featuredTestimonial.source}</span>
+          </span>
+        </figcaption>
+      </div>
+    </figure>
+  </div>
+
+  <div class="ops-marquee mt-20 overflow-x-auto motion-safe:overflow-hidden" style="--marquee-duration: 90s" tabindex="0" aria-label="More client reviews">
+    <div class="ops-marquee-track">
+      {
+        [false, true].map((clone) => (
+          <ul class:list={['flex shrink-0 gap-5 pr-5', clone && 'motion-reduce:hidden']} aria-hidden={clone ? 'true' : undefined}>
+            {testimonials.map((t) => (
+              <li class="flex w-[22rem] flex-shrink-0 flex-col justify-between rounded-2xl border border-ops-line bg-white p-7">
+                <p class="leading-relaxed text-ops-ink">“{t.quote}”</p>
+                <p class="mt-6 text-sm">
+                  <span class="font-semibold text-ops-ink">{t.author}</span>
+                  <span class="text-ops-slate">, {t.source}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+  </div>
+</section>

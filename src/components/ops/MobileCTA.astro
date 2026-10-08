@@ -1,0 +1,55 @@
+---
+import { CAL_LINK } from './data';
+---
+
+<div
+  data-mobile-cta
+  data-visible="false"
+  class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-ops-line bg-ops-paper/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] data-[visible=true]:translate-y-0 md:hidden"
+>
+  <div class="flex gap-3">
+    <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-primary flex-1 py-3.5 text-[15px]" tabindex="-1" data-mobile-cta-link>
+      Book a call
+    </a>
+    <a href="#contact" class="ops-btn-ink flex-1 py-3.5 text-[15px]" tabindex="-1" data-mobile-cta-link>
+      Write two lines
+    </a>
+  </div>
+</div>
+
+<script>
+  function initMobileCta() {
+    const bar = document.querySelector<HTMLElement>('[data-mobile-cta]');
+    const hero = document.querySelector('#hero-title')?.closest('section');
+    const contact = document.querySelector('#contact');
+    if (!bar || !hero || bar.dataset.bound) return;
+    bar.dataset.bound = 'true';
+
+    let pastHero = false;
+    let atContact = false;
+    const links = bar.querySelectorAll<HTMLElement>('[data-mobile-cta-link]');
+
+    const update = () => {
+      const visible = pastHero && !atContact;
+      bar.dataset.visible = String(visible);
+      bar.toggleAttribute('inert', !visible);
+      links.forEach((l) => (l.tabIndex = visible ? 0 : -1));
+    };
+
+    new IntersectionObserver(([entry]) => {
+      pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      update();
+    }).observe(hero);
+
+    if (contact) {
+      new IntersectionObserver(([entry]) => {
+        // Hide once the contact section is on screen or already scrolled past
+        atContact = entry.isIntersecting || entry.boundingClientRect.top < 0;
+        update();
+      }).observe(contact);
+    }
+    update();
+  }
+
+  document.addEventListener('astro:page-load', initMobileCta);
+</script>

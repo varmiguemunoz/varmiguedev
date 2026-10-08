@@ -1,25 +1,21 @@
 {
   "site": {
-    "title": "varmiguemunoz | Mid Full stack engineer & Creating seamless omnichannel experiences",
-    "base_url": "https://www.varmiguemunoz.dev/",
+    "title": "Miguel Muñoz | AI Integration Engineer",
+    "base_url": "https://www.varmiguemunoz.com/",
     "base_path": "/",
-    "favicon": "/favicon.png",
-    "logo": "/profile-2024.jpeg",
+    "favicon": "/favicon.ico",
+    "logo": "/avatar.webp",
     "lang": "en",
-    "description": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market.",
-    "pageSize": 3
-  },
-  "features": {
-    "youtube": true,
-    "dark_mode": true
+    "description": "I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production.",
+    "pageSize": 6
   },
   "metadata": {
-    "meta_author": "varmiguemunoz | Mid Full stack engineer & Creating seamless omnichannel experiences",
-    "meta_description": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market."
+    "meta_author": "Miguel Angel Muñoz",
+    "meta_description": "I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production."
   },
   "author": {
-    "name": "Miguel Angel Jaramillo Muñoz",
-    "avatar": "/profile-business-nobackground.png",
-    "bio": "I am a software engineer passionate about technology, entrepreneurship, innovation and creating digital products that generate a real impact in the market."
+    "name": "Miguel Angel Muñoz",
+    "avatar": "/avatar.webp",
+    "bio": "AI Integration Engineer. I build LLM agents, RAG and automation that run in production."
   }
 }

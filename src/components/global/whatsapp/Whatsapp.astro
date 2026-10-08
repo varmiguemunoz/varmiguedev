@@ -6,17 +6,10 @@ interface Props {
 const { url } = Astro.props;
 ---
 
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
-/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-<a
-  href={url}
-  class="float transition duration-300 ease-in-out hover:scale-110"
-  target="_blank"
->
-  <i class="fa fa-whatsapp my-float"></i>
+<a href={url} class="float transition duration-300 ease-in-out hover:scale-110" target="_blank">
+  <i class="fa fa-envelope my-float"></i>
 </a>
 
 <style>
@@ -43,7 +36,7 @@ const { url } = Astro.props;
 
   @media (max-width: 768px) {
     .float {
-      bottom: 80px;
+      bottom: 20px;
       right: 20px;
     }
   }

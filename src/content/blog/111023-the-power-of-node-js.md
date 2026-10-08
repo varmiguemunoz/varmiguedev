@@ -1,11 +1,13 @@
 ---
 title: 'The Power of Node.js for Backend Development'
 description: 'Node.js has emerged as a powerhouse in the realm of backend development, transforming the landscape with its event-driven, non-blocking I/O model. In this article, we will explore the key features that make Node.js'
-pubDate: '11/10/2023'
-heroImage: '/blog/node.jpeg'
-categories: ['Node js', 'Backend', 'FUllstack']
+pubDate: 2023-11-10
+image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753346476/becs06b6vgw2hnpio6rv_tboj6y.webp'
+readtime: '5 min read'
+category: 'tech-stack'
 authors: ['varmiguemunoz']
 tags: ['javascript', 'Node js', 'Backend', 'Fullstack']
+draft: false
 ---
 
 **Harnessing the Power of Node.js for Backend Development: Unveiling its Core Features**

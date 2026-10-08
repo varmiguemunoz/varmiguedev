@@ -1,22 +1,149 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+export const prerender = true;
 
-import BlogPost from "@layouts/BlogPost.astro";
-import Code from "@components/mdx/Code.astro";
+import { getCollection } from 'astro:content';
+import Base from '@layouts/Base.astro';
+import Nav from '@/components/ops/Nav.astro';
+import Contact from '@/components/ops/Contact.astro';
+import Code from '@components/mdx/Code.astro';
+import config from '@config/config.json';
+import { CAL_LINK } from '@/components/ops/data';
+import { categoryLabel, formatDate, isoDate } from '@/components/ops/blog/utils';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
+  const posts = (await getCollection('blog'))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  return posts.map((post, index) => ({
     params: { slug: post.slug },
-    props: post,
+    props: { post, newer: posts[index - 1] ?? null, older: posts[index + 1] ?? null },
   }));
 }
-type Props = CollectionEntry<"blog">;
 
-const post = Astro.props;
+const { post, newer, older } = Astro.props as any;
 const { Content } = await post.render();
+const { title, description, pubDate, updatedDate, category, readtime, image, tags } = post.data;
+const base = config.site.base_url.replace(/\/$/, '');
+const url = `${base}/blog/${post.slug}`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description,
+    url,
+    mainEntityOfPage: url,
+    datePublished: isoDate(pubDate),
+    dateModified: isoDate(updatedDate ?? pubDate),
+    ...(image ? { image } : {}),
+    keywords: tags?.join(', '),
+    author: { '@type': 'Person', name: 'Miguel Angel Muñoz', url: base, jobTitle: 'AI Integration Engineer' },
+    publisher: { '@type': 'Person', name: 'Miguel Angel Muñoz', url: base },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: base },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${base}/blog` },
+      { '@type': 'ListItem', position: 3, name: title, item: url },
+    ],
+  },
+];
 ---
 
-<BlogPost {...post.data}>
-  <Content components={{ pre: Code }} />
-</BlogPost>
+<Base
+  theme="ops"
+  meta_title={`${title} | Miguel Muñoz`}
+  description={description}
+  ogImageTitle={title}
+  ogImageMeta="Miguel Muñoz, AI Integration Engineer"
+  ogType="article"
+  publishedTime={isoDate(pubDate)}
+  modifiedTime={isoDate(updatedDate ?? pubDate)}
+  keywords={tags?.join(', ')}
+  schema={schema}
+>
+  <div class="bg-ops-paper text-ops-ink">
+    <Nav />
+
+    <article>
+      <header class="ops-container pb-12 pt-12 md:pb-16 md:pt-20">
+        <div class="mx-auto max-w-[46rem]">
+          <nav aria-label="Breadcrumb" class="text-sm text-ops-slate">
+            <a href="/blog" class="font-medium text-ops-ink underline decoration-ops-ink/30 hover:decoration-ops-amber">Blog</a>
+            <span class="mx-2" aria-hidden="true">/</span>
+            <span>{categoryLabel(category)}</span>
+          </nav>
+
+          <h1 class="mt-8 text-balance font-display text-[clamp(2.25rem,5vw,3.75rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
+            {title}
+          </h1>
+          <p class="mt-6 text-lg leading-relaxed text-ops-slate md:text-xl">{description}</p>
+
+          <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ops-ink/15 pt-6 text-sm text-ops-slate">
+            <span class="flex items-center gap-3">
+              <img src="/avatar.webp" alt="" width="36" height="36" class="h-9 w-9 rounded-full object-cover" />
+              <span class="font-semibold text-ops-ink">Miguel Angel Muñoz</span>
+            </span>
+            <time datetime={isoDate(pubDate)} class="tabular-nums">{formatDate(pubDate)}</time>
+            {readtime && <span>{readtime}</span>}
+          </div>
+        </div>
+      </header>
+
+      <div class="ops-container">
+        <div class="ops-prose mx-auto max-w-[46rem]">
+          <Content components={{ pre: Code }} />
+        </div>
+      </div>
+    </article>
+
+    <aside class="ops-container mt-20 md:mt-24" aria-label="About the author">
+      <div class="mx-auto flex max-w-[46rem] flex-col gap-6 border-y border-ops-ink/15 py-10 sm:flex-row sm:items-start">
+        <img src="/avatar.webp" alt="" width="64" height="64" class="h-16 w-16 flex-shrink-0 rounded-full object-cover" />
+        <div>
+          <p class="font-display text-lg font-semibold">Written by Miguel Angel Muñoz</p>
+          <p class="mt-2 leading-relaxed text-ops-slate">
+            AI Integration Engineer. I build LLM agents, RAG and automations that run inside the CRM, WhatsApp and
+            internal tools companies already use.
+          </p>
+          <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-link mt-4 text-sm">
+            Book a discovery call <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    {
+      (newer || older) && (
+        <nav class="ops-container mb-24 mt-12 md:mb-32" aria-label="More posts">
+          <div class="mx-auto grid max-w-[46rem] gap-8 sm:grid-cols-2">
+            {older ? (
+              <a href={`/blog/${older.slug}`} class="group">
+                <span class="text-sm text-ops-slate"><span aria-hidden="true">←</span> Older</span>
+                <span class="mt-2 block font-display text-lg font-semibold leading-snug decoration-ops-amber decoration-2 underline-offset-[0.2em] group-hover:underline">
+                  {older.data.title}
+                </span>
+              </a>
+            ) : (
+              <span />
+            )}
+            {newer && (
+              <a href={`/blog/${newer.slug}`} class="group sm:text-right">
+                <span class="text-sm text-ops-slate">Newer <span aria-hidden="true">→</span></span>
+                <span class="mt-2 block font-display text-lg font-semibold leading-snug decoration-ops-amber decoration-2 underline-offset-[0.2em] group-hover:underline">
+                  {newer.data.title}
+                </span>
+              </a>
+            )}
+          </div>
+        </nav>
+      )
+    }
+
+    <Contact />
+  </div>
+</Base>

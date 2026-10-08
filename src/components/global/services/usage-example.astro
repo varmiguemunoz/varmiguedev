@@ -1,0 +1,34 @@
+---
+// Example of how to use the Service component with custom data
+import Service from './service.astro';
+
+// Custom service data
+const customServiceData = {
+  generalTitle: 'Custom Service Title',
+  generalDescription: 'This is a custom description that can be passed as props to the Service component.',
+  services: [
+    {
+      title: 'Custom Service 1',
+      description: 'Custom service description',
+      cta: 'Learn More',
+      ctaLink: '/custom-service-1',
+      features: ['Custom feature 1', 'Custom feature 2', 'Custom feature 3'],
+      iconName: 'check-circle',
+    },
+    {
+      title: 'Custom Service 2',
+      description: 'Another custom service',
+      cta: 'Get Started',
+      ctaLink: '/custom-service-2',
+      features: ['Another custom feature', 'More custom features', 'Even more features'],
+      iconName: 'zap',
+    },
+  ],
+};
+---
+
+<!-- Use the Service component with custom data -->
+<Service data={customServiceData} />
+
+<!-- Or use with default data -->
+<Service />

@@ -1,12 +1,14 @@
 ---
 import Footer from '@components/global/footer/Footer.astro';
-import GoogleAnalytics from '@components/global/google-analytics/GoogleAnalytics.astro';
 import Whatsapp from '@/components/global/whatsapp/Whatsapp.astro';
+import GoogleCalendarButton from '@/components/global/google-calendar-button/google-calendar-button.astro';
 
 import { createOgImage } from '@utils/createOgImage';
 import { ViewTransitions } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 
 import config from '@config/config.json';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 import '@styles/global.css';
 
@@ -18,65 +20,168 @@ export interface Props {
   noindex?: boolean;
   canonical?: string;
   blogpost?: boolean;
+  keywords?: string;
+  schema?: object | object[];
+  ogImageTitle?: string;
+  ogImageMeta?: string;
+  hreflang?: Array<{ lang: string; url: string }>;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  /** 'ops' = light "machine room" theme used by the homepage funnel */
+  theme?: 'default' | 'ops';
 }
 
-const { title, meta_title, description, noindex, blogpost } = Astro.props;
+const {
+  title,
+  meta_title,
+  description,
+  noindex,
+  keywords,
+  schema,
+  ogImageTitle,
+  ogImageMeta,
+  hreflang,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  theme = 'default',
+} = Astro.props;
 
+const isOps = theme === 'ops';
+
+// OG Image dinámico por página
 const ogImage = createOgImage({
-  title: 'varmiguemunoz',
-  meta: 'Mid Full Stack Engineer',
+  title: ogImageTitle || meta_title || title || config.site.title,
+  meta: ogImageMeta || description || config.metadata.meta_description,
 });
+
+// Canonical URL fix
+const canonicalURL = `${config.site.base_url.replace(/\/$/, '')}${Astro.url.pathname.replace(/\/$/, '')}` || config.site.base_url;
+
+const isPayment = Astro.url.pathname.startsWith('/payment');
+
+// Auto-noindex para payment y funnel pages
+const shouldNoindex = noindex || isPayment;
 ---
 
 <!doctype html>
-<html lang={config.site.lang}>
+<html lang={config.site.lang} class={isOps ? 'theme-ops' : undefined}>
   <head>
-    <GoogleAnalytics />
+    <!-- Charset FIRST for security (OWASP best practice) -->
+    <meta charset="utf-8" />
+
+    {
+      isOps && (
+        <>
+          {/* Motion flag before first paint, so the hero never flashes */}
+          <script is:inline>
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              document.documentElement.classList.add('js-motion');
+            }
+          </script>
+          <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            rel="stylesheet"
+            href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+          />
+        </>
+      )
+    }
+
+    <!-- Resource hints - Optimized for critical resources -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
+
     <!-- theme meta -->
-    <meta name="theme-name" content="bookworm-light-astro" />
+    <meta name="theme-name" content="varmiguemunoz" />
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
     <meta name="generator" content={Astro.generator} />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
     <!-- responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
 
     <title>{meta_title ? meta_title : title ? title : config.site.title}</title>
     <meta name="title" content={meta_title ? meta_title : title ? title : config.site.title} />
-    <link rel="canonical" href={`${config.site.base_url}/${Astro.url.pathname.replace('/', '')}`} item-prop="url" />
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Canonical fix -->
+    <link rel="canonical" href={canonicalURL} itemprop="url" />
+
+    <!-- Hreflang for multilingual support -->
+    {hreflang && hreflang.map((link) => <link rel="alternate" hreflang={link.lang} href={link.url} />)}
+
+    {shouldNoindex && <meta name="robots" content="noindex,nofollow" />}
+
     <meta name="description" content={description ? description : config.metadata.meta_description} />
+
+    <!-- Keywords (opcional pero útil para contexto) -->
+    {keywords && <meta name="keywords" content={keywords} />}
+
     <!-- author from config.json -->
     <meta name="author" content={config.metadata.meta_author} />
-    <!-- og-title -->
+
+    <!-- Open Graph -->
     <meta property="og:title" content={meta_title ? meta_title : title ? title : config.site.title} />
-    <!-- og-description -->
     <meta property="og:description" content={description ? description : config.metadata.meta_description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={`${config.site.base_url}/${Astro.url.pathname.replace('/', '')}`} />
-
-    <!-- twitter-title -->
-    <meta name="twitter:title" content={meta_title ? meta_title : title ? title : config.site.title} />
-    <!-- twitter-description -->
-    <meta name="twitter:description" content={description ? description : config.metadata.meta_description} />
-    <!-- og-image -->
+    <meta property="og:type" content={ogType} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {ogType === 'article' && <meta property="article:author" content="Miguel Angel Muñoz" />}
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
-    <!-- twitter-image -->
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:site_name" content="varmiguemunoz" />
+    <meta property="og:locale" content="en_US" />
 
-    <script is:inline src="/registerSW.js"></script>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={meta_title ? meta_title : title ? title : config.site.title} />
+    <meta name="twitter:description" content={description ? description : config.metadata.meta_description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="alternate" type="application/rss+xml" title="Notes from production" href="/rss.xml" />
+
+    <!-- Schema.org JSON-LD -->
+    {
+      schema &&
+        (Array.isArray(schema) ? (
+          schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)
+        ) : (
+          <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        ))
+    }
 
     <ViewTransitions />
   </head>
 
   <body>
+    <Analytics />
+    <SpeedInsights />
+
     <main class="mx-auto w-full">
       <slot />
     </main>
-    <Whatsapp url="" />
-    <Footer />
+
+    {
+      !isOps && (
+        <>
+          <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
+          <GoogleCalendarButton />
+        </>
+      )
+    }
+
+    {!isPayment && <Footer />}
+
   </body>
 </html>

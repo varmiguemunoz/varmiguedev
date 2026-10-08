@@ -103,6 +103,8 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x:hidden;
 }
 
 
@@ -152,3 +154,347 @@ html {
   padding: 2em;
 }
 
+/* Scrollbar estilo moderno */
+::-webkit-scrollbar {
+  width: 8px; /* ancho del scroll */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* sin fondo */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15); /* color gris claro translúcido */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25); /* más visible al pasar el mouse */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+
+/* ==========================================================================
+   theme-ops — "Machine room" homepage theme
+   Light steel paper + ink panels where the systems run.
+   Scoped to <html class="theme-ops"> so the rest of the site keeps its theme.
+   ========================================================================== */
+
+@layer base {
+  .theme-ops {
+    --background: 210 21% 95%;
+    --foreground: 215 51% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 51% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 51% 11%;
+
+    --primary: 215 51% 11%;
+    --primary-foreground: 210 21% 95%;
+    --primary-glow: 223 100% 59%;
+
+    --secondary: 213 23% 91%;
+    --secondary-foreground: 215 51% 11%;
+
+    --muted: 213 23% 91%;
+    --muted-foreground: 214 23% 30%;
+
+    --accent: 36 88% 59%;
+    --accent-foreground: 215 51% 11%;
+    --accent-glow: 36 88% 59%;
+
+    --border: 214 20% 86%;
+    --input: 214 20% 86%;
+    --ring: 223 100% 59%;
+
+    --gradient-primary: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    --gradient-card: linear-gradient(hsl(var(--card)), hsl(var(--card)));
+    --gradient-background: linear-gradient(hsl(var(--background)), hsl(var(--background)));
+    --shadow-glow: 0 18px 40px -20px rgb(14 26 43 / 0.28);
+    --shadow-accent-glow: 0 18px 40px -20px rgb(14 26 43 / 0.28);
+    --shadow-elegant: 0 18px 40px -20px rgb(14 26 43 / 0.28);
+
+    color-scheme: light;
+    scrollbar-color: rgb(14 26 43 / 0.28) transparent;
+  }
+
+  .theme-ops body {
+    font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'tnum' 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .theme-ops ::selection {
+    background: #f2a93b;
+    color: #0e1a2b;
+  }
+
+  .theme-ops :focus-visible {
+    outline: 2px solid #2f6bff;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .theme-ops ::-webkit-scrollbar-thumb {
+    background: rgb(14 26 43 / 0.22);
+  }
+  .theme-ops ::-webkit-scrollbar-thumb:hover {
+    background: rgb(14 26 43 / 0.38);
+  }
+
+  .theme-ops a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+
+  .theme-ops textarea,
+  .theme-ops input {
+    caret-color: #f2a93b;
+  }
+}
+
+@layer components {
+  .ops-container {
+    @apply mx-auto w-full max-w-[1200px] px-6 md:px-10;
+  }
+
+  .ops-section {
+    @apply py-24 md:py-32;
+  }
+
+  .ops-h2 {
+    @apply font-display text-[clamp(2.25rem,4.4vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-ops-ink;
+    text-wrap: balance;
+  }
+
+  .ops-lead {
+    @apply max-w-[60ch] text-lg leading-relaxed text-ops-slate;
+  }
+
+  .ops-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-ops-amber px-6 py-4 text-base font-semibold text-ops-ink transition-[background-color,box-shadow] duration-300;
+    box-shadow: 0 12px 28px -14px rgb(14 26 43 / 0.45);
+  }
+  .ops-btn-primary:hover {
+    @apply bg-ops-amber-deep;
+    box-shadow: 0 16px 32px -14px rgb(14 26 43 / 0.55);
+  }
+
+  .ops-btn-ink {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-ops-ink px-5 py-3 text-sm font-semibold text-ops-paper transition-colors duration-300 hover:bg-ops-ink-2;
+  }
+
+  .ops-link {
+    @apply inline-flex items-center gap-2 font-semibold text-ops-ink underline decoration-ops-ink/30 transition-colors duration-300 hover:decoration-ops-amber;
+  }
+
+  .ops-chip {
+    @apply inline-flex items-center rounded-full border border-ops-line bg-white px-3 py-1 text-xs font-medium text-ops-slate;
+  }
+}
+
+/* --- Marquee ------------------------------------------------------------ */
+.ops-marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.ops-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: ops-marquee var(--marquee-duration, 48s) linear infinite;
+}
+.ops-marquee:hover .ops-marquee-track,
+.ops-marquee:focus-within .ops-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes ops-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Hero pre-hide (only when JS motion is on), with a safety fallback --- */
+.js-motion [data-hero-reveal] {
+  opacity: 0;
+  animation: ops-reveal-fallback 0s linear 2.4s forwards;
+}
+@keyframes ops-reveal-fallback {
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- FAQ ---------------------------------------------------------------- */
+.ops-faq summary::-webkit-details-marker {
+  display: none;
+}
+.ops-faq[open] .ops-faq-icon {
+  transform: rotate(45deg);
+}
+.ops-faq[open] .ops-faq-body {
+  animation: ops-faq-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes ops-faq-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ops-marquee-track {
+    animation: none;
+  }
+  .ops-marquee-track {
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .ops-faq[open] .ops-faq-body {
+    animation: none;
+  }
+}
+
+/* --- Blog reading column (theme-ops) ----------------------------------- */
+.ops-prose {
+  color: #1c2a3d;
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+.ops-prose > * + * {
+  margin-top: 1.25em;
+}
+.ops-prose h2 {
+  margin-top: 2.6em;
+  padding-top: 1.1em;
+  border-top: 1px solid rgb(14 26 43 / 0.15);
+  font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0e1a2b;
+  text-wrap: balance;
+}
+.ops-prose h3 {
+  margin-top: 2em;
+  font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.3125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #0e1a2b;
+}
+.ops-prose h2 + *,
+.ops-prose h3 + * {
+  margin-top: 0.75em;
+}
+.ops-prose a {
+  color: #0e1a2b;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgb(14 26 43 / 0.3);
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 0.3s;
+}
+.ops-prose a:hover {
+  text-decoration-color: #f2a93b;
+}
+.ops-prose strong {
+  color: #0e1a2b;
+  font-weight: 600;
+}
+.ops-prose ul,
+.ops-prose ol {
+  padding-left: 1.4em;
+}
+.ops-prose ul {
+  list-style: disc;
+}
+.ops-prose ol {
+  list-style: decimal;
+}
+.ops-prose li + li {
+  margin-top: 0.5em;
+}
+.ops-prose li::marker {
+  color: #e0951f;
+}
+.ops-prose ol li::marker {
+  color: #3b4a5e;
+  font-variant-numeric: tabular-nums;
+}
+.ops-prose :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  background: #e2e7ed;
+  color: #0e1a2b;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+}
+.ops-prose pre {
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  overflow-x: auto;
+  border-radius: 14px;
+  background: #0e1a2b !important;
+  padding: 1.25rem 1.5rem;
+  color: #eef1f4;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  box-shadow: 0 24px 48px -32px rgb(14 26 43 / 0.6);
+}
+.ops-prose pre code {
+  font-family: inherit;
+  background: none;
+}
+.ops-prose blockquote {
+  padding-left: 1.25em;
+  border-left: 1px solid rgb(14 26 43 / 0.3);
+  color: #0e1a2b;
+  font-size: 1.1875rem;
+}
+.ops-prose hr {
+  margin: 3em 0;
+  border: 0;
+  border-top: 1px solid rgb(14 26 43 / 0.15);
+}
+.ops-prose img {
+  border-radius: 14px;
+}
+.ops-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+.ops-prose th,
+.ops-prose td {
+  padding: 0.6em 0.75em;
+  border-bottom: 1px solid rgb(14 26 43 / 0.15);
+  text-align: left;
+}
+.ops-prose th {
+  color: #0e1a2b;
+  font-weight: 600;
+}
+.ops-prose hr + h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.ops-prose pre.ops-code {
+  padding-right: 3.25rem;
+}
+.ops-prose > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}

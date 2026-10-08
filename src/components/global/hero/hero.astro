@@ -1,0 +1,83 @@
+---
+import { Button } from '@/components/ui/button';
+import { ArrowRight, ArrowDown } from 'lucide-react';
+
+const CAL_LINK =
+  'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs';
+---
+
+<section class="relative flex min-h-[92vh] items-center overflow-hidden px-6 py-24 lg:py-32">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
+  <div
+    class="from-primary/15 absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] via-transparent to-transparent"
+  >
+  </div>
+
+  <!-- Decorative Orbs -->
+  <div class="absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-primary/10 blur-[110px]"></div>
+  <div class="absolute -right-32 bottom-1/4 h-72 w-72 rounded-full bg-accent/10 blur-[110px]"></div>
+
+  <div class="relative z-10 mx-auto max-w-5xl">
+    <div class="mx-auto max-w-4xl text-center">
+      <!-- Status -->
+      <div class="mb-8 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+        </span>
+        <span class="text-sm font-medium text-accent">AI Integration Engineer · Available for new projects</span>
+      </div>
+
+      <!-- Headline -->
+      <h1
+        class="mb-6 text-balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-foreground md:text-5xl lg:text-6xl xl:text-7xl"
+      >
+        I put AI agents to work inside the systems your business already runs on
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+        LLM agents, RAG and automation embedded into your CRM, WhatsApp, internal tools and SaaS app.
+        Production systems that run at real volume — not demos.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href={CAL_LINK}>
+          <Button variant="hero" size="xl" className="group">
+            Book a Discovery Call
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </a>
+        <a href="#work">
+          <Button variant="outline" size="xl" className="hover:bg-white hover:text-black">
+            See the work
+            <ArrowDown className="ml-2 h-5 w-5" />
+          </Button>
+        </a>
+      </div>
+
+      <!-- Microcopy -->
+      <p class="mt-6 text-sm text-muted-foreground/60">
+        30-minute call. No pitch. A direct read on whether it's a fit — I reply within 24 hours.
+      </p>
+    </div>
+
+    <!-- Proof strip -->
+    <div class="mx-auto mt-16 max-w-4xl border-t border-border/40 pt-8">
+      <p class="mb-5 text-center text-xs uppercase tracking-[0.2em] text-muted-foreground/60">
+        In production right now
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-muted-foreground md:gap-x-12">
+        <span><span class="font-semibold text-foreground">15+</span> AI systems in production</span>
+        <span class="hidden h-4 w-px bg-border/60 md:inline-block" aria-hidden="true"></span>
+        <span><span class="font-semibold text-foreground">10,000+</span> operations a day</span>
+        <span class="hidden h-4 w-px bg-border/60 md:inline-block" aria-hidden="true"></span>
+        <span><span class="font-semibold text-foreground">1,000+</span> WhatsApp chats daily</span>
+        <span class="hidden h-4 w-px bg-border/60 md:inline-block" aria-hidden="true"></span>
+        <span><span class="font-semibold text-foreground">&lt;100ms</span> Go microservice latency</span>
+      </div>
+    </div>
+  </div>
+</section>

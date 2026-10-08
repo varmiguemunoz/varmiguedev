@@ -1,0 +1,58 @@
+---
+interface Props {
+  label: string;
+  link: string;
+}
+
+const {
+  label = 'Book a free call',
+  link = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs',
+} = Astro.props;
+---
+
+<div class="mx-auto mb-10 mt-0 flex w-full justify-center px-4">
+  <a
+    href={link}
+    class="shine-btn relative inline-flex items-center justify-center rounded-md bg-red-600 px-6 py-4 text-lg font-semibold text-white shadow-lg transition-colors hover:bg-red-700"
+  >
+    {label}
+  </a>
+</div>
+
+<style>
+  .shine-btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .shine-btn::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -120%;
+    width: 60%;
+    height: 400%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.45) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    pointer-events: none;
+    animation: button-reflection 2s linear infinite;
+  }
+  @keyframes button-reflection {
+    0% {
+      left: -120%;
+    }
+    100% {
+      left: 160%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shine-btn::before {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,35 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2025-06-30.basil',
+});
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { priceId, planName, hours, redirectUrl } = req.body;
+    const origin = req.headers.origin || process.env.SITE_URL;
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      line_items: [{ price: priceId, quantity: 1 }],
+      allow_promotion_codes: true,
+      success_url: `${origin}${redirectUrl ? redirectUrl : '/payment/success'}?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/payment/canceled`,
+      metadata: {
+        planName,
+        hours: hours.toString(),
+      },
+    });
+
+    return res.status(200).json({ url: session.url });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}

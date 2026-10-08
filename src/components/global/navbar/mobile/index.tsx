@@ -1,13 +1,7 @@
 import { cn } from '@/lib/utils';
-import Social from './social';
+import Social from './social/index.tsx';
 
-export default function Mobile({
-  navigation,
-  isMenuOpen,
-}: {
-  navigation: { name: string; href: string }[];
-  isMenuOpen: boolean;
-}) {
+export default function Mobile({ isMenuOpen }: { isMenuOpen: boolean }) {
   return (
     <div
       className={cn(
@@ -16,16 +10,6 @@ export default function Mobile({
       )}
     >
       <div className="mt-4 space-y-2 border-t border-border/50 py-4">
-        {navigation.map((item) => (
-          <a
-            href={item.href}
-            key={item.name}
-            className="block w-full rounded-lg px-4 py-3 text-left text-muted-foreground transition-colors duration-200 hover:bg-primary/5 hover:text-primary"
-          >
-            {item.name}
-          </a>
-        ))}
-
         {/* Mobile Social & CTA */}
         <Social />
       </div>

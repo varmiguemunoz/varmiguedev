@@ -1,0 +1,52 @@
+---
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+---
+
+<section class="px-6 py-24">
+  <div class="mx-auto max-w-4xl">
+    <!-- Header -->
+    <div class="mb-12 text-center" id="work">
+      <h2 class="mb-4 text-4xl font-bold text-foreground md:text-5xl">Meet Miguel</h2>
+      <p class="mx-auto max-w-2xl text-xl text-muted-foreground">
+        A 45-second intro to how I work and who I work with.
+      </p>
+    </div>
+
+    <!-- Video Container — centered, portrait width -->
+    <div class="mx-auto max-w-sm">
+      <div
+        class="overflow-hidden rounded-2xl border border-border/30 bg-card/30 shadow-glow transition-all duration-300 hover:border-primary/20"
+      >
+        <iframe
+          src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7463002624947179520?compact=1"
+          width="100%"
+          height="680"
+          frameborder="0"
+          allowfullscreen
+          title="Meet Miguel — LinkedIn"
+          loading="lazy"
+          class="block w-full"></iframe>
+      </div>
+    </div>
+
+    <!-- Copy Below Video -->
+    <div class="mt-10 text-center">
+      <p class="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
+        If what I said applies to your situation — let's talk. Book a 30-minute call and I'll give you a direct
+        technical assessment of your project.
+      </p>
+
+      <div class="mt-8">
+        <a
+          href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs"
+        >
+          <Button variant="hero" size="lg" className="group">
+            Book a Call
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

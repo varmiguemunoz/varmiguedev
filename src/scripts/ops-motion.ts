@@ -1,0 +1,257 @@
+/**
+ * Homepage motion grammar (theme-ops).
+ *
+ * One signature moment (the hero: headline lines rise, the portrait unmasks)
+ * plus case results that count up as each row arrives. Everything else stays
+ * quiet: line reveals on headings, short staggers on lists, a magnetic CTA.
+ *
+ * Rules: content is visible by default, motion only adds; expo.out easing;
+ * everything is disabled under prefers-reduced-motion via gsap.matchMedia.
+ */
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
+const EASE = 'expo.out';
+const MOTION = '(prefers-reduced-motion: no-preference)';
+const DESKTOP = '(min-width: 1024px)';
+
+type Cleanup = () => void;
+
+const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => root.querySelector<T>(sel);
+const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) =>
+  Array.from(root.querySelectorAll<T>(sel));
+
+let mm: gsap.MatchMedia | null = null;
+
+/* -------------------------------------------------------------------------- */
+/* Hero: intro + portrait                                                     */
+/* -------------------------------------------------------------------------- */
+
+function heroIntro() {
+  const title = $('[data-hero-title]');
+  const fades = $$('[data-hero-fade]');
+  const panel = $('[data-hero-panel]');
+  if (!title) return;
+
+  // Title: masked line reveal
+  gsap.set(title, { opacity: 1 });
+  SplitText.create(title, {
+    type: 'lines',
+    mask: 'lines',
+    autoSplit: true,
+    onSplit: (self) =>
+      gsap.from(self.lines, { yPercent: 105, duration: 1.15, ease: EASE, stagger: 0.09, delay: 0.05 }),
+  });
+
+  gsap.fromTo(
+    fades,
+    { opacity: 0, y: 18 },
+    { opacity: 1, y: 0, duration: 0.9, ease: EASE, stagger: 0.08, delay: 0.35 },
+  );
+
+  if (!panel) return;
+  gsap.set(panel, { opacity: 1 });
+  const frame = $('[data-hero-frame]', panel);
+  if (frame) {
+    gsap.fromTo(
+      frame,
+      { clipPath: 'inset(100% 0% 0% 0% round 16px)' },
+      { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: 1.3, ease: 'expo.inOut', delay: 0.2, clearProps: 'clipPath' },
+    );
+  }
+  const img = $('img', panel);
+  if (img) gsap.fromTo(img, { scale: 1.12 }, { scale: 1, duration: 1.8, ease: EASE, delay: 0.2 });
+  const quote = $('blockquote', panel);
+  if (quote) gsap.fromTo(quote, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9, ease: EASE, delay: 1.1 });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Shared reveals                                                             */
+/* -------------------------------------------------------------------------- */
+
+function splitHeadings() {
+  $$('[data-split]').forEach((el) => {
+    SplitText.create(el, {
+      type: 'lines',
+      mask: 'lines',
+      autoSplit: true,
+      onSplit: (self) =>
+        gsap.from(self.lines, {
+          yPercent: 105,
+          duration: 1,
+          ease: EASE,
+          stagger: 0.08,
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        }),
+    });
+  });
+}
+
+function listStaggers() {
+  const groups: Array<[string, string]> = [
+    ['[data-cases] ol', ':scope > [data-case-row]'],
+    ['[data-builds] ul', ':scope > [data-build-row]'],
+    ['#faq', 'details'],
+    ['[data-process] ol', ':scope > li'],
+  ];
+  groups.forEach(([containerSel, itemSel]) => {
+    const container = $(containerSel);
+    if (!container) return;
+    const items = $$(itemSel, container);
+    if (!items.length) return;
+    gsap.from(items, {
+      opacity: 0,
+      y: 22,
+      duration: 0.85,
+      ease: EASE,
+      stagger: 0.07,
+      scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+    });
+  });
+}
+
+function portrait() {
+  const frame = $('[data-portrait]');
+  if (!frame) return;
+  gsap.fromTo(
+    frame,
+    { clipPath: 'inset(16% 0% 0% 0% round 16px)' },
+    {
+      clipPath: 'inset(0% 0% 0% 0% round 16px)',
+      ease: 'none',
+      scrollTrigger: { trigger: frame, start: 'top 92%', end: 'top 40%', scrub: 0.6 },
+    },
+  );
+  const img = $('img', frame);
+  if (img) {
+    gsap.fromTo(
+      img,
+      { scale: 1.12 },
+      { scale: 1, ease: 'none', scrollTrigger: { trigger: frame, start: 'top bottom', end: 'bottom top', scrub: true } },
+    );
+  }
+}
+
+function magnetic(): Cleanup {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return () => {};
+  const cleanups: Cleanup[] = [];
+
+  $$('[data-magnetic]').forEach((el) => {
+    const xTo = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3.out' });
+    const yTo = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3.out' });
+    const move = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect();
+      xTo((e.clientX - (r.left + r.width / 2)) * 0.18);
+      yTo((e.clientY - (r.top + r.height / 2)) * 0.28);
+    };
+    const leave = () => {
+      xTo(0);
+      yTo(0);
+    };
+    el.addEventListener('pointermove', move);
+    el.addEventListener('pointerleave', leave);
+    cleanups.push(() => {
+      el.removeEventListener('pointermove', move);
+      el.removeEventListener('pointerleave', leave);
+    });
+  });
+
+  return () => cleanups.forEach((fn) => fn());
+}
+
+/* -------------------------------------------------------------------------- */
+/* Case results                                                               */
+/* -------------------------------------------------------------------------- */
+
+function caseCounts() {
+  $$('[data-case-count]').forEach((el) => {
+    const end = Number(el.dataset.caseCount ?? 0);
+    const state = { v: 0 };
+    gsap.to(state, {
+      v: end,
+      duration: 1.6,
+      ease: 'power3.out',
+      onUpdate: () => {
+        el.textContent = Math.round(state.v).toLocaleString('en-US');
+      },
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Process rail                                                               */
+/* -------------------------------------------------------------------------- */
+
+function processRail(motion: boolean, desktop: boolean): Cleanup {
+  const root = $('[data-process]');
+  const list = root ? $('ol', root) : null;
+  if (!root || !list || !motion) return () => {};
+
+  const steps = $$('[data-process-step]', root);
+  const line = $(desktop ? '[data-process-line]' : '[data-process-line-mobile]', root);
+  if (!line) return () => {};
+
+  steps.forEach((s) => s.removeAttribute('data-lit'));
+  const axis = desktop ? 'scaleX' : 'scaleY';
+
+  gsap.fromTo(
+    line,
+    { [axis]: 0 },
+    {
+      [axis]: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: list,
+        start: desktop ? 'top 75%' : 'top 70%',
+        end: desktop ? 'bottom 60%' : 'bottom 55%',
+        scrub: 0.6,
+        onUpdate: (self) => {
+          steps.forEach((s, i) => s.toggleAttribute('data-lit', self.progress > 0.01 && self.progress >= i / steps.length));
+        },
+      },
+    },
+  );
+
+  return () => steps.forEach((s) => s.setAttribute('data-lit', ''));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Boot                                                                       */
+/* -------------------------------------------------------------------------- */
+
+function init() {
+  if (!$('[data-ops-page]')) return;
+  mm?.revert();
+  mm = gsap.matchMedia();
+
+  // Motion that does not depend on the breakpoint
+  mm.add(MOTION, () => {
+    const cleanups: Cleanup[] = [];
+    heroIntro();
+    caseCounts();
+    splitHeadings();
+    listStaggers();
+    portrait();
+    cleanups.push(magnetic());
+    return () => cleanups.forEach((fn) => fn());
+  });
+
+  // Breakpoint-aware scroll choreography (also wires the no-motion fallbacks)
+  mm.add({ motion: MOTION, desktop: DESKTOP }, (ctx) => {
+    const { motion, desktop } = ctx.conditions as { motion: boolean; desktop: boolean };
+    const cleanups = [processRail(motion, desktop)];
+    return () => cleanups.forEach((fn) => fn());
+  });
+
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
+}
+
+document.addEventListener('astro:page-load', init);
+document.addEventListener('astro:before-swap', () => {
+  mm?.revert();
+  mm = null;
+});

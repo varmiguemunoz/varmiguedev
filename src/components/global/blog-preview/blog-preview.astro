@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import { Badge } from '@/components/ui/badge';
+
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+  .filter((post) => post.data?.draft !== true)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const categoryLabels: Record<string, string> = {
+  'dev-tips': 'Dev Tips',
+  'automation': 'Automation',
+  'ai-tools': 'AI Tools',
+  'agency-workflow': 'Agency Workflow',
+  'tech-stack': 'Tech Stack',
+  'others': 'Others',
+};
+---
+
+<section class="px-6 py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-16 text-center">
+      <Badge variant="outline" className="mb-6 border-primary text-primary">Blog</Badge>
+      <h2 class="mb-6 text-4xl font-bold text-foreground md:text-5xl">Latest Articles</h2>
+      <p class="mx-auto max-w-3xl text-xl text-muted-foreground">
+        Technical breakdowns, system design decisions, and what I actually ship in production.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {latestPosts.map((post) => (
+        <a href={`/blog/${post.slug}`} class="group block">
+          <div class="flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-gradient-card transition-all duration-300 hover:border-accent/30 hover:shadow-accent-glow">
+            <div class="relative overflow-hidden">
+              {post.data.image ? (
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="flex h-48 w-full items-center justify-center bg-muted">
+                  <span class="text-muted-foreground">No image</span>
+                </div>
+              )}
+              <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
+
+            <div class="flex flex-1 flex-col p-6">
+              <div class="mb-3 flex items-center justify-between">
+                <Badge variant="outline" className="border-accent/30 text-xs text-accent-glow">
+                  {categoryLabels[post.data.category] ?? post.data.category}
+                </Badge>
+                <span class="text-xs text-muted-foreground">
+                  {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+              </div>
+
+              <h3 class="mb-3 text-lg font-bold leading-tight text-foreground transition-colors duration-300 group-hover:text-primary">
+                {post.data.title}
+              </h3>
+
+              <p class="mb-4 flex-1 leading-relaxed text-muted-foreground line-clamp-3">
+                {post.data.description}
+              </p>
+
+              <div class="flex items-center justify-between">
+                {post.data.readtime && (
+                  <span class="text-xs text-muted-foreground">{post.data.readtime}</span>
+                )}
+                <span class="ml-auto flex items-center gap-1 text-sm font-medium text-primary transition-transform duration-300 group-hover:translate-x-1">
+                  Read More →
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Shiny CTA button -->
+    <div class="mt-16 flex justify-center">
+      <a href="/blog" class="shimmer-btn relative overflow-hidden rounded-full px-10 py-4 text-base font-semibold text-white shadow-glow transition-transform duration-300 hover:scale-105 focus:outline-none">
+        View All Articles →
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .shimmer-btn {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  .shimmer-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    animation: shimmer 2.4s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -75%; }
+    100% { left: 125%; }
+  }
+</style>
