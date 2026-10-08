@@ -3,7 +3,7 @@
 
 export const CAL_LINK ="https://calendar.app.google/xEg68kiB9HdDzMvv7"
 
-export const CONTACT_EMAIL = 'miguelmunoz@bloomify.tech';
+export const CONTACT_EMAIL = 'varmiguemunoz@gmail.com';
 
 export type CaseKind = 'finance' | 'whatsapp' | 'leads';
 
