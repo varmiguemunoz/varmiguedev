@@ -80,12 +80,12 @@ export default defineConfig({
         {
           userAgent: '*',
           allow: '/',
-          disallow: ['/funnel/', '/payment/', '/thank-you/', '/api/']
+          disallow: ['/funnel/', '/payment/', '/thank-you/', '/api/', '/forms/']
         },
         {
           userAgent: 'Googlebot',
           allow: '/',
-          disallow: ['/funnel/', '/payment/', '/api/'],
+          disallow: ['/funnel/', '/payment/', '/api/', '/forms/'],
           crawlDelay: 0
         }
       ],
