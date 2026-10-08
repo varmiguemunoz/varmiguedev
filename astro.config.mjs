@@ -78,24 +78,14 @@ export default defineConfig({
         {
           userAgent: '*',
           allow: '/',
-<<<<<<< Updated upstream
           disallow: ['/funnel/', '/payment/', '/thank-you/', '/api/', '/forms/']
-=======
-          disallow: ['/funnel/', '/payment/', '/thank-you/', '/api/'],
->>>>>>> Stashed changes
         },
         {
           userAgent: 'Googlebot',
           allow: '/',
-<<<<<<< Updated upstream
           disallow: ['/funnel/', '/payment/', '/api/', '/forms/'],
           crawlDelay: 0
         }
-=======
-          disallow: ['/funnel/', '/payment/', '/api/'],
-          crawlDelay: 0,
-        },
->>>>>>> Stashed changes
       ],
       sitemap: 'https://www.varmiguemunoz.com/sitemap-index.xml',
     }),
