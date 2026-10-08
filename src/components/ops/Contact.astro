@@ -136,8 +136,8 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
   function validate(data: Record<Field, string>): Partial<Record<Field, string>> {
     const errors: Partial<Record<Field, string>> = {};
     if (!data.name.trim()) errors.name = 'Add your name so I know who to reply to.';
-    if (!EMAIL_RE.test(data.email.trim())) errors.email = 'That email looks incomplete — check it and try again.';
-    if (data.message.trim().length < 10) errors.message = 'A little more detail, please — at least a sentence.';
+    if (!EMAIL_RE.test(data.email.trim())) errors.email = 'That email looks incomplete. Check it and try again.';
+    if (data.message.trim().length < 10) errors.message = 'Add a little more detail, at least one sentence.';
     return errors;
   }
 

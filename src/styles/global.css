@@ -298,32 +298,6 @@ html {
   .ops-chip {
     @apply inline-flex items-center rounded-full border border-ops-line bg-white px-3 py-1 text-xs font-medium text-ops-slate;
   }
-
-  .ops-panel {
-    @apply relative overflow-hidden rounded-2xl bg-ops-ink text-ops-paper;
-    box-shadow: 0 30px 60px -30px rgb(14 26 43 / 0.55);
-  }
-}
-
-/* --- Diagram strokes ---------------------------------------------------- */
-.ops-line {
-  fill: none;
-  stroke: #2f6bff;
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-.ops-flow {
-  fill: none;
-  stroke: #f2a93b;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-dasharray: 2 16;
-  animation: ops-flow 1.4s linear infinite;
-}
-@keyframes ops-flow {
-  to {
-    stroke-dashoffset: -36;
-  }
 }
 
 /* --- Marquee ------------------------------------------------------------ */
@@ -343,22 +317,6 @@ html {
   to {
     transform: translateX(-50%);
   }
-}
-
-/* --- Case scroller visuals: CSS owns the crossfade ---------------------- */
-[data-case-visual] {
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0s linear 0.6s;
-}
-[data-case-visual][data-active] {
-  opacity: 1;
-  visibility: visible;
-  transition:
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0s;
 }
 
 /* --- Hero pre-hide (only when JS motion is on), with a safety fallback --- */
@@ -390,7 +348,6 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ops-flow,
   .ops-marquee-track {
     animation: none;
   }
@@ -398,11 +355,146 @@ html {
     flex-wrap: wrap;
     width: auto;
   }
-  [data-case-visual],
-  [data-case-visual][data-active] {
-    transition: none;
-  }
   .ops-faq[open] .ops-faq-body {
     animation: none;
   }
+}
+
+/* --- Blog reading column (theme-ops) ----------------------------------- */
+.ops-prose {
+  color: #1c2a3d;
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+.ops-prose > * + * {
+  margin-top: 1.25em;
+}
+.ops-prose h2 {
+  margin-top: 2.6em;
+  padding-top: 1.1em;
+  border-top: 1px solid rgb(14 26 43 / 0.15);
+  font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0e1a2b;
+  text-wrap: balance;
+}
+.ops-prose h3 {
+  margin-top: 2em;
+  font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.3125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: #0e1a2b;
+}
+.ops-prose h2 + *,
+.ops-prose h3 + * {
+  margin-top: 0.75em;
+}
+.ops-prose a {
+  color: #0e1a2b;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgb(14 26 43 / 0.3);
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 0.3s;
+}
+.ops-prose a:hover {
+  text-decoration-color: #f2a93b;
+}
+.ops-prose strong {
+  color: #0e1a2b;
+  font-weight: 600;
+}
+.ops-prose ul,
+.ops-prose ol {
+  padding-left: 1.4em;
+}
+.ops-prose ul {
+  list-style: disc;
+}
+.ops-prose ol {
+  list-style: decimal;
+}
+.ops-prose li + li {
+  margin-top: 0.5em;
+}
+.ops-prose li::marker {
+  color: #e0951f;
+}
+.ops-prose ol li::marker {
+  color: #3b4a5e;
+  font-variant-numeric: tabular-nums;
+}
+.ops-prose :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  background: #e2e7ed;
+  color: #0e1a2b;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+}
+.ops-prose pre {
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  overflow-x: auto;
+  border-radius: 14px;
+  background: #0e1a2b !important;
+  padding: 1.25rem 1.5rem;
+  color: #eef1f4;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  box-shadow: 0 24px 48px -32px rgb(14 26 43 / 0.6);
+}
+.ops-prose pre code {
+  font-family: inherit;
+  background: none;
+}
+.ops-prose blockquote {
+  padding-left: 1.25em;
+  border-left: 1px solid rgb(14 26 43 / 0.3);
+  color: #0e1a2b;
+  font-size: 1.1875rem;
+}
+.ops-prose hr {
+  margin: 3em 0;
+  border: 0;
+  border-top: 1px solid rgb(14 26 43 / 0.15);
+}
+.ops-prose img {
+  border-radius: 14px;
+}
+.ops-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+.ops-prose th,
+.ops-prose td {
+  padding: 0.6em 0.75em;
+  border-bottom: 1px solid rgb(14 26 43 / 0.15);
+  text-align: left;
+}
+.ops-prose th {
+  color: #0e1a2b;
+  font-weight: 600;
+}
+.ops-prose hr + h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.ops-prose pre.ops-code {
+  padding-right: 3.25rem;
+}
+.ops-prose > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }

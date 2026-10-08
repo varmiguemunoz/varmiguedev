@@ -1,21 +1,21 @@
 {
   "site": {
-    "title": "varmiguemunoz Software Engineer | Agency Dev Partner",
+    "title": "Miguel Muñoz | AI Integration Engineer",
     "base_url": "https://www.varmiguemunoz.com/",
     "base_path": "/",
     "favicon": "/favicon.ico",
-    "logo": "/avatar.png",
+    "logo": "/avatar.webp",
     "lang": "en",
-    "description": "I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations.",
+    "description": "I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production.",
     "pageSize": 6
   },
   "metadata": {
-    "meta_author": "varmiguemunoz Software Engineer | Agency Dev Partner",
-    "meta_description": "I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations."
+    "meta_author": "Miguel Angel Muñoz",
+    "meta_description": "I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production."
   },
   "author": {
-    "name": "varmiguemunoz | Miguel Angel Munoz",
-    "avatar": "/avatar.png",
-    "bio": "I help agencies ship fast, high-performance digital experiences for their clients from landing pages and storefronts to mobile apps and automations."
+    "name": "Miguel Angel Muñoz",
+    "avatar": "/avatar.webp",
+    "bio": "AI Integration Engineer. I build LLM agents, RAG and automation that run in production."
   }
 }

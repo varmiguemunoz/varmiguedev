@@ -1,41 +1,24 @@
 ---
-import { CAL_LINK } from './data';
+import { CAL_LINK, testimonials } from './data';
 
-const counters = [
-  { value: 15, suffix: '+', label: 'AI systems in production' },
-  { value: 10000, suffix: '+', label: 'operations handled a day' },
-  { value: 120, suffix: '+ h', label: 'returned to client teams weekly' },
-];
-
-// Illustrative log lines for the live panel. Replayed by the motion script.
-const logLines = [
-  { t: 'in', text: 'receipt_0412.jpg received · WhatsApp' },
-  { t: 'ai', text: 'extracted · $1,240.00 · materials' },
-  { t: 'ok', text: 'written to QuickBooks' },
-  { t: 'ok', text: 'Sheets › Budget updated · 62% used' },
-  { t: 'in', text: 'CEO: “What did we spend on materials?”' },
-  { t: 'ai', text: 'agent: “$18,420 this month — on budget.”' },
-  { t: 'ok', text: 'reconciliation · 214 transactions matched' },
-  { t: 'ok', text: 'variance report sent · Gmail' },
-];
+const review = testimonials[0];
 ---
 
-<section class="relative overflow-hidden pb-20 pt-10 md:pb-28 md:pt-16" aria-labelledby="hero-title">
-  <div class="ops-container grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
-    <!-- Copy -->
+<section class="relative pb-28 pt-10 md:pb-36 md:pt-16" aria-labelledby="hero-title">
+  <div class="ops-container grid items-start gap-16 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:gap-14">
     <div>
       <h1
         id="hero-title"
         data-hero-reveal
         data-hero-title
-        class="text-balance font-display text-[clamp(2.75rem,6.2vw,5.25rem)] font-semibold leading-[0.98] tracking-[-0.035em] text-ops-ink"
+        class="text-balance max-w-[16ch] font-display text-[clamp(2.75rem,6.6vw,6rem)] font-semibold leading-[0.96] tracking-[-0.035em] text-ops-ink"
       >
         AI agents that work inside the systems you already run.
       </h1>
 
-      <p data-hero-reveal data-hero-fade class="mt-7 max-w-[34rem] text-lg leading-relaxed text-ops-slate md:text-xl">
-        CRM, WhatsApp, finance and internal tools. I build LLM agents, RAG and automation that run in production
-        — not demos.
+      <p data-hero-reveal data-hero-fade class="mt-8 max-w-[36rem] text-lg leading-relaxed text-ops-slate md:text-xl">
+        I build LLM agents, RAG pipelines and automations for your CRM, WhatsApp, finance stack and internal tools. They
+        run in production, on your real data, every day.
       </p>
 
       <div data-hero-reveal data-hero-fade class="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
@@ -51,114 +34,47 @@ const logLines = [
 
       <p data-hero-reveal data-hero-fade class="mt-6 flex items-center gap-2 text-sm text-ops-slate">
         <span class="relative flex h-2 w-2" aria-hidden="true">
-          <span class="absolute inline-flex h-full w-full rounded-full bg-ops-live opacity-60 motion-safe:animate-ping"></span>
+          <span class="absolute inline-flex h-full w-full rounded-full bg-ops-live opacity-60 motion-safe:animate-ping"
+          ></span>
           <span class="relative inline-flex h-2 w-2 rounded-full bg-ops-live"></span>
         </span>
-        Available for new projects · replies within 24 hours
+         Available for new projects. Replies within 24 hours.
       </p>
 
-      <dl data-hero-reveal data-hero-fade class="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-ops-line pt-6">
-        {
-          counters.map((c) => (
-            <div>
-              <dt class="sr-only">{c.label}</dt>
-              <dd class="font-display text-2xl font-semibold tabular-nums tracking-[-0.02em] text-ops-ink md:text-[1.75rem]">
-                <span data-count={c.value}>{c.value.toLocaleString('en-US')}</span>
-                {c.suffix}
-              </dd>
-              <dd class="mt-1 text-xs leading-snug text-ops-slate md:text-[13px]" aria-hidden="true">
-                {c.label}
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
+      <p
+        data-hero-reveal
+        data-hero-fade
+        class="border-ops-ink/15 mt-14 max-w-[42rem] border-t pt-6 text-base leading-relaxed text-ops-slate md:text-lg"
+      >
+        <strong class="font-semibold tabular-nums text-ops-ink">15+ AI systems</strong> in production,
+        <strong class="font-semibold tabular-nums text-ops-ink">10,000+ operations</strong> handled every day and
+        <strong class="font-semibold tabular-nums text-ops-ink">120+ hours</strong> a week handed back to client teams.
+      </p>
     </div>
 
-    <!-- Live system panel -->
-    <figure data-hero-reveal data-hero-panel class="ops-panel" aria-label="Illustration of an AI finance agent processing a WhatsApp receipt">
-      <div class="flex items-center justify-between border-b border-ops-ink-3 px-5 py-3.5">
-        <span class="font-mono text-xs text-ops-mist">finance-assistant · production</span>
-        <span class="flex items-center gap-2 font-mono text-xs text-ops-live">
-          <span class="h-1.5 w-1.5 rounded-full bg-ops-live" aria-hidden="true"></span>
-          running
-        </span>
+    <figure
+      data-hero-reveal
+      data-hero-panel
+      class="relative mx-auto w-full max-w-[22rem] lg:mx-0 lg:mt-3 lg:max-w-none"
+    >
+      <div data-hero-frame class="aspect-[4/5] overflow-hidden rounded-2xl bg-ops-paper-2">
+        <img
+          src="/hero.webp"
+          alt="Miguel Angel Muñoz, AI Integration Engineer"
+          width="960"
+          height="957"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="h-full w-full object-cover object-[50%_30%]"
+        />
       </div>
-
-      <svg viewBox="0 0 520 300" class="block w-full" role="img" aria-hidden="true" data-system-map>
-        <!-- connections -->
-        <g>
-          <path id="hm-in-1" class="ops-line" data-draw d="M132 92 C 176 92, 176 150, 214 150"></path>
-          <path id="hm-in-2" class="ops-line" data-draw d="M132 208 C 176 208, 176 150, 214 150"></path>
-          <path id="hm-out-1" class="ops-line" data-draw d="M306 150 C 350 150, 344 62, 388 62"></path>
-          <path id="hm-out-2" class="ops-line" data-draw d="M306 150 L 388 150"></path>
-          <path id="hm-out-3" class="ops-line" data-draw d="M306 150 C 350 150, 344 238, 388 238"></path>
-        </g>
-
-        <!-- input nodes -->
-        <g data-node>
-          <rect x="16" y="66" width="116" height="52" rx="10" fill="#16263C" stroke="#2F6BFF" stroke-opacity="0.7"></rect>
-          <text x="74" y="89" text-anchor="middle" fill="#EEF1F4" font-size="13" font-weight="600">WhatsApp</text>
-          <text x="74" y="106" text-anchor="middle" fill="#8FA1B8" font-size="10.5">receipts · PDFs</text>
-        </g>
-        <g data-node>
-          <rect x="16" y="182" width="116" height="52" rx="10" fill="#16263C" stroke="#2F6BFF" stroke-opacity="0.7"></rect>
-          <text x="74" y="205" text-anchor="middle" fill="#EEF1F4" font-size="13" font-weight="600">CEO question</text>
-          <text x="74" y="222" text-anchor="middle" fill="#8FA1B8" font-size="10.5">same chat</text>
-        </g>
-
-        <!-- agent -->
-        <g data-node>
-          <circle data-agent-ring cx="260" cy="150" r="58" fill="none" stroke="#F2A93B" stroke-opacity="0.25"></circle>
-          <circle cx="260" cy="150" r="46" fill="#16263C" stroke="#F2A93B" stroke-width="1.5"></circle>
-          <text x="260" y="147" text-anchor="middle" fill="#EEF1F4" font-size="13.5" font-weight="600">AI agent</text>
-          <text x="260" y="164" text-anchor="middle" fill="#8FA1B8" font-size="10.5">Claude · tools</text>
-        </g>
-
-        <!-- output nodes -->
-        <g data-node>
-          <rect x="388" y="40" width="116" height="44" rx="10" fill="#16263C" stroke="#2F6BFF" stroke-opacity="0.7"></rect>
-          <text x="446" y="66" text-anchor="middle" fill="#EEF1F4" font-size="13" font-weight="600">QuickBooks</text>
-        </g>
-        <g data-node>
-          <rect x="388" y="128" width="116" height="44" rx="10" fill="#16263C" stroke="#2F6BFF" stroke-opacity="0.7"></rect>
-          <text x="446" y="154" text-anchor="middle" fill="#EEF1F4" font-size="13" font-weight="600">Google Sheets</text>
-        </g>
-        <g data-node>
-          <rect x="388" y="216" width="116" height="44" rx="10" fill="#16263C" stroke="#2F6BFF" stroke-opacity="0.7"></rect>
-          <text x="446" y="242" text-anchor="middle" fill="#EEF1F4" font-size="13" font-weight="600">Gmail reports</text>
-        </g>
-
-        <!-- static packets (shown without motion) -->
-        <g data-static-packets fill="#F2A93B">
-          <circle cx="176" cy="121" r="4.5"></circle>
-          <circle cx="347" cy="150" r="4.5"></circle>
-        </g>
-
-        <!-- animated packets: positioned by MotionPath -->
-        <g fill="#F2A93B">
-          <circle data-packet="in-1" r="5" cx="0" cy="0" opacity="0"></circle>
-          <circle data-packet="in-2" r="5" cx="0" cy="0" opacity="0"></circle>
-          <circle data-packet="out-1" r="4.5" cx="0" cy="0" opacity="0"></circle>
-          <circle data-packet="out-2" r="4.5" cx="0" cy="0" opacity="0"></circle>
-          <circle data-packet="out-3" r="4.5" cx="0" cy="0" opacity="0"></circle>
-        </g>
-      </svg>
-
-      <div class="border-t border-ops-ink-3 px-5 pb-4 pt-3">
-        <ol data-log class="h-[7.5rem] space-y-1.5 overflow-hidden font-mono text-[12px] leading-5" aria-hidden="true">
-          {
-            logLines.slice(0, 4).map((line, i) => (
-              <li class:list={['flex gap-3', line.t === 'ok' ? 'text-ops-live' : line.t === 'ai' ? 'text-ops-paper' : 'text-ops-mist']}>
-                <span class="text-ops-mist/70">09:41:0{i}</span>
-                <span class="truncate">{line.text}</span>
-              </li>
-            ))
-          }
-        </ol>
-        <script type="application/json" data-log-source set:html={JSON.stringify(logLines)} />
-        <figcaption class="mt-2 text-[11px] text-ops-mist/80">Illustrative data</figcaption>
-      </div>
+      <blockquote
+        class="absolute -bottom-16 left-4 right-4 rounded-xl bg-white p-5 shadow-[0_24px_48px_-24px_rgb(14_26_43/0.45)] sm:left-auto sm:right-6 sm:w-[17rem] lg:-left-12 lg:right-auto"
+      >
+        <p class="text-[15px] leading-snug text-ops-ink">“{review.quote}”</p>
+        <footer class="mt-3 text-xs text-ops-slate">{review.source}</footer>
+      </blockquote>
     </figure>
   </div>
 </section>

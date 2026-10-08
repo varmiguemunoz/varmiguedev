@@ -47,8 +47,8 @@ const teams = ['Scyllatech', 'Alpha Agent', 'Parrolabs', 'Kamay Catalizadora', '
           embedded in the CRMs, chat channels and internal tools companies already run on.
         </p>
         <p>
-          I own the whole stack around the AI — Go and Node.js backends, Next.js frontends and the agents themselves.
-          One engineer, no handoffs, no "that's out of scope."
+          I own the whole stack around the AI: Go and Node.js backends, Next.js frontends and the agents themselves.
+          One engineer, no handoffs and no "that's out of scope."
         </p>
       </div>
 
@@ -65,7 +65,7 @@ const teams = ['Scyllatech', 'Alpha Agent', 'Parrolabs', 'Kamay Catalizadora', '
 
       <p class="mt-8 text-sm leading-relaxed text-ops-slate">
         <span class="font-medium text-ops-ink">Recent teams:</span>
-        {teams.join(' · ')}
+        {teams.join(', ')}
       </p>
 
       <a href="/varmiguemunoz.pdf" target="_blank" rel="noopener noreferrer" class="ops-link mt-8">
@@ -77,7 +77,7 @@ const teams = ['Scyllatech', 'Alpha Agent', 'Parrolabs', 'Kamay Catalizadora', '
 
   <dialog
     data-video-dialog
-    aria-label="Meet Miguel — intro video"
+    aria-label="Meet Miguel, intro video"
     class="w-[min(92vw,420px)] overflow-visible rounded-2xl bg-transparent p-0 backdrop:bg-ops-ink/80"
   >
     <div class="relative overflow-hidden rounded-2xl bg-ops-ink">
@@ -112,7 +112,7 @@ const teams = ['Scyllatech', 'Alpha Agent', 'Parrolabs', 'Kamay Catalizadora', '
     openBtn.addEventListener('click', () => {
       const iframe = document.createElement('iframe');
       iframe.src = slot.dataset.src ?? '';
-      iframe.title = 'Meet Miguel — LinkedIn video';
+      iframe.title = 'Meet Miguel on LinkedIn';
       iframe.allowFullscreen = true;
       iframe.className = 'block h-full w-full';
       slot.replaceChildren(iframe);

@@ -1,9 +1,10 @@
 ---
+export const prerender = true;
 import Base from '@layouts/Base.astro';
 import Nav from '@/components/ops/Nav.astro';
 import Hero from '@/components/ops/Hero.astro';
 import Integrations from '@/components/ops/Integrations.astro';
-import CaseScroller from '@/components/ops/CaseScroller.astro';
+import Cases from '@/components/ops/Cases.astro';
 import MoreBuilds from '@/components/ops/MoreBuilds.astro';
 import CaseSelector from '@/components/ops/CaseSelector.astro';
 import Process from '@/components/ops/Process.astro';
@@ -44,17 +45,17 @@ const schema = [
 
 <Base
   theme="ops"
-  meta_title="Miguel Muñoz | AI Integration Engineer — LLM Agents, RAG & Automation in Production"
-  description="I embed LLM agents, RAG and automation into the CRM, WhatsApp and internal tools your business already runs on. 15+ AI systems in production handling 10,000+ operations a day."
+  meta_title="Miguel Muñoz | AI Integration Engineer for LLM Agents"
+  description="I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production."
   ogImageTitle="AI agents that work inside the systems you already run."
-  ogImageMeta="Miguel Muñoz · AI Integration Engineer"
+  ogImageMeta="Miguel Muñoz, AI Integration Engineer"
   schema={schema}
 >
   <div data-ops-page class="bg-ops-paper text-ops-ink">
     <Nav />
     <Hero />
     <Integrations />
-    <CaseScroller />
+    <Cases />
     <MoreBuilds />
     <CaseSelector />
     <Process />

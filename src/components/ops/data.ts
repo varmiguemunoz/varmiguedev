@@ -1,8 +1,7 @@
 // Single source of truth for the homepage funnel copy.
 // Edit content here; components only handle layout and interaction.
 
-export const CAL_LINK =
-  'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs';
+export const CAL_LINK ="https://calendar.app.google/xEg68kiB9HdDzMvv7"
 
 export const CONTACT_EMAIL = 'miguelmunoz@bloomify.tech';
 
@@ -24,9 +23,9 @@ export const flagshipCases: FlagshipCase[] = [
   {
     kind: 'finance',
     name: 'AI Finance Assistant on WhatsApp',
-    before: 'Receipts and invoices typed by hand into QuickBooks and Google Sheets. Slow, repetitive, easy to get wrong.',
+    before: 'Every receipt and invoice was typed by hand into QuickBooks and Google Sheets. Slow, repetitive and easy to get wrong.',
     after:
-      'Send a photo, a PDF or a message on WhatsApp. The agent extracts, classifies, reconciles and reports — and answers any finance question from the same chat.',
+      'The team now sends a photo, a PDF or a quick message on WhatsApp. The agent extracts the data, classifies it, reconciles the books and sends the reports. The CEO asks finance questions in the same chat and gets answers from the live numbers.',
     metric: { value: '80%', label: 'less manual finance work' },
     secondary: '35+ hours saved every week',
     stack: ['WhatsApp', 'QuickBooks', 'Google Sheets', 'Gmail', 'LLM agents'],
@@ -34,21 +33,21 @@ export const flagshipCases: FlagshipCase[] = [
   {
     kind: 'whatsapp',
     name: 'WhatsApp AI Platform for Sales & Support',
-    before: 'Every sales and support conversation needed a person on the other side.',
+    before: 'Every sales and support conversation needed a person to answer it.',
     after:
-      'AI agents resolve about 70% of the work and hand the conversation to a person only when it truly needs one. I built it and still operate it.',
-    metric: { value: '1,000+', label: 'conversations a day in production' },
+      'AI agents now handle about 70% of the work and pass the conversation to a person only when it truly needs one. I built the platform and I still run it.',
+    metric: { value: '1,000+', label: 'conversations a day, in production' },
     secondary: '45+ hours saved every week',
     stack: ['WhatsApp Business API', 'LLM agents'],
   },
   {
     kind: 'leads',
     name: 'AI Lead Sourcing & Scoring Pipeline',
-    before: 'The sales team spent its week finding leads, qualifying them and typing them into the CRM.',
+    before: 'The sales team spent its week finding leads, qualifying them and typing them into the CRM by hand.',
     after:
-      'ZoomInfo → web enrichment → decision makers → Pipedrive, with the rep alerted instantly. Stale accounts get re-processed and duplicates removed on their own.',
+      'The pipeline pulls prospects from ZoomInfo, enriches them on the web, finds the decision makers and writes them into Pipedrive. The rep gets an alert the moment a lead lands. Stale accounts are re-processed and duplicates removed automatically.',
     metric: { value: '40+ h', label: 'saved per week for sales' },
-    secondary: 'A cleaner CRM, without anyone cleaning it',
+    secondary: 'A clean CRM that stays clean on its own',
     stack: ['ZoomInfo', 'Claude', 'Pipedrive', 'Web enrichment'],
   },
 ];
@@ -66,11 +65,11 @@ export type Build = {
 export const moreBuilds: Build[] = [
   {
     name: 'Daylios',
-    line: 'An AI-native business manager that Claude operates through MCP',
+    line: 'An AI-native business manager that Claude runs through MCP',
     metric: 'Used daily to run my consultancy',
     body: [
-      'Started as a task manager and grew into the system I run my consultancy on. Everything is exposed through an MCP server, so Claude has real, current context about my work and can act on it.',
-      'I can ask "what is pending this week?" or "prepare me for tomorrow\'s meeting" and have it act on the answer.',
+      'It began as a task manager and became the system I run my consultancy on. Every record is exposed through an MCP server, so Claude always has current context on my work and can act on it.',
+      'I ask "what is pending this week?" or "prep me for tomorrow\'s meeting," and Claude does the work, not just the answer.',
     ],
     features: [
       'Projects, tasks, clients and a daily plan',
@@ -82,11 +81,11 @@ export const moreBuilds: Build[] = [
   },
   {
     name: 'SprintOS',
-    line: 'The developer operating system. Run your sprints from the terminal',
-    metric: 'Open source · live product',
+    line: 'The developer operating system. Run your sprints from the terminal.',
+    metric: 'Open source and live',
     body: [
-      'Terminal-based project management for developers: Kanban, sprint planning with velocity tracking, Pomodoro timers and two-way GitHub sync.',
-      'An MCP server lets AI assistants like Claude read and manage the board. Keyboard-driven, built in Go.',
+      'Project management for developers who live in the terminal: Kanban, sprint planning with velocity tracking, Pomodoro timers and two-way GitHub sync.',
+      'An MCP server lets Claude and other assistants read and manage the board. Keyboard first, written in Go.',
     ],
     features: ['Interactive terminal Kanban', 'GitHub PR-driven task movement', 'REST API, webhooks and PDF reports'],
     stack: ['Go', 'Bubble Tea', 'PostgreSQL', 'GORM', 'Cobra', 'MCP'],
@@ -105,9 +104,9 @@ export const moreBuilds: Build[] = [
   {
     name: 'Lanatecuenta',
     line: 'A personal finance app where expenses log themselves',
-    metric: 'Voice + Apple Pay capture',
+    metric: 'Voice and Apple Pay capture',
     body: [
-      'Log an expense by voice, or let Apple Pay automations capture it. AI classifies every expense into categories and tags, with a full history — no typing.',
+      'Log an expense by voice, or let Apple Pay automations capture it. AI sorts every expense into categories and tags and keeps a full history. No typing required.',
     ],
     stack: ['iOS', 'Speech-to-text', 'AI classification', 'Apple Pay automations'],
   },
@@ -142,20 +141,20 @@ export const situations = [
       'Automatic reconciliations, budget alerts and reports',
       'Dashboards your team actually opens',
     ],
-    timeline: '4–10 weeks',
+    timeline: '4 to 10 weeks',
     caseLabel: 'AI Finance Assistant on WhatsApp',
     caseHref: '#case-finance',
   },
   {
     id: 'agency',
     label: 'Agency',
-    problem: 'You sell outcomes to clients, but you do not have the engineering to deliver AI at scale.',
+    problem: 'You sell outcomes to your clients, but you lack the engineering team to deliver AI at scale.',
     build: [
       'AI agents you can deploy across client accounts',
       'Lead sourcing, scoring and CRM pipelines',
       'White-label backends and dashboards',
     ],
-    timeline: '2–5 weeks',
+    timeline: '2 to 5 weeks',
     caseLabel: 'AI Lead Sourcing & Scoring Pipeline',
     caseHref: '#case-leads',
   },
@@ -168,8 +167,8 @@ export const situations = [
       'RAG over your own product data',
       'Go and Node.js backends at sub-100ms latency',
     ],
-    timeline: '4–12 weeks',
-    caseLabel: 'Daylios — Claude operating a product through MCP',
+    timeline: '4 to 12 weeks',
+    caseLabel: 'Daylios, Claude running a product through MCP',
     caseHref: '#more-builds',
   },
 ] as const;
@@ -198,7 +197,7 @@ export const featuredTestimonial: Testimonial = {
   quote:
     'Miguel not only excels at the technical side of things, but also brings creativity, commitment, and vision. Qualities that make him a reliable partner and a rising leader within the digital ecosystem.',
   author: 'Mauricio Mejía Medina',
-  source: 'Corporate IT Manager, Medtronic · LinkedIn',
+  source: 'Corporate IT Manager at Medtronic, on LinkedIn',
 };
 
 export const testimonials: Testimonial[] = [
@@ -206,7 +205,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'He is very knowledgeable and always went above and beyond to make sure everything was functional and working. I would recommend.',
     author: 'Upwork client',
-    source: 'Full Stack Dev · Upwork',
+    source: 'Full stack project on Upwork',
   },
   {
     quote: 'Absolutely amazing service! Projects delivered on time and on budget. Will use over and over again. Thank you!!',
@@ -217,7 +216,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Miguel was great, really showed his level of expertise with any issues we ran into he was eager to solve it. Project came out great.',
     author: 'Upwork client',
-    source: 'Website Update · Upwork',
+    source: 'Website update on Upwork',
   },
   {
     quote:
@@ -245,7 +244,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'Miguel is an amazing developer and very nice person to work with. He helped us a lot with our web application development.',
     author: 'Upwork client',
-    source: 'Software Engineer · Upwork',
+    source: 'Software engineering on Upwork',
   },
 ];
 
@@ -260,14 +259,14 @@ export const faqs = [
   },
   {
     q: 'Can you work with the stack we already have?',
-    a: 'Yes — that is the point. Pipedrive, HubSpot, Apollo, ZoomInfo, WhatsApp Business API, QuickBooks, Google Sheets, Airtable, Supabase. I also join projects mid-flight to extend Node or Next.js apps.',
+    a: 'Yes. That is the whole point. I work with Pipedrive, HubSpot, Apollo, ZoomInfo, WhatsApp Business API, QuickBooks, Google Sheets, Airtable and Supabase. I also join projects already in progress to extend Node.js or Next.js apps.',
   },
   {
     q: 'Do you work hourly or fixed-price?',
-    a: 'Both. $23/hr for ongoing work or open scope, fixed-price for clear deliverables. We decide on the discovery call.',
+    a: 'Both. $23 per hour for ongoing or open-ended work, and a fixed price for clearly defined deliverables. We pick the right model on the discovery call.',
   },
   {
     q: 'How long does a project take?',
-    a: 'AI agents and automations: 2–6 weeks. Business-wide transformations: 4–10 weeks. Startup MVPs: 4–12 weeks. You get a realistic estimate on the call, in English or Spanish.',
+    a: 'AI agents and automations take 2 to 6 weeks. Business-wide transformations take 4 to 10 weeks. Startup MVPs take 4 to 12 weeks. You get a realistic estimate on the call, in English or Spanish.',
   },
 ];

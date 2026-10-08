@@ -1,8 +1,8 @@
 ---
 title: 'How I Build WhatsApp AI Agents That Actually Work in Production'
-description: 'A breakdown of the multi-agent architecture behind TuVendedor24 — how we handle lead qualification, automated scheduling, and 10,000+ daily conversations on WhatsApp without breaking.'
+description: 'The multi-agent architecture behind a WhatsApp AI platform that handles lead qualification, scheduling and 1,000+ conversations a day in production.'
 pubDate: 2025-04-15
-image: 'https://res.cloudinary.com/dy7kvvzgj/image/upload/v1753248698/javascript_gl1ash.png'
+updatedDate: 2026-10-07
 readtime: '8 min read'
 category: 'ai-tools'
 tags: ['whatsapp', 'ai agents', 'automation', 'backend']
@@ -19,7 +19,7 @@ A real WhatsApp AI agent does three things:
 2. **Maintains context** — across a full conversation, not just the last message
 3. **Takes action** — books a call, qualifies a lead, sends a document, escalates to a human
 
-This article breaks down the exact architecture we use at [TuVendedor24](https://tuvendedor24.com) to handle 10,000+ daily conversations.
+This article breaks down the exact architecture we use at [TuVendedor24](https://tuvendedor24.com) to handle 1,000+ daily conversations.
 
 ---
 
@@ -131,15 +131,17 @@ if (response.confidence < 0.7 && conversation.stage === 'qualification') {
 
 Since deploying this architecture at TuVendedor24:
 
-- **87% of leads** are fully qualified without human intervention
+- **About 70% of conversations** are handled end to end without a person
 - **Average conversation length**: 8 messages before a call is booked
-- **Response time**: <2 seconds p95 across 10K+ daily conversations
-- **Handoff rate**: 13% — and those are the high-intent ones that close faster
+- **Response time**: <2 seconds p95 across 1,000+ daily conversations
+- **Handoff rate**: about 30%, and those are the high-intent conversations that close faster
 
 ---
 
 ## What I'd Do Differently
 
 The one thing I'd change: **use a proper agent framework** (like LangGraph or a custom state machine) earlier instead of building the routing logic from scratch. We refactored it at month 3 and saved 40% on complexity.
+
+You can see this platform next to the other systems I run in production on the [homepage](/#case-whatsapp). I also wrote about using a WhatsApp agent to [take over receipt entry into QuickBooks](/blog/whatsapp-to-quickbooks-ai-agent) and about an [AI lead sourcing pipeline with ZoomInfo, Claude and Pipedrive](/blog/ai-lead-sourcing-zoominfo-claude-pipedrive).
 
 If you're building a WhatsApp agent and want to talk architecture, [book a call](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3T7zeEOYTFQmof-sbNifFo37K0uW123TO1tf3L6AEUr-2qhDbR8Txol7-9zoAdi6NfmfNTOtQs).

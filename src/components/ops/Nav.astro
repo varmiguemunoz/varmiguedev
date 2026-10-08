@@ -2,10 +2,10 @@
 import { CAL_LINK } from './data';
 
 const links = [
-  { label: 'Work', href: '#work' },
-  { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Process', href: '/#process' },
+  { label: 'About', href: '/#about' },
+  { label: 'FAQ', href: '/#faq' },
   { label: 'Blog', href: '/blog' },
 ];
 ---
@@ -15,11 +15,9 @@ const links = [
   class="sticky top-0 z-50 border-b border-transparent bg-ops-paper/95 transition-[border-color,box-shadow] duration-300 data-[scrolled=true]:border-ops-line data-[scrolled=true]:shadow-[0_10px_30px_-24px_rgb(14_26_43/0.5)]"
 >
   <nav class="ops-container flex h-[72px] items-center justify-between" aria-label="Main">
-    <a href="/" class="flex items-center gap-2.5 font-display text-[17px] font-semibold tracking-[-0.01em] text-ops-ink">
-      <span class="grid h-7 w-7 place-items-center rounded-md bg-ops-ink" aria-hidden="true">
-        <span class="h-2 w-2 rounded-full bg-ops-amber"></span>
-      </span>
-      varmiguemunoz
+    <a href="/" class="flex items-center font-display text-[17px] font-semibold tracking-[-0.01em] text-ops-ink">
+      <img src={'./logo.png'} alt={'varmiguemunoz - AI senior engineer'} width={60} height={60} />
+       Miguel Angel Munoz
     </a>
 
     <ul class="hidden items-center gap-8 md:flex">
@@ -51,8 +49,19 @@ const links = [
       >
         <span class="sr-only">Open menu</span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path data-nav-icon-open d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-          <path data-nav-icon-close class="hidden" d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+          <path
+            data-nav-icon-open
+            d="M4 7h16M4 12h16M4 17h10"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"></path>
+          <path
+            data-nav-icon-close
+            class="hidden"
+            d="M6 6l12 12M18 6L6 18"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"></path>
         </svg>
       </button>
     </div>

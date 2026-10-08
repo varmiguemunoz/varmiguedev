@@ -14,7 +14,7 @@ import { moreBuilds } from './data';
     <ul class="border-t border-ops-ink/15">
       {
         moreBuilds.map((b, i) => (
-          <li class="border-b border-ops-ink/15" data-build-row data-metric={b.metric} data-stack={b.stack.slice(0, 4).join(' · ')}>
+          <li class="border-b border-ops-ink/15" data-build-row data-metric={b.metric} data-stack={b.stack.slice(0, 4).join(', ')}>
             <h3>
               <button
                 type="button"

@@ -23,7 +23,6 @@ const initials = (name: string) =>
       </div>
       <div>
         <blockquote
-          lang="es"
           class="max-w-[30ch] text-balance font-display text-[clamp(1.75rem,3.4vw,2.75rem)] font-medium leading-[1.15] tracking-[-0.025em] text-ops-ink"
           data-split
         >
@@ -52,7 +51,7 @@ const initials = (name: string) =>
                 <p class="leading-relaxed text-ops-ink">“{t.quote}”</p>
                 <p class="mt-6 text-sm">
                   <span class="font-semibold text-ops-ink">{t.author}</span>
-                  <span class="text-ops-slate"> · {t.source}</span>
+                  <span class="text-ops-slate">, {t.source}</span>
                 </p>
               </li>
             ))}
