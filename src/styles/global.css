@@ -223,10 +223,8 @@ html {
   }
 
   .theme-ops body {
-    font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
-    font-feature-settings:
-      'ss01',
-      'tnum' 0;
+    font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: 'tnum' 0;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -373,7 +371,7 @@ html {
   margin-top: 2.6em;
   padding-top: 1.1em;
   border-top: 1px solid rgb(14 26 43 / 0.15);
-  font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(1.5rem, 2.6vw, 1.875rem);
   font-weight: 600;
   line-height: 1.2;
@@ -383,7 +381,7 @@ html {
 }
 .ops-prose h3 {
   margin-top: 2em;
-  font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
   font-size: 1.3125rem;
   font-weight: 600;
   line-height: 1.3;
@@ -434,7 +432,7 @@ html {
   border-radius: 6px;
   background: #e2e7ed;
   color: #0e1a2b;
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85em;
 }
 .ops-prose pre {
@@ -445,7 +443,7 @@ html {
   background: #0e1a2b !important;
   padding: 1.25rem 1.5rem;
   color: #eef1f4;
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.875rem;
   line-height: 1.7;
   box-shadow: 0 24px 48px -32px rgb(14 26 43 / 0.6);

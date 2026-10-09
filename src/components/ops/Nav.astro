@@ -1,6 +1,13 @@
 ---
 import { CAL_LINK } from './data';
 
+interface Props {
+  /** Sits over a dark hero (home): transparent with light text until the page scrolls. */
+  overlay?: boolean;
+}
+
+const { overlay = false } = Astro.props;
+
 const links = [
   { label: 'Work', href: '/#work' },
   { label: 'Process', href: '/#process' },
@@ -8,15 +15,66 @@ const links = [
   { label: 'FAQ', href: '/#faq' },
   { label: 'Blog', href: '/blog' },
 ];
+
+const path = Astro.url.pathname.replace(/\/$/, '');
+const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog');
 ---
+
+<div data-nav-sentinel aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-2"></div>
 
 <header
   data-nav
-  class="sticky top-0 z-50 border-b border-transparent bg-ops-paper/95 transition-[border-color,box-shadow] duration-300 data-[scrolled=true]:border-ops-line data-[scrolled=true]:shadow-[0_10px_30px_-24px_rgb(14_26_43/0.5)]"
+  data-overlay={String(overlay)}
+  data-scrolled="false"
+  data-open="false"
+  class:list={['ops-nav inset-x-0 top-0 z-50', overlay ? 'fixed' : 'sticky']}
 >
-  <nav class="ops-container flex h-[72px] items-center justify-between" aria-label="Main">
-    <a href="/" class="flex items-center font-display text-[17px] font-semibold tracking-[-0.01em] text-ops-ink">
-      <img src={'./logo.png'} alt={'varmiguemunoz - AI senior engineer'} width={60} height={60} />
+  <div
+    id="ops-mobile-menu"
+    data-nav-menu
+    hidden
+    class="ops-nav-menu fixed inset-0 overflow-y-auto bg-ops-paper md:hidden"
+  >
+    <ul class="ops-container flex min-h-full flex-col justify-center gap-2 pb-12 pt-24">
+      {
+        links.map((link, i) => (
+          <li class="ops-nav-menu-item" style={`--i:${i}`}>
+            <a
+              href={link.href}
+              data-nav-link
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+              class="block py-2 font-display text-4xl font-semibold tracking-[-0.03em] text-ops-ink aria-[current=page]:text-ops-amber-deep"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="ops-nav-menu-item pt-8" style={`--i:${links.length}`}>
+        <a
+          href={CAL_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-nav-link
+          class="ops-btn-primary w-full rounded-full"
+        >
+          Book a discovery call
+          <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+            <path
+              d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"
+            ></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <nav class="ops-nav-bar relative mx-auto flex items-center justify-between" aria-label="Main">
+    <a
+      href="/"
+      class="ops-nav-ink flex shrink-0 items-center gap-2 font-display text-base font-semibold tracking-[-0.01em]"
+    >
+      <img src="/logo.png" alt="varmiguemunoz - AI senior engineer" width="60" height="60" class="h-10 w-10" />
        Miguel Angel Munoz
     </a>
 
@@ -26,7 +84,8 @@ const links = [
           <li>
             <a
               href={link.href}
-              class="text-sm font-medium text-ops-slate transition-colors duration-200 hover:text-ops-ink"
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+              class="ops-nav-link text-sm font-medium"
             >
               {link.label}
             </a>
@@ -36,60 +95,215 @@ const links = [
     </ul>
 
     <div class="flex items-center gap-3">
-      <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-ink hidden sm:inline-flex">
+      <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-nav-cta hidden sm:inline-flex">
         Book a call
-        <span aria-hidden="true">→</span>
+        <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+          <path
+            d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"
+          ></path>
+        </svg>
       </a>
       <button
         type="button"
         data-nav-toggle
         aria-expanded="false"
         aria-controls="ops-mobile-menu"
-        class="grid h-11 w-11 place-items-center rounded-lg text-ops-ink transition-colors hover:bg-ops-paper-2 md:hidden"
+        class="ops-nav-ink ops-nav-toggle relative grid h-11 w-11 place-items-center rounded-full md:hidden"
       >
         <span class="sr-only">Open menu</span>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            data-nav-icon-open
-            d="M4 7h16M4 12h16M4 17h10"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"></path>
-          <path
-            data-nav-icon-close
-            class="hidden"
-            d="M6 6l12 12M18 6L6 18"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"></path>
-        </svg>
+        <span aria-hidden="true" class="ops-nav-bar-line ops-nav-bar-line-top"></span>
+        <span aria-hidden="true" class="ops-nav-bar-line ops-nav-bar-line-bottom"></span>
       </button>
     </div>
   </nav>
-
-  <div id="ops-mobile-menu" data-nav-menu hidden class="border-t border-ops-line bg-ops-paper md:hidden">
-    <ul class="ops-container flex flex-col py-4">
-      {
-        links.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              data-nav-link
-              class="block py-3 font-display text-2xl font-medium tracking-[-0.02em] text-ops-ink"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))
-      }
-      <li class="pt-4">
-        <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-primary w-full">
-          Book a discovery call
-        </a>
-      </li>
-    </ul>
-  </div>
 </header>
+
+<style>
+  .ops-nav {
+    --nav-ease: cubic-bezier(0.32, 0.72, 0, 1);
+    /* Fixed footprint: the island floats inside it, so the page below never shifts */
+    height: 80px;
+  }
+
+  /* Bar: a full width row at rest, a floating island once the page moves */
+  .ops-nav-bar {
+    width: 100%;
+    max-width: 1200px;
+    height: 80px;
+    padding-inline: 24px;
+    border-radius: 9999px;
+    background-color: rgb(238 241 244 / 0);
+    box-shadow: 0 0 0 1px rgb(14 26 43 / 0);
+    transition:
+      max-width 700ms var(--nav-ease),
+      height 700ms var(--nav-ease),
+      padding 700ms var(--nav-ease),
+      transform 700ms var(--nav-ease),
+      background-color 700ms var(--nav-ease),
+      box-shadow 700ms var(--nav-ease);
+  }
+  @media (min-width: 768px) {
+    .ops-nav-bar {
+      padding-inline: 40px;
+    }
+  }
+
+  .ops-nav[data-scrolled='true'] .ops-nav-bar {
+    transform: translateY(12px);
+    max-width: calc(100% - 24px);
+    height: 64px;
+    padding-inline: 12px 8px;
+    background-color: rgb(238 241 244 / 1);
+    box-shadow:
+      0 0 0 1px rgb(14 26 43 / 0.08),
+      0 16px 40px -24px rgb(14 26 43 / 0.45);
+  }
+  @media (min-width: 768px) {
+    .ops-nav[data-scrolled='true'] .ops-nav-bar {
+      transform: translateY(24px);
+      max-width: 920px;
+      padding-inline: 16px 8px;
+    }
+  }
+  /* Menu open: the bar dissolves into the sheet behind it */
+  .ops-nav[data-open='true'] .ops-nav-bar {
+    background-color: rgb(238 241 244 / 0);
+    box-shadow: 0 0 0 1px rgb(14 26 43 / 0);
+  }
+
+  /* Ink: white over the hero film, navy everywhere else */
+  .ops-nav-ink,
+  .ops-nav-link {
+    color: #0e1a2b;
+    transition: color 500ms var(--nav-ease);
+  }
+  .ops-nav-link {
+    color: #3b4a5e;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.5em;
+    transition:
+      color 500ms var(--nav-ease),
+      text-decoration-color 500ms var(--nav-ease),
+      text-underline-offset 500ms var(--nav-ease);
+  }
+  .ops-nav-link:hover,
+  .ops-nav-link[aria-current='page'] {
+    color: #0e1a2b;
+    text-decoration-color: #f2a93b;
+    text-underline-offset: 0.35em;
+  }
+
+  .ops-nav-cta {
+    align-items: center;
+    gap: 8px;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    background-color: #0e1a2b;
+    color: #eef1f4;
+    transition:
+      background-color 500ms var(--nav-ease),
+      color 500ms var(--nav-ease),
+      transform 500ms var(--nav-ease);
+  }
+  .ops-nav-cta:hover {
+    background-color: #22344d;
+  }
+  .ops-nav-cta:active {
+    transform: scale(0.98);
+  }
+  .ops-nav-cta svg {
+    transition: transform 500ms var(--nav-ease);
+  }
+  .ops-nav-cta:hover svg {
+    transform: translateX(2px);
+  }
+
+  .ops-nav[data-overlay='true'][data-scrolled='false'][data-open='false'] .ops-nav-ink {
+    color: #fff;
+  }
+  .ops-nav[data-overlay='true'][data-scrolled='false'][data-open='false'] .ops-nav-link {
+    color: rgb(255 255 255 / 0.78);
+  }
+  .ops-nav[data-overlay='true'][data-scrolled='false'][data-open='false'] .ops-nav-link:hover {
+    color: #fff;
+  }
+  .ops-nav[data-overlay='true'][data-scrolled='false'][data-open='false'] .ops-nav-cta {
+    background-color: #fff;
+    color: #0e1a2b;
+  }
+  .ops-nav[data-overlay='true'][data-scrolled='false'][data-open='false'] .ops-nav-cta:hover {
+    background-color: #eef1f4;
+  }
+  .ops-nav[data-overlay='true'][data-scrolled='false'] :focus-visible {
+    outline-color: #fff;
+  }
+
+  /* Hamburger: two lines that turn into an X, never disappear */
+  @media (hover: hover) {
+    .ops-nav-toggle:hover {
+      background-color: rgb(14 26 43 / 0.06);
+    }
+  }
+  .ops-nav-bar-line {
+    position: absolute;
+    left: 12px;
+    width: 20px;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: currentColor;
+    transition:
+      transform 700ms var(--nav-ease),
+      top 700ms var(--nav-ease);
+  }
+  .ops-nav-bar-line-top {
+    top: 17px;
+  }
+  .ops-nav-bar-line-bottom {
+    top: 25px;
+  }
+  .ops-nav[data-open='true'] .ops-nav-bar-line-top {
+    top: 21px;
+    transform: rotate(45deg);
+  }
+  .ops-nav[data-open='true'] .ops-nav-bar-line-bottom {
+    top: 21px;
+    transform: rotate(-45deg);
+  }
+
+  /* Sheet + staggered link reveal */
+  .ops-nav-menu {
+    opacity: 0;
+    transition: opacity 500ms var(--nav-ease);
+  }
+  .ops-nav[data-open='true'] .ops-nav-menu {
+    opacity: 1;
+  }
+  .ops-nav-menu-item {
+    opacity: 0;
+    transform: translateY(48px);
+    transition:
+      opacity 700ms var(--nav-ease),
+      transform 700ms var(--nav-ease);
+    transition-delay: calc(100ms + var(--i) * 50ms);
+  }
+  .ops-nav[data-open='true'] .ops-nav-menu-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ops-nav,
+    .ops-nav *,
+    .ops-nav-menu-item {
+      transition-duration: 0ms !important;
+      transition-delay: 0ms !important;
+    }
+  }
+</style>
 
 <script>
   function initNav() {
@@ -99,34 +313,46 @@ const links = [
 
     const toggle = nav.querySelector<HTMLButtonElement>('[data-nav-toggle]');
     const menu = nav.querySelector<HTMLElement>('[data-nav-menu]');
-    const iconOpen = nav.querySelector('[data-nav-icon-open]');
-    const iconClose = nav.querySelector('[data-nav-icon-close]');
     const label = toggle?.querySelector('.sr-only');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let closeTimer: number | undefined;
 
     const setOpen = (open: boolean) => {
       if (!toggle || !menu) return;
+      window.clearTimeout(closeTimer);
       toggle.setAttribute('aria-expanded', String(open));
-      menu.hidden = !open;
-      iconOpen?.classList.toggle('hidden', open);
-      iconClose?.classList.toggle('hidden', !open);
       if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        menu.hidden = false;
+        // next frame so the sheet and links transition in from their resting state
+        requestAnimationFrame(() => requestAnimationFrame(() => (nav.dataset.open = 'true')));
+      } else {
+        nav.dataset.open = 'false';
+        closeTimer = window.setTimeout(() => (menu.hidden = true), reduce.matches ? 0 : 500);
+      }
     };
 
     toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
     menu?.querySelectorAll('[data-nav-link]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
     nav.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
         setOpen(false);
-        toggle?.focus();
+        toggle.focus();
       }
     });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => e.matches && setOpen(false));
 
-    const onScroll = () => {
-      nav.dataset.scrolled = String(window.scrollY > 8);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    document.addEventListener('astro:before-swap', () => window.removeEventListener('scroll', onScroll), {
+    // Scrolled state from a sentinel at the top of the document, no scroll listener
+    const sentinel = document.querySelector('[data-nav-sentinel]');
+    if (sentinel) {
+      const io = new IntersectionObserver(([entry]) => {
+        nav.dataset.scrolled = String(!entry.isIntersecting);
+      });
+      io.observe(sentinel);
+      document.addEventListener('astro:before-swap', () => io.disconnect(), { once: true });
+    }
+    document.addEventListener('astro:before-swap', () => (document.documentElement.style.overflow = ''), {
       once: true,
     });
   }

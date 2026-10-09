@@ -13,13 +13,15 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        display: ['"General Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
         // "Machine room" palette — homepage (theme-ops)
         ops: {
           ink: '#0E1A2B',
+          night: '#0E2028',
           'ink-2': '#16263C',
           'ink-3': '#22344D',
           paper: '#EEF1F4',
