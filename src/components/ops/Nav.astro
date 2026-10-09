@@ -74,7 +74,7 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
       href="/"
       class="ops-nav-ink flex shrink-0 items-center gap-2 font-display text-base font-semibold tracking-[-0.01em]"
     >
-      <img src="/logo.png" alt="varmiguemunoz - AI senior engineer" width="60" height="60" class="h-10 w-10" />
+      <img src="/logo.webp" alt="varmiguemunoz - AI senior engineer" width="60" height="60" class="h-10 w-10" />
        Miguel Angel Munoz
     </a>
 
@@ -120,7 +120,7 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
 
 <style>
   .ops-nav {
-    --nav-ease: cubic-bezier(0.32, 0.72, 0, 1);
+    --nav-ease: var(--ops-ease-fluid);
     /* Fixed footprint: the island floats inside it, so the page below never shifts */
     height: 80px;
   }
@@ -132,8 +132,8 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
     height: 80px;
     padding-inline: 24px;
     border-radius: 9999px;
-    background-color: rgb(238 241 244 / 0);
-    box-shadow: 0 0 0 1px rgb(14 26 43 / 0);
+    background-color: rgb(var(--ops-paper) / 0);
+    box-shadow: 0 0 0 1px rgb(var(--ops-ink) / 0);
     transition:
       max-width 700ms var(--nav-ease),
       height 700ms var(--nav-ease),
@@ -153,10 +153,10 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
     max-width: calc(100% - 24px);
     height: 64px;
     padding-inline: 12px 8px;
-    background-color: rgb(238 241 244 / 1);
+    background-color: rgb(var(--ops-paper) / 1);
     box-shadow:
-      0 0 0 1px rgb(14 26 43 / 0.08),
-      0 16px 40px -24px rgb(14 26 43 / 0.45);
+      0 0 0 1px rgb(var(--ops-ink) / 0.08),
+      0 16px 40px -24px rgb(var(--ops-ink) / 0.45);
   }
   @media (min-width: 768px) {
     .ops-nav[data-scrolled='true'] .ops-nav-bar {
@@ -167,18 +167,18 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
   }
   /* Menu open: the bar dissolves into the sheet behind it */
   .ops-nav[data-open='true'] .ops-nav-bar {
-    background-color: rgb(238 241 244 / 0);
-    box-shadow: 0 0 0 1px rgb(14 26 43 / 0);
+    background-color: rgb(var(--ops-paper) / 0);
+    box-shadow: 0 0 0 1px rgb(var(--ops-ink) / 0);
   }
 
   /* Ink: white over the hero film, navy everywhere else */
   .ops-nav-ink,
   .ops-nav-link {
-    color: #0e1a2b;
+    color: rgb(var(--ops-ink));
     transition: color 500ms var(--nav-ease);
   }
   .ops-nav-link {
-    color: #3b4a5e;
+    color: rgb(var(--ops-slate));
     text-decoration: underline;
     text-decoration-color: transparent;
     text-underline-offset: 0.5em;
@@ -189,8 +189,8 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
   }
   .ops-nav-link:hover,
   .ops-nav-link[aria-current='page'] {
-    color: #0e1a2b;
-    text-decoration-color: #f2a93b;
+    color: rgb(var(--ops-ink));
+    text-decoration-color: rgb(var(--ops-amber));
     text-underline-offset: 0.35em;
   }
 
@@ -202,15 +202,15 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 600;
-    background-color: #0e1a2b;
-    color: #eef1f4;
+    background-color: rgb(var(--ops-ink));
+    color: rgb(var(--ops-paper));
     transition:
       background-color 500ms var(--nav-ease),
       color 500ms var(--nav-ease),
       transform 500ms var(--nav-ease);
   }
   .ops-nav-cta:hover {
-    background-color: #22344d;
+    background-color: rgb(var(--ops-ink-3));
   }
   .ops-nav-cta:active {
     transform: scale(0.98);
@@ -233,10 +233,10 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
   }
   .ops-nav[data-overlay='true'][data-scrolled='false'][data-open='false'] .ops-nav-cta {
     background-color: #fff;
-    color: #0e1a2b;
+    color: rgb(var(--ops-ink));
   }
   .ops-nav[data-overlay='true'][data-scrolled='false'][data-open='false'] .ops-nav-cta:hover {
-    background-color: #eef1f4;
+    background-color: rgb(var(--ops-paper));
   }
   .ops-nav[data-overlay='true'][data-scrolled='false'] :focus-visible {
     outline-color: #fff;
@@ -245,7 +245,7 @@ const isCurrent = (href: string) => href === '/blog' && path.startsWith('/blog')
   /* Hamburger: two lines that turn into an X, never disappear */
   @media (hover: hover) {
     .ops-nav-toggle:hover {
-      background-color: rgb(14 26 43 / 0.06);
+      background-color: rgb(var(--ops-ink) / 0.06);
     }
   }
   .ops-nav-bar-line {

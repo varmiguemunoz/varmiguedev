@@ -1,0 +1,501 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-09T19:17:23Z",
+  "title": "Design System: varmiguemunoz",
+  "extensions": {
+    "colorMeta": {
+      "night-ink": {
+        "role": "secondary",
+        "displayName": "Night Ink",
+        "canonical": "#0D212B",
+        "tonalRamp": [
+          "#122D3B",
+          "#1E4B62",
+          "#296989",
+          "#3990BC",
+          "#62ABD0",
+          "#91C4DE",
+          "#C0DDEC",
+          "#EBF5F9"
+        ],
+        "cssVariable": "--ops-ink"
+      },
+      "deep-ink": {
+        "role": "secondary",
+        "displayName": "Deep Ink",
+        "canonical": "#172F3B",
+        "tonalRamp": [
+          "#152C37",
+          "#24495C",
+          "#326680",
+          "#458CB0",
+          "#6CA8C6",
+          "#98C2D7",
+          "#C4DCE8",
+          "#EDF4F8"
+        ],
+        "cssVariable": "--ops-ink-2"
+      },
+      "ink-rule": {
+        "role": "secondary",
+        "displayName": "Ink Rule",
+        "canonical": "#24404C",
+        "tonalRamp": [
+          "#192C34",
+          "#294957",
+          "#396679",
+          "#4F8CA6",
+          "#75A8BD",
+          "#9EC2D1",
+          "#C8DCE5",
+          "#EEF4F7"
+        ],
+        "cssVariable": "--ops-ink-3"
+      },
+      "campfire-night": {
+        "role": "secondary",
+        "displayName": "Campfire Night",
+        "canonical": "#0E2028",
+        "tonalRamp": [
+          "#142D39",
+          "#214C5E",
+          "#2E6A84",
+          "#3F91B5",
+          "#68ACCA",
+          "#95C5DA",
+          "#C3DEEA",
+          "#ECF5F8"
+        ],
+        "cssVariable": "--ops-night"
+      },
+      "steel-paper": {
+        "role": "neutral",
+        "displayName": "Steel Paper",
+        "canonical": "#F0F3F4",
+        "tonalRamp": [
+          "#20292C",
+          "#36454A",
+          "#4C6067",
+          "#68848D",
+          "#89A1A9",
+          "#ADBDC3",
+          "#D0D9DC",
+          "#F0F3F4"
+        ],
+        "cssVariable": "--ops-paper"
+      },
+      "quiet-paper": {
+        "role": "neutral",
+        "displayName": "Quiet Paper",
+        "canonical": "#E2E7E9",
+        "tonalRamp": [
+          "#21292B",
+          "#374448",
+          "#4D5E66",
+          "#6A828B",
+          "#8B9FA7",
+          "#AEBCC1",
+          "#D1D9DC",
+          "#F0F3F4"
+        ],
+        "cssVariable": "--ops-paper-2"
+      },
+      "hairline-steel": {
+        "role": "neutral",
+        "displayName": "Hairline Steel",
+        "canonical": "#D3DBDE",
+        "tonalRamp": [
+          "#21292C",
+          "#374449",
+          "#4C5F66",
+          "#69828C",
+          "#8AA0A8",
+          "#ADBCC2",
+          "#D0D9DC",
+          "#F0F3F4"
+        ],
+        "cssVariable": "--ops-line"
+      },
+      "card-white": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#7A7A7A",
+          "#999999",
+          "#B8B8B8",
+          "#D6D6D6",
+          "#F2F2F2"
+        ]
+      },
+      "slate-text": {
+        "role": "neutral",
+        "displayName": "Slate Text",
+        "canonical": "#3A535F",
+        "tonalRamp": [
+          "#1D2930",
+          "#30454F",
+          "#44616F",
+          "#5D8598",
+          "#80A2B2",
+          "#A6BEC9",
+          "#CCDAE0",
+          "#EFF3F5"
+        ],
+        "cssVariable": "--ops-slate"
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#8CA6B1",
+        "tonalRamp": [
+          "#1F292E",
+          "#34454C",
+          "#48606A",
+          "#638492",
+          "#85A1AD",
+          "#AABDC5",
+          "#CED9DE",
+          "#F0F3F5"
+        ],
+        "cssVariable": "--ops-mist"
+      },
+      "ember-amber": {
+        "role": "primary",
+        "displayName": "Ember Amber",
+        "canonical": "#F2A93B",
+        "tonalRamp": [
+          "#482D05",
+          "#784B08",
+          "#A7690B",
+          "#E6900F",
+          "#F2AB40",
+          "#F6C479",
+          "#FADDB2",
+          "#FDF5E7"
+        ],
+        "cssVariable": "--ops-amber"
+      },
+      "banked-ember": {
+        "role": "primary",
+        "displayName": "Banked Ember",
+        "canonical": "#E0951F",
+        "tonalRamp": [
+          "#432D09",
+          "#704A10",
+          "#9D6816",
+          "#D78F1E",
+          "#E6AA4C",
+          "#EEC482",
+          "#F5DDB7",
+          "#FCF4E9"
+        ],
+        "cssVariable": "--ops-amber-deep"
+      },
+      "flare-amber": {
+        "role": "primary",
+        "displayName": "Flare Amber",
+        "canonical": "#FFBD57",
+        "tonalRamp": [
+          "#4C2E00",
+          "#804D00",
+          "#B26C00",
+          "#F59500",
+          "#FFAF33",
+          "#FFC770",
+          "#FFDFAD",
+          "#FFF5E5"
+        ],
+        "cssVariable": "--ops-amber-bright"
+      },
+      "focus-teal": {
+        "role": "tertiary",
+        "displayName": "Focus Teal",
+        "canonical": "#108CC6",
+        "tonalRamp": [
+          "#063247",
+          "#0A5376",
+          "#0D75A5",
+          "#12A0E2",
+          "#42B8F0",
+          "#7BCEF4",
+          "#B4E3F9",
+          "#E7F6FD"
+        ],
+        "cssVariable": "--ops-signal"
+      },
+      "live-green": {
+        "role": "tertiary",
+        "displayName": "Live Green",
+        "canonical": "#1FB57A",
+        "tonalRamp": [
+          "#0B412C",
+          "#136D49",
+          "#1A9867",
+          "#24D18D",
+          "#51E1A8",
+          "#85EAC2",
+          "#B9F3DC",
+          "#E9FBF4"
+        ],
+        "cssVariable": "--ops-live"
+      },
+      "warning-coral": {
+        "role": "tertiary",
+        "displayName": "Warning Coral",
+        "canonical": "#FF8A7A",
+        "tonalRamp": [
+          "#4C0900",
+          "#800F00",
+          "#B21500",
+          "#F51D00",
+          "#FF4C33",
+          "#FF8170",
+          "#FFB7AD",
+          "#FFE9E5"
+        ],
+        "cssVariable": "--ops-danger"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only, three meaningful lines on wide screens."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings (ops-h2)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, article subheads, case titles on phones."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Article text and leads, 60 to 70 characters per line."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Nav links, metadata, chips, button text."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Code blocks and tabular figures only."
+      },
+      "title-lg": {
+        "displayName": "Title large",
+        "purpose": "Case titles and the case selector statement from 768px up."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero description and section leads on wide screens."
+      },
+      "body-sm": {
+        "displayName": "Body small",
+        "purpose": "Dense UI copy, metrics, button text."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Chips, attributions, stack lists."
+      }
+    },
+    "shadows": [
+      {
+        "name": "rest-lift",
+        "value": "0 20px 48px -32px rgb(13 33 43 / 0.45)",
+        "purpose": "Cards and case figures on paper."
+      },
+      {
+        "name": "raised-panel",
+        "value": "0 24px 48px -24px rgb(13 33 43 / 0.6)",
+        "purpose": "Expanded rows, code blocks, portrait."
+      },
+      {
+        "name": "button-lift",
+        "value": "0 12px 28px -14px rgb(13 33 43 / 0.45)",
+        "purpose": "Primary buttons on paper; 0.55 on hover."
+      },
+      {
+        "name": "ember-lift",
+        "value": "0 16px 32px -16px rgb(242 169 59 / 0.55)",
+        "purpose": "Hero call to action on night only."
+      },
+      {
+        "name": "nav-island",
+        "value": "0 0 0 1px rgb(13 33 43 / 0.08), 0 16px 40px -24px rgb(13 33 43 / 0.45)",
+        "purpose": "Scrolled nav pill."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-fluid",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Nav, hero, menus, button states (--ops-ease-fluid, ease-fluid)."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Section reveals and drawers (--ops-ease-out-expo, ease-out-expo; GSAP expo.out)."
+      },
+      {
+        "name": "duration-state",
+        "value": "500ms",
+        "purpose": "Hover and color transitions."
+      },
+      {
+        "name": "duration-shape",
+        "value": "700ms",
+        "purpose": "Nav island morph, hamburger morph, menu link rise."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action on paper: book a call, send.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a discovery call <svg width=\"16\" height=\"16\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z\"/></svg></a>",
+      "css": ".ds-btn-primary { font-family: Geist, ui-sans-serif, system-ui, sans-serif; display:inline-flex; align-items:center; gap:8px; background:#F2A93B; color:#0D212B; padding:16px 24px; border-radius:12px; font-size:16px; font-weight:600; text-decoration:none; box-shadow:0 12px 28px -14px rgb(13 33 43 / .45); transition:background-color .3s, box-shadow .3s; } .ds-btn-primary:hover { background:#E0951F; box-shadow:0 16px 32px -14px rgb(13 33 43 / .55); } .ds-btn-primary:focus-visible { outline:2px solid #108CC6; outline-offset:3px; }"
+    },
+    {
+      "name": "Hero Call to Action",
+      "kind": "button",
+      "refersTo": "button-hero",
+      "description": "Ember pill on the night ground of the hero.",
+      "html": "<div class=\"ds-night\"><a class=\"ds-btn-hero\" href=\"#\">Book a discovery call <svg width=\"16\" height=\"16\" viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z\"/></svg></a></div>",
+      "css": ".ds-night { background:#0E2028; padding:32px; border-radius:16px; } .ds-btn-hero { font-family: Geist, ui-sans-serif, system-ui, sans-serif; display:inline-flex; align-items:center; gap:8px; min-height:48px; padding:12px 24px; border-radius:9999px; background:#F2A93B; color:#0D212B; font-size:16px; font-weight:600; text-decoration:none; box-shadow:0 16px 32px -16px rgb(242 169 59 / .55); transition:background-color .5s cubic-bezier(.32,.72,0,1), scale .5s cubic-bezier(.32,.72,0,1); } .ds-btn-hero:hover { background:#FFBD57; } .ds-btn-hero:active { scale:.98; } .ds-btn-hero:focus-visible { outline:2px solid #fff; outline-offset:3px; }"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Secondary action on paper; nav button after scroll.",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">Write two lines</a>",
+      "css": ".ds-btn-ink { font-family: Geist, ui-sans-serif, system-ui, sans-serif; display:inline-flex; align-items:center; gap:8px; background:#0D212B; color:#F0F3F4; padding:12px 20px; border-radius:12px; font-size:14px; font-weight:600; text-decoration:none; transition:background-color .3s; } .ds-btn-ink:hover { background:#172F3B; } .ds-btn-ink:focus-visible { outline:2px solid #108CC6; outline-offset:3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Inline and secondary links; ember underline on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">See the systems</a>",
+      "css": ".ds-link { font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-weight:600; color:#0D212B; text-decoration:underline; text-decoration-color:rgb(13 33 43 / .3); text-underline-offset:.22em; transition:text-decoration-color .3s; } .ds-link:hover { text-decoration-color:#F2A93B; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Stack and tool tags on cases.",
+      "html": "<span class=\"ds-chip\">QuickBooks</span>",
+      "css": ".ds-chip { font-family: Geist, ui-sans-serif, system-ui, sans-serif; display:inline-flex; align-items:center; border:1px solid #D3DBDE; background:#fff; color:#3A535F; border-radius:9999px; padding:4px 12px; font-size:12px; font-weight:500; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White surface on Steel Paper with the rest lift.",
+      "html": "<div class=\"ds-card\"><h3>Your team re types data between WhatsApp and the CRM</h3><p>Typical timeline 4 to 10 weeks.</p></div>",
+      "css": ".ds-card { font-family: Geist, ui-sans-serif, system-ui, sans-serif; background:#fff; border-radius:16px; padding:32px; box-shadow:0 20px 48px -32px rgb(13 33 43 / .45); color:#0D212B; max-width:420px; } .ds-card h3 { margin:0; font-size:24px; line-height:1.25; font-weight:600; letter-spacing:-.02em; } .ds-card p { margin:12px 0 0; color:#3A535F; font-size:16px; line-height:1.6; }"
+    },
+    {
+      "name": "Input on Ink",
+      "kind": "input",
+      "refersTo": "input-on-ink",
+      "description": "Contact form field on the ink panel.",
+      "html": "<div class=\"ds-ink-panel\"><input class=\"ds-input\" placeholder=\"Your name\"/><p class=\"ds-error\">Add your name so I know who to reply to.</p></div>",
+      "css": ".ds-ink-panel { background:#0D212B; padding:24px; border-radius:16px; } .ds-input { font-family: Geist, ui-sans-serif, system-ui, sans-serif; display:block; width:100%; box-sizing:border-box; background:#0D212B; color:#F0F3F4; border:1px solid #24404C; border-radius:12px; padding:14px 16px; font-size:16px; transition:border-color .3s; } .ds-input::placeholder { color:#8CA6B1; } .ds-input:focus { outline:none; border-color:#108CC6; } .ds-error { font-family: Geist, ui-sans-serif, system-ui, sans-serif; margin:8px 0 0; color:#FF8A7A; font-size:14px; }"
+    },
+    {
+      "name": "Nav Island",
+      "kind": "nav",
+      "refersTo": "nav-island",
+      "description": "Opaque paper pill nav after scroll.",
+      "html": "<nav class=\"ds-nav\"><strong>Miguel Angel Munoz</strong><span class=\"ds-nav-links\"><a href=\"#\">Work</a><a href=\"#\" aria-current=\"page\">Blog</a></span><a class=\"ds-nav-cta\" href=\"#\">Book a call</a></nav>",
+      "css": ".ds-nav { font-family: Geist, ui-sans-serif, system-ui, sans-serif; display:flex; align-items:center; justify-content:space-between; gap:24px; height:64px; padding:0 8px 0 16px; border-radius:9999px; background:#F0F3F4; color:#0D212B; box-shadow:0 0 0 1px rgb(13 33 43 / .08), 0 16px 40px -24px rgb(13 33 43 / .45); font-size:14px; } .ds-nav-links { display:flex; gap:24px; } .ds-nav-links a { color:#3A535F; text-decoration:underline; text-decoration-color:transparent; text-underline-offset:.5em; transition:all .5s cubic-bezier(.32,.72,0,1); } .ds-nav-links a:hover, .ds-nav-links a[aria-current=page] { color:#0D212B; text-decoration-color:#F2A93B; text-underline-offset:.35em; } .ds-nav-cta { background:#0D212B; color:#F0F3F4; padding:8px 16px; border-radius:9999px; font-weight:600; text-decoration:none; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Shift",
+    "overview": "The site is the calm hour when the systems keep running and one person is quietly tending them. It opens at night: a looping illustrated film of a small orange machine at a campfire, deep teal navy sky, warm string lights. Then the visitor steps into clean steel paper, where the work is laid out plainly to be read and checked. The night is where the systems run; the paper is where the proof is read.\n\nRestraint is the whole method. One warm color, the ember amber, marks the action a visitor should take, the way a fire marks the camp. Everything else is ink on paper or paper on ink. Depth comes from soft ink tinted shadows, never from glow, glass or gradients. Motion is heavy and settled: it arrives, it rests, it does not loop for attention (the hero film is the single exception, and it can be paused).\n\nThe system is quiet so that the numbers and the real systems are what people remember. If a choice makes the page feel louder, more futuristic or more like a game, it is the wrong choice.",
+    "keyCharacteristics": [
+      "Two grounds only: steel paper for reading, night ink for where systems run (hero, contact, code).",
+      "One warm action color, ember amber, used sparingly.",
+      "One typeface, Geist, set tight and semibold for display; Geist Mono only for code and figures.",
+      "Flat surfaces lifted by soft, downward, ink tinted shadows.",
+      "Heavy, settled motion on a single fluid curve."
+    ],
+    "rules": [
+      {
+        "name": "The One Ember Rule",
+        "body": "Ember Amber marks the next action and nothing else. If two amber elements compete in one viewport, one of them is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Grounds Rule",
+        "body": "A section sits on Steel Paper or on ink (Night Ink or Campfire Night). There is no third ground, no tinted section bands, no background gradients.",
+        "section": "colors"
+      },
+      {
+        "name": "The Film Hue Rule",
+        "body": "Every neutral (ink, slate, mist, paper, lines) sits on the hero film's teal navy hue, around 200 degrees. A neutral that leans blue, purple or warm gray breaks the link between the hero and the page.",
+        "section": "colors"
+      },
+      {
+        "name": "The Token Only Rule",
+        "body": "Every color comes from the --ops-* custom properties in src/styles/global.css, through the ops-* Tailwind classes or rgb(var(--ops-*) / alpha). A hex value inside a component is a bug. The only exceptions are browser meta tags and email templates, which cannot read CSS variables.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Face Rule",
+        "body": "Geist is the only typeface. No italics anywhere, no weight above 700, display never above 96px, tracking never tighter than -0.03em.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ink Shadow Rule",
+        "body": "Shadows are always Night Ink tinted, always offset downward, never black, never zero offset halos.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No Glass Rule",
+        "body": "No backdrop blur slabs, no translucent panels. The nav island is opaque paper.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do take every color from the --ops-* tokens via ops-* classes or rgb(var(--ops-*) / alpha).",
+      "Do keep Ember Amber for the single next action per viewport.",
+      "Do use Campfire Night scrims only where text sits over the film, and keep the subject of the film clear.",
+      "Do animate on the fluid curve (var(--ops-ease-fluid), cubic-bezier(0.32, 0.72, 0, 1)) for nav, hero and menus, and the expo out curve (ease-out-expo) for section reveals.",
+      "Do respect reduced motion everywhere: content visible, no film, no transitions that hide content."
+    ],
+    "donts": [
+      "Don't introduce a second typeface, italics, or monospace as decoration.",
+      "Don't use gradients as backgrounds or on text; the only gradients are readability scrims over the film.",
+      "Don't use glassmorphism, glows, neon, or black shadows.",
+      "Don't add a third section ground or tinted bands between Steel Paper and ink.",
+      "Don't hardcode hex colors in components."
+    ]
+  }
+}

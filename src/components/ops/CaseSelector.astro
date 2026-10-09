@@ -9,7 +9,7 @@ import { situations, CAL_LINK } from './data';
       <p class="ops-lead mt-5">Pick the one closest to you. This is what the work usually looks like.</p>
     </div>
 
-    <div role="tablist" aria-label="Your situation" class="mb-8 inline-flex flex-wrap gap-1 rounded-2xl bg-white p-1.5 shadow-[0_8px_24px_-18px_rgb(14_26_43/0.5)]">
+    <div role="tablist" aria-label="Your situation" class="mb-8 inline-flex flex-wrap gap-1 rounded-2xl bg-white p-1.5 shadow-[0_8px_24px_-18px_rgb(var(--ops-ink)/0.5)]">
       {
         situations.map((s, i) => (
           <button
@@ -36,11 +36,11 @@ import { situations, CAL_LINK } from './data';
           aria-labelledby={`tab-${s.id}`}
           hidden={i !== 0}
           data-situation-panel
-          class="rounded-2xl bg-white p-8 shadow-[0_20px_48px_-32px_rgb(14_26_43/0.45)] md:p-12"
+          class="rounded-2xl bg-white p-8 shadow-[0_20px_48px_-32px_rgb(var(--ops-ink)/0.45)] md:p-12"
         >
           <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr_auto] lg:gap-14">
             <div data-situation-item>
-              <p class="font-display text-2xl font-semibold leading-snug tracking-[-0.02em] text-ops-ink md:text-[1.75rem]">
+              <p class="font-display text-2xl font-semibold leading-snug tracking-[-0.02em] text-ops-ink md:text-3xl">
                 {s.problem}
               </p>
               <a href={s.caseHref} class="ops-link mt-6 text-sm">

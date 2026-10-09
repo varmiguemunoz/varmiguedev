@@ -23,7 +23,7 @@ import { moreBuilds } from './data';
                 aria-controls={`build-panel-${i}`}
                 data-build-toggle
               >
-                <span class="font-display text-xl font-semibold tracking-[-0.02em] text-ops-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 md:text-2xl">
+                <span class="font-display text-xl font-semibold tracking-[-0.02em] text-ops-ink transition-transform duration-500 ease-out-expo group-hover:translate-x-1.5 md:text-2xl">
                   {b.name}
                 </span>
                 <span class="hidden text-ops-slate md:block">{b.line}</span>
@@ -81,11 +81,11 @@ import { moreBuilds } from './data';
   <!-- Cursor follower (fine pointers only) -->
   <div
     data-build-follower
-    class="pointer-events-none fixed left-0 top-0 z-40 hidden w-64 rounded-xl bg-ops-ink p-4 text-ops-paper opacity-0 shadow-[0_24px_48px_-24px_rgb(14_26_43/0.6)]"
+    class="pointer-events-none fixed left-0 top-0 z-40 hidden w-64 rounded-xl bg-ops-ink p-4 text-ops-paper opacity-0 shadow-[0_24px_48px_-24px_rgb(var(--ops-ink)/0.6)]"
     aria-hidden="true"
   >
-    <p class="font-display text-[15px] font-semibold" data-follower-metric></p>
-    <p class="mt-1.5 font-mono text-[11px] leading-relaxed text-ops-mist" data-follower-stack></p>
+    <p class="font-display text-sm font-semibold" data-follower-metric></p>
+    <p class="mt-1.5 font-mono text-xs leading-relaxed text-ops-mist" data-follower-stack></p>
   </div>
 </section>
 

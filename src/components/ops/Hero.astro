@@ -13,7 +13,7 @@ const NOTION = '(prefers-reduced-motion: no-preference)';
   <!-- Film: in flow under the copy on small screens, full bleed behind it from lg up -->
   <div
     data-hero-media
-    class="hero-media aspect-[1/1] lg:aspect-auto relative order-2 mt-4 w-full sm:mt-12 sm:aspect-[16/10] lg:absolute lg:inset-0 lg:order-none lg:mt-0"
+    class="hero-media lg:aspect-auto relative order-2 mt-4 aspect-[1/1] w-full sm:mt-12 sm:aspect-[16/10] lg:absolute lg:inset-0 lg:order-none lg:mt-0"
   >
     <img
       src="/video/camping-hero-poster.webp"
@@ -154,7 +154,7 @@ const NOTION = '(prefers-reduced-motion: no-preference)';
   }
   .hero-video {
     opacity: 0;
-    transition: opacity 900ms cubic-bezier(0.32, 0.72, 0, 1);
+    transition: opacity 900ms var(--ops-ease-fluid);
   }
   .hero-video[data-ready='true'] {
     opacity: 1;
@@ -180,14 +180,19 @@ const NOTION = '(prefers-reduced-motion: no-preference)';
     }
     /* Readability scrim: deepest behind the copy, open over the campfire and the character */
     .hero-shade {
-      background: linear-gradient(180deg, rgb(11 28 36 / 0.55) 0%, rgb(11 28 36 / 0) 22%),
-        linear-gradient(0deg, rgb(11 28 36 / 0.9) 0%, rgb(11 28 36 / 0.55) 16%, rgb(11 28 36 / 0) 34%),
+      background: linear-gradient(180deg, rgb(var(--ops-night) / 0.55) 0%, rgb(var(--ops-night) / 0) 22%),
+        linear-gradient(
+          0deg,
+          rgb(var(--ops-night) / 0.9) 0%,
+          rgb(var(--ops-night) / 0.55) 16%,
+          rgb(var(--ops-night) / 0) 34%
+        ),
         linear-gradient(
           90deg,
-          rgb(11 28 36 / 0.9) 0%,
-          rgb(11 28 36 / 0.85) 36%,
-          rgb(11 28 36 / 0.48) 56%,
-          rgb(11 28 36 / 0) 70%
+          rgb(var(--ops-night) / 0.9) 0%,
+          rgb(var(--ops-night) / 0.85) 36%,
+          rgb(var(--ops-night) / 0.48) 56%,
+          rgb(var(--ops-night) / 0) 70%
         );
     }
   }
@@ -202,24 +207,24 @@ const NOTION = '(prefers-reduced-motion: no-preference)';
     font-size: 1rem;
     line-height: 1.5rem;
     font-weight: 600;
-    background-color: #f2a93b;
-    color: #0e1a2b;
-    box-shadow: 0 16px 32px -16px rgb(242 169 59 / 0.55);
+    background-color: rgb(var(--ops-amber));
+    color: rgb(var(--ops-ink));
+    box-shadow: 0 16px 32px -16px rgb(var(--ops-amber) / 0.55);
     transition:
-      background-color 500ms cubic-bezier(0.32, 0.72, 0, 1),
-      box-shadow 500ms cubic-bezier(0.32, 0.72, 0, 1),
-      scale 500ms cubic-bezier(0.32, 0.72, 0, 1);
+      background-color 500ms var(--ops-ease-fluid),
+      box-shadow 500ms var(--ops-ease-fluid),
+      scale 500ms var(--ops-ease-fluid);
   }
   .hero-cta:hover {
-    background-color: #ffbd57;
-    box-shadow: 0 20px 40px -16px rgb(242 169 59 / 0.7);
+    background-color: rgb(var(--ops-amber-bright));
+    box-shadow: 0 20px 40px -16px rgb(var(--ops-amber) / 0.7);
   }
   .hero-cta:active {
     scale: 0.98;
   }
   .hero-cta svg,
   .hero-link svg {
-    transition: transform 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    transition: transform 500ms var(--ops-ease-fluid);
   }
   .hero-cta:hover svg {
     transform: translateX(3px);
@@ -235,10 +240,10 @@ const NOTION = '(prefers-reduced-motion: no-preference)';
     text-decoration: underline;
     text-decoration-color: rgb(255 255 255 / 0.35);
     text-underline-offset: 0.3em;
-    transition: text-decoration-color 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    transition: text-decoration-color 500ms var(--ops-ease-fluid);
   }
   .hero-link:hover {
-    text-decoration-color: #f2a93b;
+    text-decoration-color: rgb(var(--ops-amber));
   }
   .hero-link:hover svg {
     transform: translateY(3px);
@@ -247,8 +252,8 @@ const NOTION = '(prefers-reduced-motion: no-preference)';
   .hero-toggle {
     box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.3);
     transition:
-      background-color 500ms cubic-bezier(0.32, 0.72, 0, 1),
-      box-shadow 500ms cubic-bezier(0.32, 0.72, 0, 1);
+      background-color 500ms var(--ops-ease-fluid),
+      box-shadow 500ms var(--ops-ease-fluid);
   }
   .hero-toggle:hover {
     background-color: rgb(255 255 255 / 0.1);

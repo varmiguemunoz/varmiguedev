@@ -1,7 +1,5 @@
 ---
 import Footer from '@components/global/footer/Footer.astro';
-import Whatsapp from '@/components/global/whatsapp/Whatsapp.astro';
-import GoogleCalendarButton from '@/components/global/google-calendar-button/google-calendar-button.astro';
 
 import { createOgImage } from '@utils/createOgImage';
 import { ViewTransitions } from 'astro:transitions';
@@ -28,8 +26,6 @@ export interface Props {
   ogType?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
-  /** 'ops' = light "machine room" theme used by the homepage funnel */
-  theme?: 'default' | 'ops';
 }
 
 const {
@@ -45,10 +41,7 @@ const {
   ogType = 'website',
   publishedTime,
   modifiedTime,
-  theme = 'default',
 } = Astro.props;
-
-const isOps = theme === 'ops';
 
 // OG Image dinámico por página
 const ogImage = createOgImage({
@@ -57,7 +50,8 @@ const ogImage = createOgImage({
 });
 
 // Canonical URL fix
-const canonicalURL = `${config.site.base_url.replace(/\/$/, '')}${Astro.url.pathname.replace(/\/$/, '')}` || config.site.base_url;
+const canonicalURL =
+  `${config.site.base_url.replace(/\/$/, '')}${Astro.url.pathname.replace(/\/$/, '')}` || config.site.base_url;
 
 const isPayment = Astro.url.pathname.startsWith('/payment');
 
@@ -66,23 +60,17 @@ const shouldNoindex = noindex || isPayment;
 ---
 
 <!doctype html>
-<html lang={config.site.lang} class={isOps ? 'theme-ops' : undefined}>
+<html lang={config.site.lang}>
   <head>
     <!-- Charset FIRST for security (OWASP best practice) -->
     <meta charset="utf-8" />
 
-    {
-      isOps && (
-        <>
-          {/* Motion flag before first paint, so the hero never flashes */}
-          <script is:inline>
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              document.documentElement.classList.add('js-motion');
-            }
-          </script>
-        </>
-      )
-    }
+    <!-- Motion flag before first paint, so the hero never flashes -->
+    <script is:inline>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-motion');
+      }
+    </script>
 
     <!-- Geist, the single typeface across the site (Geist Mono for code) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -101,9 +89,8 @@ const shouldNoindex = noindex || isPayment;
 
     <!-- theme meta -->
     <meta name="theme-name" content="varmiguemunoz" />
-    <meta name="msapplication-TileColor" content="#000000" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
+    <meta name="msapplication-TileColor" content="#0D212B" />
+    <meta name="theme-color" content="#F0F3F4" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- responsive meta -->
@@ -169,16 +156,6 @@ const shouldNoindex = noindex || isPayment;
       <slot />
     </main>
 
-    {
-      !isOps && (
-        <>
-          <Whatsapp url="sms:+573023278057&body=Hi, I'm interested in your Services 🚀" />
-          <GoogleCalendarButton />
-        </>
-      )
-    }
-
     {!isPayment && <Footer />}
-
   </body>
 </html>
