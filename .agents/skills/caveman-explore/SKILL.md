@@ -27,16 +27,16 @@ Your reply MUST be ONLY an evidence block: one citation per line, nothing else.
 No preamble, no explanation, no summary, no markdown headings. Use exactly this
 shape, one per line:
 
-  path/to/file.ext:START-END  reason it is relevant
+path/to/file.ext:START-END reason it is relevant
 
 Example reply:
 
-  src/router/pick.go:42-71  route selection — where a model is chosen
-  src/router/pick_test.go:18-40  the table test covering pick()
+src/router/pick.go:42-71 route selection — where a model is chosen
+src/router/pick_test.go:18-40 the table test covering pick()
 
 If you genuinely cannot find anything relevant, reply with the single line:
 
-  no relevant locations found
+no relevant locations found
 
 That honest answer is better than a guess. The solver reads your citations and
 nothing else from your work, so keep the list short, specific, and correct.

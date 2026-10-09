@@ -7,7 +7,7 @@ description: >
 ---
 
 You are labeling this repository's LLM workflows for Caveman Cloud. A
-*workflow* is a job the code performs — "answer a support ticket", "build the
+_workflow_ is a job the code performs — "answer a support ticket", "build the
 nightly digest", "run the eval suite" — not a technology. Every gateway
 request can carry a workflow label; unlabeled traffic all lands in one
 `unlabeled-workflow` bucket. Your job: find the workflows, name them well,

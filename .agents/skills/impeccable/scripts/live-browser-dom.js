@@ -49,10 +49,14 @@
       const r = el.getBoundingClientRect();
       if (!rectIsUsableAnchor(r)) return null;
       const rect = {
-        x: r.x, y: r.y,
-        top: r.top, left: r.left,
-        right: r.right, bottom: r.bottom,
-        width: r.width, height: r.height,
+        x: r.x,
+        y: r.y,
+        top: r.top,
+        left: r.left,
+        right: r.right,
+        bottom: r.bottom,
+        width: r.width,
+        height: r.height,
       };
       return {
         __impeccableFrozenAnchor: true,
@@ -67,17 +71,22 @@
     function hasFrameworkHmrOwnership(el) {
       for (let node = el; node; node = node.parentElement) {
         let keys = [];
-        try { keys = Object.getOwnPropertyNames(node); } catch {}
-        if (keys.some((key) => (
-          key.startsWith('__reactFiber$')
-          || key.startsWith('__reactProps$')
-          || key.startsWith('__reactContainer$')
-          || key === '_reactRootContainer'
-          || key === '__vueParentComponent'
-          || key === '__vue_app__'
-          || key === '__vnode'
-          || key === '__svelte_meta'
-        ))) {
+        try {
+          keys = Object.getOwnPropertyNames(node);
+        } catch {}
+        if (
+          keys.some(
+            (key) =>
+              key.startsWith('__reactFiber$') ||
+              key.startsWith('__reactProps$') ||
+              key.startsWith('__reactContainer$') ||
+              key === '_reactRootContainer' ||
+              key === '__vueParentComponent' ||
+              key === '__vue_app__' ||
+              key === '__vnode' ||
+              key === '__svelte_meta'
+          )
+        ) {
           return true;
         }
       }
@@ -116,10 +125,17 @@
     // Same box as the SvelteKit shadow host: 0x0, fixed, chrome overflows it.
     // `all: initial` also clears the popover UA box.
     for (const [name, value] of Object.entries({
-      all: 'initial', position: 'fixed', top: '0', left: '0', width: '0', height: '0', overflow: 'visible',
-    })) topLayerHost.style.setProperty(name, value, 'important');
+      all: 'initial',
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '0',
+      height: '0',
+      overflow: 'visible',
+    }))
+      topLayerHost.style.setProperty(name, value, 'important');
     const pageRoots = new WeakSet(); // chrome nodes mounted on the page itself
-    const openModals = [];           // in the order they opened; last is topmost
+    const openModals = []; // in the order they opened; last is topmost
 
     // Modals that were open before watching began have no readable top-layer
     // order, but the topmost one's backdrop covers the viewport, so a hit
@@ -171,7 +187,13 @@
       openModals.push(...doc.querySelectorAll('dialog:modal'));
       raiseHitModal();
       const observer = new MutationObserver(syncTopLayerHost);
-      observer.observe(doc, { subtree: true, childList: true, attributes: true, attributeOldValue: true, attributeFilter: ['open'] });
+      observer.observe(doc, {
+        subtree: true,
+        childList: true,
+        attributes: true,
+        attributeOldValue: true,
+        attributeFilter: ['open'],
+      });
       syncTopLayerHost();
       return () => {
         observer.disconnect();

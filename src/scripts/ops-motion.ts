@@ -1,13 +1,3 @@
-/**
- * Homepage motion grammar (theme-ops).
- *
- * One signature moment (the hero: headline lines rise, the portrait unmasks)
- * plus case results that count up as each row arrives. Everything else stays
- * quiet: line reveals on headings, short staggers on lists, a magnetic CTA.
- *
- * Rules: content is visible by default, motion only adds; expo.out easing;
- * everything is disabled under prefers-reduced-motion via gsap.matchMedia.
- */
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
@@ -42,14 +32,13 @@ function heroIntro() {
     type: 'lines',
     mask: 'lines',
     autoSplit: true,
-    onSplit: (self) =>
-      gsap.from(self.lines, { yPercent: 105, duration: 1.15, ease: EASE, stagger: 0.09, delay: 0.05 }),
+    onSplit: (self) => gsap.from(self.lines, { yPercent: 105, duration: 1.15, ease: EASE, stagger: 0.09, delay: 0.05 }),
   });
 
   gsap.fromTo(
     fades,
     { opacity: 0, y: 18 },
-    { opacity: 1, y: 0, duration: 0.9, ease: EASE, stagger: 0.08, delay: 0.35 },
+    { opacity: 1, y: 0, duration: 0.9, ease: EASE, stagger: 0.08, delay: 0.35 }
   );
 
   if (!panel) return;
@@ -59,7 +48,13 @@ function heroIntro() {
     gsap.fromTo(
       frame,
       { clipPath: 'inset(100% 0% 0% 0% round 16px)' },
-      { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: 1.3, ease: 'expo.inOut', delay: 0.2, clearProps: 'clipPath' },
+      {
+        clipPath: 'inset(0% 0% 0% 0% round 16px)',
+        duration: 1.3,
+        ease: 'expo.inOut',
+        delay: 0.2,
+        clearProps: 'clipPath',
+      }
     );
   }
   const img = $('img', panel);
@@ -123,14 +118,14 @@ function portrait() {
       clipPath: 'inset(0% 0% 0% 0% round 16px)',
       ease: 'none',
       scrollTrigger: { trigger: frame, start: 'top 92%', end: 'top 40%', scrub: 0.6 },
-    },
+    }
   );
   const img = $('img', frame);
   if (img) {
     gsap.fromTo(
       img,
       { scale: 1.12 },
-      { scale: 1, ease: 'none', scrollTrigger: { trigger: frame, start: 'top bottom', end: 'bottom top', scrub: true } },
+      { scale: 1, ease: 'none', scrollTrigger: { trigger: frame, start: 'top bottom', end: 'bottom top', scrub: true } }
     );
   }
 }
@@ -210,10 +205,12 @@ function processRail(motion: boolean, desktop: boolean): Cleanup {
         end: desktop ? 'bottom 60%' : 'bottom 55%',
         scrub: 0.6,
         onUpdate: (self) => {
-          steps.forEach((s, i) => s.toggleAttribute('data-lit', self.progress > 0.01 && self.progress >= i / steps.length));
+          steps.forEach((s, i) =>
+            s.toggleAttribute('data-lit', self.progress > 0.01 && self.progress >= i / steps.length)
+          );
         },
       },
-    },
+    }
   );
 
   return () => steps.forEach((s) => s.setAttribute('data-lit', ''));

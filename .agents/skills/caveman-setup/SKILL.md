@@ -81,14 +81,15 @@ Exact shapes (use the one matching each callsite — these are the product's
 published recipes, not suggestions):
 
 **OpenAI SDK (TS)** — Chat Completions and Responses both route through:
+
 ```ts
 const client = new OpenAI({
   baseURL: `${process.env.CAVE_GATEWAY_URL}/w/<app>/openai/v1`,
-  apiKey: process.env.OPENAI_API_KEY,           // byok: unchanged · stored: use CAVE_API_KEY
+  apiKey: process.env.OPENAI_API_KEY, // byok: unchanged · stored: use CAVE_API_KEY
   defaultHeaders: {
-    "x-cave-api-key": process.env.CAVE_API_KEY!,
+    'x-cave-api-key': process.env.CAVE_API_KEY!,
     // byok only:
-    "x-cave-upstream-key": process.env.OPENAI_API_KEY!,
+    'x-cave-upstream-key': process.env.OPENAI_API_KEY!,
   },
 });
 ```
@@ -99,6 +100,7 @@ const client = new OpenAI({
 **Anthropic SDK (TS/Python)** — the SDK appends `/v1/messages` itself. The
 `x-cave-api-key` header is required here in both modes (this SDK's own key
 param rides `x-api-key`, which is not a gateway-auth header):
+
 ```python
 client = anthropic.Anthropic(
     base_url=f"{os.environ['CAVE_GATEWAY_URL']}/w/<app>",

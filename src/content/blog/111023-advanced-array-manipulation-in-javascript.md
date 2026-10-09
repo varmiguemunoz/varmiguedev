@@ -9,6 +9,7 @@ tags: ['javascript', 'react', 'node', 'full stack']
 authors: ['varmiguemunoz']
 draft: false
 ---
+
 ### Introduction:
 
 JavaScript, as a versatile and powerful language, provides advanced methods for array manipulation without relying on traditional loops. In this article, we will explore how to perform sophisticated operations on arrays using functional methods and leverage the language's capabilities to the fullest.

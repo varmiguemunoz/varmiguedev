@@ -74,13 +74,13 @@ The same WhatsApp agent answers finance questions from the live numbers. "How mu
 
 ## What changed
 
-| | Before | After |
-|---|---|---|
-| Data entry | Typed by hand, twice | Sent once on WhatsApp |
-| QuickBooks and Sheets | Updated separately, often late | Updated together, as it happens |
-| Reconciliation | End of the month | Continuous |
-| Budget overruns | Found at review time | Flagged by email when they happen |
-| Finance questions | Ask the accountant, wait | Ask the agent, get an answer |
+|                       | Before                         | After                             |
+| --------------------- | ------------------------------ | --------------------------------- |
+| Data entry            | Typed by hand, twice           | Sent once on WhatsApp             |
+| QuickBooks and Sheets | Updated separately, often late | Updated together, as it happens   |
+| Reconciliation        | End of the month               | Continuous                        |
+| Budget overruns       | Found at review time           | Flagged by email when they happen |
+| Finance questions     | Ask the accountant, wait       | Ask the agent, get an answer      |
 
 **80% less manual finance work. More than 35 hours saved every week.** The process also became something the whole team can repeat without training: if you can send a WhatsApp message, you can log an expense.
 

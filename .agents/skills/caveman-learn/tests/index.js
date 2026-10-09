@@ -1,1 +1,1 @@
-import "./skill-file.test.mjs";
+import './skill-file.test.mjs';

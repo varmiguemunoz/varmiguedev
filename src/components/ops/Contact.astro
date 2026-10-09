@@ -2,7 +2,12 @@
 import { CAL_LINK, CONTACT_EMAIL } from './data';
 ---
 
-<section id="contact" class="scroll-mt-20 bg-ops-ink py-24 text-ops-paper md:py-32" aria-labelledby="contact-title" data-contact>
+<section
+  id="contact"
+  class="scroll-mt-20 bg-ops-ink py-24 text-ops-paper md:py-32"
+  aria-labelledby="contact-title"
+  data-contact
+>
   <div class="ops-container grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
     <div>
       <h2
@@ -28,11 +33,11 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
       <ul class="mt-10 space-y-2 text-sm text-ops-mist">
         <li class="flex items-center gap-2">
           <span class="h-1.5 w-1.5 rounded-full bg-ops-live" aria-hidden="true"></span>
-          No pitch, no commitment
+           No pitch, no commitment
         </li>
         <li class="flex items-center gap-2">
           <span class="h-1.5 w-1.5 rounded-full bg-ops-live" aria-hidden="true"></span>
-          English or Spanish
+           English or Spanish
         </li>
       </ul>
     </div>
@@ -49,7 +54,7 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
             required
             maxlength="120"
             aria-describedby="cf-name-error"
-            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper placeholder:text-ops-mist transition-colors focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
             placeholder="Your name"
           />
           <p id="cf-name-error" data-error-for="name" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
@@ -65,7 +70,7 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
             required
             maxlength="200"
             aria-describedby="cf-email-error"
-            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper placeholder:text-ops-mist transition-colors focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
             placeholder="you@company.com"
           />
           <p id="cf-email-error" data-error-for="email" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
@@ -84,7 +89,7 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
             minlength="10"
             maxlength="2000"
             aria-describedby="cf-message-error"
-            class="block w-full resize-y rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 leading-relaxed text-ops-paper placeholder:text-ops-mist transition-colors focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            class="block w-full resize-y rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 leading-relaxed text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
             placeholder="We log every invoice by hand into QuickBooks. I want WhatsApp to do it and flag anything over budget."
           ></textarea>
           <p id="cf-message-error" data-error-for="message" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
@@ -112,9 +117,17 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
       </form>
 
       <div data-contact-success hidden tabindex="-1" class="py-10 text-center focus:outline-none">
-        <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-ops-live/15 text-ops-live" aria-hidden="true">
+        <span
+          class="bg-ops-live/15 mx-auto grid h-14 w-14 place-items-center rounded-full text-ops-live"
+          aria-hidden="true"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path
+              d="M5 12.5l4.5 4.5L19 7.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
           </svg>
         </span>
         <p class="mt-6 font-display text-2xl font-semibold">Got it. Talk soon.</p>
@@ -125,7 +138,10 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
 
       <p class="mt-6 text-center text-xs text-ops-mist">
         Or email me directly at
-        <a href={`mailto:${CONTACT_EMAIL}`} class="text-ops-paper underline decoration-ops-paper/30 hover:decoration-ops-amber">{CONTACT_EMAIL}</a>
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          class="text-ops-paper underline decoration-ops-paper/30 hover:decoration-ops-amber">{CONTACT_EMAIL}</a
+        >
       </p>
     </div>
   </div>
@@ -202,11 +218,13 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
       if (submitLabel) submitLabel.textContent = 'Sending…';
 
       try {
-        const res = await fetch('/forms/contact', {
+        const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
+
+        console.log(res)
         const body = await res.json().catch(() => ({}));
 
         if (!res.ok) {

@@ -104,9 +104,8 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
-
 
 @layer base {
   * {
@@ -119,7 +118,7 @@ html {
 }
 
 #banner-image {
-  mask-image: linear-gradient(black 80%, transparent)
+  mask-image: linear-gradient(black 80%, transparent);
 }
 
 .logo {
@@ -178,7 +177,6 @@ html {
   scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
-
 /* ==========================================================================
    theme-ops — "Machine room" homepage theme
    Light steel paper + ink panels where the systems run.
@@ -226,7 +224,9 @@ html {
 
   .theme-ops body {
     font-family: 'General Sans', ui-sans-serif, system-ui, sans-serif;
-    font-feature-settings: 'ss01', 'tnum' 0;
+    font-feature-settings:
+      'ss01',
+      'tnum' 0;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }

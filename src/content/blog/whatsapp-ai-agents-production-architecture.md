@@ -15,6 +15,7 @@ draft: false
 Most WhatsApp bots are a disgrace. They're a giant `if/else` tree disguised as a chatbot, running on a Zapier flow, responding to keywords with canned replies. A user types "price" and the bot replies with a PDF. That's not an agent. That's a vending machine.
 
 A real WhatsApp AI agent does three things:
+
 1. **Understands intent** — not just keywords
 2. **Maintains context** — across a full conversation, not just the last message
 3. **Takes action** — books a call, qualifies a lead, sends a document, escalates to a human
@@ -121,7 +122,7 @@ The hardest part is knowing when to hand off to a human. We use a confidence sco
 ```typescript
 if (response.confidence < 0.7 && conversation.stage === 'qualification') {
   await triggerHumanHandoff(conversation);
-  return "Let me connect you with one of our team members right now.";
+  return 'Let me connect you with one of our team members right now.';
 }
 ```
 
