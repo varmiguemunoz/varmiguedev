@@ -54,10 +54,10 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
             required
             maxlength="120"
             aria-describedby="cf-name-error"
-            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-ops-danger"
             placeholder="Your name"
           />
-          <p id="cf-name-error" data-error-for="name" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
+          <p id="cf-name-error" data-error-for="name" class="mt-2 hidden text-sm text-ops-danger"></p>
         </div>
 
         <div>
@@ -70,10 +70,10 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
             required
             maxlength="200"
             aria-describedby="cf-email-error"
-            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            class="block w-full rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-ops-danger"
             placeholder="you@company.com"
           />
-          <p id="cf-email-error" data-error-for="email" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
+          <p id="cf-email-error" data-error-for="email" class="mt-2 hidden text-sm text-ops-danger"></p>
         </div>
 
         <div>
@@ -89,10 +89,10 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
             minlength="10"
             maxlength="2000"
             aria-describedby="cf-message-error"
-            class="block w-full resize-y rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 leading-relaxed text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-[#FF8A7A]"
+            class="block w-full resize-y rounded-xl border border-ops-ink-3 bg-ops-ink px-4 py-3.5 leading-relaxed text-ops-paper transition-colors placeholder:text-ops-mist focus:border-ops-signal focus:outline-none aria-[invalid=true]:border-ops-danger"
             placeholder="We log every invoice by hand into QuickBooks. I want WhatsApp to do it and flag anything over budget."
           ></textarea>
-          <p id="cf-message-error" data-error-for="message" class="mt-2 hidden text-sm text-[#FF8A7A]"></p>
+          <p id="cf-message-error" data-error-for="message" class="mt-2 hidden text-sm text-ops-danger"></p>
         </div>
 
         <!-- Honeypot: hidden from people, filled by bots -->
@@ -243,7 +243,7 @@ import { CAL_LINK, CONTACT_EMAIL } from './data';
           success.focus();
         }
       } catch {
-        status.className = 'min-h-[1.5rem] text-sm text-[#FF8A7A]';
+        status.className = 'min-h-[1.5rem] text-sm text-ops-danger';
         status.textContent =
           "The message didn't go through. Try again in a moment, or email me directly using the address below.";
       } finally {

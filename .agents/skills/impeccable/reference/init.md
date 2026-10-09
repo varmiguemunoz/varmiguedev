@@ -67,43 +67,33 @@ Write only confirmed facts and explicitly marked open decisions. Omit irrelevant
 web
 
 ## Stack
-
 [Greenfield only: the user's answer to the stack question, e.g. "static HTML/CSS", "Astro", or "delegated: <what you chose and why>". Omit the section when an existing codebase already answers it.]
 
 ## Users
-
 [Primary users, their situation, and job. Add other audiences only when confirmed.]
 
 ## Product Purpose
-
 [What the product does, why it exists, and what success means.]
 
 ## Positioning
-
 [The product mechanism or claim a neighboring product could not truthfully copy.]
 
 ## Operating Context
-
 [Workflows, environments, tools, documents, materials, and rituals that are factual parts of using or evaluating the product.]
 
 ## Capabilities and Constraints
-
 [Confirmed functionality, technical constraints, terminology, and explicitly undecided product facts.]
 
 ## Brand Commitments
-
 [Existing name, voice, assets, personality, identity constraints, and references the user explicitly made binding. Omit when none exist.]
 
 ## Evidence on Hand
-
 [Real content, data, demonstrations, testimonials, case studies, press, or assets, with paths where applicable. State absences that future work must not fabricate.]
 
 ## Product Principles
-
 [Three to five durable strategic principles derived from confirmed answers; no visual recipes.]
 
 ## Accessibility & Inclusion
-
 [Known user needs or required standard. Omit when no product-specific requirement was established.]
 ```
 
@@ -119,9 +109,9 @@ Before loading new-work or resuming shape/build, verify that PRODUCT.md exists a
 
 ## Step 5: Record workflow defaults
 
-When image generation is available and no `buildPath` is recorded yet, ask once how new surfaces should be built. Availability means a harness-native image tool or the API fallback that `impeccable context` reports as `IMAGE_GEN_AVAILABLE`, and the first of those leaves no trace in the boot output: `impeccable context` only sees the key, so a silent boot on a harness that generates images is not evidence there is nothing to ask about. This is its own question, never a clause riding inside another one. The stack round asks what to build with; this asks how the building starts, and an answer to the first carries no consent about the second. State the trade in the question the user actually reads, because the two names mean nothing to someone meeting them for the first time: **comp-first** (an image sets the bar before any code; bolder composition, slower, and the build must match the image) or **code-first** (build directly; the ambition is written into the direction contract and audited at the finish; leaner, faster).
+When image generation is available and no `buildPath` is recorded yet, ask once how new surfaces should be built. Availability means a harness-native image tool or the API fallback that `impeccable context` reports as `IMAGE_GEN_AVAILABLE`, and the first of those leaves no trace in the boot output: `impeccable context` only sees the key, so a silent boot on a harness that generates images is not evidence there is nothing to ask about. This is its own question, never a clause riding inside another one. The stack round asks what to build with; this asks how the building starts, and an answer to the first carries no consent about the second. State the trade in the question the user actually reads, because the two names mean nothing to someone meeting them for the first time: **comp-first** (an image sets the bar before any code; bolder composition, slower, and the build must match the image) or **code-first** (build directly; the ambition is written into the direction contract and audited at the finish; leaner, faster). Say in the same question what the choice covers: landing pages and showcase surfaces. App screens and documents are built code-first either way.
 
-Write the answer to `.impeccable/config.json` as `"buildPath": "comp"` or `"buildPath": "code"`, merging with the keys already there. Write only the value the user chose. A recommendation you made is not an answer you received, and a value taken from silence is a standing default nobody set: it then rides every future round in the project, which is the opposite of asking once. When the question goes unanswered, record nothing and say in one line which path this session is taking and that it is not stored. That path is comp-first, the default new-work applies wherever image generation exists and nothing is recorded; name it rather than choosing a quieter one, because a silent default invented here is the same failure as a value written without an answer. Unset is a working state, not a gap: the decision page's toggle governs each session, and new-work's one-time offer records the answer the first time the user flips it. The config is the only place this lives. It is a workflow setting, not product truth, so it never joins `## Stack` or any other PRODUCT.md section, where a second copy would outlive the setting and steer rounds nobody could trace back to it.
+Write the answer to `.impeccable/config.json` as `"buildPath": "comp"` or `"buildPath": "code"`, merging with the keys already there. Write only the value the user chose. A recommendation you made is not an answer you received, and a value taken from silence is a standing default nobody set: it then rides every future round in the project, which is the opposite of asking once. When the question goes unanswered, record nothing and say in one line which path this session is taking and that it is not stored. That path is comp-first on a landing page or showcase surface, the default new-work applies wherever image generation exists and nothing is recorded, and code-first on an app screen or document; name it rather than choosing a quieter one, because a silent default invented here is the same failure as a value written without an answer. Unset is a working state, not a gap: the decision page's toggle governs each session, and new-work's one-time offer records the answer the first time the user flips it. The config is the only place this lives. It is a workflow setting, not product truth, so it never joins `## Stack` or any other PRODUCT.md section, where a second copy would outlive the setting and steer rounds nobody could trace back to it.
 
 A value already recorded in `.impeccable/config.json` or the gitignored `.impeccable/config.local.json` is a confirmed answer: on a re-run, honor it in silence rather than asking again. This is a default, not a lock: the decision page renders a toggle whose flip binds a single session and is never written back. Without image generation there is no choice to record; code-first is the only path.
 

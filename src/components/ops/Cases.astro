@@ -44,7 +44,7 @@ const split = (value: string) => {
               </div>
 
               <div class="lg:pt-3">
-                <h3 class="font-display text-2xl font-semibold tracking-[-0.02em] text-ops-ink md:text-[2rem] md:leading-tight">
+                <h3 class="font-display text-2xl font-semibold tracking-[-0.02em] text-ops-ink md:text-3xl md:leading-tight">
                   {c.name}
                 </h3>
 
@@ -60,7 +60,7 @@ const split = (value: string) => {
                 </dl>
 
                 {c.media && (
-                  <figure class="mt-10 overflow-hidden rounded-xl bg-white shadow-[0_20px_48px_-32px_rgb(14_26_43/0.45)]">
+                  <figure class="mt-10 overflow-hidden rounded-xl bg-white shadow-[0_20px_48px_-32px_rgb(var(--ops-ink)/0.45)]">
                     {c.media.type === 'video' ? (
                       <video src={c.media.src} autoplay muted loop playsinline class="block w-full" aria-label={c.media.alt} />
                     ) : (

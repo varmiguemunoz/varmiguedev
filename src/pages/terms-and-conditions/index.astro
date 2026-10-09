@@ -1,17 +1,17 @@
 ---
 export const prerender = true;
 import Base from '@layouts/Base.astro';
+import Nav from '@/components/ops/Nav.astro';
 ---
 
 <Base title="Terms and Conditions">
-  <div class="container mx-auto flex w-full max-w-3xl flex-col items-center justify-center py-10">
-    <h1 class="text-2xl font-bold text-white">Terms and Conditions</h1>
-
-    <pre
-      class="whitespace-pre-wrap leading-relaxed text-white"
-      style={{
-        fontFamily: 'sans-serif',
-      }}>
+  <div class="bg-ops-paper text-ops-ink">
+    <Nav />
+    <article class="ops-container pb-24 pt-16 md:pb-32 md:pt-24">
+      <div class="max-w-3xl">
+        <h1 class="ops-h2">Terms and Conditions</h1>
+        <pre
+          class="mt-10 whitespace-pre-wrap font-sans text-base leading-relaxed text-ops-slate">
   {`
 Terms and Conditions
 1. Introduction
@@ -94,6 +94,7 @@ We reserve the right to update or modify these Terms at any time. Changes will t
 
 These Terms are governed by the laws of United States of America. Any disputes will be subject to the competent courts in that jurisdiction. `}
 </pre>
+      </div>
+    </article>
   </div>
 </Base>
- ---

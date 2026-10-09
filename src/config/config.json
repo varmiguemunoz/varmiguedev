@@ -4,7 +4,7 @@
     "base_url": "https://www.varmiguemunoz.com/",
     "base_path": "/",
     "favicon": "/favicon.ico",
-    "logo": "/avatar.webp",
+    "logo": "/logo.webp",
     "lang": "en",
     "description": "I build LLM agents, RAG and automation inside the CRM, WhatsApp and internal tools you already use. 15+ AI systems running in production.",
     "pageSize": 6
