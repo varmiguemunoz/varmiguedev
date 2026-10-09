@@ -2,79 +2,346 @@
 import { CAL_LINK, testimonials } from './data';
 
 const review = testimonials[0];
+const NOTION = '(prefers-reduced-motion: no-preference)';
 ---
 
-<section class="relative pb-28 pt-10 md:pb-36 md:pt-16" aria-labelledby="hero-title">
-  <div class="ops-container grid items-start gap-16 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:gap-14">
-    <div>
+<section
+  data-hero
+  class="relative isolate flex flex-col overflow-hidden bg-ops-night text-white lg:min-h-[max(100svh,720px)]"
+  aria-labelledby="hero-title"
+>
+  <!-- Film: in flow under the copy on small screens, full bleed behind it from lg up -->
+  <div
+    data-hero-media
+    class="hero-media lg:aspect-auto relative order-2 mt-4 aspect-[1/1] w-full sm:mt-12 sm:aspect-[16/10] lg:absolute lg:inset-0 lg:order-none lg:mt-0"
+  >
+    <img
+      src="/video/camping-hero-poster.webp"
+      srcset="/video/camping-hero-poster-960.webp 960w, /video/camping-hero-poster.webp 1920w"
+      sizes="100vw"
+      alt=""
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="hero-frame absolute inset-0 h-full w-full object-cover"
+    />
+    <video
+      data-hero-video
+      class="hero-frame hero-video absolute inset-0 h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      disablepictureinpicture
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <source src="/video/camping-hero-960.webm" type="video/webm" media={`(max-width: 767px) and ${NOTION}`} />
+      <source src="/video/camping-hero-960.mp4" type="video/mp4" media={`(max-width: 767px) and ${NOTION}`} />
+      <source src="/video/camping-hero.webm" type="video/webm" media={NOTION} />
+      <source src="/video/camping-hero.mp4" type="video/mp4" media={NOTION} />
+    </video>
+    <div aria-hidden="true" class="hero-shade pointer-events-none absolute inset-0"></div>
+  </div>
+
+  <div class="relative z-10 order-1 flex flex-1 items-center pt-28 md:pt-32 lg:pb-16 lg:pt-40">
+    <div class="ops-container">
       <h1
         id="hero-title"
         data-hero-reveal
         data-hero-title
-        class="text-balance max-w-[16ch] font-display text-[clamp(2.75rem,6.6vw,6rem)] font-semibold leading-[0.96] tracking-[-0.035em] text-ops-ink"
+        class="text-balance max-w-[680px] font-display text-4xl font-semibold tracking-[-0.03em] sm:text-5xl md:text-6xl lg:text-7xl"
       >
-        AI agents that work inside the systems you already run.
+        <span class="sm:block">AI agents that work</span>
+        <span class="sm:block">inside the systems</span>
+        <span class="sm:block">you already run.</span>
       </h1>
 
-      <p data-hero-reveal data-hero-fade class="mt-8 max-w-[36rem] text-lg leading-relaxed text-ops-slate md:text-xl">
+      <p data-hero-reveal data-hero-fade class="text-pretty mt-6 max-w-[680px] text-lg text-white/80 md:text-xl">
         I build LLM agents, RAG pipelines and automations for your CRM, WhatsApp, finance stack and internal tools. They
         run in production, on your real data, every day.
       </p>
 
-      <div data-hero-reveal data-hero-fade class="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-        <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="ops-btn-primary" data-magnetic>
+      <div data-hero-reveal data-hero-fade class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 md:mt-10">
+        <a href={CAL_LINK} target="_blank" rel="noopener noreferrer" class="hero-cta" data-magnetic>
           Book a discovery call
-          <span aria-hidden="true">→</span>
+          <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+            <path
+              d="M221.66 133.66l-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z"
+            ></path>
+          </svg>
         </a>
-        <a href="#work" class="ops-link">
+        <a href="#work" class="hero-link">
           See the systems
-          <span aria-hidden="true">↓</span>
+          <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+            <path
+              d="M205.66 149.66l-72 72a8 8 0 0 1-11.32 0l-72-72a8 8 0 0 1 11.32-11.32L120 196.69V40a8 8 0 0 1 16 0v156.69l58.34-58.35a8 8 0 0 1 11.32 11.32Z"
+            ></path>
+          </svg>
         </a>
       </div>
 
-      <p data-hero-reveal data-hero-fade class="mt-6 flex items-center gap-2 text-sm text-ops-slate">
+      <p data-hero-reveal data-hero-fade class="mt-6 flex items-center gap-2 text-sm text-white/75">
         <span class="relative flex h-2 w-2" aria-hidden="true">
-          <span class="absolute inline-flex h-full w-full rounded-full bg-ops-live opacity-60 motion-safe:animate-ping"
-          ></span>
           <span class="relative inline-flex h-2 w-2 rounded-full bg-ops-live"></span>
         </span>
          Available for new projects. Replies within 24 hours.
       </p>
-
-      <p
-        data-hero-reveal
-        data-hero-fade
-        class="border-ops-ink/15 mt-14 max-w-[42rem] border-t pt-6 text-base leading-relaxed text-ops-slate md:text-lg"
-      >
-        <strong class="font-semibold tabular-nums text-ops-ink">15+ AI systems</strong> in production,
-        <strong class="font-semibold tabular-nums text-ops-ink">10,000+ operations</strong> handled every day and
-        <strong class="font-semibold tabular-nums text-ops-ink">120+ hours</strong> a week handed back to client teams.
-      </p>
     </div>
+  </div>
 
-    <figure
-      data-hero-reveal
-      data-hero-panel
-      class="relative mx-auto w-full max-w-[22rem] lg:mx-0 lg:mt-3 lg:max-w-none"
-    >
-      <div data-hero-frame class="aspect-[4/5] overflow-hidden rounded-2xl bg-ops-paper-2">
-        <img
-          src="/hero.webp"
-          alt="Miguel Angel Muñoz, AI Integration Engineer"
-          width="960"
-          height="957"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          class="h-full w-full object-cover object-[50%_30%]"
-        />
-      </div>
-      <blockquote
-        class="absolute -bottom-16 left-4 right-4 rounded-xl bg-white p-5 shadow-[0_24px_48px_-24px_rgb(14_26_43/0.45)] sm:left-auto sm:right-6 sm:w-[17rem] lg:-left-12 lg:right-auto"
+  <div class="relative z-10 order-3 pb-12 pt-8 lg:pb-10 lg:pt-0">
+    <div data-hero-reveal data-hero-fade class="ops-container">
+      <div
+        class="flex flex-col gap-8 border-t border-white/20 pt-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16"
       >
-        <p class="text-[15px] leading-snug text-ops-ink">“{review.quote}”</p>
-        <footer class="mt-3 text-xs text-ops-slate">{review.source}</footer>
-      </blockquote>
-    </figure>
+        <p class="text-pretty max-w-[42rem] text-base text-white/75 lg:text-lg">
+          <strong class="font-semibold tabular-nums text-white">15+ AI systems</strong> in production,
+          <strong class="font-semibold tabular-nums text-white">10,000+ operations</strong> handled every day and
+          <strong class="font-semibold tabular-nums text-white">120+ hours</strong> a week handed back to client teams.
+        </p>
+
+        <div class="flex items-end gap-6 lg:max-w-sm">
+          <blockquote class="flex-1">
+            <p class="text-pretty text-sm text-white/90">“{review.quote}”</p>
+            <footer class="mt-2 text-xs text-white/75">{review.source}</footer>
+          </blockquote>
+          <button
+            type="button"
+            data-hero-toggle
+            aria-pressed="false"
+            class="hero-toggle hidden h-11 w-11 shrink-0 place-items-center rounded-full text-white"
+          >
+            <span class="sr-only" data-hero-toggle-label>Pause background animation</span>
+            <svg
+              data-hero-icon-pause
+              width="18"
+              height="18"
+              viewBox="0 0 256 256"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M216 48v160a16 16 0 0 1-16 16h-40a16 16 0 0 1-16-16V48a16 16 0 0 1 16-16h40a16 16 0 0 1 16 16ZM96 32H56a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h40a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16Z"
+              ></path>
+            </svg>
+            <svg
+              data-hero-icon-play
+              class="hidden"
+              width="18"
+              height="18"
+              viewBox="0 0 256 256"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M240 128a15.74 15.74 0 0 1-7.6 13.51L88.32 229.65a16 16 0 0 1-16.2.3A15.86 15.86 0 0 1 64 216.13V39.87a15.86 15.86 0 0 1 8.12-13.82 16 16 0 0 1 16.2.3l144.08 88.14A15.74 15.74 0 0 1 240 128Z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .hero-frame {
+    object-position: 80% 74%;
+  }
+  .hero-video {
+    opacity: 0;
+    transition: opacity 900ms var(--ops-ease-fluid);
+  }
+  .hero-video[data-ready='true'] {
+    opacity: 1;
+  }
+
+  /* Small screens: the film is a framed band that rises out of the night sky */
+  .hero-media {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 90%, transparent 100%);
+  }
+  .hero-shade {
+    background: none;
+  }
+
+  @media (min-width: 1024px) {
+    /* Push the campfire and the character right, away from the copy */
+    .hero-frame {
+      object-position: 15% 60%;
+    }
+    .hero-media {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+    /* Readability scrim: deepest behind the copy, open over the campfire and the character */
+    .hero-shade {
+      background: linear-gradient(180deg, rgb(var(--ops-night) / 0.55) 0%, rgb(var(--ops-night) / 0) 22%),
+        linear-gradient(
+          0deg,
+          rgb(var(--ops-night) / 0.9) 0%,
+          rgb(var(--ops-night) / 0.55) 16%,
+          rgb(var(--ops-night) / 0) 34%
+        ),
+        linear-gradient(
+          90deg,
+          rgb(var(--ops-night) / 0.9) 0%,
+          rgb(var(--ops-night) / 0.85) 36%,
+          rgb(var(--ops-night) / 0.48) 56%,
+          rgb(var(--ops-night) / 0) 70%
+        );
+    }
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    background-color: rgb(var(--ops-amber));
+    color: rgb(var(--ops-ink));
+    box-shadow: 0 16px 32px -16px rgb(var(--ops-amber) / 0.55);
+    transition:
+      background-color 500ms var(--ops-ease-fluid),
+      box-shadow 500ms var(--ops-ease-fluid),
+      scale 500ms var(--ops-ease-fluid);
+  }
+  .hero-cta:hover {
+    background-color: rgb(var(--ops-amber-bright));
+    box-shadow: 0 20px 40px -16px rgb(var(--ops-amber) / 0.7);
+  }
+  .hero-cta:active {
+    scale: 0.98;
+  }
+  .hero-cta svg,
+  .hero-link svg {
+    transition: transform 500ms var(--ops-ease-fluid);
+  }
+  .hero-cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgb(255 255 255 / 0.35);
+    text-underline-offset: 0.3em;
+    transition: text-decoration-color 500ms var(--ops-ease-fluid);
+  }
+  .hero-link:hover {
+    text-decoration-color: rgb(var(--ops-amber));
+  }
+  .hero-link:hover svg {
+    transform: translateY(3px);
+  }
+
+  .hero-toggle {
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.3);
+    transition:
+      background-color 500ms var(--ops-ease-fluid),
+      box-shadow 500ms var(--ops-ease-fluid);
+  }
+  .hero-toggle:hover {
+    background-color: rgb(255 255 255 / 0.1);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.6);
+  }
+  [data-hero] :focus-visible {
+    outline-color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initHero() {
+    const hero = document.querySelector<HTMLElement>('[data-hero]');
+    const video = hero?.querySelector<HTMLVideoElement>('[data-hero-video]');
+    if (!hero || !video || hero.dataset.bound) return;
+    hero.dataset.bound = 'true';
+
+    const toggle = hero.querySelector<HTMLButtonElement>('[data-hero-toggle]');
+    const label = hero.querySelector('[data-hero-toggle-label]');
+    const iconPause = hero.querySelector('[data-hero-icon-pause]');
+    const iconPlay = hero.querySelector('[data-hero-icon-play]');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+
+    let userPaused = false;
+    let inView = true;
+
+    const markReady = () => (video.dataset.ready = 'true');
+    video.addEventListener('playing', markReady, { once: true });
+    if (!video.paused && video.readyState >= 3) markReady();
+
+    const render = () => {
+      const paused = userPaused;
+      toggle?.setAttribute('aria-pressed', String(paused));
+      if (label) label.textContent = paused ? 'Play background animation' : 'Pause background animation';
+      iconPause?.classList.toggle('hidden', paused);
+      iconPlay?.classList.toggle('hidden', !paused);
+    };
+
+    const sync = () => {
+      const shouldPlay = !reduce.matches && !saveData && !userPaused && inView && !document.hidden;
+      if (shouldPlay) video.play().catch(() => {});
+      else video.pause();
+    };
+
+    // Static fallback: no motion preference or data saver means the poster stays, nothing downloads.
+    if (reduce.matches || saveData) {
+      video.removeAttribute('autoplay');
+      video.pause();
+      video.querySelectorAll('source').forEach((s) => s.remove());
+      video.load();
+      return;
+    }
+
+    toggle?.classList.replace('hidden', 'grid');
+    toggle?.addEventListener('click', () => {
+      userPaused = !userPaused;
+      render();
+      sync();
+    });
+
+    const io = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      sync();
+    });
+    io.observe(hero);
+    document.addEventListener('visibilitychange', sync);
+    reduce.addEventListener('change', sync);
+
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        io.disconnect();
+        document.removeEventListener('visibilitychange', sync);
+        reduce.removeEventListener('change', sync);
+      },
+      { once: true }
+    );
+
+    render();
+    sync();
+  }
+
+  document.addEventListener('astro:page-load', initHero);
+</script>

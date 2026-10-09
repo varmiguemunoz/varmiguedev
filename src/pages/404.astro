@@ -1,29 +1,26 @@
 ---
-import LeftArrowIcon from '@components/icons/LeftArrowIcon.astro';
+export const prerender = true;
+import Base from '@layouts/Base.astro';
+import Nav from '@/components/ops/Nav.astro';
 ---
 
-<section class="flex h-screen w-screen flex-col items-center justify-center bg-white dark:bg-gray-900">
-  <div class="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
-    <div class="mx-auto max-w-screen-sm text-center">
-      <h1 class="text-primary-600 dark:text-primary-500 mb-4 text-7xl font-extrabold tracking-tight lg:text-9xl">
+<Base title="Page not found" noindex>
+  <div class="bg-ops-paper text-ops-ink">
+    <Nav />
+    <section class="ops-container flex min-h-[70svh] flex-col justify-center py-24">
+      <p class="font-display text-8xl font-semibold tabular-nums tracking-[-0.03em] text-ops-ink md:text-9xl">
         404
-      </h1>
-      <p class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
-        Something's missing.
       </p>
-      <p class="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-        Sorry, we can't find that page. You'll find lots to explore on the home page.
-      </p>
-
-      <a
-        href="/"
-        class="focus:ring-primary-300 dark:focus:ring-primary-900 justify-centerrounded-md inline-flex items-center rounded-lg bg-gray-400 px-5 py-3 text-center text-sm font-medium text-white hover:bg-gray-500 focus:outline-none focus:ring-4"
-      >
-        <div class="flex items-center justify-center gap-2 py-3">
-          <LeftArrowIcon />
-           Back to Homepage
-        </div>
+      <h1 class="ops-h2 mt-6">Something's missing.</h1>
+      <p class="ops-lead mt-4">Sorry, we can't find that page. You'll find lots to explore on the home page.</p>
+      <a href="/" class="ops-btn-ink mt-10 self-start">
+        <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+          <path
+            d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8Z"
+          ></path>
+        </svg>
+         Back to Homepage
       </a>
-    </div>
+    </section>
   </div>
-</section>
+</Base>

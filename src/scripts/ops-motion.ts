@@ -17,13 +17,28 @@ const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = doc
 let mm: gsap.MatchMedia | null = null;
 
 /* -------------------------------------------------------------------------- */
-/* Hero: intro + portrait                                                     */
+/* Hero: intro over the film                                                  */
 /* -------------------------------------------------------------------------- */
+
+// Heavy, spring like ease shared with the nav (cubic-bezier(0.32, 0.72, 0, 1))
+const FLUID = (t: number) => {
+  // solve the bezier for x, return y
+  const x1 = 0.32, y1 = 0.72, x2 = 0, y2 = 1;
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+  const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  let u = t;
+  for (let i = 0; i < 6; i++) {
+    const x = ((ax * u + bx) * u + cx) * u - t;
+    const d = (3 * ax * u + 2 * bx) * u + cx;
+    if (Math.abs(x) < 1e-5 || d === 0) break;
+    u -= x / d;
+  }
+  return ((ay * u + by) * u + cy) * u;
+};
 
 function heroIntro() {
   const title = $('[data-hero-title]');
   const fades = $$('[data-hero-fade]');
-  const panel = $('[data-hero-panel]');
   if (!title) return;
 
   // Title: masked line reveal
@@ -32,35 +47,15 @@ function heroIntro() {
     type: 'lines',
     mask: 'lines',
     autoSplit: true,
-    onSplit: (self) => gsap.from(self.lines, { yPercent: 105, duration: 1.15, ease: EASE, stagger: 0.09, delay: 0.05 }),
+    onSplit: (self) => gsap.from(self.lines, { yPercent: 110, duration: 1.2, ease: FLUID, stagger: 0.09, delay: 0.1 }),
   });
 
+  // Supporting copy: a heavy fade up out of a soft blur
   gsap.fromTo(
     fades,
-    { opacity: 0, y: 18 },
-    { opacity: 1, y: 0, duration: 0.9, ease: EASE, stagger: 0.08, delay: 0.35 }
+    { opacity: 0, y: 32, filter: 'blur(12px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: FLUID, stagger: 0.08, delay: 0.4, clearProps: 'filter' }
   );
-
-  if (!panel) return;
-  gsap.set(panel, { opacity: 1 });
-  const frame = $('[data-hero-frame]', panel);
-  if (frame) {
-    gsap.fromTo(
-      frame,
-      { clipPath: 'inset(100% 0% 0% 0% round 16px)' },
-      {
-        clipPath: 'inset(0% 0% 0% 0% round 16px)',
-        duration: 1.3,
-        ease: 'expo.inOut',
-        delay: 0.2,
-        clearProps: 'clipPath',
-      }
-    );
-  }
-  const img = $('img', panel);
-  if (img) gsap.fromTo(img, { scale: 1.12 }, { scale: 1, duration: 1.8, ease: EASE, delay: 0.2 });
-  const quote = $('blockquote', panel);
-  if (quote) gsap.fromTo(quote, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9, ease: EASE, delay: 1.1 });
 }
 
 /* -------------------------------------------------------------------------- */
